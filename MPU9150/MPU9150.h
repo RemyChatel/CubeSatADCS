@@ -51,7 +51,7 @@ public:
 
     uint8_t initIMU(uint8_t acc_scale, uint8_t gyr_scale);
     void initAK8975A();
-    void initMPU9150();
+    void initMPU9150(uint8_t acc_scale, uint8_t gyr_scale);
     void resetMPU9150();
     // Function which accumulates gyro and accelerometer data after device initialization. It calculates the average
     // of the at-rest readings and then loads the resulting offsets into accelerometer and gyro bias registers.
@@ -73,8 +73,8 @@ public:
 private:
     I2C *i2c_;
     // Set initial input parameters
-    uint8_t Ascale = AFS_2G;     // AFS_2G, AFS_4G, AFS_8G, AFS_16G
-    uint8_t Gscale = GFS_250DPS; // GFS_250DPS, GFS_500DPS, GFS_1000DPS, GFS_2000DPS
+    uint8_t ascale = AFS_2G;     // AFS_2G, AFS_4G, AFS_8G, AFS_16G
+    uint8_t gscale = GFS_250DPS; // GFS_250DPS, GFS_500DPS, GFS_1000DPS, GFS_2000DPS
     float aRes_, gRes_, mRes_;      // scale resolutions per LSB for the sensors
     float magCalibration[3] = {0, 0, 0}; // Factory mag calibration
     float magBias[3] = {0, 0, 0};        // Factory mag bias

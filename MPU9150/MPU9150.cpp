@@ -35,7 +35,7 @@ void MPU9150::readBytes(uint8_t address, uint8_t subAddress, uint8_t count, uint
 } 
 
 void MPU9150::getGres() {
-    switch (Gscale) {
+    switch (gscale) {
         // Possible gyro scales (and their register bit settings) are:
         // 250 DPS (00), 500 DPS (01), 1000 DPS (10), and 2000 DPS  (11). 
         // Here's a bit of an algorith to calculate DPS/(ADC tick) based on that 2-bit value:
@@ -55,6 +55,7 @@ void MPU9150::getGres() {
 }
 
 void MPU9150::setGres(uint8_t scale){
+    gscale = scale;
     switch (scale) {
         // Possible gyro scales (and their register bit settings) are:
         // 250 DPS (00), 500 DPS (01), 1000 DPS (10), and 2000 DPS  (11). 
@@ -75,7 +76,7 @@ void MPU9150::setGres(uint8_t scale){
 }
 
 void MPU9150::getAres() {
-  switch (Ascale)
+  switch (ascale)
   {
     // Possible accelerometer scales (and their register bit settings) are:
     // 2 Gs (00), 4 Gs (01), 8 Gs (10), and 16 Gs  (11). 
@@ -96,23 +97,24 @@ void MPU9150::getAres() {
 }
 
 void MPU9150::setAres(uint8_t scale){
-  switch (scale)
-  {
+    ascale = scale;
+    switch (scale)
+    {
     // Possible accelerometer scales (and their register bit settings) are:
     // 2 Gs (00), 4 Gs (01), 8 Gs (10), and 16 Gs  (11). 
-        // Here's a bit of an algorith to calculate DPS/(ADC tick) based on that 2-bit value:
+    // Here's a bit of an algorith to calculate DPS/(ADC tick) based on that 2-bit value:
     case AFS_2G:
-          aRes_ = 2.0/32768.0;
-          break;
+        aRes_ = 2.0/32768.0;
+        break;
     case AFS_4G:
-          aRes_ = 4.0/32768.0;
-          break;
+        aRes_ = 4.0/32768.0;
+        break;
     case AFS_8G:
-          aRes_ = 8.0/32768.0;
-          break;
+        aRes_ = 8.0/32768.0;
+        break;
     case AFS_16G:
-          aRes_ = 16.0/32768.0;
-          break;
+        aRes_ = 16.0/32768.0;
+        break;
   }
 }
 
@@ -128,9 +130,9 @@ void MPU9150::getAccel(float acc[3]){
     int16_t accelCount[3];  // Stores the 16-bit signed accelerometer sensor output
     readAccelData(accelCount);  // Read the x/y/z adc values   
     // Now we'll calculate the accleration value into actual g's
-    acc[0] = (float)accelCount[0]*aRes_ - accelBias[0];  // get actual g value, this depends on scale being set
-    acc[1] = (float)accelCount[1]*aRes_ - accelBias[1];   
-    acc[2] = (float)accelCount[2]*aRes_ - accelBias[2]; 
+    acc[0] = (float)accelCount[0]*aRes_;// - accelBias[0];  // get actual g value, this depends on scale being set
+    acc[1] = (float)accelCount[1]*aRes_;// - accelBias[1];   
+    acc[2] = (float)accelCount[2]*aRes_;// - accelBias[2]; 
 }
 
 void MPU9150::readGyroData(int16_t * destination) {
@@ -145,9 +147,9 @@ void MPU9150::getGyro(float gyr[3]){
     int16_t gyroCount[3];   // Stores the 16-bit signed gyro sensor output
     readGyroData(gyroCount);  // Read the x/y/z adc values
     // Calculate the gyro value into actual degrees per second
-    gyr[0] = (float)gyroCount[0]*gRes_; // - gyroBias[0];  // get actual gyro value, this depends on scale being set
-    gyr[1] = (float)gyroCount[1]*gRes_; // - gyroBias[1];  
-    gyr[2] = (float)gyroCount[2]*gRes_; // - gyroBias[2]; 
+    gyr[0] = (float)gyroCount[0]*gRes_ - gyroBias[0];  // get actual gyro value, this depends on scale being set
+    gyr[1] = (float)gyroCount[1]*gRes_ - gyroBias[1];  
+    gyr[2] = (float)gyroCount[2]*gRes_ - gyroBias[2]; 
 }
 
 void MPU9150::readMagData(int16_t * destination) {
@@ -206,10 +208,8 @@ uint8_t MPU9150::initIMU(uint8_t acc_scale, uint8_t gyr_scale){
         resetMPU9150(); // Reset registers to default in preparation for device calibration
         calibrateMPU9150(); // Calibrate gyro and accelerometers, load biases in bias registers  
         wait(0.5);
-        initMPU9150(); // Initialize device for active mode read of accelerometer, gyroscope, and temperature
+        initMPU9150(acc_scale, gyr_scale); // Initialize device for active mode read of accelerometer, gyroscope, and temperature
         initAK8975A(); // Initialize device for active mode read of magnetometer
-        setAres(acc_scale);
-        setGres(gyr_scale);
         return whoami;
     }
     else {
@@ -223,7 +223,7 @@ void MPU9150::resetMPU9150() {
     wait(0.1);
 }
 
-void MPU9150::initMPU9150() {  
+void MPU9150::initMPU9150(uint8_t acc_scale, uint8_t gyr_scale) {  
     // Initialize MPU9150 device
     // wake up device
     writeByte(MPU9150_ADDRESS, PWR_MGMT_1, 0x00); // Clear sleep mode bit (6), enable all sensors 
@@ -246,13 +246,13 @@ void MPU9150::initMPU9150() {
     uint8_t c =  readByte(MPU9150_ADDRESS, GYRO_CONFIG);
     writeByte(MPU9150_ADDRESS, GYRO_CONFIG, c & ~0xE0); // Clear self-test bits [7:5] 
     writeByte(MPU9150_ADDRESS, GYRO_CONFIG, c & ~0x18); // Clear AFS bits [4:3]
-    writeByte(MPU9150_ADDRESS, GYRO_CONFIG, c | Gscale << 3); // Set full scale range for the gyro
+    writeByte(MPU9150_ADDRESS, GYRO_CONFIG, c | gyr_scale << 3); // Set full scale range for the gyro
 
     // Set accelerometer configuration
     c =  readByte(MPU9150_ADDRESS, ACCEL_CONFIG);
     writeByte(MPU9150_ADDRESS, ACCEL_CONFIG, c & ~0xE0); // Clear self-test bits [7:5] 
     writeByte(MPU9150_ADDRESS, ACCEL_CONFIG, c & ~0x18); // Clear AFS bits [4:3]
-    writeByte(MPU9150_ADDRESS, ACCEL_CONFIG, c | Ascale << 3); // Set full scale range for the accelerometer 
+    writeByte(MPU9150_ADDRESS, ACCEL_CONFIG, c | acc_scale << 3); // Set full scale range for the accelerometer 
 
     // The accelerometer, gyro, and thermometer are set to 1 kHz sample rates, 
     // but all these rates are further reduced by a factor of 5 to 200 Hz because of the SMPLRT_DIV setting
@@ -263,8 +263,8 @@ void MPU9150::initMPU9150() {
     writeByte(MPU9150_ADDRESS, INT_PIN_CFG, 0x22);    
     writeByte(MPU9150_ADDRESS, INT_ENABLE, 0x01);  // Enable data ready (bit 0) interrupt
 
-    getAres(); // Get accelerometer sensitivity
-    getGres(); // Get gyro sensitivity
+    setAres(acc_scale); // Get accelerometer sensitivity
+    setGres(gyr_scale); // Get gyro sensitivity
     mRes_ = 1229./4096.; // Conversion to 1229 microTesla full scale (4096)
     // So far, magnetometer bias is calculated and subtracted here manually, should construct an algorithm to do it automatically
     // like the gyro and accelerometer biases

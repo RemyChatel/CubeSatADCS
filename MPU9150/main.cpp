@@ -30,31 +30,19 @@ int main()
 
     uint8_t MagRate = 100; // set magnetometer read rate in Hz; 10 to 100 (max) Hz are reasonable values
     float val_acc[3], val_gyr[3], val_mag[3];
+    uint8_t acc_scale = AFS_2G;
+    uint8_t gyr_scale = GFS_250DPS;
     
     // Read the WHO_AM_I register, this is a good test of communication
     uint8_t whoami = MPU9150.readByte(MPU9150_ADDRESS, WHO_AM_I_MPU9150);  // Read WHO_AM_I register for MPU-9150
     pc.printf("I AM 0x%x\n\r", whoami); pc.printf("I SHOULD BE 0x68 or 0x73\n\r");
   
-    if (whoami == 0x73) {   // WHO_AM_I should be 0x68
-        pc.printf("MPU9150 WHO_AM_I is 0x%x\n\r", whoami);
-        pc.printf("MPU9150 is online...\n\r");
-        wait(1);
-        
-        MPU9150.MPU9150SelfTest();
-        wait(1);
-        MPU9150.resetMPU9150(); // Reset registers to default in preparation for device calibration
-        MPU9150.calibrateMPU9150(); // Calibrate gyro and accelerometers, load biases in bias registers  
-        wait(1);
-        MPU9150.initMPU9150(); 
-        pc.printf("MPU9150 initialized for active data mode....\n\r"); // Initialize device for active mode read of acclerometer, gyroscope, and temperature
-        MPU9150.initAK8975A();
-        pc.printf("AK8975 initialized for active data mode....\n\r"); // Initialize device for active mode read of magnetometer
-    }
-    else {
+    if (!MPU9150.initIMU(acc_scale, gyr_scale)) {   // WHO_AM_I should be 0x68
         pc.printf("Could not connect to MPU9150: \n\r");
-        pc.printf("%#x \n",  whoami);
         while(1) ; // Loop forever if communication doesn't happen
     }
+
+    wait(2);
  
     while(1) {
         int length_timer = t.read_us();
@@ -63,33 +51,25 @@ int main()
             MPU9150.getAccel(val_acc);  // Read the x/y/z adc values
         
             MPU9150.getGyro(val_gyr);  // Read the x/y/z adc values   
-            val_gyr[0] *=DEG2RAD;
-            val_gyr[1] *=DEG2RAD;
-            val_gyr[2] *=DEG2RAD;
+            val_gyr[0] *= DEG2RAD;
+            val_gyr[1] *= DEG2RAD;
+            val_gyr[2] *= DEG2RAD;
         
             mcount++;
             if (mcount > 200/MagRate) {  // this is a poor man's way of setting the magnetometer read rate (see below) 
-            MPU9150.getMag(val_mag);  // Read the x/y/z adc values
-            mcount = 0;
+                MPU9150.getMag(val_mag);  // Read the x/y/z adc values
+                mcount = 0;
             }
         }
    
         Now = t.read_us();
         deltat = (float)((Now - lastUpdate)/1000000.0f) ; // set integration time by time elapsed since last filter update
         lastUpdate = Now;
-        
-        sum += deltat;
-        sumCount++;
-    
-        //    if(lastUpdate - firstUpdate > 10000000.0f) {
-        //        beta = 0.04;  // decrease filter gain after stabilized
-        //        zeta = 0.015; // increasey bias drift gain after stabilized
-        //    }
-        
+
         // Pass gyro rate as rad/s
         // MPU9150.MadgwickQuaternionUpdate(q, val_acc, val_gyr, val_mag, deltat);
         MPU9150.MahonyQuaternionUpdate(q, val_acc, val_gyr, val_mag, deltat);
-    
+
         // Define output variables from updated quaternion---these are Tait-Bryan angles, commonly used in aircraft orientation.
         // In this coordinate system, the positive z-axis is down toward Earth. 
         // Yaw is the angle between Sensor x-axis and Earth magnetic North (or true North if corrected for local declination, looking down on the sensor positive yaw is counterclockwise.
@@ -99,29 +79,29 @@ int main()
         // Tait-Bryan angles as well as Euler angles are non-commutative; that is, the get the correct orientation the rotations must be
         // applied in the correct order which for this configuration is yaw, pitch, and then roll.
         // For more see http://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles which has additional links.
-        yaw   = atan2(2.0f * (q[1] * q[2] + q[0] * q[3]), q[0] * q[0] + q[1] * q[1] - q[2] * q[2] - q[3] * q[3]);   
+        roll  = atan2(2.0f * (q[0] * q[1] + q[2] * q[3]), q[0] * q[0] - q[1] * q[1] - q[2] * q[2] + q[3] * q[3]);   
         pitch = -asin(2.0f * (q[1] * q[3] - q[0] * q[2]));
-        roll  = atan2(2.0f * (q[0] * q[1] + q[2] * q[3]), q[0] * q[0] - q[1] * q[1] - q[2] * q[2] + q[3] * q[3]);
-        pitch *= 180.0f / PI;
-        yaw   *= 180.0f / PI; 
-        yaw   -= -2.48f; // Declination at Danville, California is 13 degrees 48 minutes and 47 seconds on 2014-04-04
+        yaw   = atan2(2.0f * (q[1] * q[2] + q[0] * q[3]), q[0] * q[0] + q[1] * q[1] - q[2] * q[2] - q[3] * q[3]);
         roll  *= 180.0f / PI;
+        pitch *= 180.0f / PI;
+        yaw   *= 180.0f / PI;
+        yaw   -= -2.48f; // Declination at Danville, California is 13 degrees 48 minutes and 47 seconds on 2014-04-04
         
         int convtime = length_timer - t.read_us();
-    
         
         // Serial print and/or display at 0.5 s rate independent of data rates
         delt_t = t.read_ms() - count;
-        if (delt_t > 500) { // update LCD once per half-second independent of read rate initial 500
+        if (delt_t > 100) { // update LCD once per half-second independent of read rate initial 500
+
             pc.printf("Conversion time %d us \n\r", convtime);
             
-            pc.printf("ax = %f", 1000*val_acc[0]); 
-            pc.printf(" ay = %f", 1000*val_acc[1]); 
-            pc.printf(" az = %f  mg\n\r", 1000*val_acc[2]); 
+            pc.printf("ax = %4.2f", 1000*val_acc[0]); 
+            pc.printf(" ay = %4.2f", 1000*val_acc[1]); 
+            pc.printf(" az = %4.2f  mg\n\r", 1000*val_acc[2]); 
 
-            pc.printf("gx = %f", val_gyr[0]); 
-            pc.printf(" gy = %f", val_gyr[1]); 
-            pc.printf(" gz = %f  deg/s\n\r", val_gyr[2]); 
+            pc.printf("gx = %f", val_gyr[0]*RAD2DEG); 
+            pc.printf(" gy = %f", val_gyr[1]*RAD2DEG); 
+            pc.printf(" gz = %f  deg/s\n\r", val_gyr[2]*RAD2DEG); 
             
             pc.printf("gx = %3.1f", val_mag[0]); 
             pc.printf(" gy = %3.1f", val_mag[1]); 
@@ -138,8 +118,7 @@ int main()
             */
 
 
-            pc.printf("Yaw, Pitch, Roll: %f %f %f\n\r", yaw, pitch, roll);
-            //pc.printf("average rate = %f\n\r", (float) sumCount/sum);
+            pc.printf("Yaw, Pitch, Roll: %3.2f %3.2f %3.2f\n\r", yaw, pitch, roll);
             count = t.read_ms(); 
 
             if(count > 1<<21) {
@@ -148,8 +127,6 @@ int main()
                 deltat= 0;
                 lastUpdate = t.read_us();
             }
-            sum = 0;
-            sumCount = 0; 
         }
     } // while(1)
 } // main()
