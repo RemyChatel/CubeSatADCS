@@ -50,10 +50,7 @@ int main()
         if(MPU9150.readByte(MPU9150_ADDRESS, INT_STATUS) & 0x01) {  // On interrupt, check if data ready interrupt
             MPU9150.getAccel(val_acc);  // Read the x/y/z adc values
         
-            MPU9150.getGyro(val_gyr);  // Read the x/y/z adc values   
-            val_gyr[0] *= DEG2RAD;
-            val_gyr[1] *= DEG2RAD;
-            val_gyr[2] *= DEG2RAD;
+            MPU9150.getGyro(val_gyr);  // Read the x/y/z adc values
         
             mcount++;
             if (mcount > 200/MagRate) {  // this is a poor man's way of setting the magnetometer read rate (see below) 
@@ -66,19 +63,24 @@ int main()
         deltat = (float)((Now - lastUpdate)/1000000.0f) ; // set integration time by time elapsed since last filter update
         lastUpdate = Now;
 
-        // Pass gyro rate as rad/s
-        // MPU9150.MadgwickQuaternionUpdate(q, val_acc, val_gyr, val_mag, deltat);
-        MPU9150.MahonyQuaternionUpdate(q, val_acc, val_gyr, val_mag, deltat);
+        // Pass gyro rate as rad/s   
+        val_gyr[0] *= DEG2RAD;
+        val_gyr[1] *= DEG2RAD;
+        val_gyr[2] *= DEG2RAD;
+        MPU9150.MahonyQuaternionUpdate(q, val_acc, val_gyr, val_mag, deltat);  
+        val_gyr[0] *= RAD2DEG;
+        val_gyr[1] *= RAD2DEG;
+        val_gyr[2] *= RAD2DEG;
 
         // Define output variables from updated quaternion---these are Tait-Bryan angles, commonly used in aircraft orientation.
-        // In this coordinate system, the positive z-axis is down toward Earth. 
-        // Yaw is the angle between Sensor x-axis and Earth magnetic North (or true North if corrected for local declination, looking down on the sensor positive yaw is counterclockwise.
-        // Pitch is angle between sensor x-axis and Earth ground plane, toward the Earth is positive, up toward the sky is negative.
-        // Roll is angle between sensor y-axis and Earth ground plane, y-axis up is positive roll.
-        // These arise from the definition of the homogeneous rotation matrix constructed from quaternions.
-        // Tait-Bryan angles as well as Euler angles are non-commutative; that is, the get the correct orientation the rotations must be
-        // applied in the correct order which for this configuration is yaw, pitch, and then roll.
-        // For more see http://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles which has additional links.
+            // In this coordinate system, the positive z-axis is down toward Earth. 
+            // Yaw is the angle between Sensor x-axis and Earth magnetic North (or true North if corrected for local declination, looking down on the sensor positive yaw is counterclockwise.
+            // Pitch is angle between sensor x-axis and Earth ground plane, toward the Earth is positive, up toward the sky is negative.
+            // Roll is angle between sensor y-axis and Earth ground plane, y-axis up is positive roll.
+            // These arise from the definition of the homogeneous rotation matrix constructed from quaternions.
+            // Tait-Bryan angles as well as Euler angles are non-commutative; that is, the get the correct orientation the rotations must be
+            // applied in the correct order which for this configuration is yaw, pitch, and then roll.
+            // For more see http://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles which has additional links.
         roll  = atan2(2.0f * (q[0] * q[1] + q[2] * q[3]), q[0] * q[0] - q[1] * q[1] - q[2] * q[2] + q[3] * q[3]);   
         pitch = -asin(2.0f * (q[1] * q[3] - q[0] * q[2]));
         yaw   = atan2(2.0f * (q[1] * q[2] + q[0] * q[3]), q[0] * q[0] + q[1] * q[1] - q[2] * q[2] - q[3] * q[3]);
@@ -99,24 +101,13 @@ int main()
             pc.printf(" ay = %4.2f", 1000*val_acc[1]); 
             pc.printf(" az = %4.2f  mg\n\r", 1000*val_acc[2]); 
 
-            pc.printf("gx = %f", val_gyr[0]*RAD2DEG); 
-            pc.printf(" gy = %f", val_gyr[1]*RAD2DEG); 
-            pc.printf(" gz = %f  deg/s\n\r", val_gyr[2]*RAD2DEG); 
+            pc.printf("gx = %f", val_gyr[0]); 
+            pc.printf(" gy = %f", val_gyr[1]); 
+            pc.printf(" gz = %f  deg/s\n\r", val_gyr[2]); 
             
             pc.printf("gx = %3.1f", val_mag[0]); 
             pc.printf(" gy = %3.1f", val_mag[1]); 
             pc.printf(" gz = %3.1f  uT\n\r", val_mag[2]);
-
-            //tempCount = MPU9150.readTempData();  // Read the adc values
-            //temperature = ((float) tempCount) / 340.0f + 36.53f; // Temperature in degrees Centigrade
-            //pc.printf(" temperature = %f  C\n\r", temperature); 
-            /*    
-            pc.printf("q0 = %f\n\r", q[0]);
-            pc.printf("q1 = %f\n\r", q[1]);
-            pc.printf("q2 = %f\n\r", q[2]);
-            pc.printf("q3 = %f\n\r", q[3]);      
-            */
-
 
             pc.printf("Yaw, Pitch, Roll: %3.2f %3.2f %3.2f\n\r", yaw, pitch, roll);
             count = t.read_ms(); 
