@@ -67,6 +67,13 @@ public:
      */
     static float det( const Matrix& Mat );
 
+    /**@brief
+     * Returns the trace of the matrix
+     * @param Mat matrix to calculate.
+     * @return the trace.
+     */
+     static float trace(const Matrix& Mat);
+
 
     //====  For Kinematics ====//
 

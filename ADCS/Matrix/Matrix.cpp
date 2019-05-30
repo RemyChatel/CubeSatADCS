@@ -241,7 +241,7 @@ const Matrix Matrix::ExportRow( const Matrix& Mat, int row )
     {
         printf( "\n\nERROR:\nRow out of dimmensions @ GetRow\n"
                 "Nothing Done.\n\n" );
-
+        return NullMatrix;
     }else{
 
         Matrix SingleRow( 1 , Mat._nCols );
@@ -267,6 +267,7 @@ const Matrix Matrix::ExportCol( const Matrix& Mat, int col )
     {
         printf( "\n\nERROR:\nColumn out of dimmensions.\n"
                 "Nothing Done.\n\n" );
+        return NullMatrix;
     }else{
 
         Matrix SingleCol( Mat._nRows, 1 );

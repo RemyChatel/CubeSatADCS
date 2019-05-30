@@ -96,6 +96,7 @@ Matrix MatrixMath::Inv(const Matrix& Mat)
 
     }else{
         printf( "\n\nERROR:\nMust be square Matrix @ MatrixMath::Determinant\n" );
+        return NullMatrix;
     }
 }
 
@@ -193,6 +194,7 @@ float MatrixMath::dot(const Matrix& leftM, const Matrix& rightM)
     }else{
         printf( "\n\nERROR:\n Matrix is not a Vector @ MatrixMath::dot()\n" );
     }
+    return nanf("");
 }
 
 
@@ -245,6 +247,19 @@ float MatrixMath::det(const Matrix& Mat)
     }else{
         printf("\n\nERROR:\nMatrix must be square Matrix @ MatrixMath::det");
     }
+    return nanf("");
+}
+
+float MatrixMath::trace(const Matrix &Mat){
+    float sum = 0;
+    if( Mat._nRows == Mat._nCols  ) {
+        for(int i = 0; i < Mat._nRows; i++){
+            sum += Mat._matrix[i][i];
+        }
+    }else{
+        printf("\n\nERROR:\nMatrix must be square Matrix @ MatrixMath::trace");
+    }
+    return nanf("");
 }
 
 

@@ -20,6 +20,8 @@ float& Matrix::operator ()(int row, int col)
     if( row >= _nRows || col >= _nCols)
     {
         printf("\n\nError:\nOut of limits @ Matrix::operator()\n");
+        NullCoef = nanf("");
+        return NullCoef;
     }else{
         return _matrix[row][col];
     }
@@ -33,6 +35,7 @@ float Matrix::operator ()(int row, int col) const
     if( row >= _nRows || col >= _nCols)
     {
         printf("\n\nError:\nOut of limits @ Matrix::operator()\n");
+        return nanf("");
     }else{
         return _matrix[row][col];
     }
@@ -110,7 +113,10 @@ Matrix& operator +=( Matrix& leftM, const Matrix& rightM )
 
         return leftM;
 
-    }else{ printf( "\n\nERROR:\nDiferent Dimensions @ += operator\n" );  }
+    }else{
+        printf( "\n\nERROR:\nDiferent Dimensions @ += operator\n" );
+        return NullMatrix;
+    }
 }
 
 
@@ -128,6 +134,7 @@ Matrix& operator -=( Matrix& leftM, const Matrix& rightM )
 
     }else{
         printf( "\n\nERROR:\nDiferent Dimensions @ -= operator\n" );
+        return NullMatrix;
     }
 }
 
@@ -143,9 +150,12 @@ Matrix& operator *=( Matrix& leftM, const Matrix& rightM )
                 for( int m = 0; m < rightM._nRows; m++ )
                     resultM._matrix[i][j] += leftM._matrix[i][m] * rightM._matrix[m][j];
 
-        return resultM;
+        // return resultM;
+        leftM = resultM;
+        return leftM;
     }else{
         printf( "\n\nERROR:\nDiferent Dimensions @ *= operator\n" );
+        return NullMatrix;
     }
 }
 
@@ -197,6 +207,8 @@ const Matrix operator +( const Matrix& leftM, const Matrix& rightM)
 
     }else{
         printf( "\n\nERROR\nDiferent Dimensions @ + operator \n" );
+        Matrix null;
+        return null;
         //Matrix error(4);
         //error.Clear();
         //return error;
@@ -236,7 +248,8 @@ const Matrix operator -( const Matrix& leftM, const Matrix& rightM )
 
     }else{
         printf( "\n\nERROR:\nDiferent Dimensions @ + operator \n" );
-
+        Matrix null;
+        return null;
     }
 }
 
@@ -274,8 +287,9 @@ const Matrix operator *( const Matrix& leftM, const Matrix& rightM )
         return resultM;
 
     } else {
-
         printf("\n\nERROR:\nDiferent Dimension matrices @ * operator");
+        Matrix null;
+        return null;
     }
 
 }

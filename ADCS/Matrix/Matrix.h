@@ -90,7 +90,7 @@ public:
 
 
     /** @brief
-     * Overload Copmpound assignment.
+     * Overload Compound assignment.
      * @param rightM
      * @return A new Matrix to be assigned to itself.
      */
@@ -98,7 +98,7 @@ public:
 
 
     /** @brief
-     * Overload Compund decrease.
+     * Overload Compound decrease.
      * @param rightM Right hand matrix
      * @return A new Matrix to be assigned to itself
      */
@@ -213,7 +213,7 @@ public:
 
 
     /**@brief
-     * Inputs numbres into a Matrix, the matrix needs to be costructed as
+     * Inputs numbers into a Matrix, the matrix needs to be costructed as
      * Matrix( _nRows, _nCols ).
      * This does NOT work on an only declared Matrix such as:
      * Matrix obj;
@@ -399,7 +399,7 @@ public:
 private:
 
     /** 2-D Vector Array*/
-    vector < vector<float> > _matrix;
+    std::vector < std::vector<float> > _matrix;
 
 
 
@@ -418,6 +418,11 @@ private:
     int _pCol;
 
 };
+
+static Matrix NullMatrix;
+static float NullCoef;
+extern Matrix NullMatrix;
+extern float NullCoef;
 
 #endif    /* MATRIX_H */
 
