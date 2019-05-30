@@ -3,10 +3,11 @@
 #include "MatrixMath.h"
 
 int MatrixTest(Serial *pc, I2C *i2c, Timer *t){
+    /*
     pc->printf("\n\r\n\r\n\r\n\r\n\r\n\r");
     pc->printf("--------------------------------------\n\r\n\r");
     
-    /* SimpleMatrix Vector Test */
+    // SimpleMatrix Vector Test
     float coef1[3] = {3.8f,5.2f,8.4f};
     float coef2[3] = {9.1f,2.7f,0.2f};
     float coef[3] = {4.0f, 5.0f , 3.0f} ;
@@ -74,7 +75,7 @@ int MatrixTest(Serial *pc, I2C *i2c, Timer *t){
     // pc->printf("Cross product vec1 x vec2 [ 59.88, -68.4, 34.16 ]\n\r");
     // printVec(vec1.cross(vec2), pc);
 
-    /* SimpleMatrix Matrix Test */
+    // SimpleMatrix Matrix Test
 
     float coefA[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     float coefB[9] = {10, 12, 13, 14, 15, 16, 17, 18, 19};
@@ -172,6 +173,6 @@ int MatrixTest(Serial *pc, I2C *i2c, Timer *t){
     //   << coefA[6] << coefA[7] << coefA[8];
     // pc->printf("Inverse of B matrix inv(B) {{-1, 2, -1}, {2, -10.33, 7.33}, {-1, 8, -6}} \n\r");
     // printMat(MatrixMath::Inv(B), pc);
-
+    */
     return 1;
 }

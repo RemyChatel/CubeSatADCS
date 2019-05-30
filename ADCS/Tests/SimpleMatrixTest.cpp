@@ -18,7 +18,7 @@ int SimpleMatrixTest(Serial *pc, I2C *i2c, Timer *t){
     pc->printf("Vector 2\n\r");
     printVec(vec2, pc);
 
-    pc->printf("Assignement c = vec2 and testing modification of b\n\r");
+    pc->printf("\n\rAssignement c = vec2 and testing modification of b\n\r");
     Vector vec3;
     vec3 = vec2;
     printVec(vec3, pc);
@@ -27,56 +27,56 @@ int SimpleMatrixTest(Serial *pc, I2C *i2c, Timer *t){
     printVec(vec2, pc);
     pc->printf("c: ");
     printVec(vec3, pc);
-    vec2.setCoef(coef);
+    vec2 = Vector(coef2);
 
-    pc->printf("Addition (vec1+vec2)\n\r");
+    pc->printf("\n\rAddition (vec1+vec2) (expected {12.9, 7.9, 8.6})\n\r");
     printVec(vec1+vec2, pc);
     pc->printf("Addition (vec2 += vec1)\n\r");
     vec2 += vec1;
     printVec(vec2, pc);
     vec2 = Vector(coef2); // reseting b to original
 
-    pc->printf("Substraction (vec2-vec1) (expected [ -10.8, -4.96, 9 ]\n\r");
+    pc->printf("\n\rSubstraction (vec2-vec1) (expected {5.3, -2.5, -8.2}\n\r");
     printVec(vec2-vec1, pc);
     pc->printf("Substraction (vec2 -= vec1)\n\r");
     vec2 -= vec1;
     printVec(vec2, pc);
     vec2 = Vector(coef2); // reseting b to original
 
-    pc->printf("Scalar multiplication (2*vec2) then (vec2*2) then b*=2\n\r");
+    pc->printf("\n\rScalar multiplication (2*vec2) then (vec2*2) then b*=2\n\r");
     printVec(2.0f * vec2, pc);
     printVec(vec2 * 2.0f, pc);
     vec2 *= 2.0f;
     printVec(vec2, pc);
-    vec2 = Vector(coef);
+    vec2 = Vector(coef2);
 
-    pc->printf("Scalar division (b/2) then b/=2\n\r");
+    pc->printf("Scalar division (vec2/2) then vec2/=2\n\r");
     printVec(vec2 / 2.0f, pc);
     vec2 /= 2.0f;
     printVec(vec2, pc);
-    vec2 = Vector(coef);
+    vec2 = Vector(coef2);
 
-    pc->printf("Norm of vec1 (expected 7.07107)\n\r");
+    pc->printf("\n\rNorm of vec1 (expected 10.5849)\n\r");
     pc->printf("%f\n\r", vec1.norm());
 
-    pc->printf("Normalize a (expected [ 0.565685, 0.707107, 0.424264 ]\n\r");
+    pc->printf("Normalize a (expected {0.359002, 0.491266, 0.793584}\n\r");
     Vector d = Vector(vec1);
     d.normalize();
     printVec(d, pc);
 
-    pc->printf("Dot product transpose(vec1) * vec2 or vec1.vec2 (expected 9.0)\n\r");
+    pc->printf("\n\rDot product transpose(vec1) * vec2 or vec1.vec2 (expected 50.3)\n\r");
     pc->printf("%f\n\r", vec2.dot(vec1));
 
-    pc->printf("Cross product vec1 x vec2 [ 59.88, -68.4, 34.16 ]\n\r");
+    pc->printf("Cross product vec1 x vec2 {21.64, -75.68, 37.06}\n\r");
     printVec(vec1.cross(vec2), pc);
 
     /* SimpleMatrix Matrix Test */
-
+    pc->printf("\n\r\n\r\n\r"); 
     float coefA[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     float coefB[9] = {10, 12, 13, 14, 15, 16, 17, 18, 19};
     SimpleMatrix::Matrix a(coefA),b(coefB);
 
-    pc->printf("Matrix A\n\r");
+    pc->printf("\n\r\n\rMatrix A\n\r");
     printMat(a, pc);
     pc->printf("Matrix B\n\r");
     printMat(b, pc);
@@ -92,7 +92,7 @@ int SimpleMatrixTest(Serial *pc, I2C *i2c, Timer *t){
     printMat(c, pc);
     b.setCoef(coefB);
 
-    pc->printf("Addition A+B\n\r");
+    pc->printf("\n\rAddition A+B\n\r");
     printMat(a+b, pc);
 
     pc->printf("Addition A+=B\n\r");
@@ -100,7 +100,7 @@ int SimpleMatrixTest(Serial *pc, I2C *i2c, Timer *t){
     printMat(a, pc);
     a = SimpleMatrix::Matrix(coefA);
 
-    pc->printf("Substraction A-B\n\r");
+    pc->printf("\n\rSubstraction A-B\n\r");
     printMat(a-b, pc);
 
     pc->printf("Substraction A-=B\n\r");
@@ -108,7 +108,7 @@ int SimpleMatrixTest(Serial *pc, I2C *i2c, Timer *t){
     printMat(a, pc);
     a = SimpleMatrix::Matrix(coefA);
 
-    pc->printf("Multiplication A*2\n\r");
+    pc->printf("\n\rMultiplication A*2\n\r");
     printMat(a*2, pc);
 
     pc->printf("Multiplication 2*A\n\r");
@@ -122,9 +122,13 @@ int SimpleMatrixTest(Serial *pc, I2C *i2c, Timer *t){
     pc->printf("Multiplication A*B {{89, 96, 102}, {212, 231, 246}, {335, 366, 390}}\n\r");
     printMat(a*b, pc);
 
+    pc->printf("Multiplication B*A {{149, 184, 219}, {186, 231, 276}, {222, 276, 330}}\n\r");
+    printMat(b*a, pc);
+
     pc->printf("Multiplication A*=B {{89, 96, 102}, {212, 231, 246}, {335, 366, 390}}\n\r");
     a*=b;
     printMat(a, pc);
+    a = SimpleMatrix::Matrix(coefA);
 
     pc->printf("Multiplication A*vec1 {39.4, 91.6, 143.8}\n\r");
     printVec(a*vec1, pc);
@@ -132,7 +136,7 @@ int SimpleMatrixTest(Serial *pc, I2C *i2c, Timer *t){
     pc->printf("Multiplication vec1*A {83.4, 100.8, 118.2}\n\r");
     printVec(vec1*a, pc);
 
-    pc->printf("Scalar division A / 2\n\r");
+    pc->printf("\n\rScalar division A / 2\n\r");
     printMat(a/2, pc);
 
     pc->printf("Scalar division A /= 2\n\r");
@@ -140,7 +144,7 @@ int SimpleMatrixTest(Serial *pc, I2C *i2c, Timer *t){
     printMat(a, pc);
     a = SimpleMatrix::Matrix(coefA);
 
-    pc->printf("Determinant det(A) (expected 0)\n\r");
+    pc->printf("\n\rDeterminant det(A) (expected 0)\n\r");
     pc->printf("%f\n\r", a.det());
 
     pc->printf("Determinant det(B) (expected 3)\n\r");
