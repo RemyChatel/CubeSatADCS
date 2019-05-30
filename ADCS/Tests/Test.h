@@ -9,6 +9,7 @@ int MatrixTest(Serial *pc, I2C *i2c, Timer *t);
 int SimpleMatrixTest(Serial *pc, I2C *i2c, Timer *t);
 int MPU9250Test(Serial *pc, I2C *i2c, Timer *t);
 int AstroLibTest(Serial *pc, I2C *i2c, Timer *t);
+int SunSensorTest(Serial *pc, I2C *i2c, Timer *t);
 
 void printVec(SimpleMatrix::Vector a, Serial *pc);
 void printMat(SimpleMatrix::Matrix a, Serial *pc);
