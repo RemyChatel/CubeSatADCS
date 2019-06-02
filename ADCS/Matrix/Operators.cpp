@@ -15,7 +15,7 @@
 /// Subindex in Matrix left side
 float& Matrix::operator ()(int row, int col)
 {
-    --row; --col;
+    //--row; --col;
 
     if( row >= _nRows || col >= _nCols)
     {
@@ -30,7 +30,7 @@ float& Matrix::operator ()(int row, int col)
 /// Subindex in Matrix right side
 float Matrix::operator ()(int row, int col) const
 {
-    --row; --col;
+    //--row; --col;
 
     if( row >= _nRows || col >= _nCols)
     {
@@ -59,7 +59,7 @@ Matrix& Matrix::operator = ( const Matrix& rightM )
              for( int j = 0; j < _nCols; j++ )
                  _matrix[i][j] = rightM._matrix[i][j];
     }
-     return *this;
+    return *this;
 
 }
 

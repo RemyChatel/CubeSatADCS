@@ -20,21 +20,23 @@ void printMat(Matrix a, Serial *pc){
 
     pc->printf("[[");
 
+    pc->printf("{{");
+
     for(int i = 0; i < row; i++){
         if(i != 0){
             pc->printf("  ");
         }
         for(int j = 0; j < col; j++){
-            pc->printf("%f", a.getNumber(i, j));
+            pc->printf("%f", a(i, j));
             if(j!=col-1){
                 pc->printf(", ");
             }
         }
         if(i==row-1){
-                pc->printf("]]\n\r");
+                pc->printf("}}\n\r");
             }
         else{
-            pc->printf("],\n\r");
+            pc->printf("},\n\r");
         }
     }
 }

@@ -32,7 +32,7 @@ public:
     /// Creates a new Matrix identical to an input Matrix
     Matrix( const Matrix& base );
 
-    /// Creates a nex matrix based on a table of coeficients
+    /// Creates a nex matrix based on a table of coefficients
     Matrix( int Rows, int Cols , float* coef );
 
     /// Default Constructor

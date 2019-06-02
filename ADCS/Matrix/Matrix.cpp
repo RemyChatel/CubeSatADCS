@@ -48,17 +48,18 @@ Matrix::Matrix(const Matrix& base)
 Matrix::Matrix( int Rows, int Cols , float* coef ){
     _nRows = Rows;
     _nCols = Cols;
-    
+
     _matrix.resize(_nRows);
     for( int i = 0; i < _nRows; i++ )
         _matrix[i].resize(_nCols);
 
     _pRow = Rows;
     _pCol = Cols;
-
+    int iteration = 0;
     for(int i = 0; i < _nRows; i++){
         for(int j = 0; j < _nCols; j++){
-            _matrix[i][j] = coef[3*i+j];
+            _matrix[i][j] = coef[iteration];
+            iteration++;
         }
     }
 }
@@ -130,7 +131,7 @@ void Matrix::AddRow(Matrix& Mat, int index)
 
     if( index > Mat._nRows + 1)
     {
-        printf("\n\nERROR:\nRow out of Limits @ AddRow()\n");
+        // printf("\n\nERROR:\nRow out of Limits @ AddRow()\n");
 
     }else{
 
@@ -167,7 +168,7 @@ void Matrix::AddCol( Matrix& Mat, int index )
 
     if( index > Mat._nCols + 1 )
     {
-        printf("\n\nERROR:\nRow out of Limits on AddCol()\n");
+        // printf("\n\nERROR:\nRow out of Limits on AddCol()\n");
 
     }else{
 
@@ -204,7 +205,7 @@ void Matrix::DeleteCol( Matrix& Mat, int Col)
 
     if( Col > Mat._nCols )
     {
-        printf("\n\nERROR:\nColumn out of Limits @ DeleteCol()\n");
+        // printf("\n\nERROR:\nColumn out of Limits @ DeleteCol()\n");
 
     }else{
 
@@ -235,7 +236,7 @@ void Matrix::DeleteRow(Matrix& Mat, int Row)
 
     if( Row > Mat._nRows )
     {
-        printf("\n\nERROR:\nColumn out of Limits @ DeleteCol()\n");
+        // printf("\n\nERROR:\nColumn out of Limits @ DeleteCol()\n");
 
     }else{
 
@@ -257,8 +258,7 @@ const Matrix Matrix::ExportRow( const Matrix& Mat, int row )
 
     if( row > Mat._nRows )
     {
-        printf( "\n\nERROR:\nRow out of dimmensions @ GetRow\n"
-                "Nothing Done.\n\n" );
+        // printf( "\n\nERROR:\nRow out of dimmensions @ GetRow\n" "Nothing Done.\n\n" );
         return NullMatrix;
     }else{
 
@@ -283,8 +283,7 @@ const Matrix Matrix::ExportCol( const Matrix& Mat, int col )
 
     if( col > Mat._nCols )
     {
-        printf( "\n\nERROR:\nColumn out of dimmensions.\n"
-                "Nothing Done.\n\n" );
+        // printf( "\n\nERROR:\nColumn out of dimmensions.\n"  "Nothing Done.\n\n" );
         return NullMatrix;
     }else{
 
@@ -323,15 +322,15 @@ void Matrix::FillMatrix()
     {
         for(int j = 0; j < _nCols; j++)
         {
-            printf( "Position [%u][%u]: ", i, j );
+            // printf( "Position [%u][%u]: ", i, j );
             float numero;
             scanf( "%f", &numero );
-            printf("%.3f ", numero);
+            // printf("%.3f ", numero);
             this->_matrix[i][j] = numero;
         }
-        printf("\n");
+        // printf("\n");
     }
-    printf("\n");
+    // printf("\n");
 
     _pRow = _nRows;
     _pCol = _nCols;
@@ -345,10 +344,10 @@ void Matrix::print() const
     {
         for( int j = 0; j < _nCols; j++ )
         {
-            printf( "%.3f, ",_matrix[i][j] );
+            // printf( "%.3f, ",_matrix[i][j] );
 
         }
-        printf( "\n" );
+        // printf( "\n" );
     }
 }
 
@@ -374,7 +373,7 @@ void Matrix::add(int Row, int Col, float number)
 
     if( Row > _nRows || Col > _nCols )
     {
-        printf("\n\nERROR:\nOut of limits of Matrix @ mat.Add()");
+        // printf("\n\nERROR:\nOut of limits of Matrix @ mat.Add()");
 
     }else{
         _matrix[Row][Col] = number;

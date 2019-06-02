@@ -256,10 +256,11 @@ float MatrixMath::trace(const Matrix &Mat){
         for(int i = 0; i < Mat._nRows; i++){
             sum += Mat._matrix[i][i];
         }
-    }else{
+        return sum;
+    } else {
         printf("\n\nERROR:\nMatrix must be square Matrix @ MatrixMath::trace");
-    }
     return nanf("");
+    }
 }
 
 
