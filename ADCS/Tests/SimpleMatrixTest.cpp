@@ -1,3 +1,4 @@
+/*
 #include "Test.h"
 #include "SimpleMatrix.h"
 
@@ -7,7 +8,7 @@ int SimpleMatrixTest(Serial *pc, I2C *i2c, Timer *t){
     pc->printf("\n\r\n\r\n\r\n\r\n\r\n\r");
     pc->printf("--------------------------------------\n\r\n\r");
     
-    /* SimpleMatrix Vector Test */
+    // SimpleMatrix Vector Test
     float coef1[3] = {3.8f,5.2f,8.4f};
     float coef2[3] = {9.1f,2.7f,0.2f};
     float coef[3] = {4.0f, 5.0f , 3.0f} ;
@@ -70,7 +71,7 @@ int SimpleMatrixTest(Serial *pc, I2C *i2c, Timer *t){
     pc->printf("Cross product vec1 x vec2 {21.64, -75.68, 37.06}\n\r");
     printVec(vec1.cross(vec2), pc);
 
-    /* SimpleMatrix Matrix Test */
+    // SimpleMatrix Matrix Test
     pc->printf("\n\r\n\r\n\r"); 
     float coefA[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     float coefB[9] = {10, 12, 13, 14, 15, 16, 17, 18, 19};
@@ -168,3 +169,4 @@ int SimpleMatrixTest(Serial *pc, I2C *i2c, Timer *t){
 
     return 1;
 }
+*/

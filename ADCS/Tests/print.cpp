@@ -1,5 +1,5 @@
 #include "Test.h"
-
+/*
 void printVec(SimpleMatrix::Vector a, Serial *pc){
     float pcoef[3];
     a.getCoef(pcoef);
@@ -13,7 +13,7 @@ void printMat(SimpleMatrix::Matrix a, Serial *pc){
     pc->printf(" { %f, %f, %f },\n\r" , pcoef[3], pcoef[4], pcoef[5]);
     pc->printf(" { %f, %f, %f }}\n\r", pcoef[6], pcoef[7], pcoef[8]);
 }
-
+*/
 void printMat(Matrix a, Serial *pc){
     int col = a.getCols();
     int row = a.getRows();
