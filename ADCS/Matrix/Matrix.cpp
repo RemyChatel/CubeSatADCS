@@ -45,6 +45,24 @@ Matrix::Matrix(const Matrix& base)
             _matrix[i][j] = base._matrix[i][j];
 }
 
+Matrix::Matrix( int Rows, int Cols , float* coef ){
+    _nRows = Rows;
+    _nCols = Cols;
+    
+    _matrix.resize(_nRows);
+    for( int i = 0; i < _nRows; i++ )
+        _matrix[i].resize(_nCols);
+
+    _pRow = Rows;
+    _pCol = Cols;
+
+    for(int i = 0; i < _nRows; i++){
+        for(int j = 0; j < _nCols; j++){
+            _matrix[i][j] = coef[3*i+j];
+        }
+    }
+}
+
 
 /// Default Constructor
 Matrix::Matrix()

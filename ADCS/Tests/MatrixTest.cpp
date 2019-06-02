@@ -3,7 +3,7 @@
 #include "MatrixMath.h"
 
 int MatrixTest(Serial *pc, I2C *i2c, Timer *t){
-    /*
+    
     pc->printf("\n\r\n\r\n\r\n\r\n\r\n\r");
     pc->printf("--------------------------------------\n\r\n\r");
     
@@ -11,13 +11,12 @@ int MatrixTest(Serial *pc, I2C *i2c, Timer *t){
     float coef1[3] = {3.8f,5.2f,8.4f};
     float coef2[3] = {9.1f,2.7f,0.2f};
     float coef[3] = {4.0f, 5.0f , 3.0f} ;
-    Matrix vec1(3,1),vec2(3,1);
-    vec1 << coef1[0]
-         << coef1[1]
-         << coef1[2];
-
+    Matrix vec1(3,1, coef1);
     pc->printf("Vector 1\n\r");
     printMat(vec1, pc);
+    
+    /*
+    Matrix vec2(3,1, coef2);
     pc->printf("Vector 2\n\r");
     printMat(vec2, pc);
 

@@ -13,7 +13,6 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 
-
 #include <vector>
 
 class MatrixMath;
@@ -33,6 +32,8 @@ public:
     /// Creates a new Matrix identical to an input Matrix
     Matrix( const Matrix& base );
 
+    /// Creates a nex matrix based on a table of coeficients
+    Matrix( int Rows, int Cols , float* coef );
 
     /// Default Constructor
     Matrix();
@@ -401,15 +402,11 @@ private:
     /** 2-D Vector Array*/
     std::vector < std::vector<float> > _matrix;
 
-
-
     /** Number of Rows in Matrix*/
     int _nRows;
 
     /**Number of Columns in Matrix*/
     int _nCols;
-
-
 
     /**Last Element Row position in Matrix*/
     int _pRow;
@@ -424,5 +421,5 @@ static float NullCoef;
 extern Matrix NullMatrix;
 extern float NullCoef;
 
-#endif    /* MATRIX_H */
+#endif    // MATRIX_H 
 
