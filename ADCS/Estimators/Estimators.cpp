@@ -37,8 +37,8 @@ void Estimators::QUEST(float quat[4], int N, float **s_eci, float **s_body, floa
     float lambda0 = 0;  // A reasonable initial value for lambda
     Matrix s_a[N];      // ECI frame vector array
     Matrix s_b[N];      // Body frame vector array
-    Matrix k12;
-    Matrix B, S, Id;
+    Matrix k12(3,1);
+    Matrix B(3,3), S(3,3), Id(3,3);
     float k22;
     float a, b, c, d;
     float alpha, beta;
@@ -54,16 +54,18 @@ void Estimators::QUEST(float quat[4], int N, float **s_eci, float **s_body, floa
     for(int i = 0; i < N; i++){
         s_a[i] = Matrix(3,1, s_eci[i]);
         s_b[i] = Matrix(3,1, s_body[i]);
+        s_a[i] *= 1/s_a[i].norm();
+        s_b[i] *= 1/s_b[i].norm();
     }
 
     for(int i = 0; i < N; i++){
         B += omega[i] * ( s_a[i] * s_b[i].Transpose() );
     }
 
-    B = B.Transpose();
+    // B = B.Transpose();
 
-    pc2.printf("\n\nB matrix\n\r");
-    printMat2(B);
+    // pc2.printf("\n\nB matrix of size %d\n\r", B.size());
+    // printMat2(B);
 
     S = B + B.Transpose();
     detS = S.det();
@@ -112,6 +114,7 @@ void Estimators::QUEST(float quat[4], int N, float **s_eci, float **s_body, floa
     quat[2] = x(2,0);
     quat[3] = gamma;
 }
+
 
 void printMat2(Matrix a){
     int col = a.getCols();

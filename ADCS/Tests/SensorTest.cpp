@@ -1,7 +1,8 @@
 #include "Test.h"
 #include "SunSensor.h"
+#include "MPU9150.h"
 
-int SunSensorTest(Serial *pc, I2C *i2c, Timer *t){
+int SensorTest(Serial *pc, I2C *i2c, Timer *t){
     AnalogIn faceX(A0);
     AnalogIn faceY(A1);
     AnalogIn faceZ(A3);
