@@ -32,8 +32,8 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     float q[4];
 
     float coef_th[9] = {0.4153, 0.4472, 0.7921, -0.7652, 0.6537, 0.0274, -0.5056, -0.6104, 0.6097};
-    SimpleMatrix::Matrix mat_th(coef_th);
-    SimpleMatrix::Matrix mat_rot;
+    Matrix mat_th(3,3,coef_th);
+    Matrix mat_rot(3,3);
 
     while(1){
     lastUpdate = t->read_us();
@@ -43,21 +43,21 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     
     /************* END ***************/
     ellapsed = t->read_us()-lastUpdate;
-    pc->printf("Loop time %d | Frequency %4f\n\r", ellapsed, 1.0f/ellapsed);
+    pc->printf("Loop time %d us | Frequency %4f Hz\n\r", ellapsed, 1.0f/ellapsed);
 
     /************* PRINTS **************/
     pc->printf("Quaternion: %f | %f | %f | %f\n\r", q[0], q[1], q[2], q[3]);
     float rot[9];
     AstroLib::Orbit::quat2rot(q, rot);
-    mat_rot.setCoef(rot);
-    mat_rot = mat_rot.transpose();
+    mat_rot = Matrix(3,3, rot);
+    mat_rot = mat_rot.Transpose();
     pc->printf("Computed Rotation matrix\n\r");
     printMat(mat_rot, pc);
     pc->printf("Expected Rotation matrix\n\r");
     printMat(mat_th, pc);
 
-    SimpleMatrix::Matrix mat_error = mat_rot * mat_th.transpose();
-    float cos_error = 0.5 * (mat_error.tr() - 1);
+    Matrix mat_error = mat_rot * mat_th.Transpose();
+    float cos_error = 0.5 * (mat_error.trace() - 1);
     float error = acos(cos_error);
 
     pc->printf("Error matrix\n\r");

@@ -1,6 +1,5 @@
 #include "Test.h"
 #include "Matrix.h"
-#include "MatrixMath.h"
 
 int MatrixTest(Serial *pc, I2C *i2c, Timer *t){
     
@@ -55,8 +54,8 @@ int MatrixTest(Serial *pc, I2C *i2c, Timer *t){
     printMat(vec2, pc);
     vec2 = Matrix(3, 1, coef2);
 
-    // pc->printf("\n\rNorm of vec1 (expected 10.5849)\n\r");
-    // pc->printf("%f\n\r", vec1.norm());
+    pc->printf("\n\rNorm of vec1 (expected 10.5849)\n\r");
+    pc->printf("%f\n\r", vec1.norm());
 
     // pc->printf("Normalize a (expected {0.359002, 0.491266, 0.793584}\n\r");
     // Matrix d = Matrix(vec1);
@@ -64,14 +63,14 @@ int MatrixTest(Serial *pc, I2C *i2c, Timer *t){
     // printVec(d, pc);
 
     pc->printf("Dot product transpose(vec1) * vec2 or vec1.vec2 (expected 50.3)\n\r");
-    pc->printf("%f\n\r", MatrixMath::dot(vec1, vec2));
+    pc->printf("%f\n\r", Matrix::dot(vec1, vec2));
 
-    // pc->printf("Cross product vec1 x vec2 [ 59.88, -68.4, 34.16 ]\n\r");
-    // printVec(vec1.cross(vec2), pc);
+    pc->printf("Cross product vec1 x vec2 {-21.64, 75.68, -37.06}\n\r");
+    printMat(Matrix::cross(vec1, vec2), pc);
 
     pc->printf("Vector to matrix product vec1 * transpose(vec2) (expected \n\r");
     pc->printf("{{34.58, 10.26, 0.76}, {47.32, 14.04, 1.04}, {76.44, 22.68, 1.68}})\n\r");
-    printMat(vec1 * MatrixMath::Transpose(vec2), pc);
+    printMat(vec1 * vec2.Transpose(), pc);
 
     // SimpleMatrix Matrix Test
 
@@ -138,29 +137,25 @@ int MatrixTest(Serial *pc, I2C *i2c, Timer *t){
     printMat(A*vec1, pc);
 
     pc->printf("Multiplication vec1*A {83.4, 100.8, 118.2}\n\r");
-    printMat(MatrixMath::Transpose(vec1)*A, pc);
+    printMat(vec1.Transpose()*A, pc);
     
     pc->printf("\n\rDeterminant det(A) (expected 0)\n\r");
-    pc->printf("%f\n\r", MatrixMath::det(A));
+    pc->printf("%f\n\r", A.det());
 
     pc->printf("Determinant det(B) (expected 3)\n\r");
-    pc->printf("%f\n\r", MatrixMath::det(B));
+    pc->printf("%f\n\r", B.det());
 
     pc->printf("Trace tr(A) (15)\n\r");
-    pc->printf("%f\n\r", MatrixMath::trace(A));
+    pc->printf("%f\n\r", A.trace());
 
     pc->printf("Trace tr(B) (44)\n\r");
-    pc->printf("%f\n\r", MatrixMath::trace(B));
+    pc->printf("%f\n\r", B.trace());
 
     pc->printf("Transpose transpose(B)\n\r");
-    printMat(MatrixMath::Transpose(B), pc);
+    printMat(B.Transpose(), pc);
 
     pc->printf("Inverse of B matrix inv(B) {{-1, 2, -1}, {2, -10.33, 7.33}, {-1, 8, -6}} \n\r");
-    printMat(MatrixMath::Inv(B), pc);
-
-    // pc->printf("Classical adjoint adj(A) {{-3, 6, -3}, {6, -12, 6}, {-3, 6, -3}}\n\r");
-    // printMat(B.adj(), pc);
-    // A = Matrix(3,3, coefA);
+    printMat(B.Inv(), pc);
 
     return 1;
 }

@@ -9,8 +9,6 @@
 #define MINUTES 00
 #define SECONDS 00
 
-using namespace SimpleMatrix;
-
 int AstroLibTest(Serial *pc, I2C *i2c, Timer *t){
     
     pc->baud(115200);
