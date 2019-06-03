@@ -23,7 +23,7 @@
  
 #ifndef ESTIMATORS_H
 #define ESTIMATORS_H
-#include "SimpleMatrix.h"
+#include "Matrix.h"
 
 namespace Estimators{
 

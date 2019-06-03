@@ -146,6 +146,8 @@ public:
     void mag_vector(float mag[3], float r_sat[3], long jday, float jfrac);
 
     static void quat2rot(float quat[4], float rot_coef[9]);
+
+    static void AzEl2Vec(float azimuth, float elevation, float vec[3]);
        
 private:
     /* Private functions */
