@@ -225,3 +225,10 @@ void Orbit::quat2rot(float quat[4], float rot_coef[9]){
     rot_coef[7] = 2.0 * (tmp1 + tmp2)*invs ;
     rot_coef[5] = 2.0 * (tmp1 - tmp2)*invs ;
 }
+
+void Orbit::AzEl2Vec(float azimuth, float elevation, float vec[3]){
+    vec[0] = sin(elevation);
+    float hyp = cos(elevation);
+    vec[1] = hyp * cos(azimuth);
+    vec[2] = hyp * sin(azimuth);
+}
