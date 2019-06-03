@@ -459,15 +459,28 @@ public:
 
     /**
      * @brief
+     * Return the coefficients of the matrix in a linear array
+     * @param coeffs The array where to store the coefficients
+     */
+    void getCoef(float *coef) const;
+
+    /**
+     * @brief
      * Retuns the number of Columns in Matrix, index starts at 1.
      */
     int  getCols() const;
 
     /**
      * @brief
-    *Retruns the number of Rows in Matrix, index starts at 1.
+     * Retruns the number of Rows in Matrix, index starts at 1.
      */
     int  getRows() const;
+
+    /**
+     * @brief Provide the size of the matrix
+     * @return The size of the matrix
+     */
+    int size();
 
 // Linear algebra Methods
     /**

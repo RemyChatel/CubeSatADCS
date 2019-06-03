@@ -579,9 +579,25 @@
     float Matrix::getNumber( int Row, int Col ) const
     { return this->_matrix[Row][Col]; }
 
+    void Matrix::getCoef(float *coef) const{
+        Matrix tmp;
+        this->ToPackedVector(tmp);
+        for(int i = 0; i < tmp._nCols; i++){
+            coef[i] = tmp._matrix[0][i];
+        }
+    }
+
     int Matrix::getRows() const{ return this->_nRows; }
 
     int Matrix::getCols() const{ return this->_nCols; }
+
+    int Matrix::size(){
+        if(_nRows != 0){
+            return _matrix.size() * _matrix[0].size();
+        } else {
+            return 0;
+        }
+    }
 
 // Linear Algebra Methods
 Matrix Matrix::Transpose() const
