@@ -1,16 +1,30 @@
 /**
- * @brief  Source Code for the Matrix Class
  * @file   Matrix.cpp
+ * @version 2.0
+ * @date 2019
  * @author Remy CHATEL
- *
- * Last modified June 2019
- * Adapted from Ernesto Palacios Matrix library
+ * @copyright GNU Public License v3.0
+ * @brief  Source Code for the Matrix Class
  * 
+ * @details
+ * # Description
+ * 
+ * Adapted from Ernesto Palacios Matrix library, 
  * https://os.mbed.com/users/Yo_Robot/code/Matrix/
- *
- * Develop Under  GPL v3.0 License
+ * 
+ * @see Matrix
+ * 
+ * # License
+ * <b>(C) Copyright 2019 Remy CHATEL</b>
+ * 
+ * Licensed Under  GPL v3.0 License
  * http://www.gnu.org/licenses/gpl-3.0.html
  *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 #include "Matrix.h"
 

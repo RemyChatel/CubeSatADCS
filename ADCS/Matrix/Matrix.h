@@ -1,16 +1,34 @@
 /**
- * @brief  Source Code for the Matrix Class
  * @file   Matrix.h
+ * @version 2.0
+ * @date 2019
  * @author Remy CHATEL
- *
- * Last modified June 2019
- * Adapted from Ernesto Palacios Matrix library
+ * @copyright GNU Public License v3.0
+ * @defgroup MatrixGr Linear Algebra
  * 
+ * @brief
+ * Header for the Matrix Class
+ * 
+ * @details
+ * # Description
+ * A linear algebra library for 2D matrices
+ * 
+ * Adapted from Ernesto Palacios Matrix library, 
  * https://os.mbed.com/users/Yo_Robot/code/Matrix/
- *
- * Develop Under  GPL v3.0 License
+ * 
+ * @see Matrix
+ * 
+ * # License
+ * <b>(C) Copyright 2019 Remy CHATEL</b>
+ * 
+ * Licensed Under  GPL v3.0 License
  * http://www.gnu.org/licenses/gpl-3.0.html
  *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 #ifndef MATRIX_H
@@ -20,7 +38,43 @@
 #include <cmath>
 #include <vector>
 
-
+/**
+ * @ingroup MatrixGr
+ * @{
+ * @brief
+ * A library for 2D matrix linear algebra operations
+ * 
+ * @class Matrix
+ * 
+ * @details
+ * # Description
+ * This library implement the algebra of the 2D matrices (n x m).
+ * 
+ * The size and shape of the matrix is arbitrary and can be changed
+ * during the execution of the program.
+ * 
+ * This library implements the following operations regarding matrices
+ * - Addition/Substraction between matrices and its neutral (the Zeros matrix)
+ * - Multiplication between matrices and its neutral (the Eye matrix)
+ * - Multiplication between matrices and scalar
+ * - Equality check between two Matrices
+ * - Transpose and Inverse
+ * - Determinant and Trace
+ * - Dot product (or scalar product) and norm for Vectors (1xn or nx1 matrices)
+ * - Cross product for 3x1 vectors
+ * - Shape transform operations
+ * 
+ * @see Matrix.h
+ * @see Matrix
+ * 
+ * # Dependencies
+ * This library depends on <std::cmath> and <std::vector> to provide
+ * an matrix of arbitrary size and the required mathematical operations
+ * 
+ * @attention This library uses float only (NOT double) and therefore
+ * expect 6 to 7 significant figures
+ * @}
+ */
 class Matrix{
 public:
 // Constructors
@@ -31,8 +85,8 @@ public:
 
     /**
      * @brief Empty matrix constructor
-     * @param rows The number of rows of the matrix
-     * @param cols The number of columns of the matrix
+     * @param Rows The number of rows of the matrix
+     * @param Cols The number of columns of the matrix
      * @return A matrix of the desired size
      */
     Matrix( int Rows, int Cols );
@@ -45,9 +99,9 @@ public:
 
     /**
      * @brief Creates a matrix of a given size filled with the given coefficients
-     * @param rows The number of rows of the matrix
-     * @param cols The number of columns of the matrix
-     * @return A matrix filled with the coefficients
+     * @param Rows The number of rows of the matrix
+     * @param Cols The number of columns of the matrix
+     * @param coef The coefficients to place in the matrix
      */
     Matrix( int Rows, int Cols , float * coef );
 
@@ -77,7 +131,7 @@ public:
     /**
      * @brief
      * Calculates the Rotation Matrix Transform along 'x' axis in radians.
-     * @param radians rotation angle.
+     * @param radians rotation angle in rad.
      * @return Rotation Matrix[4,4] along 'x' axis.
      */
     static Matrix RotX( float radians );
@@ -85,7 +139,7 @@ public:
     /**
      * @brief
      * Calculates the Rotation Matrix Transform along 'y' axis in radians.
-     * @param radians rotation angle.
+     * @param radians rotation angle in rad.
      * @return Rotation Matrix[4,4] along 'y' axis.
      */
     static Matrix RotY( float radians );
@@ -93,7 +147,7 @@ public:
     /**
      * @brief
      * Calculates the Rotation Matrix Transform along 'z' axis in radians.
-     * @param radians rotation angle.
+     * @param radians rotation angle in rad.
      * @return Rotation Matrix[4,4] along 'z' axis.
      */
     static Matrix RotZ( float radians );
@@ -133,6 +187,8 @@ public:
     /**
      * @brief
      * Overwrites all data. To be used Carefully!
+     * @param rightM The matrix to copy
+     * @return The reference to the new matrix
      */
     Matrix& operator = ( const Matrix& rightM );
 
@@ -140,8 +196,8 @@ public:
     /**
      * @brief
      * Overload opeartor for the compare Matrices
-    *
-     * @param rightM
+     * @param leftM The left hand side matrix of the comparison
+     * @param rightM The right hand side matrix of the comparison
      * @return Boolean 'false' if different.
      */
     friend bool operator == ( const Matrix& leftM, const Matrix& rightM );
@@ -150,8 +206,8 @@ public:
     /**
      * @brief
      * Overload opeartor for the compare Matrices
-    *
-     * @param rightM
+     * @param leftM The left hand side matrix of the comparison
+     * @param rightM The right hand side matrix of the comparison
      * @return Boolean 'true' if different
      */
     friend bool operator != ( const Matrix& leftM, const Matrix& rightM );
@@ -159,8 +215,9 @@ public:
 
     /**
      * @brief
-     * Overload Compound assignment.
-     * @param rightM
+     * Overload Compound increase.
+     * @param leftM The matrix that receive the addition
+     * @param rightM The matrix to add
      * @return A new Matrix to be assigned to itself.
      */
     friend Matrix& operator += ( Matrix& leftM, const Matrix& rightM );
@@ -169,7 +226,8 @@ public:
     /**
      * @brief
      * Overload Compound decrease.
-     * @param rightM Right hand matrix
+     * @param leftM The matrix that receive the substraction
+     * @param rightM The matrix to substract
      * @return A new Matrix to be assigned to itself
      */
     friend Matrix& operator -= ( Matrix& leftM, const Matrix& rightM );
@@ -178,16 +236,18 @@ public:
     /**
      * @brief
      * Overload Compound CrossProduct Matrix operation.
-     * @param rightM
-     * @return
+     * @param leftM The matrix that receive the multiplication
+     * @param rightM The multiplying matrix
+     * @return A new Matrix to be assigned to itself
      */
     friend Matrix& operator *=( Matrix& leftM, const Matrix& rightM );
 
 
-    /* * @brief
-     * Overload Compund Element-by-elemnt scalar multiplication.
-     * @param number
-     * @return
+    /** @brief
+     * Overload Compund Element-by-element scalar multiplication.
+     * @param leftM The matrix that receive the multiplication
+     * @param number The multiplying scalar
+     * @return A new Matrix to be assigned to itself
      */
     friend Matrix& operator *=( Matrix& leftM, float number );
 
@@ -206,6 +266,8 @@ public:
      * Overload Compound add with scalar.
      * Because the '=' operator checks for self Assign, no extra operations
      * are needed.
+     * @param leftM The matrix that receive the addition
+     * @param number The scalar to add
      * @return Same Matrix to self Assign.
      */
     friend const Matrix operator +=( Matrix& leftM, float number );
@@ -214,6 +276,8 @@ public:
     /**
      * @brief
      * Compound substract with scalar.
+     * @param leftM The matrix that receive the substraction
+     * @param number The number to substract
      * @return Same matrix to self Assign.
      */
     friend const Matrix operator -=( Matrix& leftM, float number );
@@ -223,6 +287,8 @@ public:
      * @brief
      * Adds two matrices of the same dimensions, element-by-element.
      * If diferent dimensions -> ERROR.
+     * @param leftM The left hand side matrix of the addition
+     * @param rightM The right hand side matrix of the addition
      * @return A new object Matrix with the result.
      */
     friend const Matrix operator +( const Matrix& leftM, const Matrix& rightM);
@@ -232,6 +298,8 @@ public:
      * @brief
      * Adds the given nomber to each element of matrix.
      * Mimic MATLAB operation.
+     * @param leftM The left hand side matrix of the addition
+     * @param number The scalar to add
      * @return A new matrix object with the result.
      */
     friend const Matrix operator +( const Matrix& leftM, float number );
@@ -241,6 +309,8 @@ public:
     /**
      * @brief
      * Adds the given number to each element in Matrix.
+     * @param leftM The left hand side matrix of the addition
+     * @param number The scalar to add
      * @return A new Matrix object with the result.
      */
     friend const Matrix operator +( float number, const Matrix& leftM );
@@ -250,6 +320,8 @@ public:
      * @brief
      * Substracts two matrices of the same size, element-by-element.
      * If different dimensions -> ERROR.
+     * @param leftM The left hand side matrix of the substraction
+     * @param rightM The right hand side matrix of the substraction
      * @return  A new object Matrix with the result.
      */
     friend const Matrix operator -( const Matrix& leftM, const Matrix& rightM );
@@ -258,6 +330,8 @@ public:
     /**
      * @brief
      * Substracts each element in Matrix by number.
+     * @param leftM The left hand side matrix of the substraction
+     * @param number The scalar to substract
      * @return A new matrix object with the result.
      */
     friend const Matrix operator -( const Matrix& leftM, float number );
@@ -266,6 +340,8 @@ public:
     /**
      * @brief
      * Substracts each element in Matrix by number
+     * @param leftM The left hand side matrix of the substraction
+     * @param number The scalar to substract
      * @return A new matrix object with the result.
      */
     friend const Matrix operator -( float number, const Matrix& leftM );
@@ -274,7 +350,9 @@ public:
     /**
      * @brief
      * Preforms Crossproduct between two matrices.
-     * @return
+     * @param leftM The left hand side matrix of the substraction
+     * @param rightM The right hand side matrix of the substraction
+     * @return A new matrix with the resultof the multiplication
      */
     friend const Matrix operator *( const Matrix& leftM, const Matrix& rightM );
 
@@ -282,7 +360,9 @@ public:
     /**
      * @brief
      * Multiplies a scalar number with each element on Matrix.
-     * @return A new object with the result.
+     * @param leftM The left hand side matrix of the multiplication
+     * @param number The multiplying scalar
+     * @return A new matrix with the resultof the multiplication.
      */
     friend const Matrix operator *( const Matrix& leftM, float number );
 
@@ -290,7 +370,9 @@ public:
     /**
      * @brief
      * Multiplies a scalar number with each element on Matrix.
-     * @return
+     * @param leftM The left hand side matrix of the multiplication
+     * @param number The multiplying scalar
+     * @return A new matrix with the resultof the multiplication
      */
     friend const Matrix operator *( float number, const Matrix& leftM );
 
@@ -302,7 +384,9 @@ public:
      * This does NOT work on an only declared Matrix such as:
      * Matrix obj;
      * obj << 5; //Error
-     * @return
+     * @param leftM The matrix that will receive the elements
+     * @param number The element to add at the end of the matrix
+     * @return The reference to the filled matrix
      */
     friend Matrix& operator <<( Matrix& leftM, float number );
 
@@ -310,7 +394,6 @@ public:
     /**
      * @brief
      * Returns TRUE if the matrix is zero, FALSE otherwhise
-     * @param mat: Matrix to be tested
      */
     bool isZero() const;
 
@@ -326,6 +409,8 @@ public:
      * @brief
      * Shatters the matrix into a single Row Vector.
      * Important: Returns NEW matrix, does no modify existing one.
+     * @param Mat The matrix to compact in a One Row Vector
+     * @return The Row Vector containing all the elements
      */
     static const Matrix ToPackedVector( const Matrix& Mat );
 
@@ -335,8 +420,8 @@ public:
      * position.
      * The current Row will be moved down to allocate space, and all elements will
      * be initialized to zero in the new row.
-     * @param Mat: Matrix in wich to insert a Row
-     * @param Row: Number of row to insert, starts with one, not zero.
+     * @param Mat Matrix in wich to insert a Row
+     * @param index Position where to insert the row (index start at one)
      */
     static void AddRow( Matrix& Mat, int index );
 
@@ -356,8 +441,8 @@ public:
      * @brief
      * Invoking this static method will increase a Column in Matrix in the
      * desired Position.
-     * @param Mat: Matrix in wich to insert a Column
-     * @param Col: Number of column, strats with one, not zero.
+     * @param Mat Matrix in wich to insert a Column
+     * @param index Position where to insert the column (index start at one)
      */
     static void AddCol( Matrix& Mat, int index );
 
@@ -368,7 +453,7 @@ public:
      * The Col Matrix must be a SingleCol Matrix, you can use ExportCol
      * to extract a Column from another Matrix.
      * @param Receip Matrix to be modified.
-     * @param Column Data to be copied.
+     * @param Col Data to be copied.
      * @param index Postion in Receip Matrix .
      */
     static void AddCol( Matrix& Receip, const Matrix& Col, int index  );
@@ -376,8 +461,8 @@ public:
     /**
      * @brief
      * Static Function Deletes Row from Matrix, Static to prevent missuse
-     * @param Mat: Matrix to delete Row from
-     * @param Row: Number of Row (first Row = 1)
+     * @param Mat Matrix to delete Row from
+     * @param Row Position of the row to be deleted (index starts at one)
      */
     static void DeleteRow( Matrix& Mat, int Row );
 
@@ -386,8 +471,8 @@ public:
      * Static Function Deletes Column from Matrix, it's Static to prevent
      * missuse.
      * Print error and does nothing if out of limits.
-     * @param Col: Number of Col to delete (first Col = 1)
-     * @param Mat: Matrix to delete from.
+     * @param Mat Matrix to delete from.
+     * @param Col Position of the column to be deleted (index starts at one)
      */
     static void DeleteCol( Matrix& Mat, int Col );
 
@@ -395,8 +480,8 @@ public:
      * @brief
      * This method extracts a Row from a Matrix and Saves it in Mat.
      * If Row is out of the parameters it does nothing, but prints a warning.
-     * @param Row: number of row to extract elements. this->_nRows.
-     * @param Mat: Matrix to extract from.
+     * @param row Position of the row to export
+     * @param Mat Matrix to extract from.
      * @return New Row Matrix.
      */
     static const Matrix ExportRow( const Matrix& Mat, int row );
@@ -406,8 +491,8 @@ public:
      * This method extracts a Column from a Matrix and returns the Column
      * as a new Matrix.
      * If Row is out of the parameters, it does nothing and prints a warning.
-     * @param Col: number of Column to extract elements. this->_nCols.
-     * @param Mat: Matrix to extract from.
+     * @param col Position of the column to export
+     * @param Mat Matrix to extract from.
      * @return New Row Matrix.
      */
     static const Matrix ExportCol( const Matrix& Mat, int col );
@@ -417,8 +502,8 @@ public:
      * This function resizes the Matrix to fit new data or cropped it,
      * operator << can overwrite entire Matrix.
     *
-     * @param Rows: New Number of Rows
-     * @param Cols: New numbler of columns
+     * @param Rows New Number of Rows
+     * @param Cols New numbler of columns
      */
     void Resize( int Rows, int Cols );
 
@@ -435,15 +520,16 @@ public:
      * Assigns a float number to the matrix in a specified position
      * Index starts at [1][1].
     *
-     * @param number:   Number to be set
-     * @param Row:      Row of Matrix
-     * @param Col:      Column of Matrix
+     * @param number   Number to be set
+     * @param Row      Row of Matrix
+     * @param Col      Column of Matrix
      */
     void add( int Row, int Col, float number );
 
     /**
      * @brief
      * Returns the sum of every cell in the Matrix.
+     * @return The sum of all elements in the matrix
      */
     float sum() const;
 
@@ -460,7 +546,7 @@ public:
     /**
      * @brief
      * Return the coefficients of the matrix in a linear array
-     * @param coeffs The array where to store the coefficients
+     * @param coef The array where to store the coefficients
      */
     void getCoef(float *coef) const;
 
@@ -524,7 +610,6 @@ public:
 
     /**
      * @brief Compute the norm of an (n x 1) or (1 x n) vector
-     * @param Mat the vector to calculate
      * @return The norm of the vector
      */
     float norm();

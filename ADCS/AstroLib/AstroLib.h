@@ -1,28 +1,35 @@
-/*******************************************************************************
+/**
  * @file AstroLib.h
  * @version 1.0
  * @date 2019
  * @author Remy CHATEL
- *******************************************************************************
- * @section License
+ * @copyright GNU Public License v3.0
+ * @defgroup AstroLibGr AstroLib
+ * 
+ * @brief Provides orbital mechanics tools for spacecrafts
+ * 
+ * @details
+ * # Description
+ * This library provides tools for orbital mechanics for embeded C++ aiming
+ * at spacecraft orbiting Earth.
+ * 
+ * Provides an orbit model, handling of Julian date, Sun position and
+ * Earth magnetic field model
+ * 
+ * @see AstroLib
+ * 
+ * # License
  * <b>(C) Copyright 2019 Remy CHATEL</b>
- *******************************************************************************
- *
- * SPDX-License-Identifier: Apache-2.0
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may
- * not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Licensed Under  GPL v3.0 License
+ * http://www.gnu.org/licenses/gpl-3.0.html
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- ******************************************************************************/
+ */
  
 #ifndef ASTROLIB_H
 #define ASTROLIB_H
@@ -30,8 +37,11 @@
 
 
 /**
- * @namespace AstroLib
+ * @ingroup AstroLibGr 
+ * @{
  * @brief Provides orbital mechanics tools for spacecrafts
+ * 
+ * @namespace AstroLib
  * 
  * @details
  * # Description
@@ -41,25 +51,36 @@
  * Features of the library:
  * - Julian date time format
  * - Orbit model based on perifocal parameters
- * - Position vector in the ECI (Earth Centered Inertial) frame
+ * - Spacecraft position vector in the ECI (Earth Centered Inertial) frame
  * - Sun vector in the ECI frame
  * - Earth Magnetic Field vector in the ECI frame
  * 
+ * @see Orbit
+ * @see AstroLib.h
+ * 
  * # Dependencies and data type
- * @attention This library depends on `<cmath>` in order to perform 
+ * This library depends on <std::cmath> in order to perform 
  * cos, sin and sqrt operations.
+ * 
  * @attention This library uses float (32-bits) and not double (64-bits)
- * to make best use of the Floating Point Unit of 32-bits microcontrollers. 
+ * to make best use of the Floating Point Unit of 32-bits microcontrollers.
+ * @}
  */
 namespace AstroLib{
 
 /**
- * @class Orbit
- *
- * @brief Provide an orbit objet that can return essential parameters
+ * @brief Provide an orbit model that can return essential parameters
+ * about the spacecraft position, the sun position and the magnetic field
+ * 
+ * @class AstroLib::Orbit
  * 
  * @details
  * Provides methods to provide information on a specified orbit.
+ * This class provide an Orbit object that hold the current date and a model
+ * of the orbit. It can return the Sun vector and the Earth magnetic field
+ * vector in the ECI frame.
+ * 
+ * @see AstroLib
  */
 class Orbit
 {
@@ -145,8 +166,21 @@ public:
      */
     void mag_vector(float mag[3], float r_sat[3], long jday, float jfrac);
 
+    /**
+     * @brief
+     * Converts a rotation quaternion to a rotation matrix
+     * @param quat The rotation quaternion to convert
+     * @param rot_coef The array where to store the rotation matrix
+     */
     static void quat2rot(float quat[4], float rot_coef[9]);
 
+    /**
+     * @brief
+     * Converts the tuple (azimuth, elevation) into a position vector
+     * @param azimuth The azimuth of the target
+     * @param elevation The elevation of the target
+     * @param vec The array where to store the position vector
+     */
     static void AzEl2Vec(float azimuth, float elevation, float vec[3]);
        
 private:

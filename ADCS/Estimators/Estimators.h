@@ -1,40 +1,80 @@
-/***************************************************************************//**
- * @file quest.h
- *******************************************************************************
- * @section License
- * <b>(C) Copyright 2019 </b>
- *******************************************************************************
+/**
+ * @file   Estimators.h
+ * @version 1.0
+ * @date 2019
+ * @author Remy CHATEL
+ * @copyright GNU Public License v3.0
+ * @defgroup EstimatorsGr Estimators
+ * 
+ * @brief
+ * Header for the Estimator Library
+ * 
+ * @details
+ * # Description
+ * A set of algorithm to estimate the atitude of a space craft.
  *
- * SPDX-License-Identifier: Apache-2.0
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may
- * not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * Adapted from "Spacecraft Dynamics and Control An Introduction" by
+ * de Ruiter, Damaren and Forbes
+ * 
+ * @see Estimators
+ * 
+ * # License
+ * <b>(C) Copyright 2019 Remy CHATEL</b>
+ * 
+ * Licensed Under  GPL v3.0 License
+ * http://www.gnu.org/licenses/gpl-3.0.html
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- ******************************************************************************/
+ */
  
 #ifndef ESTIMATORS_H
 #define ESTIMATORS_H
 #include "Matrix.h"
 
+/**
+ * @ingroup EstimatorsGr
+ * @{
+ * @brief A library for attitude estimators given a set of 
+ * atitude measurements
+ * 
+ * @namespace Estimators
+ * 
+ * @details
+ * # Description
+ * In order to determine the attitude of a satellite, it is useful
+ * to fuse the output of multiple sensors to increase accuracy.
+ *
+ * This library provides estimators algorithm that returns the rotation
+ * quaternion using different approaches.
+ * 
+ * @see Estimators.h
+ * 
+ * # Dependencies
+ * This library depends on the "Matrix" library that can be found
+ * here: https://github.com/RemyChatel/
+ * 
+ * In turn this library relies on <std::cmath> and <std::vector>
+ * 
+ * @attention This library uses float only (NOT double) and therefore
+ * expect 6 to 7 significant figures
+ * @}
+ */
 namespace Estimators{
 
 /**
- * @brief Return the quaternion estimate from the QuEst Algorithm
+ * @brief
+ * Return the quaternion estimate from the QuEst Algorithm
  * @details
  * Algorithm from "Spacecraft Dynamics and Control An Introduction" by
  * de Ruiter, Damaren and Forbes
  * 
  * This method compute the quaternion of the rotation between the spacecraft body
- * frame and the Earth Centered Inertial frame using a set of N sensors.
+ * frame and the Earth Centered Inertial frame using a set of N sensors using the
+ * QuEst algorithm.
  * 
  * Each sensor should provide the measurement in the spacecraft body frame, while
  * models/data should provide the measurement in the ECI frame. Each sensor is

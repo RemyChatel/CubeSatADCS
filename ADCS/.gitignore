@@ -1,3 +1,5 @@
 BUILD
 .mbed
 mbed-os
+BUILD/
+doc/

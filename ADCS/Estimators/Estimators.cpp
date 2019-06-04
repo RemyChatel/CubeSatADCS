@@ -1,31 +1,34 @@
-/***************************************************************************//**
- * @file quest.cpp
- *******************************************************************************
- * @section License
- * <b>(C) Copyright 2019 </b>
- *******************************************************************************
+/**
+ * @file   Estimators.cpp
+ * @version 1.0
+ * @date 2019
+ * @author Remy CHATEL
+ * @copyright GNU Public License v3.0
+ * @brief  Source code for the Estimator Library
+ * 
+ * @details
+ * # Description
+ * A set of algorithm to estimate the atitude of a space craft.
  *
- * SPDX-License-Identifier: Apache-2.0
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may
- * not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * Adapted from "Spacecraft Dynamics and Control An Introduction" by
+ * de Ruiter, Damaren and Forbes
+ * 
+ * @see Estimators
+ * 
+ * # License
+ * <b>(C) Copyright 2019 Remy CHATEL</b>
+ * 
+ * Licensed Under  GPL v3.0 License
+ * http://www.gnu.org/licenses/gpl-3.0.html
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- ******************************************************************************/
+ */
  
 #include "Estimators.h"
-
-#include "mbed.h"
-Serial pc2(USBTX, USBRX, 115200);
-void printMat2(Matrix a);
 
 void Estimators::QUEST(float quat[4], int N, float **s_eci, float **s_body, float *omega, float tolerance = 1e-5){
     /* Variable to store the solution */
@@ -63,9 +66,6 @@ void Estimators::QUEST(float quat[4], int N, float **s_eci, float **s_body, floa
     }
 
     // B = B.Transpose();
-
-    // pc2.printf("\n\nB matrix of size %d\n\r", B.size());
-    // printMat2(B);
 
     S = B + B.Transpose();
     detS = S.det();
@@ -113,30 +113,4 @@ void Estimators::QUEST(float quat[4], int N, float **s_eci, float **s_body, floa
     quat[1] = x(1,0);
     quat[2] = x(2,0);
     quat[3] = gamma;
-}
-
-
-void printMat2(Matrix a){
-    int col = a.getCols();
-    int row = a.getRows();
-
-    pc2.printf("{{");
-
-    for(int i = 0; i < row; i++){
-        if(i != 0){
-            pc2.printf(" {");
-        }
-        for(int j = 0; j < col; j++){
-            pc2.printf("%f", a(i, j));
-            if(j!=col-1){
-                pc2.printf(", ");
-            }
-        }
-        if(i==row-1){
-                pc2.printf("}}\n\r");
-            }
-        else{
-            pc2.printf("},\n\r");
-        }
-    }
 }

@@ -1,7 +1,36 @@
-// Define registers per MPU6050, Register Map and Descriptions, Rev 4.2, 08/19/2013 6 DOF Motion sensor fusion device
-// Invensense Inc., www.invensense.com
-// See also MPU-9150 Register Map and Descriptions, Revision 4.0, RM-MPU-9150A-00, 9/12/2012 for registers not listed in 
-// above document; the MPU6050 and MPU 9150 are virtually identical but the latter has an on-board magnetic sensor
+/**
+ * @version 1.0
+ * @date 2019
+ * @author Remy CHATEL
+ * @copyright GNU Public License v3.0
+ * @brief  Registers map for the MPU9150 Class
+ * 
+ * @details
+ * # Description
+ * Define registers per MPU6050, Register Map and Descriptions, Rev 4.2, 08/19/2013 6 DOF Motion sensor fusion device
+ * Invensense Inc., www.invensense.com
+ * See also MPU-9150 Register Map and Descriptions, Revision 4.0, RM-MPU-9150A-00, 9/12/2012 for registers not listed in 
+ * above document; the MPU6050 and MPU 9150 are virtually identical but the latter has an on-board magnetic sensor
+ * 
+ * Adapted from Kris Winer MPU9150AHRS library, 
+ * https://os.mbed.com/users/onehorse/code/MPU9150AHRS/
+ * 
+ * @see MPU9150
+ * 
+ * # License
+ * <b>(C) Copyright 2019 Remy CHATEL</b>
+ * 
+ * Licensed Under  GPL v3.0 License
+ * http://www.gnu.org/licenses/gpl-3.0.html
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// 
 //
 //Magnetometer Registers
 #define WHO_AM_I_AK8975A 0x00 // should return 0x48

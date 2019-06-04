@@ -1,73 +1,302 @@
+/**
+ * @file   MPU9150.h
+ * @version 1.0
+ * @date 2019
+ * @author Remy CHATEL
+ * @copyright GNU Public License v3.0
+ * @defgroup MPUGr MPU9150 Driver
+ * 
+ * @brief  Header for the MPU9150 Class
+ * 
+ * @details
+ * # Description
+ * A driver for the InvenSense MPU9150 Inertial Measurement Unit
+ * 
+ * Adapted from Kris Winer MPU9150AHRS library, 
+ * https://os.mbed.com/users/onehorse/code/MPU9150AHRS/
+ * 
+ * @see MPU9150
+ * @see MPU9150_registers.h
+ * 
+ * # License
+ * <b>(C) Copyright 2019 Remy CHATEL</b>
+ * 
+ * Licensed Under  GPL v3.0 License
+ * http://www.gnu.org/licenses/gpl-3.0.html
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 #ifndef MPU9150_H
 #define MPU9150_H
-#include "MPU9150_registrer.h"
+#include "MPU9150_registers.h"
 #include "mbed.h"
 
 // Using the GY-9150 breakout board, ADO is set to 0 
 // Seven-bit device address is 110100 for ADO = 0 and 110101 for ADO = 1
 // mbed uses the eight-bit device address, so shift seven-bit addresses left by one!
-#define ADO 0
+#define ADO 0 /**< I2C address selector for the IMU */
 #if ADO
-    #define MPU9150_ADDRESS 0x69<<1  // Device address when ADO = 1
+    #define MPU9150_ADDRESS 0x69<<1  /**< The address of the IMU when AD0 = 1 */
 #else
-    #define MPU9150_ADDRESS 0x68<<1  // Device address when ADO = 0
-#endif  
+    #define MPU9150_ADDRESS 0x68<<1  /**< The address of the IMU when AD0 = 0 */
+#endif
+#define Kp 2.0f * 5.0f  /**< Proportional gain for the optimisation */
+#define Ki 0.0f         /**< Integral gain for the optimisation */
 
+/**
+ * @brief
+ * Enumeration for the scale of the accelerometer
+ * \enum Ascale
+ */
 enum Ascale {
-    AFS_2G = 0,
-    AFS_4G,
-    AFS_8G,
-    AFS_16G
+    AFS_2G = 0, /**< Describe the 2g scale for the accelerometer */
+    AFS_4G,     /**< Describe the 4g scale for the accelerometer */
+    AFS_8G,     /**< Describe the 8g scale for the accelerometer */
+    AFS_16G     /**< Describe the 16g scale for the accelerometer */
 };
+/**
+ * @brief
+ * Enumeration for the scale of the gyroscope
+ * /enum Gscale
+ */
 enum Gscale {
-    GFS_250DPS = 0,
-    GFS_500DPS,
-    GFS_1000DPS,
-    GFS_2000DPS
+    GFS_250DPS = 0, /**< Describe the 250 deg/s scale for the gyroscope */
+    GFS_500DPS,     /**< Describe the 500 deg/s scale for the gyroscope */
+    GFS_1000DPS,    /**< Describe the 1000 deg/s scale for the gyroscope */
+    GFS_2000DPS     /**< Describe the 2000 deg/s scale for the gyroscope */
 };
 
+/**
+ * @ingroup MPUGr
+ * @{
+ * @brief
+ * A drivers for the MPU9150 Inertial Measurement Unit
+ * 
+ * @class MPU9150
+ * 
+ * @details
+ * # Description
+ * The MPU9150 is an Inertial Measurement Unit from InvenSense that provides
+ * 9 axis (3-axis accelerometer, 3-axis gyroscope, 3-axis magnetometer)
+ * 
+ * @see MPU9150.h
+ * @see MPU9150_registers.h
+ * 
+ * # Dependencies
+ * This library was built around the "Mbed" framework to access the harware
+ * through an common interface regardless of the device as long as the device
+ * is supported by Mbed (https://www.mbed.com/en/)
+ * @}
+ */
 class MPU9150 {
 public:
+// Constructors
+    /**
+     * @brief
+     * Constructor for MPU9150 that creates its own I2C instance
+     * @param sda The SDA pin for the I2C communication
+     * @param scl The SCL pin for the I2C communication
+     */
     MPU9150(PinName sda, PinName scl);
+    
+    /**
+     * @brief
+     * Constructor for MPU9150 that uses a predefined I2C instance
+     * @param i2c A reference to the I2C object
+     */
     MPU9150(I2C *i2c);
-        
+
+// I2C Tools
+    
+    /**
+     * @brief
+     * Write a byte on the I2C bus
+     * @param address The address of the target
+     * @param subAddress The target register
+     * @param data The byte to write
+     */
     void writeByte(uint8_t address, uint8_t subAddress, uint8_t data);
+    
+    /**
+     * @brief
+     * Read a byte from the I2C bus
+     * @param address The address of the target
+     * @param subAddress The register to read
+     * @return The read byte
+     */
     char readByte(uint8_t address, uint8_t subAddress);
+    
+    /**
+     * @brief
+     * Read multiple bytes from the I2C bus
+     * @param address The address of the target
+     * @param subAddress The registers to read
+     * @param count The number of bytes to read
+     * @param dest The array where to store the bytes
+     */
     void readBytes(uint8_t address, uint8_t subAddress, uint8_t count, uint8_t * dest);
 
+// IMU Set up
+    /**
+     * @brief
+     * Get the resolution of the gyroscope and store it
+     */
     void getGres();
+    
+    /**
+     * @brief
+     * Set the scaling of the gyroscope
+     * @param scale The scale to set from the enumeration GScale
+     */
     void setGres(uint8_t scale);
+    
+    /**
+     * @brief
+     * Get the resolution of the accelerometer and store it
+     */
     void getAres();
+    
+    /**
+     * @brief
+     * Set the scaling of the accelerometer
+     * @param scale The scale to set from the enumeration AScale
+     */
     void setAres(uint8_t scale);
 
-    void readAccelData(int16_t * destination);
-    void readGyroData(int16_t * destination);
-    void readMagData(int16_t * destination);
-    int16_t readTempData();
-    void getAccel(float acc[3]);
-    void getGyro(float gyr[3]);
-    void getMag(float mag[3]);
-    float getTemp();
-
+    
+    /**
+     * @brief
+     * Initialize the IMU (acc, gyr and mag)
+     * @param acc_scale The scale factor of the accelerometer form the enumeration AScale
+     * @param gyr_scale The scale factor of the gyroscope form the enumeration GScale
+     * @return The address of the IMU if found, zero otherwise
+     */
     uint8_t initIMU(uint8_t acc_scale, uint8_t gyr_scale);
+    
+    /**
+     * @brief
+     * Initialize the magnetometer
+     */
     void initAK8975A();
+    
+    /**
+     * @brief
+     * Initialize the accelerometer and the gyroscope
+     * @param acc_scale The scale factor of the accelerometer form the enumeration AScale
+     * @param gyr_scale The scale factor of the gyroscope form the enumeration GScale
+     */
     void initMPU9150(uint8_t acc_scale, uint8_t gyr_scale);
+    
+    /**
+     * @brief
+     * Reset the MPU9150 to factory settings
+     */
     void resetMPU9150();
-    // Function which accumulates gyro and accelerometer data after device initialization. It calculates the average
-    // of the at-rest readings and then loads the resulting offsets into accelerometer and gyro bias registers.
+    
+    /**
+     * @brief
+     * Function which accumulates gyro and accelerometer data after device initialization. It calculates the average
+     * of the at-rest readings and then loads the resulting offsets into accelerometer and gyro bias registers.
+     */
+    // 
     void calibrateMPU9150();
-    // Accelerometer and gyroscope self test; check calibration wrt factory settings
+    
+    /**
+     * @brief
+     * Accelerometer and gyroscope self test; check calibration wrt factory settings
+     */
     void MPU9150SelfTest();
 
-    // Implementation of Sebastian Madgwick's "...efficient orientation filter for... inertial/magnetic sensor arrays"
-    // (see http://www.x-io.co.uk/category/open-source/ for examples and more details)
-    // which fuses acceleration, rotation rate, and magnetic moments to produce a quaternion-based estimate of absolute
-    // device orientation -- which can be converted to yaw, pitch, and roll. Useful for stabilizing quadcopters, etc.
-    // The performance of the orientation filter is at least as good as conventional Kalman-based filtering algorithms
-    // but is much less computationally intensive---it can be performed on a 3.3 V Pro Mini operating at 8 MHz!
+// Read functions
+    /**
+     * @brief
+     * Fetches the accelerometer count from the IMU
+     * @param destination The array where to store the accelerometer count
+     */
+    void readAccelData(int16_t * destination);
+    
+    /**
+     * @brief
+     * Fetches the gyroscope count from the IMU
+     * @param destination The array where to store the gyroscope count
+     */
+    void readGyroData(int16_t * destination);
+    
+    /**
+     * @brief
+     * Fetches the magnetometer count from the IMU
+     * @param destination The array where to store the magnetometer count
+     */
+    void readMagData(int16_t * destination);
+    
+    /**
+     * @brief
+     * Fetches the temperature count from the IMU
+     * @return The temperature count
+     */
+    int16_t readTempData();
+    
+    /**
+     * @brief
+     * Calculates the value of the acceleration measured by the accelerometer in g
+     * @param acc The array where to store the acceleration
+     */
+    void getAccel(float acc[3]);
+    
+    /**
+     * @brief
+     * Calculates the value of the rate of turn measured by the gyroscope in deg/s
+     * @param gyr The array where to store the rate of turn
+     */
+    void getGyro(float gyr[3]);
+    
+    /**
+     * @brief
+     * Calculates the value of the magnetic field measured by the magnetometer
+     * @param mag The array where to store the magnetic field in uT
+     */
+    void getMag(float mag[3]);
+    
+    /**
+     * @brief
+     * Calculates the temperature from the thermistance in the IMU
+     * @return The temperature measured by the IMU in deg C
+     */
+    float getTemp();
+
+// Filtering functions
+    /**
+     * @brief
+     * An orientation filter to be used in AHRS applications
+     * @details
+     * Implementation of Sebastian Madgwick's "...efficient orientation filter for... inertial/magnetic sensor arrays"
+     * (see http://www.x-io.co.uk/category/open-source/ for examples and more details)
+     * which fuses acceleration, rotation rate, and magnetic moments to produce a quaternion-based estimate of absolute
+     * device orientation -- which can be converted to yaw, pitch, and roll. Useful for stabilizing quadcopters, etc.
+     * The performance of the orientation filter is at least as good as conventional Kalman-based filtering algorithms
+     * but is much less computationally intensive---it can be performed on a 3.3 V Pro Mini operating at 8 MHz!
+     * @param quat The array that holds the quaternion
+     * @param acc The acceleration in g
+     * @param gyr The rate of turn in rad/s
+     * @param mag The magnetic field in uT
+     * @param dt The time ellapsed since last filter update
+     */
     void MadgwickQuaternionUpdate(float quat[4], float acc[3], float gyr[3], float mag[3], float dt);
-    // Similar to Madgwick scheme but uses proportional and integral filtering on the error between estimated reference vectors and
-    // measured ones. 
+
+    /**
+     * @brief
+     * Similar to Madgwick scheme but uses proportional and integral filtering on the error between estimated reference vectors and
+     * measured ones.
+     * @param quat The array that holds the quaternion
+     * @param acc The acceleration in g
+     * @param gyr The rate of turn in rad/s
+     * @param mag The magnetic field in uT
+     * @param dt The time ellapsed since last filter update
+     */
     void MahonyQuaternionUpdate(float quat[4],float acc[3], float gyr[3], float mag[3], float dt);
 
 private:

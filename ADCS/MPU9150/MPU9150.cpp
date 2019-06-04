@@ -1,3 +1,31 @@
+/**
+ * @file   MPU9150.cpp
+ * @version 1.0
+ * @date 2019
+ * @author Remy CHATEL
+ * @copyright GNU Public License v3.0
+ * @brief  Source code for the MPU9150 Class
+ * 
+ * @details
+ * # Description
+ * 
+ * Adapted from Kris Winer MPU9150AHRS library, 
+ * https://os.mbed.com/users/onehorse/code/MPU9150AHRS/
+ * 
+ * @see MPU9150
+ * 
+ * # License
+ * <b>(C) Copyright 2019 Remy CHATEL</b>
+ * 
+ * Licensed Under  GPL v3.0 License
+ * http://www.gnu.org/licenses/gpl-3.0.html
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 #include "MPU9150.h"
 
 MPU9150::MPU9150(PinName sda, PinName scl) {
@@ -562,8 +590,7 @@ void MPU9150::MahonyQuaternionUpdate(float quat[4],float acc0[3], float gyr0[3],
     float eInt[3] = {0.0f, 0.0f, 0.0f};              // vector to hold integral error for Mahony method
     float GyroMeasDrift = pi * (1.0f / 180.0f);      // gyroscope measurement drift in rad/s/s (start at 0.0 deg/s/s)
     float zeta = sqrt(3.0f / 4.0f) * GyroMeasDrift;  // compute zeta, the other free parameter in the Madgwick scheme usually set to a small or zero value
-    #define Kp 2.0f * 5.0f // these are the free parameters in the Mahony filter and fusion scheme, Kp for proportional feedback, Ki for integral
-    #define Ki 0.0f
+    // these are the free parameters in the Mahony filter and fusion scheme, Kp for proportional feedback, Ki for integral
 
     // Auxiliary variables to avoid repeated arithmetic
     float q1q1 = q1 * q1;
