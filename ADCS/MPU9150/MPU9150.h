@@ -6,7 +6,8 @@
  * @copyright GNU Public License v3.0
  * @defgroup MPUGr MPU9150 Driver
  * 
- * @brief  Header for the MPU9150 Class
+ * @brief
+ * A drivers for the MPU9150 Inertial Measurement Unit
  * 
  * @details
  * # Description

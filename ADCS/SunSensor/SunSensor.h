@@ -6,7 +6,9 @@
  * @copyright GNU Public License v3.0
  * @defgroup SunSensorGr Sun Sensor Driver
  * 
- * @brief  Header for the SunSensor Library
+ * @brief
+ * A class to handle analog Sun sensor (three photodiode)
+ * 
  * @details
  * # Description
  * This library provide an interface to read the analog output of

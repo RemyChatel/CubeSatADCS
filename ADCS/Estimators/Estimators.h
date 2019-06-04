@@ -7,7 +7,8 @@
  * @defgroup EstimatorsGr Estimators
  * 
  * @brief
- * Header for the Estimator Library
+ * A library for attitude estimators given a set of 
+ * atitude measurements
  * 
  * @details
  * # Description

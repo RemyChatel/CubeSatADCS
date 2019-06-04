@@ -1,0 +1,14 @@
+/**
+ * @mainpage Attitude Determination and Control System
+ *
+ * @section Description
+ * 
+ * 
+ * @section Dep Dependencies and Compatibility
+ * This library needs <std::cmath>, <std::vector> and the ARM Mbed (https://www.mbed.com/en/) framework to work properly.
+ * However, changing away from Mbed to make it work on other platforms should not be too difficult.
+ * 
+ * @section Comments
+ * @attention This library uses float only (NOT double) and therefore
+ * expect 6 to 7 significant figures
+ */

@@ -7,7 +7,7 @@
  * @defgroup MatrixGr Linear Algebra
  * 
  * @brief
- * Header for the Matrix Class
+ * A library for 2D matrix linear algebra operations
  * 
  * @details
  * # Description
