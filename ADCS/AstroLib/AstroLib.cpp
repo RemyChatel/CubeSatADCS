@@ -214,8 +214,8 @@ void Orbit::quat2rot(float quat[4], float rot_coef[9]){
     rot_coef[4] = (-sqx + sqy - sqz + sqw)*invs ;
     rot_coef[8] = (-sqx - sqy + sqz + sqw)*invs ;
     
-    double tmp1 = qx*qy;
-    double tmp2 = qz*qw;
+    float tmp1 = qx*qy;
+    float tmp2 = qz*qw;
     rot_coef[3] = 2.0 * (tmp1 + tmp2)*invs ;
     rot_coef[1] = 2.0 * (tmp1 - tmp2)*invs ;
     

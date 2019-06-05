@@ -128,40 +128,6 @@ public:
      */
     static Matrix zeros(int rows, int cols);
 
-    /**
-     * @brief
-     * Calculates the Rotation Matrix Transform along 'x' axis in radians.
-     * @param radians rotation angle in rad.
-     * @return Rotation Matrix[4,4] along 'x' axis.
-     */
-    static Matrix RotX( float radians );
-
-    /**
-     * @brief
-     * Calculates the Rotation Matrix Transform along 'y' axis in radians.
-     * @param radians rotation angle in rad.
-     * @return Rotation Matrix[4,4] along 'y' axis.
-     */
-    static Matrix RotY( float radians );
-
-    /**
-     * @brief
-     * Calculates the Rotation Matrix Transform along 'z' axis in radians.
-     * @param radians rotation angle in rad.
-     * @return Rotation Matrix[4,4] along 'z' axis.
-     */
-    static Matrix RotZ( float radians );
-
-    /**
-     * @brief
-     * Calculates the Translation Matrix to coordenates (x' y' z').
-     * @param x axis translation
-     * @param y axis translation
-     * @param z axis translation
-     * @return Translation Matrix[4,4] x'y'z'.
-     */
-    static Matrix Transl( float x, float y, float z );
-
 // Operators
     /**
      * @brief
@@ -404,6 +370,12 @@ public:
      */
     bool isVector() const;
 
+    /**
+     * @brief
+     * Returns true if the matrix is square
+     */
+    bool isSquare() const;
+
 // Matrix shape Methods
     /**
      * @brief
@@ -621,6 +593,115 @@ public:
      * @return The cross product of the two vectors
      */
     static Matrix cross(const Matrix& leftM, const Matrix& rightM);
+
+// Kinematics Methods
+    /**
+     * @brief
+     * Calculates the Rotation Matrix Transform along 'x' axis in radians.
+     * @param radians rotation angle in rad.
+     * @return Rotation Matrix[4,4] along 'x' axis.
+     */
+    static Matrix RotX( float radians );
+
+    /**
+     * @brief
+     * Calculates the Rotation Matrix Transform along 'y' axis in radians.
+     * @param radians rotation angle in rad.
+     * @return Rotation Matrix[4,4] along 'y' axis.
+     */
+    static Matrix RotY( float radians );
+
+    /**
+     * @brief
+     * Calculates the Rotation Matrix Transform along 'z' axis in radians.
+     * @param radians rotation angle in rad.
+     * @return Rotation Matrix[4,4] along 'z' axis.
+     */
+    static Matrix RotZ( float radians );
+
+    /**
+     * @brief
+     * Create the 3-2-1 (or Z-Y-X) direction cosine Matrix
+     * @param yaw The yaw angle (psi on z)
+     * @param pitch The pitch angle (theta on y)
+     * @param roll The roll angle (phi on x)
+     * @return The direction cosine matrix
+     */
+    static Matrix Rot321(float yaw, float pitch, float roll);
+
+    /**
+     * @brief
+     * Create the 3-2-1 (or Z-Y-X) cosine direction Matrix
+     * @param euler The euler angles [roll, pitch, yaw] or [phi, theta, psi]
+     * @return The direction cosine matrix
+     */
+    static Matrix Rot321(Matrix euler);
+
+    /**
+     * @brief
+     * Calculates the Translation Matrix to coordenates (x' y' z').
+     * @param x axis translation
+     * @param y axis translation
+     * @param z axis translation
+     * @return Translation Matrix[4,4] x'y'z'.
+     */
+    static Matrix Transl( float x, float y, float z );
+
+    /**
+     * @brief
+     * Converts a rotation quaternion to a 3-2-1 rotation matrix (Z->Y->X)
+     * @param quat The rotation quaternion to convert [x,y,z,eta] with eta the salar part
+     * @return The rotation matrix (Z->Y->X) in a 3x3 matrix
+     */
+    static Matrix quat2rot(Matrix quat);
+
+    /**
+     * @brief
+     * Converts a rotation quaternion in Euler angles
+     * @param quat The rotation quaternion [x,y,z,eta] with eta the salar part
+     * @return The euler angles [yaw,pitch,roll]=[phi,theta,psi]
+     */
+    static Matrix quat2euler(Matrix quat);
+
+    /**
+     * @brief
+     * Converts Euler angle to rotation quaternion
+     * @param euler Euler angles vector [yaw,pitch,roll]=[phi,theta,psi]
+     * @return The rotation quaternion [eta,x,y,z] with eta the salar part
+     */
+    static Matrix euler2quat(Matrix euler);
+
+    /**
+     * @brief
+     * Converts Euler angles to 1-2-3 rotation matrix (X->Y->Z)
+     * @param euler An array to hold the euler angles [yaw,pitch,roll]=[phi,theta,psi]
+     * @return The rotation matrix (X->Y->Z)
+     */
+    static Matrix euler2rot123(Matrix euler);
+
+    /**
+     * @brief
+     * Converts Euler angles to 3-2-1 rotation matrix (Z->Y->X)
+     * @param euler An array to hold the euler angles [yaw,pitch,roll]=[phi,theta,psi]
+     * @return The rotation matrix (Z->Y->X)
+     */
+    static Matrix euler2rot(Matrix euler);
+
+    /**
+     * @brief
+     * Converts 3-2-1 rotation matrix (Z->Y->X) to Euler angles
+     * @param rot The array where to store the rotation matrix (Z->Y->X)
+     * @return The euler angles [yaw,pitch,roll]=[phi,theta,psi]
+     */
+    static Matrix rot2euler(Matrix rot);
+
+    /**
+     * @brief
+     * Converts 3-2-1 rotation matrix (Z->Y->X) to rotation quaternion
+     * @param rot The array where to store the rotation matrix (Z->Y->X)
+     * @return The rotation quaternion [x,y,z,eta] with eta the salar part
+     */
+    static Matrix rot2quat(Matrix rot);
 
 private:
     /** 2-D Vector Array */

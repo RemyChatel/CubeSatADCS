@@ -11,7 +11,7 @@ void printMat(Matrix a, Serial *pc){
             pc->printf(" {");
         }
         for(int j = 0; j < col; j++){
-            pc->printf("%f", a(i, j));
+            pc->printf("% 7f", a(i, j));
             if(j!=col-1){
                 pc->printf(", ");
             }

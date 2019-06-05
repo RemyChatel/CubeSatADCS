@@ -5,7 +5,7 @@
 #define RAD2DEG 180.0f / 3.14159265358979323846f
 #define PI 3.14159265358979323846f
 
-int MPU9150Test(Serial *pc, I2C *i2c, Timer *t) {
+int MPU9250Test(Serial *pc, I2C *i2c, Timer *t) {
     
     MPU9150 MPU9150(i2c);
     float sum = 0;
@@ -37,6 +37,7 @@ int MPU9150Test(Serial *pc, I2C *i2c, Timer *t) {
         pc->printf("Could not connect to MPU9150: \n\r");
         while(1) ; // Loop forever if communication doesn't happen
     }
+
 
     wait(2);
  
@@ -82,21 +83,21 @@ int MPU9150Test(Serial *pc, I2C *i2c, Timer *t) {
         delt_t = t->read_ms() - count;
         if (delt_t > 100) { // update LCD once per half-second independent of read rate initial 500
 
-            pc->printf("Conversion time %d us \n\r", convtime);
+            pc->printf("Conversion time %d us \n\r", -convtime);
             
-            pc->printf("ax = %4.2f", 1000*val_acc[0]); 
-            pc->printf(" ay = %4.2f", 1000*val_acc[1]); 
-            pc->printf(" az = %4.2f  mg\n\r", 1000*val_acc[2]); 
+            pc->printf("ax = % 4.2f", 1000*val_acc[0]); 
+            pc->printf(" ay = % 4.2f", 1000*val_acc[1]); 
+            pc->printf(" az = % 4.2f  mg\n\r", 1000*val_acc[2]); 
 
-            pc->printf("gx = %f", val_gyr[0]); 
-            pc->printf(" gy = %f", val_gyr[1]); 
-            pc->printf(" gz = %f  deg/s\n\r", val_gyr[2]); 
+            pc->printf("gx = %+3.1f", val_gyr[0]); 
+            pc->printf(" gy = %+3.1f", val_gyr[1]); 
+            pc->printf(" gz = %+3.1f  deg/s\n\r", val_gyr[2]); 
             
-            pc->printf("gx = %3.1f", val_mag[0]); 
-            pc->printf(" gy = %3.1f", val_mag[1]); 
-            pc->printf(" gz = %3.1f  uT\n\r", val_mag[2]);
+            pc->printf("gx = %+3.1f", val_mag[0]); 
+            pc->printf(" gy = %+3.1f", val_mag[1]); 
+            pc->printf(" gz = %+3.1f  uT\n\r", val_mag[2]);
 
-            pc->printf("Yaw, Pitch, Roll: %3.2f %3.2f %3.2f\n\r", yaw, pitch, roll);
+            // pc->printf("Yaw, Pitch, Roll: %3.2f %3.2f %3.2f\n\r", yaw, pitch, roll);
             count = t->read_ms(); 
 
             if(count > 1<<21) {

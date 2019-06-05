@@ -157,5 +157,46 @@ int MatrixTest(Serial *pc, I2C *i2c, Timer *t){
     pc->printf("Inverse of B matrix inv(B) {{-1, 2, -1}, {2, -10.33, 7.33}, {-1, 8, -6}} \n\r");
     printMat(B.Inv(), pc);
 
+    pc->printf("\n\r\n\rKinematic methods test\n\r");
+    float phi = 45*3.1415926535f/180.0f;        // Rotation around the new X axis
+    float theta = -30*3.1415926535f/180.0f;     // Rotation around the new Y axis
+    float psi = 60*3.1415926535f/180.0f;        // Rotation around teh original Z axis
+    float eul_coef[3] = {phi, theta, psi};
+    Matrix eul(3,1, eul_coef);
+
+    pc->printf("Rotation around X of 60°\n\r");
+    printMat(Matrix::RotX(psi), pc);
+    pc->printf("Rotation around Y of 60°\n\r");
+    printMat(Matrix::RotY(psi), pc);
+    pc->printf("Rotation around Z of 60°\n\r");
+    printMat(Matrix::RotZ(psi), pc);
+
+    pc->printf("\n\rEuler angles (in deg):\n\r");
+    printMat(eul*(180.0f/3.1415926535f), pc);
+
+    pc->printf("Euler to Quaternion\n\r");
+    printMat(Matrix::euler2quat(eul), pc);
+
+    pc->printf("Euler to 1-2-3 Rotation matrix\n\r");
+    printMat(Matrix::euler2rot123(eul), pc);
+
+    pc->printf("Euler to 3-2-1 Rotation matrix\n\r");
+    printMat(Matrix::euler2rot(eul), pc);
+
+    pc->printf("Quaternion to Euler\n\r");
+    printMat(Matrix::quat2euler(Matrix::euler2quat(eul))*(180.0f/3.1415926535f), pc);
+
+    pc->printf("Quaternion to Rotation matrix\n\r");
+    printMat(Matrix::quat2rot(Matrix::euler2quat(eul)).Transpose(), pc);
+
+    pc->printf("Rotation matrix to Euler\n\r");
+    printMat(Matrix::rot2euler(Matrix::euler2rot(eul))*(180.0f/3.1415926535f), pc);
+
+    pc->printf("Rotation matrix to quaternion\n\r");
+    printMat(Matrix::rot2quat(Matrix::euler2rot(eul)), pc);
+
+    pc->printf("Rotation matrix 321\n\r");
+    printMat(Matrix::Rot321(eul), pc);
+
     return 1;
 }

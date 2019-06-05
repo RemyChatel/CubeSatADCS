@@ -85,6 +85,7 @@ namespace AstroLib{
 class Orbit
 {
 public:
+// Constructors
     /**
      * @brief AstroLib constructor
      */
@@ -94,7 +95,8 @@ public:
      * @brief AstroLib destructor
      */
     ~Orbit(void);
-    
+
+// Date management  
     /**
      * @brief Provide the Julian day and Julian day fraction
      * @param day The pointer where to store the day
@@ -124,7 +126,8 @@ public:
      * @param seconds The amount of seconds to add
      */
     void updateJulianDate(float seconds);
-    
+
+// Sun position
     /**
      * @brief Provides the Sun-vector in the ECI frame for a given Julian Date (in AU)
      * @param rsun The array where to store the sun vector
@@ -133,6 +136,7 @@ public:
      */
     void getSunVector(float rsun[3], long julianday, float julianfrac);
 
+// Orbit management
     /**
      * @brief Set the obirt parameters
      * @param axis The semi major axis of the orbit (m)
@@ -157,6 +161,7 @@ public:
      */
     void getPositionVector(float r_sat[3]);
 
+// Earth magnetic field
     /**
      * @brief Update the Earth magnetic field vector for a given orbit position in the ECI frame
      * @param mag The magnetic vector of the Earth magnetic field
