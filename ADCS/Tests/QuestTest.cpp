@@ -1,6 +1,7 @@
 #include "Test.h"
 #include "Estimators.h"
 #include "AstroLib.h"
+#define DEG2RAD 3.1415926535f/180.0f
 
 int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     
@@ -13,21 +14,25 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     pc->printf("\n\r\n\r------------------------------\n\r");
     pc->printf("Connection OK\n\r");
 
+    Matrix quat;
     float coef_th[9] = {0.4153, 0.4472, 0.7921, -0.7652, 0.6537, 0.0274, -0.5056, -0.6104, 0.6097};
-    Matrix mat_th(3,3,coef_th);
+    Matrix mat_th = Matrix::Rot321(45 * DEG2RAD, -30*DEG2RAD, 60*DEG2RAD);
 
-    float sa1n[3] = {0.0f, 0.447214f, 0.894427f};
-    float sa2n[3] = {0.316228f, 0.948683f, 0.0f};
-    float sa3n[3] = {-0.980581f, 0.0f, 0.196116f};
-    float sa4n[3] = {0.235702f, -0.235702f, 0.942809f};
-    float sa5n[3] = {0.57735f, 0.57735f, 0.57735f};
+    float sa1n[3],sa2n[3],sa3n[3],sa4n[3],sa5n[3];
+    float sb1n[3],sb2n[3],sb3n[3],sb4n[3],sb5n[3];
+    /*
+    sa1n[3] = {0.0f, 0.447214f, 0.894427f};
+    sa2n[3] = {0.316228f, 0.948683f, 0.0f};
+    sa3n[3] = {-0.980581f, 0.0f, 0.196116f};
+    sa4n[3] = {0.235702f, -0.235702f, 0.942809f};
+    sa5n[3] = {0.57735f, 0.57735f, 0.57735f};
 
-    float sb1n[3] = { 0.9082f, 0.3185f, 0.2715f };
-    float sb2n[3] = { 0.5670f, 0.3732f, -0.7343f };
-    float sb3n[3] = { -0.2821f, 0.7163f, 0.6382 };
-    float sb4n[3] = { 0.7510f, -0.3303f, 0.5718};
-    float sb5n[3] = { 0.9261f, -0.2053, -0.3166};
-
+    sb1n[3] = { 0.9082f, 0.3185f, 0.2715f };
+    sb2n[3] = { 0.5670f, 0.3732f, -0.7343f };
+    sb3n[3] = { -0.2821f, 0.7163f, 0.6382 };
+    sb4n[3] = { 0.7510f, -0.3303f, 0.5718};
+    sb5n[3] = { 0.9261f, -0.2053, -0.3166};
+    */
     float *san[5] = {sa1n, sa2n, sa3n, sa4n, sa5n};
     float *sbn[5] = {sb1n, sb2n, sb3n, sb4n, sb5n};
     
@@ -45,11 +50,16 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     sa[2] = Matrix(3,1,sa3);
     sa[3] = Matrix(3,1,sa4);
     sa[4] = Matrix(3,1,sa5);
+    sb[0] = Matrix(3,1);
+    sb[1] = Matrix(3,1);
+    sb[2] = Matrix(3,1);
+    sb[3] = Matrix(3,1);
+    sb[4] = Matrix(3,1);
 
     for(int i = 0; i < 5; i++){
         sa[i] *= 1/sa[i].norm();
-        sb[i] *= 1/sb[i].norm();
         sb[i] = mat_th*sa[i];
+        sb[i] *= 1/sb[i].norm();
         sa[i].getCoef(san[i]);
         sb[i].getCoef(sbn[i]);
     }
@@ -77,7 +87,9 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     Matrix mat_rot(3,3);
     AstroLib::Orbit::quat2rot(q, rot);
     mat_rot = Matrix(3,3, rot);
-    mat_rot = mat_rot.Transpose();
+    quat = Matrix(4,1, q);
+    mat_rot = Matrix::quat2rot(quat);
+    //mat_rot = mat_rot.Transpose();
     pc->printf("Computed Rotation matrix\n\r");
     printMat(mat_rot, pc);
     pc->printf("Expected Rotation matrix\n\r");
@@ -93,6 +105,21 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     pc->printf("Angular error %f deg\n\r", error*180.0f/3.141592f);
     pc->printf("Difference matrix in percents\n\r");
     printMat((mat_th - mat_rot)*100, pc);
+
+    pc->printf("Expected quaternion\n\r");
+    printMat(Matrix::rot2quat(mat_th), pc);
+    pc->printf("Computed quaternion\n\r");
+    printMat(quat, pc);
+    /*
+    pc->printf("san[0][0]: %f\n\r", san[2][0]);
+    pc->printf("san[0][1]: %f\n\r", san[2][1]);
+    pc->printf("san[0][2]: %f\n\r", san[2][2]);
+    */
+    printMat(sb[0],pc);
+    printMat(sb[1],pc);
+    printMat(sb[2],pc);
+    printMat(sb[3],pc);
+    printMat(sb[4],pc);
 
     /************* PRINTS END **************/
 

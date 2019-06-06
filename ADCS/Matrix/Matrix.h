@@ -627,7 +627,7 @@ public:
      * @param roll The roll angle (phi on x)
      * @return The direction cosine matrix
      */
-    static Matrix Rot321(float yaw, float pitch, float roll);
+    static Matrix Rot321(float roll, float pitch, float yaw);
 
     /**
      * @brief

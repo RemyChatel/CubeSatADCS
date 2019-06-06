@@ -109,8 +109,8 @@ void Estimators::QUEST(float quat[4], int N, float **s_eci, float **s_body, floa
     gamma /= normQ;
 
     /* Returning the quaternion */
-    quat[0] = x(0,0);
-    quat[1] = x(1,0);
-    quat[2] = x(2,0);
-    quat[3] = gamma;
+    quat[0] = gamma;
+    quat[1] = -x(0,0);
+    quat[2] = -x(1,0);
+    quat[3] = -x(2,0);
 }

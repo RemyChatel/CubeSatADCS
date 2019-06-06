@@ -41,8 +41,11 @@
 
     Matrix::Matrix(int Rows, int Cols): _nRows(Rows), _nCols(Cols) {
         _matrix.resize(_nRows);
-        for( int i = 0; i < _nRows; i++ )
+        for( int i = 0; i < _nRows; i++ ){
             _matrix[i].resize(_nCols);
+            _matrix[i].shrink_to_fit();
+        }
+        _matrix.shrink_to_fit();
 
         _pRow = 0;
         _pCol = 0;
@@ -58,8 +61,11 @@
         _pCol  = base._pCol;
 
         _matrix.resize(_nRows);
-        for( int i = 0; i < _nRows; i++ )
+        for( int i = 0; i < _nRows; i++ ){
             _matrix[i].resize(_nCols);
+            _matrix.shrink_to_fit();
+        }
+        _matrix.shrink_to_fit();
 
         for( int i = 0; i < _nRows; i++ )
             for( int j = 0; j < _nCols; j++ )
@@ -71,8 +77,11 @@
         _nCols = Cols;
 
         _matrix.resize(_nRows);
-        for( int i = 0; i < _nRows; i++ )
+        for( int i = 0; i < _nRows; i++ ){
             _matrix[i].resize(_nCols);
+            _matrix[i].shrink_to_fit();
+        }
+        _matrix.shrink_to_fit();
 
         _pRow = Rows;
         _pCol = Cols;
@@ -598,10 +607,12 @@
     { return this->_matrix[Row][Col]; }
 
     void Matrix::getCoef(float *coef) const{
-        Matrix tmp;
-        this->ToPackedVector(tmp);
-        for(int i = 0; i < tmp._nCols; i++){
-            coef[i] = tmp._matrix[0][i];
+        int count = 0;
+        for(int i = 0; i < this->_nRows; i++){
+            for(int j = 0; j < this->_nCols; j++){
+                coef[count] = this->_matrix[i][j];
+                count++;
+            }
         }
     }
 

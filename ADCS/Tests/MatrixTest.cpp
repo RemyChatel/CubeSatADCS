@@ -157,6 +157,18 @@ int MatrixTest(Serial *pc, I2C *i2c, Timer *t){
     pc->printf("Inverse of B matrix inv(B) {{-1, 2, -1}, {2, -10.33, 7.33}, {-1, 8, -6}} \n\r");
     printMat(B.Inv(), pc);
 
+    pc->printf("Test of vector packing\n\r");
+    printMat(Matrix::ToPackedVector(A), pc);
+
+    pc->printf("Test of getCoef\n\r");
+    float array[9];
+    A.getCoef(array);
+    pc->printf("{");
+    for(int i = 0; i < 9; i++){
+        pc->printf("%f, ", array[i]);
+    }
+    pc->printf("}\n\r");
+
     pc->printf("\n\r\n\rKinematic methods test\n\r");
     float phi = 45*3.1415926535f/180.0f;        // Rotation around the new X axis
     float theta = -30*3.1415926535f/180.0f;     // Rotation around the new Y axis
