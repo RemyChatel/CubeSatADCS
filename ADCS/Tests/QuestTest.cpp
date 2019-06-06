@@ -15,28 +15,32 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     pc->printf("Connection OK\n\r");
 
     Matrix quat;
+    
     float coef_th[9] = {0.4153, 0.4472, 0.7921, -0.7652, 0.6537, 0.0274, -0.5056, -0.6104, 0.6097};
-    Matrix mat_th = Matrix::Rot321(45 * DEG2RAD, -30*DEG2RAD, 60*DEG2RAD);
+    Matrix mat_th = Matrix(3,3, coef_th);
+    
+    float sa1n[3] = {0.0f, 0.447214f, 0.894427f};
+    float sa2n[3] = {0.316228f, 0.948683f, 0.0f};
+    float sa3n[3] = {-0.980581f, 0.0f, 0.196116f};
+    float sa4n[3] = {0.235702f, -0.235702f, 0.942809f};
+    float sa5n[3] = {0.57735f, 0.57735f, 0.57735f};
 
+    float sb1n[3] = { 0.9082f, 0.3185f, 0.2715f };
+    float sb2n[3] = { 0.5670f, 0.3732f, -0.7343f };
+    float sb3n[3] = { -0.2821f, 0.7163f, 0.6382 };
+    float sb4n[3] = { 0.7510f, -0.3303f, 0.5718};
+    float sb5n[3] = { 0.9261f, -0.2053, -0.3166};
+    
+    float *san[5] = {sa1n, sa2n, sa3n, sa4n, sa5n};
+    float *sbn[5] = {sb1n, sb2n, sb3n, sb4n, sb5n};
+    /*
+    // To test without noise
+    Matrix mat_th = Matrix::Rot321(45 * DEG2RAD, -30*DEG2RAD, 60*DEG2RAD);
     float sa1n[3],sa2n[3],sa3n[3],sa4n[3],sa5n[3];
     float sb1n[3],sb2n[3],sb3n[3],sb4n[3],sb5n[3];
-    /*
-    sa1n[3] = {0.0f, 0.447214f, 0.894427f};
-    sa2n[3] = {0.316228f, 0.948683f, 0.0f};
-    sa3n[3] = {-0.980581f, 0.0f, 0.196116f};
-    sa4n[3] = {0.235702f, -0.235702f, 0.942809f};
-    sa5n[3] = {0.57735f, 0.57735f, 0.57735f};
-
-    sb1n[3] = { 0.9082f, 0.3185f, 0.2715f };
-    sb2n[3] = { 0.5670f, 0.3732f, -0.7343f };
-    sb3n[3] = { -0.2821f, 0.7163f, 0.6382 };
-    sb4n[3] = { 0.7510f, -0.3303f, 0.5718};
-    sb5n[3] = { 0.9261f, -0.2053, -0.3166};
-    */
     float *san[5] = {sa1n, sa2n, sa3n, sa4n, sa5n};
     float *sbn[5] = {sb1n, sb2n, sb3n, sb4n, sb5n};
     
-    // To test without noise
     float sa1[3] = {0, 1, 2};
     float sa2[3] = {1, 3, 0};
     float sa3[3] = {-5, 0, 1};
@@ -63,7 +67,7 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
         sa[i].getCoef(san[i]);
         sb[i].getCoef(sbn[i]);
     }
-    
+    */
 
     float om[5] = {0.0100f, 0.0325f, 0.0550f, 0.0775, 0.1000};
 
@@ -114,12 +118,13 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     pc->printf("san[0][0]: %f\n\r", san[2][0]);
     pc->printf("san[0][1]: %f\n\r", san[2][1]);
     pc->printf("san[0][2]: %f\n\r", san[2][2]);
-    */
+    
     printMat(sb[0],pc);
     printMat(sb[1],pc);
     printMat(sb[2],pc);
     printMat(sb[3],pc);
     printMat(sb[4],pc);
+    */
 
     /************* PRINTS END **************/
 
