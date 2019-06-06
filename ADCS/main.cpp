@@ -1,11 +1,13 @@
 #include "mbed.h"
 #include "Tests/Test.h"
-#define TEST_QUEST
+#define TEST_SENSOR
 Serial pc(USBTX, USBRX, 115200);
 I2C i2c(I2C_SDA, I2C_SCL);
 Timer t;
 
 int main(){
+    i2c.frequency(400000);
+    t.start();
     #ifdef ADCS_CORES
         return 1;
     #endif

@@ -93,7 +93,7 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     mat_rot = Matrix(3,3, rot);
     quat = Matrix(4,1, q);
     mat_rot = Matrix::quat2rot(quat);
-    //mat_rot = mat_rot.Transpose();
+    mat_rot = mat_rot.Transpose(); // Taking into account the 1-2-3 rot matrix
     pc->printf("Computed Rotation matrix\n\r");
     printMat(mat_rot, pc);
     pc->printf("Expected Rotation matrix\n\r");

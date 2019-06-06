@@ -93,9 +93,9 @@ int MPU9250Test(Serial *pc, I2C *i2c, Timer *t) {
             pc->printf(" gy = %+3.1f", val_gyr[1]); 
             pc->printf(" gz = %+3.1f  deg/s\n\r", val_gyr[2]); 
             
-            pc->printf("gx = %+3.1f", val_mag[0]); 
-            pc->printf(" gy = %+3.1f", val_mag[1]); 
-            pc->printf(" gz = %+3.1f  uT\n\r", val_mag[2]);
+            pc->printf("mx = %+3.1f", val_mag[0]); 
+            pc->printf(" my = %+3.1f", val_mag[1]); 
+            pc->printf(" mz = %+3.1f  uT\n\r", val_mag[2]);
 
             // pc->printf("Yaw, Pitch, Roll: %3.2f %3.2f %3.2f\n\r", yaw, pitch, roll);
             count = t->read_ms(); 
