@@ -89,8 +89,6 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     pc->printf("Quaternion: %f | %f | %f | %f\n\r", q[0], q[1], q[2], q[3]);
     float rot[9];
     Matrix mat_rot(3,3);
-    AstroLib::Orbit::quat2rot(q, rot);
-    mat_rot = Matrix(3,3, rot);
     quat = Matrix(4,1, q);
     mat_rot = Matrix::quat2rot(quat);
     mat_rot = mat_rot.Transpose(); // Taking into account the 1-2-3 rot matrix

@@ -67,9 +67,95 @@
  * @}
  */
 namespace AstroLib{
+/**
+ * @brief
+ * A representation of the Julian Date
+ * 
+ * @class JulianDate
+ * 
+ * @details
+ * Provides a storage and method to store and manipulate Julian Dates.
+ * 
+ * The julian day is split in an integer part (stored as a 32-bits 'long' type)
+ * and a decimal part (stored as a 32-bits 'float' type) to allow more significant
+ * figures.
+ * 
+ * @see AstroLib
+ */
+class JulianDate {
+public:
+// Constructors
+    /**
+     * @brief
+     * Default constructor for JulianDate
+     */
+    JulianDate();
+
+    /**
+     * @brief
+     * Constructor for JulianDate using a julian day and a fractional day
+     * @param day The integer part of julian day
+     * @param frac The decimal part of the Julian day
+     */
+    JulianDate(long day, float frac);
+
+    /**
+     * @brief 
+     * Constructor for JulianDate using the calendar date
+     * @param yr The year in XXXX format
+     * @param mo The month (range [1,12])
+     * @param d The day (range [1,31])
+     * @param h The hours (range [0,23])
+     * @param mi The minutes (range [0,59])
+     * @param s The seconds (range [0,59])
+     */
+    JulianDate(int yr, int mo, int d, int h, int mi, float s);
+
+// Getters and Setters
+    /**
+     * @brief
+     * Gets the integer part of the julian day
+     * @return The integer part of the julian day
+     */
+    long getDay();
+
+    /**
+     * @brief
+     * Gets the decimal part of the julian day
+     * @return The decimal part of the julian day
+     */
+    float getFrac();
+
+    /**
+     * @brief
+     * Gets the integer part of the julian day
+     * @return The integer part of the julian day
+     */
+    void setDay(long day);
+
+    /**
+     * @brief
+     * Gets the decimal part of the julian day
+     * @return The decimal part of the julian day
+     */
+    void setFrac(float frac);
+
+// Specific methods
+    /** 
+     * @brief
+     * Update the Julian Date by adding the provided seconds
+     * @param seconds The amount of seconds to add
+     */
+    void update(float seconds);
+
+private:
+    long _day;
+    float _frac;
+};
 
 /**
- * @brief Provide an orbit model that can return essential parameters
+ * @brief
+ * Provide an orbit model that can return essential parameters
  * about the spacecraft position, the sun position and the magnetic field
  * 
  * @class AstroLib::Orbit
@@ -82,8 +168,7 @@ namespace AstroLib{
  * 
  * @see AstroLib
  */
-class Orbit
-{
+class Orbit {
 public:
 // Constructors
     /**
@@ -96,49 +181,41 @@ public:
      */
     ~Orbit(void);
 
-// Date management  
+// Date management
     /**
-     * @brief Provide the Julian day and Julian day fraction
-     * @param day The pointer where to store the day
-     * @param frac The pointer where to store the day fraction
+     * @brief
+     * Gets the Julian Date member of the orbit
+     * @return The Julian Date
      */
-    void getJulianDate(long *day, float *frac);
-    
-    /**
-     * @brief Set the Julian date according to a calendar date
-     * @param yr The year in XXXX format
-     * @param mo The month
-     * @param d The day
-     * @param h The hours
-     * @param mi The minutes
-     * @param s The seconds
-     */
-    void setJulianDate(int yr, int mo, int d, int h, int mi, float s);
+    JulianDate getJulianDate();
 
     /**
-     * @brief Set the Julian date according to a Julian date
-     * @param jd The Julian Day
-     * @param jfrac The Julian Day Fraction
+     * @brief
+     * Sets the Julian Date member of the orbit
+     * @param date The new date
      */
-    void setJulianDate(long jd, float jfrac);
-    
-    /** Update the Julian Date by adding the provided seconds
-     * @param seconds The amount of seconds to add
-     */
-    void updateJulianDate(float seconds);
+    void setJulianDate(JulianDate date);
 
 // Sun position
     /**
-     * @brief Provides the Sun-vector in the ECI frame for a given Julian Date (in AU)
+     * @brief
+     * Provides the Sun-vector in the ECI frame for the currently stored Julian date
      * @param rsun The array where to store the sun vector
-     * @param julianday The Julian day
-     * @param julianfrac The Julian Day Fraction
      */
-    void getSunVector(float rsun[3], long julianday, float julianfrac);
+    void getSunVector(float rsun[3]);
+
+    /**
+     * @brief
+     * Provides the Sun-vector in the ECI frame for a given Julian Date (in AU)
+     * @param rsun The array where to store the sun vector
+     * @param date A JulianDate object representing the desired time
+     */
+    void getSunVector(float rsun[3], JulianDate date);
 
 // Orbit management
     /**
-     * @brief Set the obirt parameters
+     * @brief
+     * Set the obirt parameters
      * @param axis The semi major axis of the orbit (m)
      * @param ecc The eccentricity of the orbit
      * @param inc The orbit plane inclination (rad)
@@ -149,21 +226,39 @@ public:
     void setOrbit(float axis, float ecc, float inc, float Omega, float omega, float theta);
 
     /**
-     * @brief Update the mean anomaly at the current Julian date
+     * @brief
+     * Set the obirt parameters
+     * @param parameters The array with the orbital parameters (units: m and rad)
+     * [axis, ecc, inc, right ascension, argument of perigee, true anomaly]
+     */
+    void setOrbit(float parameter[6]);
+
+    /**
+     * @brief
+     * Update the mean anomaly at the current Julian date
      * @param seconds The time since last update
      * @param tolerance The tolerance for the Newton optimization method
      */
     void updateTrueAnomaly(float seconds, float tolerance);
 
     /**
-     * @brief Provide the current position vector
+     * @brief
+     * Provide the current position vector
      * @param r_sat The position vector of the satellite
      */
     void getPositionVector(float r_sat[3]);
 
+    /**
+     * @brief
+     * Update the orbit to match the number of seconds ellapsed
+     * @param seconds The number of seconds ellapsed since last update
+     */
+    void update(float seconds);
+
 // Earth magnetic field
     /**
-     * @brief Update the Earth magnetic field vector for a given orbit position in the ECI frame
+     * @brief
+     * Update the Earth magnetic field vector for a given orbit position in the ECI frame
      * @param mag The magnetic vector of the Earth magnetic field
      * @param r_sat The position vector of the satellite
      * @param jday The Julian day (The object julian day if default or 0)
@@ -173,12 +268,12 @@ public:
 
     /**
      * @brief
-     * Converts a rotation quaternion to a rotation matrix
-     * @param quat The rotation quaternion to convert
-     * @param rot_coef The array where to store the rotation matrix
+     * Provides the Earth magnetic field vector according to the model
+     * @param rmag The array where to store the magnetic field
      */
-    static void quat2rot(float quat[4], float rot_coef[9]);
+    void getMagVector(float rmag[3]);
 
+// Others
     /**
      * @brief
      * Converts the tuple (azimuth, elevation) into a position vector
@@ -189,16 +284,17 @@ public:
     static void AzEl2Vec(float azimuth, float elevation, float vec[3]);
        
 private:
-    /* Private functions */
     /**
-     * @brief Returns the norm of a vector
+     * @brief
+     * Returns the norm of a vector
      * @param vec The vector from which to calculate the norm
      * @return The norm of the vector
      */
     float norm(float vec[3]);
     
     /**
-     * @brief Performs the scalar product of two vector
+     * @brief
+     * Performs the scalar product of two vector
      * a.b = transpose(a)*b
      * @param a First vector
      * @param b Second vector
@@ -208,8 +304,7 @@ private:
     
     /* Private variables */
     // Date
-    long julianday_;
-    float julianfrac_;
+    JulianDate _date;
     // orbit parameters
     float axis_;    // Semi major axis (m)
     float ecc_;     // Eccentricity
@@ -219,7 +314,7 @@ private:
     float M_;       // Mean anomaly
     float E_;       // Eccentric anomaly (rad)
     float theta_;   // True anomaly (rad)
-    // orbit stored computed-once variables 
+    // orbit computed-once variables 
     float rate;     // Mean angular rate (rad/s)
     float eccRatio; // = sqrt((1+ecc)/(1-ecc))
     float rotECI[9];// Rotation from perifocal to ECI frame
