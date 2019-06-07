@@ -56,6 +56,8 @@
  * - Earth Magnetic Field vector in the ECI frame
  * 
  * @see Orbit
+ * @see Ground
+ * @see JulianDate
  * @see AstroLib.h
  * 
  * # Dependencies and data type
@@ -212,10 +214,10 @@ public:
      */
     void getSunVector(float rsun[3], JulianDate date);
 
-// Orbit management
+// Spacecraft position management
     /**
      * @brief
-     * Set the obirt parameters
+     * Set the orbit parameters
      * @param axis The semi major axis of the orbit (m)
      * @param ecc The eccentricity of the orbit
      * @param inc The orbit plane inclination (rad)
@@ -248,13 +250,6 @@ public:
      */
     void getPositionVector(float r_sat[3]);
 
-    /**
-     * @brief
-     * Update the orbit to match the number of seconds ellapsed
-     * @param seconds The number of seconds ellapsed since last update
-     */
-    void update(float seconds);
-
 // Earth magnetic field
     /**
      * @brief
@@ -276,12 +271,20 @@ public:
 // Others
     /**
      * @brief
+     * Update the orbit to match the number of seconds ellapsed
+     * @param seconds The number of seconds ellapsed since last update
+     */
+    void update(float seconds);
+
+    /**
+     * @brief
      * Converts the tuple (azimuth, elevation) into a position vector
-     * @param azimuth The azimuth of the target
-     * @param elevation The elevation of the target
+     * in the North-East-Down (NED) reference frame
+     * @param azimuth The azimuth of the target measured clockwise from North
+     * @param elevation The elevation of the target from the horizon
      * @param vec The array where to store the position vector
      */
-    static void AzEl2Vec(float azimuth, float elevation, float vec[3]);
+    static void AzEl2NED(float azimuth, float elevation, float vec[3]);
        
 private:
     /**
@@ -329,7 +332,121 @@ private:
     const float r_earth = 6378000.0f;     // Earth radius in m
 }; // class Orbit
 
+/**
+ * @brief
+ * Provide a ground version of the Orbit class
+ * 
+ * @class Ground
+ * 
+ * @details
+ * Provides Sun and Earth magnetic field direction vectors in the North-East-Down
+ * reference frame to allow ground testing
+ * 
+ */
+class Ground {
+public:
+// Constructors
+    /**
+     * Ground default Constructor
+     */
+    Ground();
 
+    /**
+     * Ground default Destructor
+     */
+    ~Ground(void);
+
+// Date management
+    /**
+     * @brief
+     * Gets the Julian Date member of the orbit
+     * @return The Julian Date
+     */
+    JulianDate getJulianDate();
+
+    /**
+     * @brief
+     * Sets the Julian Date member of the orbit
+     * @param date The new date
+     */
+    void setJulianDate(JulianDate date);
+
+// Sun position
+    /**
+     * @brief
+     * Provides the azimuth and elevation of the sun
+     * @param azel The array where to store [azimuth, elevation]
+     */
+    void getSunAzEl(float azel[2]);
+
+    /**
+     * @brief
+     * Provides the Sun-vector in the ECI frame for the currently stored Julian date
+     * @param rsun The array where to store the sun vector
+     */
+    void getSunVector(float rsun[3]);
+
+// Spacecraft position management
+    /**
+     * @brief
+     * Set the orbit parameters
+     * @param lat The latitute of the site (in decimal degrees, North is positive)
+     * @param lon The longitude of the site (in decimal degrees, East is positive)
+     * @param alt The altitude of the site (in m)
+     * @param magN The North component of the Earth magnetic field (in uT)
+     * @param magE The East component of the Earth magnetic field (in uT)
+     * @param magD The Down component of the Earth magnetic field (in uT)
+     */
+    void setOrbit(float lat_deg, float lon_deg, float alt, float magN, float magE, float magD);
+
+    /**
+     * @brief
+     * Provide the current position vector
+     * @param r_sat The position vector of the satellite in m
+     */
+    void getPositionVector(float rsat[3]);
+
+// Earth magnetic field
+    /**
+     * @brief
+     * Provides the Earth magnetic field vector according to the model
+     * @param rmag The array where to store the magnetic field
+     */
+    void getMagVector(float rmag[3]);
+
+// Others
+    /**
+     * @brief
+     * Update the orbit to match the number of seconds ellapsed
+     * @param seconds The number of seconds ellapsed since last update
+     */
+    void update(float seconds);
+
+    /**
+     * @brief
+     * Converts the tuple (azimuth, elevation) into a position vector
+     * in the North-East-Down (NED) reference frame
+     * @param azimuth The azimuth of the target measured clockwise from North (rad)
+     * @param elevation The elevation of the target from the horizon (rad)
+     * @param vec The array where to store the position vector
+     */
+    static void AzEl2NED(float azimuth, float elevation, float vec[3]);
+
+private:
+    // Private members
+    JulianDate _date;
+    float _lat, _lon, _alt; // Latitude, longitude and altitude of the ground site (in rad)
+    float _rmag[3];
+
+    /* Math and orbital mechanics constants */
+    const float pi = 3.1415926535f;
+    const float twopi = 6.283185307f;
+    const float deg2rad = pi/180.0f;
+    const float sec2jFrac = 1 / (60*60*24);
+    const double mu = 398600441800000.0; // Earth gravitational constant (m3/s2)
+    const float omega_earth = 0.000072921158f; // Earth rotation pulsation periode
+    const float r_earth = 6378000.0f;     // Earth radius in m
+}; // class Ground
 
 } // namespace AstroLib
 

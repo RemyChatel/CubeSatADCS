@@ -141,7 +141,7 @@ using namespace AstroLib;
         rsun[2] = r_sol * sin(epsilon) * sin(lambda_e);
     }
 
-// Orbit management
+// Spacecraft position management
     void Orbit::setOrbit(float axis, float ecc, float inc, float Omega, float omega, float theta){
         axis_   = axis;
         ecc_    = ecc;
@@ -202,11 +202,6 @@ using namespace AstroLib;
         r_sat[2] = rotECI[6] * r0 + rotECI[7] * r1;
     }
 
-    void Orbit::update(float seconds){
-        _date.update(seconds);
-        updateTrueAnomaly(seconds);
-    }
-
 
 // Earth Magnetic field
     void Orbit::mag_vector(float mag[3], float r_sat[3], long jday, float jfrac){
@@ -247,6 +242,12 @@ using namespace AstroLib;
     }
 
 // Private methods and others
+
+    void Orbit::update(float seconds){
+        _date.update(seconds);
+        updateTrueAnomaly(seconds);
+    }
+
     float Orbit::norm(float vec[3]){
         return (float)sqrt(vec[0]*vec[0]+vec[1]*vec[1]+vec[2]*vec[2]);
     }
@@ -255,9 +256,101 @@ using namespace AstroLib;
         return a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
     }
 
-    void Orbit::AzEl2Vec(float azimuth, float elevation, float vec[3]){
-        vec[0] = sin(elevation);
-        float hyp = cos(elevation);
-        vec[1] = hyp * cos(azimuth);
-        vec[2] = hyp * sin(azimuth);
+    void Orbit::AzEl2NED(float azimuth, float elevation, float vec[3]){
+        vec[2]      =     - sin(elevation);
+        float hyp   =       cos(elevation);
+        vec[0]      = hyp * cos(azimuth);
+        vec[1]      = hyp * sin(azimuth);
+    }
+
+// ------------------- Ground -------------------//
+// Constructors
+    Ground::Ground(){}
+
+    Ground::~Ground(void){}
+
+// Date management
+    JulianDate Ground::getJulianDate(){
+        return _date;
+    }
+
+    void Ground::setJulianDate(JulianDate date){
+        _date = date;
+    }
+
+// Sun position
+    void Ground::getSunAzEl(float azel[2]){
+        // Adapted from David Brooks, Institute for Earth Science Research and Education
+        // Equations from Jean Meeus, Astronomical Algorithms
+        
+        float T,JD_frac,L0,M,e,C,L_true,f,R,GrHrAngle,Obl,RA,Decl,HrAngle,elev,azimuth;
+        long JD_whole,JDx;
+
+        JD_whole=_date.getDay();
+        JD_frac=_date.getFrac();
+        T=JD_whole-2451545;
+        T=(T+JD_frac)/36525.;
+        L0=deg2rad*fmod(280.46645+36000.76983*T,360);
+        M=deg2rad*fmod(357.5291+35999.0503*T,360);
+        e=0.016708617-0.000042037*T;
+        C=deg2rad*((1.9146-0.004847*T)*sin(M)+(0.019993-0.000101*T)*sin(2*M)+0.00029*sin(3*M));
+        f=M+C;
+        Obl=deg2rad*(23+26/60.+21.448/3600.-46.815/3600*T);
+        JDx=JD_whole-2451545;
+        GrHrAngle=280.46061837+(360*JDx)%360+.98564736629*JDx+360.98564736629*JD_frac;GrHrAngle=fmod(GrHrAngle,360.0f);
+        L_true=fmod(C+L0,twopi);
+        R=1.000001018*(1-e*e)/(1+e*cos(f));
+        RA=atan2(sin(L_true)*cos(Obl),cos(L_true));
+        Decl=asin(sin(Obl)*sin(L_true));
+        HrAngle=deg2rad*GrHrAngle+_lon-RA;
+        elev=asin(sin(_lat)*sin(Decl)+cos(_lat)*(cos(Decl)*cos(HrAngle)));
+        azimuth=pi+atan2(sin(HrAngle),cos(HrAngle)*sin(_lat)-tan(Decl)*cos(_lat));
+        azel[0] = azimuth;
+        azel[1] = elev;
+    }
+
+    void Ground::getSunVector(float rsun[3]){
+        float azel[2];
+        getSunAzEl(azel);
+        AzEl2NED(azel[0], azel[1], rsun);
+    }
+// Spacecraft position management
+    void Ground::setOrbit(float lat_deg, float lon_deg, float alt, float magN, float magE, float magD){
+        _rmag[0] = magN;
+        _rmag[1] = magE;
+        _rmag[2] = magD;
+
+        _lat = lat_deg * deg2rad;
+        _lon = lon_deg * deg2rad;
+        _alt = alt;
+    }
+
+    void Ground::getPositionVector(float rsat[3]){
+        // From Converting between Earth-Centered, Earth Fixed and Geodetic Coordinates, D. Rose 
+        float a = 6378137.0; // WGS-84 semi-major axis
+        float e2 = 6.6943799901377997e-3; // WGS-84 first eccentricity squared
+        float n = a/sqrt( 1 - e2*sin( _lat )*sin( _lat ) );
+
+        rsat[0] = ( n + _alt )*cos( _lat )*cos( _lon );    //ECEF x
+        rsat[1] = ( n + _alt )*cos( _lat )*sin( _lon );    //ECEF y
+        rsat[2] = ( n*(1 - e2 ) + _alt )*sin( _lat );        //ECEF z
+    }
+
+// Earth magnetic field
+    void Ground::getMagVector(float rmag[3]){
+        rmag[0] = _rmag[0];
+        rmag[1] = _rmag[1];
+        rmag[2] = _rmag[2];
+    }
+
+// Others
+    void Ground::update(float seconds){
+        _date.update(seconds);
+    }
+
+    void Ground::AzEl2NED(float azimuth, float elevation, float vec[3]){
+        float hyp   =       cos(elevation);
+        vec[0]      = hyp * cos(azimuth);
+        vec[1]      = hyp * sin(azimuth);
+        vec[2]      =     - sin(elevation);
     }
