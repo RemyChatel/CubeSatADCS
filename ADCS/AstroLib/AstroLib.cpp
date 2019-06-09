@@ -172,8 +172,8 @@ using namespace AstroLib;
         //rotECI[8] = orbitForm * (ci);               // Can be commented to skip
     }
 
-    void Orbit::setOrbit(float parameter[6]){
-        setOrbit(parameter[0], parameter[1], parameter[2], parameter[3], parameter[4], parameter[5]);
+    void Orbit::setOrbit(float parameters[6]){
+        setOrbit(parameters[0], parameters[1], parameters[2], parameters[3], parameters[4], parameters[5]);
     }
 
     void Orbit::updateTrueAnomaly(float seconds, float tolerance = 1e-5){

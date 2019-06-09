@@ -639,7 +639,7 @@
         return result;
     }
 
-    Matrix Matrix::Inv() {
+    Matrix Matrix::Inv() const {
         if( _nRows == _nCols )
         {
             if( _nRows == 2 )   // 2x2 Matrices
@@ -769,7 +769,7 @@
     }
 
 
-    float Matrix::det() {
+    float Matrix::det() const{
         if( _nRows == _nCols  )
         {
 

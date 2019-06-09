@@ -554,7 +554,7 @@ public:
      * the determinant is != 0, Same matrix will be return if Det( Mat ) == 0.
      * @return Matrix Inverse
      */
-    Matrix Inv();
+    Matrix Inv() const;
 
     /**
      * @brief
@@ -571,7 +571,7 @@ public:
      * @brief Calculates the determinant of a Matrix.
      * @return the determinant.
      */
-    float det();
+    float det() const;
 
     /**
      * @brief

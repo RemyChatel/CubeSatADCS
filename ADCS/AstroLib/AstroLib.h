@@ -233,7 +233,7 @@ public:
      * @param parameters The array with the orbital parameters (units: m and rad)
      * [axis, ecc, inc, right ascension, argument of perigee, true anomaly]
      */
-    void setOrbit(float parameter[6]);
+    void setOrbit(float parameters[6]);
 
     /**
      * @brief
@@ -390,8 +390,8 @@ public:
     /**
      * @brief
      * Set the orbit parameters
-     * @param lat The latitute of the site (in decimal degrees, North is positive)
-     * @param lon The longitude of the site (in decimal degrees, East is positive)
+     * @param lat_deg The latitute of the site (in decimal degrees, North is positive)
+     * @param lon_deg The longitude of the site (in decimal degrees, East is positive)
      * @param alt The altitude of the site (in m)
      * @param magN The North component of the Earth magnetic field (in uT)
      * @param magE The East component of the Earth magnetic field (in uT)
@@ -402,7 +402,7 @@ public:
     /**
      * @brief
      * Provide the current position vector
-     * @param r_sat The position vector of the satellite in m
+     * @param rsat The position vector of the satellite in m
      */
     void getPositionVector(float rsat[3]);
 
