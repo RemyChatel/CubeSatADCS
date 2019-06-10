@@ -14,8 +14,8 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     pc->printf("\n\r\n\r------------------------------\n\r");
     pc->printf("Connection OK\n\r");
 
-    Matrix quat;
-    
+    Matrix quat(4,1);
+    /*
     float coef_th[9] = {0.4153, 0.4472, 0.7921, -0.7652, 0.6537, 0.0274, -0.5056, -0.6104, 0.6097};
     Matrix mat_th = Matrix(3,3, coef_th);
     
@@ -33,7 +33,7 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     
     float *san[5] = {sa1n, sa2n, sa3n, sa4n, sa5n};
     float *sbn[5] = {sb1n, sb2n, sb3n, sb4n, sb5n};
-    /*
+    */
     // To test without noise
     Matrix mat_th = Matrix::Rot321(45 * DEG2RAD, -30*DEG2RAD, 60*DEG2RAD);
     float sa1n[3],sa2n[3],sa3n[3],sa4n[3],sa5n[3];
@@ -67,11 +67,13 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
         sa[i].getCoef(san[i]);
         sb[i].getCoef(sbn[i]);
     }
-    */
+    
 
     float om[5] = {0.0100f, 0.0325f, 0.0550f, 0.0775, 0.1000};
 
     float q[4];
+
+    printMat(sa[0],pc);
 
     while(1){
     lastUpdate = t->read_us();
@@ -83,13 +85,11 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     /************** LOOP END **************/
 
     ellapsed = t->read_us()-lastUpdate;
-    pc->printf("\n\r\n\rLoop time %d us | Frequency %4f Hz\n\r", ellapsed, 1000000.0f/ellapsed);
+    pc->printf("\n\r\n\rLoop time %d us | Frequency %4.0f Hz\n\r", ellapsed, 1000000.0f/ellapsed);
 
     /*************** PRINTS ***************/
-    pc->printf("Quaternion: %f | %f | %f | %f\n\r", q[0], q[1], q[2], q[3]);
-    float rot[9];
-    Matrix mat_rot(3,3);
     quat = Matrix(4,1, q);
+    Matrix mat_rot(3,3);
     mat_rot = Matrix::quat2rot(quat);
     mat_rot = mat_rot.Transpose(); // Taking into account the 1-2-3 rot matrix
     pc->printf("Computed Rotation matrix\n\r");
@@ -112,17 +112,6 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     printMat(Matrix::rot2quat(mat_th), pc);
     pc->printf("Computed quaternion\n\r");
     printMat(quat, pc);
-    /*
-    pc->printf("san[0][0]: %f\n\r", san[2][0]);
-    pc->printf("san[0][1]: %f\n\r", san[2][1]);
-    pc->printf("san[0][2]: %f\n\r", san[2][2]);
-    
-    printMat(sb[0],pc);
-    printMat(sb[1],pc);
-    printMat(sb[2],pc);
-    printMat(sb[3],pc);
-    printMat(sb[4],pc);
-    */
 
     /************* PRINTS END **************/
 

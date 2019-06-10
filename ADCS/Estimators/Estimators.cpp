@@ -71,13 +71,13 @@ void Estimators::QUEST(float quat[4], int N, float **s_eci, float **s_body, floa
 
     k22 = B.trace();
 
-    k12(0) = B(1,2) - B(2,1);
-    k12(1) = B(2,0) - B(0,2);
-    k12(2) = B(0,1) - B(1,0);
+    k12(1) = B(2,3) - B(3,2);
+    k12(2) = B(3,1) - B(1,3);
+    k12(3) = B(1,2) - B(2,1);
 
-    trAdjS  = S(1,1)*S(2,2) - S(2,1)*S(1,2) 
-            + S(0,0)*S(2,2) - S(0,2)*S(2,0) 
-            + S(0,0)*S(1,1) - S(0,1)*S(1,0);
+    trAdjS  = S(2,2)*S(3,3) - S(3,2)*S(2,3) 
+            + S(1,1)*S(3,3) - S(1,3)*S(3,1) 
+            + S(1,1)*S(2,2) - S(1,2)*S(2,1);
 
     a = k22 * k22 - trAdjS;
     b = k22 * k22 + Matrix::dot(k12, k12);
@@ -89,7 +89,6 @@ void Estimators::QUEST(float quat[4], int N, float **s_eci, float **s_body, floa
     lambda = lambda0;
     float lambda_prev = 0;
     while(fabs(lambda-lambda_prev) > tolerance && iteration < 10000){
-        // pc2.printf("In loop\n\r");
         lambda_prev = lambda;
         lambda -= (lambda*lambda*lambda*lambda - (a + b) * lambda * lambda - c *lambda + (a * b + c * k22 - d)) / (4 * lambda * lambda * lambda - 2 * (a + b) * lambda - c);
         iteration++;
@@ -109,7 +108,7 @@ void Estimators::QUEST(float quat[4], int N, float **s_eci, float **s_body, floa
 
     /* Returning the quaternion */
     quat[0] = gamma;
-    quat[1] = x(0);
-    quat[2] = x(1);
-    quat[3] = x(2);
+    quat[1] = x(1);
+    quat[2] = x(2);
+    quat[3] = x(3);
 }

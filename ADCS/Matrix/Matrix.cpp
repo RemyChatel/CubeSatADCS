@@ -124,7 +124,7 @@
 
 // Operators
     float& Matrix::operator ()(int row, int col) {
-        //--row; --col;
+        --row; --col;
 
         if( row >= _nRows || col >= _nCols)
         {
@@ -136,7 +136,7 @@
     }
 
     float Matrix::operator ()(int row, int col) const {
-        //--row; --col;
+        --row; --col;
 
         if( row >= _nRows || col >= _nCols)
         {
@@ -147,7 +147,7 @@
     }
 
     float& Matrix::operator ()(int index) {
-        //--index;
+        --index;
 
         if(this->isVector()){
             if(index < _nRows){
@@ -163,7 +163,7 @@
     }
 
     float Matrix::operator ()(int index) const {
-        //--index;
+        --index;
 
         if(this->isVector()){
             if(index < _nRows){
@@ -905,28 +905,28 @@
 
             rot.Resize(3, 3);
 
-            float qw = quat(0,0), qx = quat(1,0), qy = quat(2,0), qz = quat(3,0);
+            float qw = quat._matrix[0][0], qx = quat._matrix[1][0], qy = quat._matrix[2][0], qz = quat._matrix[3][0];
             float sqw = qw*qw;
             float sqx = qx*qx;
             float sqy = qy*qy;
             float sqz = qz*qz;
-            rot(0,0) = ( sqx - sqy - sqz + sqw) ; // since sqw + sqx + sqy + sqz =1/invs*invs
-            rot(1,1) = (-sqx + sqy - sqz + sqw) ;
-            rot(2,2) = (-sqx - sqy + sqz + sqw) ;
+            rot._matrix[0][0] = ( sqx - sqy - sqz + sqw) ; // since sqw + sqx + sqy + sqz =1/invs*invs
+            rot._matrix[1][1] = (-sqx + sqy - sqz + sqw) ;
+            rot._matrix[2][2] = (-sqx - sqy + sqz + sqw) ;
             
             float tmp1 = qx*qy;
             float tmp2 = qz*qw;
-            rot(1,0) = 2.0 * (tmp1 + tmp2) ;
-            rot(0,1) = 2.0 * (tmp1 - tmp2) ;
+            rot._matrix[1][0] = 2.0 * (tmp1 + tmp2) ;
+            rot._matrix[0][1] = 2.0 * (tmp1 - tmp2) ;
             
             tmp1 = qx*qz;
             tmp2 = qy*qw;
-            rot(2,0) = 2.0 * (tmp1 - tmp2) ;
-            rot(0,2) = 2.0 * (tmp1 + tmp2) ;
+            rot._matrix[2][0] = 2.0 * (tmp1 - tmp2) ;
+            rot._matrix[0][2] = 2.0 * (tmp1 + tmp2) ;
             tmp1 = qy*qz;
             tmp2 = qx*qw;
-            rot(2,1) = 2.0 * (tmp1 + tmp2) ;
-            rot(1,2) = 2.0 * (tmp1 - tmp2) ;
+            rot._matrix[2][1]= 2.0 * (tmp1 + tmp2) ;
+            rot._matrix[1][2]= 2.0 * (tmp1 - tmp2) ;
             rot.Transpose();
         }
         return rot;
@@ -940,11 +940,11 @@
             }
             quat *= 1/quat.norm();
             euler.Resize(3, 1);
-            euler(0,0) = atan2(2 * ( quat(0,0) * quat(1,0) + quat(2,0) * quat(3,0) ),
-                               1 - 2 * ( quat(1,0) * quat(1,0) + quat(2,0) * quat(2,0) ) );
-            euler(1,0) = asin( 2 * ( quat(0,0) * quat(2,0) - quat(1,0) * quat(3,0) ) );
-            euler(2,0) = atan2( 2 * ( quat(0,0) * quat(3,0) + quat(1,0) * quat(2,0) ) ,
-                               1 - 2 * ( quat(2,0) * quat(2,0) + quat(3,0) * quat(3,0) ) );
+            euler._matrix[0][0] = atan2(2 * ( quat._matrix[0][0] * quat._matrix[1][0] + quat._matrix[2][0] * quat._matrix[3][0] ),
+                               1 - 2 * ( quat._matrix[1][0] * quat._matrix[1][0] + quat._matrix[2][0] * quat._matrix[2][0] ) );
+            euler._matrix[1][0] = asin( 2 * ( quat._matrix[0][0] * quat._matrix[2][0] - quat._matrix[1][0] * quat._matrix[3][0] ) );
+            euler._matrix[2][0] = atan2( 2 * ( quat._matrix[0][0] * quat._matrix[3][0] + quat._matrix[1][0] * quat._matrix[2][0] ) ,
+                               1 - 2 * ( quat._matrix[2][0] * quat._matrix[2][0] + quat._matrix[3][0] * quat._matrix[3][0] ) );
         }
         return euler;
     }
@@ -958,23 +958,23 @@
             }
             quat.Resize(4, 1);
             /*
-            float psi[4]    = {cos(euler(2,0)/2), 0, 0, sin(euler(2,0)/2)};
-            float theta[4]  = {cos(euler(1,0)/2), 0, sin(euler(1,0)/2), 0};
-            float phi[4]    = {cos(euler(0,0)/2), sin(euler(0,0)/2), 0, 0};
+            float psi[4]    = {cos(euler._matrix[2][0]/2), 0, 0, sin(euler._matrix[2][0]/2)};
+            float theta[4]  = {cos(euler._matrix[1][0]/2), 0, sin(euler._matrix[1][0]/2), 0};
+            float phi[4]    = {cos(euler._matrix[0][0]/2), sin(euler._matrix[0][0]/2), 0, 0};
             Matrix rotPsi(4,1, psi), rotTheta(4,1, theta), rotPhi(4,1,phi);
             quat = rotPsi * rotPhi * rotPhi;
             */
-            float cy = cos(euler(2,0) * 0.5);
-            float sy = sin(euler(2,0) * 0.5);
-            float cp = cos(euler(1,0) * 0.5);
-            float sp = sin(euler(1,0) * 0.5);
-            float cr = cos(euler(0,0) * 0.5);
-            float sr = sin(euler(0,0) * 0.5);
+            float cy = cos(euler._matrix[2][0] * 0.5);
+            float sy = sin(euler._matrix[2][0] * 0.5);
+            float cp = cos(euler._matrix[1][0] * 0.5);
+            float sp = sin(euler._matrix[1][0] * 0.5);
+            float cr = cos(euler._matrix[0][0] * 0.5);
+            float sr = sin(euler._matrix[0][0] * 0.5);
 
-            quat(0,0) = cy * cp * cr + sy * sp * sr;
-            quat(1,0) = cy * cp * sr - sy * sp * cr;
-            quat(2,0) = sy * cp * sr + cy * sp * cr;
-            quat(3,0) = sy * cp * cr - cy * sp * sr;
+            quat._matrix[0][0] = cy * cp * cr + sy * sp * sr;
+            quat._matrix[1][0] = cy * cp * sr - sy * sp * cr;
+            quat._matrix[2][0] = sy * cp * sr + cy * sp * cr;
+            quat._matrix[3][0] = sy * cp * cr - cy * sp * sr;
         }
         return quat;
     }
@@ -987,7 +987,7 @@
                 euler.Transpose();
             }
             rot = eye(3);
-            rot = RotZ(euler(2,0)) * RotY(euler(1,0)) * RotX(euler(0,0));
+            rot = RotZ(euler._matrix[2][0]) * RotY(euler._matrix[1][0]) * RotX(euler._matrix[0][0]);
         }
         return rot;
     }
@@ -1000,7 +1000,7 @@
                 euler.Transpose();
             }
             rot = eye(3);
-            rot = RotX(euler(0,0)) * RotY(euler(1,0)) * RotZ(euler(2,0));
+            rot = RotX(euler._matrix[0][0]) * RotY(euler._matrix[1][0]) * RotZ(euler._matrix[2][0]);
         }
         return rot;
     }
@@ -1009,15 +1009,16 @@
         Matrix euler;
         if(rot.isSquare() && rot.getRows() == 3){
             euler.Resize(3, 1);
-            float sy = sqrt(rot(0,0) * rot(0,0) + rot(0,0) * rot(0,0));
+            
+            float sy = sqrt(rot._matrix[0][0] * rot._matrix[0][0] + rot._matrix[0][0] * rot._matrix[0][0]);
             if(!(sy < 1e-5)){
-                euler(0,0) = atan2(rot(2,1), rot(2,2));
-                euler(1,0) = atan2(-rot(2,0), sy);
-                euler(2,0) = atan2(rot(1,0), rot(0,0));
+                euler._matrix[0][0] = atan2(rot._matrix[2][1], rot._matrix[2][2]);
+                euler._matrix[1][0] = atan2(-rot._matrix[2][0], sy);
+                euler._matrix[2][0] = atan2(rot._matrix[1][0], rot._matrix[0][0]);
             } else {
-                euler(0,0) = atan2(rot(2,1), rot(2,2));
-                euler(1,0) = atan2(-rot(2,0), sy);
-                euler(2,0) = 0;
+                euler._matrix[0][0] = atan2(rot._matrix[2][1], rot._matrix[2][2]);
+                euler._matrix[1][0] = atan2(-rot._matrix[2][0], sy);
+                euler._matrix[2][0] = 0;
             }
         }
         return euler;
@@ -1028,33 +1029,33 @@
         if(rot.isSquare() && rot.getRows() == 3){
             quat.Resize(4, 1);
 
-            quat(0,0) = sqrt(rot.trace() + 1) / 2;
+            quat._matrix[0][0] = sqrt(rot.trace() + 1) / 2;
 
-            if(quat(0,0) != 0) {
-                quat(1,0) = -( rot(2,1) - rot(1,2) ) / (4 * quat(0,0));
-                quat(2,0) = -( rot(0,2) - rot(2,0) ) / (4 * quat(0,0));
-                quat(3,0) = -( rot(1,0) - rot(0,1) ) / (4 * quat(0,0));
+            if(quat._matrix[0][0] != 0) {
+                quat._matrix[1][0] = -( rot._matrix[2][1] - rot._matrix[1][2] ) / (4 * quat._matrix[0][0]);
+                quat._matrix[2][0] = -( rot._matrix[0][2] - rot._matrix[2][0] ) / (4 * quat._matrix[0][0]);
+                quat._matrix[3][0] = -( rot._matrix[1][0] - rot._matrix[0][1] ) / (4 * quat._matrix[0][0]);
             } else {
-                quat(1,0) = sqrt( ( rot(0,0) +1 ) / 2);
-                quat(2,0) = sqrt( ( rot(1,1) +1 ) / 2);
-                quat(3,0) = sqrt( ( rot(2,2) +1 ) / 2);
+                quat._matrix[1][0] = sqrt( ( rot._matrix[0][0] +1 ) / 2);
+                quat._matrix[2][0] = sqrt( ( rot._matrix[1][1] +1 ) / 2);
+                quat._matrix[3][0] = sqrt( ( rot._matrix[2][2] +1 ) / 2);
 
-                if(fabs(quat(1,0)) > 0){
-                    quat(1,0) = fabs(quat(1,0));
-                    quat(2,0) = fabs(quat(2,0)) * ( (rot(0,1)>0)?1:-1 );
-                    quat(3,0) = fabs(quat(3,0)) * ( (rot(0,2)>0)?1:-1 );
-                } else if(fabs(quat(2,0))>0) {
-                    quat(1,0) = fabs(quat(1,0)) * ( (rot(0,1)>0)?1:-1 );
-                    quat(2,0) = fabs(quat(2,0));
-                    quat(3,0) = fabs(quat(3,0)) * ( (rot(1,2)>0)?1:-1 );
-                } else if(fabs(quat(3,0))>0) {
-                    quat(1,0) = fabs(quat(1,0)) * ( (rot(0,2)>0)?1:-1 );
-                    quat(2,0) = fabs(quat(2,0)) * ( (rot(1,2)>0)?1:-1 );
-                    quat(3,0) = fabs(quat(3,0));
+                if(fabs(quat._matrix[1][0]) > 0){
+                    quat._matrix[1][0] = fabs(quat._matrix[1][0]);
+                    quat._matrix[2][0] = fabs(quat._matrix[2][0]) * ( (rot._matrix[0][1]>0)?1:-1 );
+                    quat._matrix[3][0] = fabs(quat._matrix[3][0]) * ( (rot._matrix[0][2]>0)?1:-1 );
+                } else if(fabs(quat._matrix[2][0])>0) {
+                    quat._matrix[1][0] = fabs(quat._matrix[1][0]) * ( (rot._matrix[0][1]>0)?1:-1 );
+                    quat._matrix[2][0] = fabs(quat._matrix[2][0]);
+                    quat._matrix[3][0] = fabs(quat._matrix[3][0]) * ( (rot._matrix[1][2]>0)?1:-1 );
+                } else if(fabs(quat._matrix[3][0])>0) {
+                    quat._matrix[1][0] = fabs(quat._matrix[1][0]) * ( (rot._matrix[0][2]>0)?1:-1 );
+                    quat._matrix[2][0] = fabs(quat._matrix[2][0]) * ( (rot._matrix[1][2]>0)?1:-1 );
+                    quat._matrix[3][0] = fabs(quat._matrix[3][0]);
                 } else {
-                    quat(1,0) = 0;
-                    quat(2,0) = 0;
-                    quat(3,0) = 0;
+                    quat._matrix[1][0] = 0;
+                    quat._matrix[2][0] = 0;
+                    quat._matrix[3][0] = 0;
                 }
             }
         }
@@ -1111,7 +1112,7 @@
             if(euler._nRows == 1){
                 euler.Transpose();
             }
-            rot = Rot321(euler(0,0), euler(1,0), euler(2,0));
+            rot = Rot321(euler._matrix[0][0], euler._matrix[1][0], euler._matrix[2][0]);
         }
         return rot;
     }

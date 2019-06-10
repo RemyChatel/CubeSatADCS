@@ -22,7 +22,7 @@ int MatrixTest(Serial *pc, I2C *i2c, Timer *t){
     Matrix vec3(3,1);
     vec3 = vec2;
     printMat(vec3, pc);
-    vec2(1,0) = 10.0f;
+    vec2(2) = 10.0f;
     pc->printf("b: ");
     printMat(vec2, pc);
     pc->printf("c: ");
@@ -87,7 +87,7 @@ int MatrixTest(Serial *pc, I2C *i2c, Timer *t){
     Matrix c;
     c = B;
     printMat(c, pc);
-    B(0,0) = 0.0f;
+    B(1,1) = 0.0f;
     pc->printf("B :\n\r");
     printMat(B, pc);
     pc->printf("C :\n\r");
@@ -169,6 +169,19 @@ int MatrixTest(Serial *pc, I2C *i2c, Timer *t){
     }
     pc->printf("}\n\r");
 
+    pc->printf("\n\r\n\rAssignation test\n\r");
+    printMat(A, pc);
+    A(2) = 25;
+    A(1,2) = 30;
+    printMat(A, pc);
+    A = Matrix(3,3, coefA);
+
+    pc->printf("\n\r << test\n\r");
+    A << 19 << 18 << 17
+      << 16 << 15 << 14
+      << 13 << 12 << 11;
+    printMat(A, pc);
+
     pc->printf("\n\r\n\rKinematic methods test\n\r");
     float phi = 45*3.1415926535f/180.0f;        // Rotation around the new X axis
     float theta = -30*3.1415926535f/180.0f;     // Rotation around the new Y axis
@@ -210,18 +223,5 @@ int MatrixTest(Serial *pc, I2C *i2c, Timer *t){
     pc->printf("Rotation matrix 321\n\r");
     printMat(Matrix::Rot321(eul), pc);
 
-
-    pc->printf("\n\r\n\rAssignation test\n\r");
-    printMat(A, pc);
-    A(2) = 25;
-    A(1,2) = 30;
-    printMat(A, pc);
-    A = Matrix(3,3, coefA);
-
-    pc->printf("\n\r << test\n\r");
-    A << 19 << 18 << 17
-      << 16 << 15 << 14
-      << 13 << 12 << 11;
-    printMat(A, pc);
     return 1;
 }
