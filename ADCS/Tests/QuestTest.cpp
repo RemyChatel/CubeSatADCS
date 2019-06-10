@@ -38,7 +38,8 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     
     #else
     // To test without noise
-    Matrix mat_th = Matrix::Rot321(45 * DEG2RAD, -30*DEG2RAD, 60*DEG2RAD);
+    //                                roll          pitch          yaw
+    Matrix mat_th = Matrix::Rot321(45 * DEG2RAD, -30 * DEG2RAD, 60 * DEG2RAD);
     float sa1n[3],sa2n[3],sa3n[3],sa4n[3],sa5n[3];
     float sb1n[3],sb2n[3],sb3n[3],sb4n[3],sb5n[3];
     float *san[5] = {sa1n, sa2n, sa3n, sa4n, sa5n};

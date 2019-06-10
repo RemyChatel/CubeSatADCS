@@ -131,7 +131,7 @@ public:
 // Operators
     /**
      * @brief
-     * Subindex for Matrix elements assignation.
+     * Subindex for Matrix elements assignation. (INDEX STARTS AT 1)
      * @param row
      * @param col
      * @return pointer to the element.
@@ -141,7 +141,7 @@ public:
 
     /**
      * @brief
-     * Subindex for Matrix elements.
+     * Subindex for Matrix elements. (INDEX STARTS AT 1)
      * @param row
      * @param col
      * @return the element.
@@ -150,7 +150,7 @@ public:
 
     /**
      * @brief
-     * Subindex for Vector elements assignation.
+     * Subindex for Vector elements assignation. (INDEX STARTS AT 1)
      * @param row
      * @param col
      * @return pointer to the element.
@@ -160,7 +160,7 @@ public:
 
     /**
      * @brief
-     * Subindex for Vector elements.
+     * Subindex for Vector elements. (INDEX STARTS AT 1)
      * @param row
      * @param col
      * @return the element.
@@ -409,7 +409,7 @@ public:
      * position.
      * The current Row will be moved down to allocate space, and all elements will
      * be initialized to zero in the new row.
-     * @param Mat Matrix in wich to insert a Row
+     * @param Mat Matrix in wich to insert a Row (INDEX STARTS AT 1)
      * @param index Position where to insert the row (index start at one)
      */
     static void AddRow( Matrix& Mat, int index );
@@ -422,7 +422,7 @@ public:
      * to extract a Row from another Matrix.
      * @param Receip Matrix to be Modified.
      * @param Row Row to be added.
-     * @param index position in wich to be added, _nRow + 1 last position.
+     * @param index position in wich to be added, _nRow + 1 for last position. (INDEX STARTS AT 1)
      */
     static void AddRow( Matrix& Receip, const Matrix& Row, int index );
 
@@ -431,7 +431,7 @@ public:
      * Invoking this static method will increase a Column in Matrix in the
      * desired Position.
      * @param Mat Matrix in wich to insert a Column
-     * @param index Position where to insert the column (index start at one)
+     * @param index Position where to insert the column (INDEX STARTS AT 1)
      */
     static void AddCol( Matrix& Mat, int index );
 
@@ -443,7 +443,7 @@ public:
      * to extract a Column from another Matrix.
      * @param Receip Matrix to be modified.
      * @param Col Data to be copied.
-     * @param index Postion in Receip Matrix .
+     * @param index Postion in Receip Matrix . (INDEX STARTS AT 1)
      */
     static void AddCol( Matrix& Receip, const Matrix& Col, int index  );
 
@@ -451,7 +451,7 @@ public:
      * @brief
      * Static Function Deletes Row from Matrix, Static to prevent missuse
      * @param Mat Matrix to delete Row from
-     * @param Row Position of the row to be deleted (index starts at one)
+     * @param Row Position of the row to be deleted (INDEX STARTS AT 1)
      */
     static void DeleteRow( Matrix& Mat, int Row );
 
@@ -461,7 +461,7 @@ public:
      * missuse.
      * Print error and does nothing if out of limits.
      * @param Mat Matrix to delete from.
-     * @param Col Position of the column to be deleted (index starts at one)
+     * @param Col Position of the column to be deleted (INDEX STARTS AT 1)
      */
     static void DeleteCol( Matrix& Mat, int Col );
 
@@ -469,7 +469,7 @@ public:
      * @brief
      * This method extracts a Row from a Matrix and Saves it in Mat.
      * If Row is out of the parameters it does nothing, but prints a warning.
-     * @param row Position of the row to export
+     * @param row Position of the row to export (INDEX STARTS AT 1)
      * @param Mat Matrix to extract from.
      * @return New Row Matrix.
      */
@@ -480,7 +480,7 @@ public:
      * This method extracts a Column from a Matrix and returns the Column
      * as a new Matrix.
      * If Row is out of the parameters, it does nothing and prints a warning.
-     * @param col Position of the column to export
+     * @param col Position of the column to export (INDEX STARTS AT 1)
      * @param Mat Matrix to extract from.
      * @return New Row Matrix.
      */
@@ -510,8 +510,8 @@ public:
      * Index starts at [1][1].
     *
      * @param number   Number to be set
-     * @param Row      Row of Matrix
-     * @param Col      Column of Matrix
+     * @param Row      Row of Matrix (INDEX STARTS AT 1)
+     * @param Col      Column of Matrix (INDEX STARTS AT 1)
      */
     void add( int Row, int Col, float number );
 
@@ -525,9 +525,10 @@ public:
 // Getters and Setters
     /**
      * @brief
-     * Return the number in position [Row],[Col]
-     * @param Row = number of row in matrix
-     * @param Col = number of Col in matrix
+     * Return the number in position [Row],[Col] of the storage vector
+     * @attention This method uses indexes that start at zero and NOT one like other functions
+     * @param Row = number of row in matrix  (INDEX STARTS AT ZERO)
+     * @param Col = number of Col in matrix  (INDEX STARTS AT ZERO)
      * @return Num = float number in matrix
      */
     float getNumber( int Row, int Col ) const;
@@ -639,9 +640,9 @@ public:
     /**
      * @brief
      * Create the 3-2-1 (or Z-Y-X) direction cosine Matrix
-     * @param yaw The yaw angle (psi on z)
-     * @param pitch The pitch angle (theta on y)
-     * @param roll The roll angle (phi on x)
+     * @param yaw The yaw/heading angle (psi on z)
+     * @param pitch The pitch/attitude angle (theta on y)
+     * @param roll The roll/bank angle (phi on x)
      * @return The direction cosine matrix
      */
     static Matrix Rot321(float roll, float pitch, float yaw);
@@ -674,17 +675,17 @@ public:
 
     /**
      * @brief
-     * Converts a rotation quaternion in Euler angles
-     * @param quat The rotation quaternion [x,y,z,eta] with eta the salar part
+     * Converts a rotation quaternion in Euler angles (3-2-1 convention)
+     * @param quat The rotation quaternion [x,y,z,eta] with eta the scalar part
      * @return The euler angles [yaw,pitch,roll]=[phi,theta,psi]
      */
     static Matrix quat2euler(Matrix quat);
 
     /**
      * @brief
-     * Converts Euler angle to rotation quaternion
+     * Converts Euler angle to rotation quaternion (3-2-1 convention)
      * @param euler Euler angles vector [yaw,pitch,roll]=[phi,theta,psi]
-     * @return The rotation quaternion [eta,x,y,z] with eta the salar part
+     * @return The rotation quaternion [eta,x,y,z] with eta the scalar part
      */
     static Matrix euler2quat(Matrix euler);
 
@@ -706,7 +707,7 @@ public:
 
     /**
      * @brief
-     * Converts 3-2-1 rotation matrix (Z->Y->X) to Euler angles
+     * Converts 3-2-1 rotation matrix (Z->Y->X) to Euler angles (3-2-1 convention)
      * @param rot The array where to store the rotation matrix (Z->Y->X)
      * @return The euler angles [yaw,pitch,roll]=[phi,theta,psi]
      */
