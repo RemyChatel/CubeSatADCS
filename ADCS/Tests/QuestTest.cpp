@@ -1,8 +1,9 @@
 #include "Test.h"
 #include "Estimators.h"
-#include "AstroLib.h"
 #define DEG2RAD 3.1415926535f/180.0f
 #define RAD2DEG 180.0f/3.1415926535f
+
+#define LOOP_TIME 5
 
 int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     
@@ -11,7 +12,6 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     int seconds = 0;;
     int minutes = 0;
     t->start();
-    pc->baud(115200);
     pc->printf("\n\r\n\r------------------------------\n\r");
     pc->printf("Connection OK\n\r");
 
@@ -122,12 +122,12 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
 
     /************* PRINTS END **************/
 
-    seconds+=5;
-    if(seconds==60){
-        seconds = 0;
+    seconds+=LOOP_TIME;
+    if(seconds>=60){
+        seconds -= 60;
         minutes++;
     }
-    wait(5);
+    wait(LOOP_TIME);
     }
 
     return 1;

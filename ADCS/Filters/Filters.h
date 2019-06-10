@@ -84,8 +84,8 @@ public:
      * @param I_sat_init    The inertia matrix of the satellite (3x3) Matrix
      * @param I_wheel_init  The inertia matrix of the reation wheels (3x3) Matrix
      * @param p_init        The initial covariance matrix (7x7) Matrix
-     * @param kalman_q      The process noise covariance for the Kalman filter
-     * @param kalman_r      The sensor noise covariance for the Kalman filter
+     * @param kalman_q      The process noise covariance for the Kalman filter (7x7) Matrix
+     * @param kalman_r      The sensor noise covariance for the Kalman filter (7x7) Matrix
      */
     KalmanFilter(Matrix I_sat_init, Matrix I_wheel_init, Matrix p_init, Matrix kalman_q, Matrix kalman_r);
 
@@ -125,7 +125,7 @@ public:
      * @param w_measured      (@ step k)      Angular velocities in bf measured from sensors [rad/s] (3x1) Matrix
      * @param w_rw_prev       (@ step k-1)    Reaction wheel angular velocity [rad/s] at the previous time step (3x1) Matrix
      * @param T_bf_prev       (@ step k-1)    Total torque commanded to satellite in bf by external environment and magnetorquers (not reaction wheels!) [Nm] (3x1) Matrix  
-     * @param T_rw_prev     (@ step k-1)    Torque commanded to satellite in bf by only reaction wheels [Nm] (3x1) Matrix
+     * @param T_rw_prev       (@ step k-1)    Torque commanded to satellite in bf by only reaction wheels [Nm] (3x1) Matrix
      * @param dt              (@ step k)      Simulation time step [sec].
      * @return The new predicted quaternion
      */
