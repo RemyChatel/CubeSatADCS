@@ -2,6 +2,7 @@
 #include "Estimators.h"
 #include "AstroLib.h"
 #define DEG2RAD 3.1415926535f/180.0f
+#define RAD2DEG 180.0f/3.1415926535f
 
 int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     
@@ -15,7 +16,8 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     pc->printf("Connection OK\n\r");
 
     Matrix quat(4,1);
-    /*
+    //#define NOISE
+    #ifdef NOISE
     float coef_th[9] = {0.4153, 0.4472, 0.7921, -0.7652, 0.6537, 0.0274, -0.5056, -0.6104, 0.6097};
     Matrix mat_th = Matrix(3,3, coef_th);
     
@@ -33,7 +35,8 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     
     float *san[5] = {sa1n, sa2n, sa3n, sa4n, sa5n};
     float *sbn[5] = {sb1n, sb2n, sb3n, sb4n, sb5n};
-    */
+    
+    #else
     // To test without noise
     Matrix mat_th = Matrix::Rot321(45 * DEG2RAD, -30*DEG2RAD, 60*DEG2RAD);
     float sa1n[3],sa2n[3],sa3n[3],sa4n[3],sa5n[3];
@@ -67,13 +70,11 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
         sa[i].getCoef(san[i]);
         sb[i].getCoef(sbn[i]);
     }
-    
+    #endif
 
     float om[5] = {0.0100f, 0.0325f, 0.0550f, 0.0775, 0.1000};
 
     float q[4];
-
-    printMat(sa[0],pc);
 
     while(1){
     lastUpdate = t->read_us();
@@ -112,6 +113,11 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     printMat(Matrix::rot2quat(mat_th), pc);
     pc->printf("Computed quaternion\n\r");
     printMat(quat, pc);
+
+    pc->printf("Expected Euler\n\r");
+    printMat(RAD2DEG*Matrix::quat2euler(Matrix::rot2quat(mat_th)), pc);
+    pc->printf("Computed Euler\n\r");
+    printMat(RAD2DEG*Matrix::quat2euler(quat), pc);
 
     /************* PRINTS END **************/
 
