@@ -37,7 +37,7 @@ void Estimators::QUEST(float quat[4], int N, float **s_eci, float **s_body, floa
     float gamma;        // Quaternion's rotation (of the eigen vector)
     
     /* Internal computation variables  */
-    float lambda0 = 0;  // A reasonable initial value for lambda
+    float lambda0 = 0;  // A reasonable initial value for lambda is sum of weights
     Matrix s_a[N];      // ECI frame vector array
     Matrix s_b[N];      // Body frame vector array
     Matrix k12(3,1);
@@ -65,16 +65,15 @@ void Estimators::QUEST(float quat[4], int N, float **s_eci, float **s_body, floa
         B += omega[i] * ( s_a[i] * s_b[i].Transpose() );
     }
 
-    // B = B.Transpose();
-
     S = B + B.Transpose();
+    B = B.Transpose();
     detS = S.det();
 
     k22 = B.trace();
 
-    k12(0,0) = B(1,2) - B(2,1);
-    k12(1,0) = B(2,0) - B(0,2);
-    k12(2,0) = B(0,1) - B(1,0);
+    k12(0) = B(1,2) - B(2,1);
+    k12(1) = B(2,0) - B(0,2);
+    k12(2) = B(0,1) - B(1,0);
 
     trAdjS  = S(1,1)*S(2,2) - S(2,1)*S(1,2) 
             + S(0,0)*S(2,2) - S(0,2)*S(2,0) 
@@ -105,12 +104,12 @@ void Estimators::QUEST(float quat[4], int N, float **s_eci, float **s_body, floa
     x = (alpha * Id + beta * S + S * S) * k12;
 
     normQ = sqrt(gamma * gamma + Matrix::dot(x,x));
-    x *= 1/normQ;
+    x *= -1/normQ;
     gamma /= normQ;
 
     /* Returning the quaternion */
     quat[0] = gamma;
-    quat[1] = x(0,0);
-    quat[2] = x(1,0);
-    quat[3] = x(2,0);
+    quat[1] = x(0);
+    quat[2] = x(1);
+    quat[3] = x(2);
 }

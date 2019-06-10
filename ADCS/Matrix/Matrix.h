@@ -141,14 +141,31 @@ public:
 
     /**
      * @brief
-    *Subindex for Matrix element.
+     * Subindex for Matrix elements.
      * @param row
      * @param col
      * @return the element.
      */
     float  operator() ( int row, int col ) const;
 
+    /**
+     * @brief
+     * Subindex for Vector elements assignation.
+     * @param row
+     * @param col
+     * @return pointer to the element.
+     */
+    float& operator() ( int index );
 
+
+    /**
+     * @brief
+     * Subindex for Vector elements.
+     * @param row
+     * @param col
+     * @return the element.
+     */
+    float  operator() ( int index ) const;
 
     /**
      * @brief

@@ -83,8 +83,8 @@
         }
         _matrix.shrink_to_fit();
 
-        _pRow = Rows;
-        _pCol = Cols;
+        _pRow = 0;
+        _pCol = 0;
         int iteration = 0;
         for(int i = 0; i < _nRows; i++){
             for(int j = 0; j < _nCols; j++){
@@ -144,6 +144,37 @@
         }else{
             return _matrix[row][col];
         }
+    }
+
+    float& Matrix::operator ()(int index) {
+        //--index;
+
+        if(this->isVector()){
+            if(index < _nRows){
+                return _matrix[index][0];
+            } else if (index < _nCols) {
+                return _matrix[0][index];
+            }
+        } else if( index < _nRows || index < _nCols){
+            return _matrix[index][index];
+        }
+        NullCoef = nanf("");
+        return NullCoef;
+    }
+
+    float Matrix::operator ()(int index) const {
+        //--index;
+
+        if(this->isVector()){
+            if(index < _nRows){
+                return _matrix[index][0];
+            } else if (index < _nCols) {
+                return _matrix[0][index];
+            }
+        } else if( index < _nRows || index < _nCols){
+            return _matrix[index][index];
+        }
+        return nanf("");
     }
 
     Matrix& Matrix::operator = ( const Matrix& rightM ) {

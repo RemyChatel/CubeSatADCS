@@ -210,5 +210,18 @@ int MatrixTest(Serial *pc, I2C *i2c, Timer *t){
     pc->printf("Rotation matrix 321\n\r");
     printMat(Matrix::Rot321(eul), pc);
 
+
+    pc->printf("\n\r\n\rAssignation test\n\r");
+    printMat(A, pc);
+    A(2) = 25;
+    A(1,2) = 30;
+    printMat(A, pc);
+    A = Matrix(3,3, coefA);
+
+    pc->printf("\n\r << test\n\r");
+    A << 19 << 18 << 17
+      << 16 << 15 << 14
+      << 13 << 12 << 11;
+    printMat(A, pc);
     return 1;
 }
