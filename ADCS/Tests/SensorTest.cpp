@@ -33,6 +33,10 @@ int SensorTest(Serial *pc, I2C *i2c, Timer *t){
         pc->printf("Could not connect to MPU9150: \n\r");
         while(1) ; // Loop forever if communication doesn't happen
     }
+    imu.recalibrateIMU(1000, 100);
+    float null_avg[3] = {0,0,0};
+    imu.setAvgAcc(null_avg);
+    imu.setAvgMag(null_avg);
     pc->printf("IMU ok\n\r");
 
 
@@ -60,21 +64,20 @@ int SensorTest(Serial *pc, I2C *i2c, Timer *t){
         if(t->read_ms() - print_update > 500){
             print_update = t->read_ms();
             pc->printf("\n\r\n\rLoop time %d us | Frequency %4.0f Hz\n\r", ellapsed, 1000000.0f/ellapsed);
-            pc->printf("Acc (g):   ");
-            pc->printf("{% 4.3f, % 4.3f, % 4.3f}\n\r", val_acc[0]*1000, val_acc[1]*1000, val_acc[2]*1000);
+            pc->printf("Acc (mg):  ");
+            pc->printf("{% 4.1f, % 4.1f, % 4.1f}\n\r", val_acc[0]*1000, val_acc[1]*1000, val_acc[2]*1000);
             pc->printf("Gyr (°/s): ");
-            pc->printf("{% 3.3f, % 3.3f, % 3.3f}\n\r", val_gyr[0], val_gyr[1], val_gyr[2]);
+            pc->printf("{% 4.2f, % 4.2f, % 4.2f}\n\r", val_gyr[0], val_gyr[1], val_gyr[2]);
             pc->printf("Mag (uT):  ");
-            pc->printf("{% 3.3f, % 3.3f, % 3.3f}\n\r", val_mag[0], val_mag[1], val_mag[2]);
+            pc->printf("{% 4.2f, % 4.2f, % 4.2f}\n\r", val_mag[0], val_mag[1], val_mag[2]);
             pc->printf("Sun:       ");
-            pc->printf("{% 3.3f, % 3.3f, % 3.3f}\n\r", rsun_b[0], rsun_b[1], rsun_b[2]);
+            pc->printf("{% 4.2f, % 4.2f, % 4.2f}\n\r", rsun_b[0], rsun_b[1], rsun_b[2]);
         }
 
         if(t->read_ms() > 1<<21) {
             t->start(); // start the timer over again if ~30 minutes has passed
             last_update = t->read_us();
         }
-
     }
 
     return 1;
