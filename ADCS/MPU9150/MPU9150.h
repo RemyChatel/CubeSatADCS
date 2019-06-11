@@ -212,6 +212,35 @@ public:
      */
     void MPU9150SelfTest();
 
+    /**
+     * @brief
+     * Method to recalibrate the IMU by removing the DC part
+     * @param time The total sampling time (in ms) to detect DC
+     * @param N The number of sample to take
+     */
+    void recalibrateIMU(float time, int N);
+
+    /**
+     * @brief
+     * Allow the user to manually set the avg bias for the acceleration
+     * @param new_avg_acc The acceleration bias (m/s)
+     */
+    void setAvgAcc(float new_avg_acc[3]);
+    
+    /**
+     * @brief
+     * Allow the user to manually set the avg bias for the angular rate
+     * @param new_avg_gyr The angular rate bias (deg/s)
+     */
+    void setAvgGyr(float new_avg_gyr[3]);
+    
+    /**
+     * @brief
+     * Allow the user to manually set the avg bias for the magnetic field
+     * @param new_avg_mag The magnetic field bias (uT)
+     */
+    void setAvgMag(float new_avg_mag[3]);
+
 // Read functions
     /**
      * @brief
@@ -303,14 +332,14 @@ public:
 private:
     I2C *i2c_;
     // Set initial input parameters
-    uint8_t ascale = AFS_2G;     // AFS_2G, AFS_4G, AFS_8G, AFS_16G
-    uint8_t gscale = GFS_250DPS; // GFS_250DPS, GFS_500DPS, GFS_1000DPS, GFS_2000DPS
+    uint8_t ascale;     // AFS_2G, AFS_4G, AFS_8G, AFS_16G
+    uint8_t gscale; // GFS_250DPS, GFS_500DPS, GFS_1000DPS, GFS_2000DPS
     float aRes_, gRes_, mRes_;      // scale resolutions per LSB for the sensors
-    float magCalibration[3] = {0, 0, 0}; // Factory mag calibration
-    float magBias[3] = {0, 0, 0};        // Factory mag bias
-    float gyroBias[3] = {0, 0, 0}; // Bias corrections for gyro
-    float accelBias[3] = {0, 0, 0}; // Bias corrections for accelerometer
+    float magCalibration[3]; // Factory mag calibration
+    float magBias[3];        // Factory mag bias
+    float gyroBias[3]; // Bias corrections for gyro
+    float accelBias[3]; // Bias corrections for accelerometer
+    float avg_acc[3], avg_gyr[3], avg_mag[3];
     float SelfTest_[6];
-    float pi = 3.14159265358979323846f;
 }; // class MPU9150
 #endif // MPU9150_H

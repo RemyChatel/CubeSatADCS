@@ -27,41 +27,69 @@
  * limitations under the License.
  */
 #include "MPU9150.h"
+// Constructors
+    MPU9150::MPU9150(PinName sda, PinName scl) {
+        i2c_ = new I2C(sda, scl);
+        i2c_->frequency(400000);
 
-MPU9150::MPU9150(PinName sda, PinName scl) {
-    i2c_ = new I2C(sda, scl);
-    i2c_->frequency(400000);
-}
+        ascale = AFS_2G;
+        gscale = GFS_250DPS;
 
-MPU9150::MPU9150(I2C *i2c):i2c_(i2c){}
-    
-void MPU9150::writeByte(uint8_t address, uint8_t subAddress, uint8_t data) {
-    char data_write[2];
-    data_write[0] = subAddress;
-    data_write[1] = data;
-    i2c_->write(address, data_write, 2, 0);
-}
-
-char MPU9150::readByte(uint8_t address, uint8_t subAddress) {
-    char data[1]; // `data` will store the register data     
-    char data_write[1];
-    data_write[0] = subAddress;
-    i2c_->write(address, data_write, 1, 1); // no stop
-    i2c_->read(address, data, 1, 0); 
-    return data[0]; 
-}
-
-void MPU9150::readBytes(uint8_t address, uint8_t subAddress, uint8_t count, uint8_t * dest) {     
-    char data[14];
-    char data_write[1];
-    data_write[0] = subAddress;
-    i2c_->write(address, data_write, 1, 1); // no stop
-    i2c_->read(address, data, count, 0); 
-    for(int ii = 0; ii < count; ii++) {
-        dest[ii] = data[ii];
+        avg_acc[0] = 0;
+        avg_acc[1] = 0;
+        avg_acc[2] = 0;
+        avg_gyr[0] = 0;
+        avg_gyr[1] = 0;
+        avg_gyr[2] = 0;
+        avg_mag[0] = 0;
+        avg_mag[1] = 0;
+        avg_mag[2] = 0;
     }
-} 
 
+    MPU9150::MPU9150(I2C *i2c):i2c_(i2c){
+        ascale = AFS_2G;
+        gscale = GFS_250DPS;
+        
+        avg_acc[0] = 0;
+        avg_acc[1] = 0;
+        avg_acc[2] = 0;
+        avg_gyr[0] = 0;
+        avg_gyr[1] = 0;
+        avg_gyr[2] = 0;
+        avg_mag[0] = 0;
+        avg_mag[1] = 0;
+        avg_mag[2] = 0;
+    }
+
+// I2C Tools
+    void MPU9150::writeByte(uint8_t address, uint8_t subAddress, uint8_t data) {
+        char data_write[2];
+        data_write[0] = subAddress;
+        data_write[1] = data;
+        i2c_->write(address, data_write, 2, 0);
+    }
+
+    char MPU9150::readByte(uint8_t address, uint8_t subAddress) {
+        char data[1]; // `data` will store the register data     
+        char data_write[1];
+        data_write[0] = subAddress;
+        i2c_->write(address, data_write, 1, 1); // no stop
+        i2c_->read(address, data, 1, 0); 
+        return data[0]; 
+    }
+
+    void MPU9150::readBytes(uint8_t address, uint8_t subAddress, uint8_t count, uint8_t * dest) {     
+        char data[14];
+        char data_write[1];
+        data_write[0] = subAddress;
+        i2c_->write(address, data_write, 1, 1); // no stop
+        i2c_->read(address, data, count, 0); 
+        for(int ii = 0; ii < count; ii++) {
+            dest[ii] = data[ii];
+        }
+    } 
+
+// IMU Set up
 void MPU9150::getGres() {
     switch (gscale) {
         // Possible gyro scales (and their register bit settings) are:
@@ -154,56 +182,6 @@ void MPU9150::readAccelData(int16_t * destination) {
   destination[2] = (int16_t)(((int16_t)rawData[4] << 8) | rawData[5]) ; 
 }
 
-void MPU9150::getAccel(float acc[3]){
-    int16_t accelCount[3];  // Stores the 16-bit signed accelerometer sensor output
-    readAccelData(accelCount);  // Read the x/y/z adc values   
-    // Now we'll calculate the accleration value into actual g's
-    acc[0] = (float)accelCount[0]*aRes_;// - accelBias[0];  // get actual g value, this depends on scale being set
-    acc[1] = (float)accelCount[1]*aRes_;// - accelBias[1];   
-    acc[2] = (float)accelCount[2]*aRes_;// - accelBias[2]; 
-}
-
-void MPU9150::readGyroData(int16_t * destination) {
-  uint8_t rawData[6];  // x/y/z gyro register data stored here
-  readBytes(MPU9150_ADDRESS, GYRO_XOUT_H, 6, &rawData[0]);  // Read the six raw data registers sequentially into data array
-  destination[0] = (int16_t)(((int16_t)rawData[0] << 8) | rawData[1]) ;  // Turn the MSB and LSB into a signed 16-bit value
-  destination[1] = (int16_t)(((int16_t)rawData[2] << 8) | rawData[3]) ;  
-  destination[2] = (int16_t)(((int16_t)rawData[4] << 8) | rawData[5]) ; 
-}
-
-void MPU9150::getGyro(float gyr[3]){
-    int16_t gyroCount[3];   // Stores the 16-bit signed gyro sensor output
-    readGyroData(gyroCount);  // Read the x/y/z adc values
-    // Calculate the gyro value into actual degrees per second
-    gyr[0] = (float)gyroCount[0]*gRes_ - gyroBias[0];  // get actual gyro value, this depends on scale being set
-    gyr[1] = (float)gyroCount[1]*gRes_ - gyroBias[1];  
-    gyr[2] = (float)gyroCount[2]*gRes_ - gyroBias[2]; 
-}
-
-void MPU9150::readMagData(int16_t * destination) {
-  uint8_t rawData[6];  // x/y/z gyro register data stored here
-  writeByte(AK8975A_ADDRESS, AK8975A_CNTL, 0x01); // toggle enable data read from magnetometer, no continuous read mode!
-  wait(0.01);
-  // Only accept a new magnetometer data read if the data ready bit is set and 
-  // if there are no sensor overflow or data read errors
-  if(readByte(AK8975A_ADDRESS, AK8975A_ST1) & 0x01) { // wait for magnetometer data ready bit to be set
-  readBytes(AK8975A_ADDRESS, AK8975A_XOUT_L, 6, &rawData[0]);  // Read the six raw data registers sequentially into data array
-  destination[0] = ((int16_t)rawData[1] << 8) | rawData[0] ;  // Turn the MSB and LSB into a signed 16-bit value
-  destination[1] = ((int16_t)rawData[3] << 8) | rawData[2] ;  
-  destination[2] = ((int16_t)rawData[5] << 8) | rawData[4] ; 
-  }
-}
-
-void MPU9150::getMag(float mag[3]){
-    int16_t magCount[3];    // Stores the 16-bit signed magnetometer sensor output
-    readMagData(magCount);  // Read the x/y/z adc values
-    // Calculate the magnetometer values in milliGauss
-    // Include factory calibration per data sheet and user environmental corrections
-    mag[0] = (float)magCount[0]*mRes_*magCalibration[0] - magBias[0];  // get actual magnetometer value, this depends on scale being set
-    mag[1] = (float)magCount[1]*mRes_*magCalibration[1] - magBias[1];  
-    mag[2] = (float)magCount[2]*mRes_*magCalibration[2] - magBias[2]; 
-}
-
 void MPU9150::initAK8975A() {
     uint8_t rawData[3];  // x/y/z gyro register data stored here
     writeByte(AK8975A_ADDRESS, AK8975A_CNTL, 0x00); // Power down
@@ -214,17 +192,6 @@ void MPU9150::initAK8975A() {
     magCalibration[0] =  (float)(rawData[0] - 128)/256.0f + 1.0f; // Return x-axis sensitivity adjustment values
     magCalibration[1] =  (float)(rawData[1] - 128)/256.0f + 1.0f;  
     magCalibration[2] =  (float)(rawData[2] - 128)/256.0f + 1.0f; 
-}
-
-int16_t MPU9150::readTempData() {
-  uint8_t rawData[2];  // x/y/z gyro register data stored here
-  readBytes(MPU9150_ADDRESS, TEMP_OUT_H, 2, &rawData[0]);  // Read the two raw data registers sequentially into data array 
-  return ((int16_t)rawData[0] << 8) | rawData[1] ;  // Turn the MSB and LSB into a 16-bit value
-}
-
-float MPU9150::getTemp(){
-    uint16_t tempCount = readTempData();
-    return ((float) tempCount) / 340.0f + 36.53f;
 }
 
 uint8_t MPU9150::initIMU(uint8_t acc_scale, uint8_t gyr_scale){
@@ -445,7 +412,6 @@ void MPU9150::calibrateMPU9150() {
     accelBias[2] = (float)accel_bias[2]/(float)accelsensitivity;
 }
 
-
 void MPU9150::MPU9150SelfTest() {
     uint8_t rawData[4] = {0, 0, 0, 0};
     uint8_t selfTest[6];
@@ -480,197 +446,313 @@ void MPU9150::MPU9150SelfTest() {
     }
 }
 
-void MPU9150::MadgwickQuaternionUpdate(float quat[4], float acc[3], float gyr[3], float mag[3], float dt) {
-    float q1 = quat[0], q2 = quat[1], q3 = quat[2], q4 = quat[3];   // short name local variable for readability
-    float norm;
-    float hx, hy, _2bx, _2bz;
-    float s1, s2, s3, s4;
-    float qDot1, qDot2, qDot3, qDot4;
+void MPU9150::recalibrateIMU(float time, int N){
+    float val_acc[N][3], val_gyr[N][3], val_mag[N][3];
+    int interval = time / N;
 
-    float GyroMeasError = pi * (60.0f / 180.0f);     // gyroscope measurement error in rads/s (start at 60 deg/s), then reduce after ~10 s to 3
-    float beta = sqrt(3.0f / 4.0f) * GyroMeasError;  // compute beta
-
-    // Auxiliary variables to avoid repeated arithmetic
-    float _2q1mx;
-    float _2q1my;
-    float _2q1mz;
-    float _2q2mx;
-    float _4bx;
-    float _4bz;
-    float _2q1 = 2.0f * q1;
-    float _2q2 = 2.0f * q2;
-    float _2q3 = 2.0f * q3;
-    float _2q4 = 2.0f * q4;
-    float _2q1q3 = 2.0f * q1 * q3;
-    float _2q3q4 = 2.0f * q3 * q4;
-    float q1q1 = q1 * q1;
-    float q1q2 = q1 * q2;
-    float q1q3 = q1 * q3;
-    float q1q4 = q1 * q4;
-    float q2q2 = q2 * q2;
-    float q2q3 = q2 * q3;
-    float q2q4 = q2 * q4;
-    float q3q3 = q3 * q3;
-    float q3q4 = q3 * q4;
-    float q4q4 = q4 * q4;
-
-    // Normalise accelerometer measurement
-    norm = sqrt(acc[0] * acc[0] + acc[1] * acc[1] + acc[2] * acc[2]);
-    if (norm == 0.0f) return; // handle NaN
-    norm = 1.0f/norm;
-    acc[0] *= norm;
-    acc[1] *= norm;
-    acc[2] *= norm;
-
-    // Normalise magnetometer measurement
-    norm = sqrt(mag[0] * mag[0] + mag[1] * mag[1] + mag[2] * mag[2]);
-    if (norm == 0.0f) return; // handle NaN
-    norm = 1.0f/norm;
-    mag[0] *= norm;
-    mag[1] *= norm;
-    mag[2] *= norm;
-
-    // Reference direction of Earth's magnetic field
-    _2q1mx = 2.0f * q1 * mag[0];
-    _2q1my = 2.0f * q1 * mag[1];
-    _2q1mz = 2.0f * q1 * mag[2];
-    _2q2mx = 2.0f * q2 * mag[0];
-    hx = mag[0] * q1q1 - _2q1my * q4 + _2q1mz * q3 + mag[0] * q2q2 + _2q2 * mag[1] * q3 + _2q2 * mag[2] * q4 - mag[0] * q3q3 - mag[0] * q4q4;
-    hy = _2q1mx * q4 + mag[1] * q1q1 - _2q1mz * q2 + _2q2mx * q3 - mag[1] * q2q2 + mag[1] * q3q3 + _2q3 * mag[2] * q4 - mag[1] * q4q4;
-    _2bx = sqrt(hx * hx + hy * hy);
-    _2bz = -_2q1mx * q3 + _2q1my * q2 + mag[2] * q1q1 + _2q2mx * q4 - mag[2] * q2q2 + _2q3 * mag[1] * q4 - mag[2] * q3q3 + mag[2] * q4q4;
-    _4bx = 2.0f * _2bx;
-    _4bz = 2.0f * _2bz;
-
-    // Gradient decent algorithm corrective step
-    s1 = -_2q3 * (2.0f * q2q4 - _2q1q3 - acc[0]) + _2q2 * (2.0f * q1q2 + _2q3q4 - acc[1]) - _2bz * q3 * (_2bx * (0.5f - q3q3 - q4q4) + _2bz * (q2q4 - q1q3) - mag[0]) + (-_2bx * q4 + _2bz * q2) * (_2bx * (q2q3 - q1q4) + _2bz * (q1q2 + q3q4) - mag[1]) + _2bx * q3 * (_2bx * (q1q3 + q2q4) + _2bz * (0.5f - q2q2 - q3q3) - mag[2]);
-    s2 = _2q4 * (2.0f * q2q4 - _2q1q3 - acc[0]) + _2q1 * (2.0f * q1q2 + _2q3q4 - acc[1]) - 4.0f * q2 * (1.0f - 2.0f * q2q2 - 2.0f * q3q3 - acc[2]) + _2bz * q4 * (_2bx * (0.5f - q3q3 - q4q4) + _2bz * (q2q4 - q1q3) - mag[0]) + (_2bx * q3 + _2bz * q1) * (_2bx * (q2q3 - q1q4) + _2bz * (q1q2 + q3q4) - mag[1]) + (_2bx * q4 - _4bz * q2) * (_2bx * (q1q3 + q2q4) + _2bz * (0.5f - q2q2 - q3q3) - mag[2]);
-    s3 = -_2q1 * (2.0f * q2q4 - _2q1q3 - acc[0]) + _2q4 * (2.0f * q1q2 + _2q3q4 - acc[1]) - 4.0f * q3 * (1.0f - 2.0f * q2q2 - 2.0f * q3q3 - acc[2]) + (-_4bx * q3 - _2bz * q1) * (_2bx * (0.5f - q3q3 - q4q4) + _2bz * (q2q4 - q1q3) - mag[0]) + (_2bx * q2 + _2bz * q4) * (_2bx * (q2q3 - q1q4) + _2bz * (q1q2 + q3q4) - mag[1]) + (_2bx * q1 - _4bz * q3) * (_2bx * (q1q3 + q2q4) + _2bz * (0.5f - q2q2 - q3q3) - mag[2]);
-    s4 = _2q2 * (2.0f * q2q4 - _2q1q3 - acc[0]) + _2q3 * (2.0f * q1q2 + _2q3q4 - acc[1]) + (-_4bx * q4 + _2bz * q2) * (_2bx * (0.5f - q3q3 - q4q4) + _2bz * (q2q4 - q1q3) - mag[0]) + (-_2bx * q1 + _2bz * q3) * (_2bx * (q2q3 - q1q4) + _2bz * (q1q2 + q3q4) - mag[1]) + _2bx * q2 * (_2bx * (q1q3 + q2q4) + _2bz * (0.5f - q2q2 - q3q3) - mag[2]);
-    norm = sqrt(s1 * s1 + s2 * s2 + s3 * s3 + s4 * s4);    // normalise step magnitude
-    norm = 1.0f/norm;
-    s1 *= norm;
-    s2 *= norm;
-    s3 *= norm;
-    s4 *= norm;
-
-    // Compute rate of change of quaternion
-    qDot1 = 0.5f * (-q2 * gyr[0] - q3 * gyr[1] - q4 * gyr[2]) - beta * s1;
-    qDot2 = 0.5f * (q1 * gyr[0] + q3 * gyr[2] - q4 * gyr[1]) - beta * s2;
-    qDot3 = 0.5f * (q1 * gyr[1] - q2 * gyr[2] + q4 * gyr[0]) - beta * s3;
-    qDot4 = 0.5f * (q1 * gyr[2] + q2 * gyr[1] - q3 * gyr[0]) - beta * s4;
-
-    // Integrate to yield quaternion
-    q1 += qDot1 * dt;
-    q2 += qDot2 * dt;
-    q3 += qDot3 * dt;
-    q4 += qDot4 * dt;
-    norm = sqrt(q1 * q1 + q2 * q2 + q3 * q3 + q4 * q4);    // normalise quaternion
-    norm = 1.0f/norm;
-    quat[0] = q1 * norm;
-    quat[1] = q2 * norm;
-    quat[2] = q3 * norm;
-    quat[3] = q4 * norm;
-
-}
-
-void MPU9150::MahonyQuaternionUpdate(float quat[4],float acc0[3], float gyr0[3], float mag0[3], float dt) {
-    float q1 = quat[0], q2 = quat[1], q3 = quat[2], q4 = quat[3];   // short name local variable for readability
-    
-    float acc[3], gyr[3], mag[3];
-
-
-    
-    float norm;
-    float hx, hy, bx, bz;
-    float vx, vy, vz, wx, wy, wz;
-    float ex, ey, ez;
-    float pa, pb, pc;
-
-    float eInt[3] = {0.0f, 0.0f, 0.0f};              // vector to hold integral error for Mahony method
-    float GyroMeasDrift = pi * (1.0f / 180.0f);      // gyroscope measurement drift in rad/s/s (start at 0.0 deg/s/s)
-    float zeta = sqrt(3.0f / 4.0f) * GyroMeasDrift;  // compute zeta, the other free parameter in the Madgwick scheme usually set to a small or zero value
-    // these are the free parameters in the Mahony filter and fusion scheme, Kp for proportional feedback, Ki for integral
-
-    // Auxiliary variables to avoid repeated arithmetic
-    float q1q1 = q1 * q1;
-    float q1q2 = q1 * q2;
-    float q1q3 = q1 * q3;
-    float q1q4 = q1 * q4;
-    float q2q2 = q2 * q2;
-    float q2q3 = q2 * q3;
-    float q2q4 = q2 * q4;
-    float q3q3 = q3 * q3;
-    float q3q4 = q3 * q4;
-    float q4q4 = q4 * q4;   
-
-    // Normalise accelerometer measurement
-    norm = sqrt(acc[0] * acc[0] + acc[1] * acc[1] + acc[2] * acc[2]);
-    if (norm == 0.0f) return; // handle NaN
-    norm = 1.0f / norm;        // use reciprocal for division
-    acc[0] = acc0[0] * norm;
-    acc[1] = acc0[1] * norm;
-    acc[2] = acc0[2] * norm;
-
-    // Normalise magnetometer measurement
-    norm = sqrt(mag[0] * mag[0] + mag[1] * mag[1] + mag[2] * mag[2]);
-    if (norm == 0.0f) return; // handle NaN
-    norm = 1.0f / norm;        // use reciprocal for division
-    mag[0] = mag0[0] * norm;
-    mag[1] = mag0[0] * norm;
-    mag[2] = mag0[0] * norm;
-
-    // Reference direction of Earth's magnetic field
-    hx = 2.0f * mag[0] * (0.5f - q3q3 - q4q4) + 2.0f * mag[1] * (q2q3 - q1q4) + 2.0f * mag[2] * (q2q4 + q1q3);
-    hy = 2.0f * mag[0] * (q2q3 + q1q4) + 2.0f * mag[1] * (0.5f - q2q2 - q4q4) + 2.0f * mag[2] * (q3q4 - q1q2);
-    bx = sqrt((hx * hx) + (hy * hy));
-    bz = 2.0f * mag[0] * (q2q4 - q1q3) + 2.0f * mag[1] * (q3q4 + q1q2) + 2.0f * mag[2] * (0.5f - q2q2 - q3q3);
-
-    // Estimated direction of gravity and magnetic field
-    vx = 2.0f * (q2q4 - q1q3);
-    vy = 2.0f * (q1q2 + q3q4);
-    vz = q1q1 - q2q2 - q3q3 + q4q4;
-    wx = 2.0f * bx * (0.5f - q3q3 - q4q4) + 2.0f * bz * (q2q4 - q1q3);
-    wy = 2.0f * bx * (q2q3 - q1q4) + 2.0f * bz * (q1q2 + q3q4);
-    wz = 2.0f * bx * (q1q3 + q2q4) + 2.0f * bz * (0.5f - q2q2 - q3q3);  
-
-    // Error is cross product between estimated direction and measured direction of gravity
-    ex = (acc[1] * vz - acc[2] * vy) + (mag[1] * wz - mag[2] * wy);
-    ey = (acc[2] * vx - acc[0] * vz) + (mag[2] * wx - mag[0] * wz);
-    ez = (acc[0] * vy - acc[1] * vx) + (mag[0] * wy - mag[1] * wx);
-    if (Ki > 0.0f)
-    {
-        eInt[0] += ex;      // accumulate integral error
-        eInt[1] += ey;
-        eInt[2] += ez;
-    }
-    else
-    {
-        eInt[0] = 0.0f;     // prevent integral wind up
-        eInt[1] = 0.0f;
-        eInt[2] = 0.0f;
+    for(int i = 0; i < N; i++){
+        this->getAccel(val_acc[i]);
+        this->getGyro(val_gyr[i]);
+        this->getMag(val_mag[i]);
+        wait_ms(interval);
     }
 
-    // Apply feedback terms
-    gyr[0] = gyr0[0] + Kp * ex + Ki * eInt[0];
-    gyr[1] = gyr0[1] + Kp * ey + Ki * eInt[1];
-    gyr[2] = gyr0[2] + Kp * ez + Ki * eInt[2];
+    for(int i = 0; i < N; i++){
+        avg_acc[0] += val_acc[i][0];
+        avg_acc[1] += val_acc[i][1];
+        avg_acc[2] += val_acc[i][2];
+        avg_gyr[0] += val_gyr[i][0];
+        avg_gyr[1] += val_gyr[i][1];
+        avg_gyr[2] += val_gyr[i][2];
+        avg_mag[0] += val_mag[i][0];
+        avg_mag[1] += val_mag[i][1];
+        avg_mag[2] += val_mag[i][2];
+    }
 
-    // Integrate rate of change of quaternion
-    pa = q2;
-    pb = q3;
-    pc = q4;
-    q1 = q1 + (-q2 * gyr[0] - q3 * gyr[1] - q4 * gyr[2]) * (0.5f * dt);
-    q2 = pa + (q1 * gyr[0] + pb * gyr[2] - pc * gyr[1]) * (0.5f * dt);
-    q3 = pb + (q1 * gyr[1] - pa * gyr[2] + pc * gyr[0]) * (0.5f * dt);
-    q4 = pc + (q1 * gyr[2] + pa * gyr[1] - pb * gyr[0]) * (0.5f * dt);
-
-    // Normalise quaternion
-    norm = sqrt(q1 * q1 + q2 * q2 + q3 * q3 + q4 * q4);
-    norm = 1.0f / norm;
-    quat[0] = q1 * norm;
-    quat[1] = q2 * norm;
-    quat[2] = q3 * norm;
-    quat[3] = q4 * norm;
-
+    avg_acc[0] /= N;
+    avg_acc[1] /= N;
+    avg_acc[2] /= N;
+    avg_gyr[0] /= N;
+    avg_gyr[1] /= N;
+    avg_gyr[2] /= N;
+    avg_mag[0] /= N;
+    avg_mag[1] /= N;
+    avg_mag[2] /= N;
 }
+
+void MPU9150::setAvgAcc(float new_avg_acc[3]){
+    avg_acc[0] = new_avg_acc[0];
+    avg_acc[1] = new_avg_acc[1];
+    avg_acc[2] = new_avg_acc[1];
+}
+
+void MPU9150::setAvgGyr(float new_avg_gyr[3]){
+    avg_gyr[0] = new_avg_gyr[0];
+    avg_gyr[1] = new_avg_gyr[1];
+    avg_gyr[2] = new_avg_gyr[1];
+}
+
+void MPU9150::setAvgMag(float new_avg_mag[3]){
+    avg_mag[0] = new_avg_mag[0];
+    avg_mag[1] = new_avg_mag[1];
+    avg_mag[2] = new_avg_mag[1];
+}
+
+// Read functions
+    void MPU9150::getAccel(float acc[3]){
+        int16_t accelCount[3];  // Stores the 16-bit signed accelerometer sensor output
+        readAccelData(accelCount);  // Read the x/y/z adc values   
+        // Now we'll calculate the accleration value into actual g's
+        acc[0] = (float)accelCount[0]*aRes_ - avg_acc[0];// - accelBias[0];  // get actual g value, this depends on scale being set
+        acc[1] = (float)accelCount[1]*aRes_ - avg_acc[1];// - accelBias[1];   
+        acc[2] = (float)accelCount[2]*aRes_ - avg_acc[2];// - accelBias[2]; 
+    }
+
+    void MPU9150::readGyroData(int16_t * destination) {
+        uint8_t rawData[6];  // x/y/z gyro register data stored here
+        readBytes(MPU9150_ADDRESS, GYRO_XOUT_H, 6, &rawData[0]);  // Read the six raw data registers sequentially into data array
+        destination[0] = (int16_t)(((int16_t)rawData[0] << 8) | rawData[1]) ;  // Turn the MSB and LSB into a signed 16-bit value
+        destination[1] = (int16_t)(((int16_t)rawData[2] << 8) | rawData[3]) ;  
+        destination[2] = (int16_t)(((int16_t)rawData[4] << 8) | rawData[5]) ; 
+    }
+
+    void MPU9150::getGyro(float gyr[3]){
+        int16_t gyroCount[3];   // Stores the 16-bit signed gyro sensor output
+        readGyroData(gyroCount);  // Read the x/y/z adc values
+        // Calculate the gyro value into actual degrees per second
+        gyr[0] = (float)gyroCount[0]*gRes_ - avg_gyr[0] - gyroBias[0];  // get actual gyro value, this depends on scale being set
+        gyr[1] = (float)gyroCount[1]*gRes_ - avg_gyr[1] - gyroBias[1];  
+        gyr[2] = (float)gyroCount[2]*gRes_ - avg_gyr[2] - gyroBias[2]; 
+    }
+
+    void MPU9150::readMagData(int16_t * destination) {
+        uint8_t rawData[6];  // x/y/z gyro register data stored here
+        writeByte(AK8975A_ADDRESS, AK8975A_CNTL, 0x01); // toggle enable data read from magnetometer, no continuous read mode!
+        wait(0.01);
+        // Only accept a new magnetometer data read if the data ready bit is set and 
+        // if there are no sensor overflow or data read errors
+        if(readByte(AK8975A_ADDRESS, AK8975A_ST1) & 0x01) { // wait for magnetometer data ready bit to be set
+            readBytes(AK8975A_ADDRESS, AK8975A_XOUT_L, 6, &rawData[0]);  // Read the six raw data registers sequentially into data array
+            destination[0] = ((int16_t)rawData[1] << 8) | rawData[0] ;  // Turn the MSB and LSB into a signed 16-bit value
+            destination[1] = ((int16_t)rawData[3] << 8) | rawData[2] ;  
+            destination[2] = ((int16_t)rawData[5] << 8) | rawData[4] ; 
+        }
+    }
+
+    void MPU9150::getMag(float mag[3]){
+        int16_t magCount[3];    // Stores the 16-bit signed magnetometer sensor output
+        readMagData(magCount);  // Read the x/y/z adc values
+        // Calculate the magnetometer values in milliGauss
+        // Include factory calibration per data sheet and user environmental corrections
+        mag[0] = (float)magCount[0]*mRes_*magCalibration[0] - avg_mag[0] - magBias[0];  // get actual magnetometer value, this depends on scale being set
+        mag[1] = (float)magCount[1]*mRes_*magCalibration[1] - avg_mag[1] - magBias[1];  
+        mag[2] = (float)magCount[2]*mRes_*magCalibration[2] - avg_mag[2] - magBias[2]; 
+    }
+
+    int16_t MPU9150::readTempData() {
+        uint8_t rawData[2];  // x/y/z gyro register data stored here
+        readBytes(MPU9150_ADDRESS, TEMP_OUT_H, 2, &rawData[0]);  // Read the two raw data registers sequentially into data array 
+        return ((int16_t)rawData[0] << 8) | rawData[1] ;  // Turn the MSB and LSB into a 16-bit value
+    }
+
+    float MPU9150::getTemp(){
+        uint16_t tempCount = readTempData();
+        return ((float) tempCount) / 340.0f + 36.53f;
+    }
+
+
+// Filtering functions
+    void MPU9150::MadgwickQuaternionUpdate(float quat[4], float acc[3], float gyr[3], float mag[3], float dt) {
+        float q1 = quat[0], q2 = quat[1], q3 = quat[2], q4 = quat[3];   // short name local variable for readability
+        float norm;
+        float hx, hy, _2bx, _2bz;
+        float s1, s2, s3, s4;
+        float qDot1, qDot2, qDot3, qDot4;
+
+        float GyroMeasError = 3.1415926535f * (60.0f / 180.0f);     // gyroscope measurement error in rads/s (start at 60 deg/s), then reduce after ~10 s to 3
+        float beta = sqrt(3.0f / 4.0f) * GyroMeasError;  // compute beta
+
+        // Auxiliary variables to avoid repeated arithmetic
+        float _2q1mx;
+        float _2q1my;
+        float _2q1mz;
+        float _2q2mx;
+        float _4bx;
+        float _4bz;
+        float _2q1 = 2.0f * q1;
+        float _2q2 = 2.0f * q2;
+        float _2q3 = 2.0f * q3;
+        float _2q4 = 2.0f * q4;
+        float _2q1q3 = 2.0f * q1 * q3;
+        float _2q3q4 = 2.0f * q3 * q4;
+        float q1q1 = q1 * q1;
+        float q1q2 = q1 * q2;
+        float q1q3 = q1 * q3;
+        float q1q4 = q1 * q4;
+        float q2q2 = q2 * q2;
+        float q2q3 = q2 * q3;
+        float q2q4 = q2 * q4;
+        float q3q3 = q3 * q3;
+        float q3q4 = q3 * q4;
+        float q4q4 = q4 * q4;
+
+        // Normalise accelerometer measurement
+        norm = sqrt(acc[0] * acc[0] + acc[1] * acc[1] + acc[2] * acc[2]);
+        if (norm == 0.0f) return; // handle NaN
+        norm = 1.0f/norm;
+        acc[0] *= norm;
+        acc[1] *= norm;
+        acc[2] *= norm;
+
+        // Normalise magnetometer measurement
+        norm = sqrt(mag[0] * mag[0] + mag[1] * mag[1] + mag[2] * mag[2]);
+        if (norm == 0.0f) return; // handle NaN
+        norm = 1.0f/norm;
+        mag[0] *= norm;
+        mag[1] *= norm;
+        mag[2] *= norm;
+
+        // Reference direction of Earth's magnetic field
+        _2q1mx = 2.0f * q1 * mag[0];
+        _2q1my = 2.0f * q1 * mag[1];
+        _2q1mz = 2.0f * q1 * mag[2];
+        _2q2mx = 2.0f * q2 * mag[0];
+        hx = mag[0] * q1q1 - _2q1my * q4 + _2q1mz * q3 + mag[0] * q2q2 + _2q2 * mag[1] * q3 + _2q2 * mag[2] * q4 - mag[0] * q3q3 - mag[0] * q4q4;
+        hy = _2q1mx * q4 + mag[1] * q1q1 - _2q1mz * q2 + _2q2mx * q3 - mag[1] * q2q2 + mag[1] * q3q3 + _2q3 * mag[2] * q4 - mag[1] * q4q4;
+        _2bx = sqrt(hx * hx + hy * hy);
+        _2bz = -_2q1mx * q3 + _2q1my * q2 + mag[2] * q1q1 + _2q2mx * q4 - mag[2] * q2q2 + _2q3 * mag[1] * q4 - mag[2] * q3q3 + mag[2] * q4q4;
+        _4bx = 2.0f * _2bx;
+        _4bz = 2.0f * _2bz;
+
+        // Gradient decent algorithm corrective step
+        s1 = -_2q3 * (2.0f * q2q4 - _2q1q3 - acc[0]) + _2q2 * (2.0f * q1q2 + _2q3q4 - acc[1]) - _2bz * q3 * (_2bx * (0.5f - q3q3 - q4q4) + _2bz * (q2q4 - q1q3) - mag[0]) + (-_2bx * q4 + _2bz * q2) * (_2bx * (q2q3 - q1q4) + _2bz * (q1q2 + q3q4) - mag[1]) + _2bx * q3 * (_2bx * (q1q3 + q2q4) + _2bz * (0.5f - q2q2 - q3q3) - mag[2]);
+        s2 = _2q4 * (2.0f * q2q4 - _2q1q3 - acc[0]) + _2q1 * (2.0f * q1q2 + _2q3q4 - acc[1]) - 4.0f * q2 * (1.0f - 2.0f * q2q2 - 2.0f * q3q3 - acc[2]) + _2bz * q4 * (_2bx * (0.5f - q3q3 - q4q4) + _2bz * (q2q4 - q1q3) - mag[0]) + (_2bx * q3 + _2bz * q1) * (_2bx * (q2q3 - q1q4) + _2bz * (q1q2 + q3q4) - mag[1]) + (_2bx * q4 - _4bz * q2) * (_2bx * (q1q3 + q2q4) + _2bz * (0.5f - q2q2 - q3q3) - mag[2]);
+        s3 = -_2q1 * (2.0f * q2q4 - _2q1q3 - acc[0]) + _2q4 * (2.0f * q1q2 + _2q3q4 - acc[1]) - 4.0f * q3 * (1.0f - 2.0f * q2q2 - 2.0f * q3q3 - acc[2]) + (-_4bx * q3 - _2bz * q1) * (_2bx * (0.5f - q3q3 - q4q4) + _2bz * (q2q4 - q1q3) - mag[0]) + (_2bx * q2 + _2bz * q4) * (_2bx * (q2q3 - q1q4) + _2bz * (q1q2 + q3q4) - mag[1]) + (_2bx * q1 - _4bz * q3) * (_2bx * (q1q3 + q2q4) + _2bz * (0.5f - q2q2 - q3q3) - mag[2]);
+        s4 = _2q2 * (2.0f * q2q4 - _2q1q3 - acc[0]) + _2q3 * (2.0f * q1q2 + _2q3q4 - acc[1]) + (-_4bx * q4 + _2bz * q2) * (_2bx * (0.5f - q3q3 - q4q4) + _2bz * (q2q4 - q1q3) - mag[0]) + (-_2bx * q1 + _2bz * q3) * (_2bx * (q2q3 - q1q4) + _2bz * (q1q2 + q3q4) - mag[1]) + _2bx * q2 * (_2bx * (q1q3 + q2q4) + _2bz * (0.5f - q2q2 - q3q3) - mag[2]);
+        norm = sqrt(s1 * s1 + s2 * s2 + s3 * s3 + s4 * s4);    // normalise step magnitude
+        norm = 1.0f/norm;
+        s1 *= norm;
+        s2 *= norm;
+        s3 *= norm;
+        s4 *= norm;
+
+        // Compute rate of change of quaternion
+        qDot1 = 0.5f * (-q2 * gyr[0] - q3 * gyr[1] - q4 * gyr[2]) - beta * s1;
+        qDot2 = 0.5f * (q1 * gyr[0] + q3 * gyr[2] - q4 * gyr[1]) - beta * s2;
+        qDot3 = 0.5f * (q1 * gyr[1] - q2 * gyr[2] + q4 * gyr[0]) - beta * s3;
+        qDot4 = 0.5f * (q1 * gyr[2] + q2 * gyr[1] - q3 * gyr[0]) - beta * s4;
+
+        // Integrate to yield quaternion
+        q1 += qDot1 * dt;
+        q2 += qDot2 * dt;
+        q3 += qDot3 * dt;
+        q4 += qDot4 * dt;
+        norm = sqrt(q1 * q1 + q2 * q2 + q3 * q3 + q4 * q4);    // normalise quaternion
+        norm = 1.0f/norm;
+        quat[0] = q1 * norm;
+        quat[1] = q2 * norm;
+        quat[2] = q3 * norm;
+        quat[3] = q4 * norm;
+
+    }
+
+    void MPU9150::MahonyQuaternionUpdate(float quat[4],float acc0[3], float gyr0[3], float mag0[3], float dt) {
+        float q1 = quat[0], q2 = quat[1], q3 = quat[2], q4 = quat[3];   // short name local variable for readability
+        
+        float acc[3], gyr[3], mag[3];
+
+
+        
+        float norm;
+        float hx, hy, bx, bz;
+        float vx, vy, vz, wx, wy, wz;
+        float ex, ey, ez;
+        float pa, pb, pc;
+
+        float eInt[3] = {0.0f, 0.0f, 0.0f};              // vector to hold integral error for Mahony method
+        float GyroMeasDrift = 3.1415926535f * (1.0f / 180.0f);      // gyroscope measurement drift in rad/s/s (start at 0.0 deg/s/s)
+        float zeta = sqrt(3.0f / 4.0f) * GyroMeasDrift;  // compute zeta, the other free parameter in the Madgwick scheme usually set to a small or zero value
+        // these are the free parameters in the Mahony filter and fusion scheme, Kp for proportional feedback, Ki for integral
+
+        // Auxiliary variables to avoid repeated arithmetic
+        float q1q1 = q1 * q1;
+        float q1q2 = q1 * q2;
+        float q1q3 = q1 * q3;
+        float q1q4 = q1 * q4;
+        float q2q2 = q2 * q2;
+        float q2q3 = q2 * q3;
+        float q2q4 = q2 * q4;
+        float q3q3 = q3 * q3;
+        float q3q4 = q3 * q4;
+        float q4q4 = q4 * q4;   
+
+        // Normalise accelerometer measurement
+        norm = sqrt(acc[0] * acc[0] + acc[1] * acc[1] + acc[2] * acc[2]);
+        if (norm == 0.0f) return; // handle NaN
+        norm = 1.0f / norm;        // use reciprocal for division
+        acc[0] = acc0[0] * norm;
+        acc[1] = acc0[1] * norm;
+        acc[2] = acc0[2] * norm;
+
+        // Normalise magnetometer measurement
+        norm = sqrt(mag[0] * mag[0] + mag[1] * mag[1] + mag[2] * mag[2]);
+        if (norm == 0.0f) return; // handle NaN
+        norm = 1.0f / norm;        // use reciprocal for division
+        mag[0] = mag0[0] * norm;
+        mag[1] = mag0[0] * norm;
+        mag[2] = mag0[0] * norm;
+
+        // Reference direction of Earth's magnetic field
+        hx = 2.0f * mag[0] * (0.5f - q3q3 - q4q4) + 2.0f * mag[1] * (q2q3 - q1q4) + 2.0f * mag[2] * (q2q4 + q1q3);
+        hy = 2.0f * mag[0] * (q2q3 + q1q4) + 2.0f * mag[1] * (0.5f - q2q2 - q4q4) + 2.0f * mag[2] * (q3q4 - q1q2);
+        bx = sqrt((hx * hx) + (hy * hy));
+        bz = 2.0f * mag[0] * (q2q4 - q1q3) + 2.0f * mag[1] * (q3q4 + q1q2) + 2.0f * mag[2] * (0.5f - q2q2 - q3q3);
+
+        // Estimated direction of gravity and magnetic field
+        vx = 2.0f * (q2q4 - q1q3);
+        vy = 2.0f * (q1q2 + q3q4);
+        vz = q1q1 - q2q2 - q3q3 + q4q4;
+        wx = 2.0f * bx * (0.5f - q3q3 - q4q4) + 2.0f * bz * (q2q4 - q1q3);
+        wy = 2.0f * bx * (q2q3 - q1q4) + 2.0f * bz * (q1q2 + q3q4);
+        wz = 2.0f * bx * (q1q3 + q2q4) + 2.0f * bz * (0.5f - q2q2 - q3q3);  
+
+        // Error is cross product between estimated direction and measured direction of gravity
+        ex = (acc[1] * vz - acc[2] * vy) + (mag[1] * wz - mag[2] * wy);
+        ey = (acc[2] * vx - acc[0] * vz) + (mag[2] * wx - mag[0] * wz);
+        ez = (acc[0] * vy - acc[1] * vx) + (mag[0] * wy - mag[1] * wx);
+        if (Ki > 0.0f)
+        {
+            eInt[0] += ex;      // accumulate integral error
+            eInt[1] += ey;
+            eInt[2] += ez;
+        }
+        else
+        {
+            eInt[0] = 0.0f;     // prevent integral wind up
+            eInt[1] = 0.0f;
+            eInt[2] = 0.0f;
+        }
+
+        // Apply feedback terms
+        gyr[0] = gyr0[0] + Kp * ex + Ki * eInt[0];
+        gyr[1] = gyr0[1] + Kp * ey + Ki * eInt[1];
+        gyr[2] = gyr0[2] + Kp * ez + Ki * eInt[2];
+
+        // Integrate rate of change of quaternion
+        pa = q2;
+        pb = q3;
+        pc = q4;
+        q1 = q1 + (-q2 * gyr[0] - q3 * gyr[1] - q4 * gyr[2]) * (0.5f * dt);
+        q2 = pa + (q1 * gyr[0] + pb * gyr[2] - pc * gyr[1]) * (0.5f * dt);
+        q3 = pb + (q1 * gyr[1] - pa * gyr[2] + pc * gyr[0]) * (0.5f * dt);
+        q4 = pc + (q1 * gyr[2] + pa * gyr[1] - pb * gyr[0]) * (0.5f * dt);
+
+        // Normalise quaternion
+        norm = sqrt(q1 * q1 + q2 * q2 + q3 * q3 + q4 * q4);
+        norm = 1.0f / norm;
+        quat[0] = q1 * norm;
+        quat[1] = q2 * norm;
+        quat[2] = q3 * norm;
+        quat[3] = q4 * norm;
+
+    }

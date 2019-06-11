@@ -38,6 +38,10 @@ int MPU9250Test(Serial *pc, I2C *i2c, Timer *t) {
         while(1) ; // Loop forever if communication doesn't happen
     }
 
+    MPU9150.recalibrateIMU(1000, 100);
+    float null_avg[3] = {0,0,0};
+    MPU9150.setAvgAcc(null_avg);
+    MPU9150.setAvgMag(null_avg);
 
     wait(2);
  

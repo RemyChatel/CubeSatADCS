@@ -1,6 +1,6 @@
 #include "mbed.h"
 #include "Test.h"
-#define TEST_QUEST
+#define TEST_MPU9250
 Serial pc(USBTX, USBRX, 115200);
 I2C i2c(I2C_SDA, I2C_SCL);
 Timer t;

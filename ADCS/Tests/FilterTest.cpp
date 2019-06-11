@@ -26,36 +26,35 @@ int FilterTest(Serial *pc, I2C *i2c, Timer *t){
     Matrix q_predicted(4,1);
     Matrix q_measured(4,1);
     Matrix w_measured(3,1);
-    float dt;
+    float dt = t->read_ms();
 
     /************** END INIT **************/
 
     while(1){
-    lastUpdate = t->read_us();
+            
+        lastUpdate = t->read_us();
+        /**************** LOOP ****************/
 
-    /**************** LOOP ****************/
+        q_predicted = kalman.filter(q_measured, w_measured, t->read_ms()-dt, Matrix::zeros(3,1), Matrix::zeros(3,1), Matrix::zeros(3,1));
+        
+        /************** LOOP END **************/
+        ellapsed = t->read_us()-lastUpdate;
+        dt = t->read_ms();
+        pc->printf("\n\r\n\rLoop time %d us | Frequency %4.0f Hz\n\r", ellapsed, 1000000.0f/ellapsed);
 
-    q_predicted = kalman.filter(q_measured, w_measured, dt, Matrix::zeros(3,1), Matrix::zeros(3,1), Matrix::zeros(3,1));
-    
-    /************** LOOP END **************/
+        /*************** PRINTS ***************/
+        pc->printf("Measured quaternion\n\r");
+        printMat(q_measured, pc);
+        pc->printf("Predicted quaternion\n\r");
+        printMat(q_predicted, pc);
+        /************* PRINTS END **************/
 
-    ellapsed = t->read_us()-lastUpdate;
-    pc->printf("\n\r\n\rLoop time %d us | Frequency %4.0f Hz\n\r", ellapsed, 1000000.0f/ellapsed);
-
-    /*************** PRINTS ***************/
-    pc->printf("Measured quaternion\n\r");
-    printMat(q_measured, pc);
-    pc->printf("Predicted quaternion\n\r");
-    printMat(q_predicted, pc);
-
-    /************* PRINTS END **************/
-
-    seconds+=LOOP_TIME;
-    if(seconds>=60){
-        seconds -= 60;
-        minutes++;
-    }
-    wait(LOOP_TIME);
+        seconds+=LOOP_TIME;
+        if(seconds>=60){
+            seconds -= 60;
+            minutes++;
+        }
+        wait(LOOP_TIME);
     }
     return 1;
 }
