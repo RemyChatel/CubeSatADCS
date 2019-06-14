@@ -81,13 +81,13 @@ public:
     /**
      * @brief
      * Initialize the Kalman filter with the spacecraft and filter parameterss
-     * @param I_sat_init    The inertia matrix of the satellite (3x3) Matrix
-     * @param I_wheel_init  The inertia matrix of the reation wheels (3x3) Matrix
+     * @param I_sat_init    The inertia matrix of the satellite (in kg.m2) (3x3) Matrix
+     * @param I_wheel_init  The inertia matrix of the reation wheels (in kg.m2) (3x3) Matrix
      * @param p_init        The initial covariance matrix (7x7) Matrix
      * @param kalman_q      The process noise covariance for the Kalman filter (7x7) Matrix
      * @param kalman_r      The sensor noise covariance for the Kalman filter (7x7) Matrix
      */
-    KalmanFilter(Matrix I_sat_init, Matrix I_wheel_init, Matrix p_init, Matrix kalman_q, Matrix kalman_r);
+    KalmanFilter(Matrix I_sat_init, Matrix I_wheel_init, Matrix p_init, Matrix kalman_q, Matrix kalman_r, Matrix q_init, Matrix w_init, Serial *pc);
 
     /**
      * @brief
@@ -131,9 +131,12 @@ public:
      */
     Matrix filter(Matrix q_measured, Matrix w_measured, float dt, Matrix w_rw_prev, Matrix T_bf_prev, Matrix T_rw_prev);
 
+    static void printMat(Matrix a, Serial *pc);
+
 private:
-    Matrix I_sat;       /**< Inertia matrix of the spacecraft (3x3) Matrix */
-    Matrix I_wheel;     /**< Inertia matrix of the reaction wheels (3x3) Matrix */
+    Matrix I_sat;       /**< Inertia matrix of the spacecraft (in kg.m2) (3x3) Matrix */
+    Matrix I_sat_inv;
+    Matrix I_wheel;     /**< Inertia matrix of the reaction wheels (in kg.m2) (3x3) Matrix */
 
     Matrix q_predict;   /**< The predicted quaternion at step k (4x1) Matrix */
     Matrix w_predict;   /**< The predicted angular rates at step k (3x1) Matrix */
@@ -141,6 +144,8 @@ private:
 
     Matrix _kalman_q;   /**< Process noise covariance */
     Matrix _kalman_r;   /**< Sensor noise covariance */
+    Serial *_pc;
+    Timer t2;
 
 }; // class KalmanFilter
 }; // namespace Filters
