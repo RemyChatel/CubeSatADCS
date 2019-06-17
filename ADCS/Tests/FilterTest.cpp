@@ -8,8 +8,6 @@
 int FilterTest(Serial *pc, I2C *i2c, Timer *t){
     int size=0;
     float delta = 0;
-    #include "quat.data"
-    #include "omega.data"
     int lastUpdate = 0;
     int ellapsed = 0;
     int loop_time = 0;
@@ -22,15 +20,18 @@ int FilterTest(Serial *pc, I2C *i2c, Timer *t){
     /**************** INIT ****************/
     using namespace Filters;
 
-    float sigma_p = 0.1;
+    float sigma_p;
     // Kalman Q process noise matrix setup
-    float sigma_q = 0.001;
+    float sigma_q;
     // Kalman R measurement noise matrix setup
-    float sigma_eta = 0.01;
-    float sigma_epsilon = 0.01;
-    float sigma_omega = 0.1;
+    float sigma_eta;
+    float sigma_epsilon;
+    float sigma_omega;
     // Satellite Inertia matrix
     float I_sat_coef[9] = {27, 0, 0, 0, 17, 0, 0, 0, 25};
+    
+    #include "omega.data"
+    #include "quat.data"
 
     // Squaring to obtain variance
     sigma_p*=sigma_p;

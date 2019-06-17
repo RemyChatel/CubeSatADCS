@@ -127,7 +127,7 @@ using namespace Filters;
         // (3) Calculate the Kalman Gain
         int timing = t2.read_us();
         Matrix kalman = p_propagate * ( p_propagate + _kalman_r ).Inv();
-        _pc->printf("Timing of kalman gain %d us\n\r", t2.read_us()-timing);
+        //_pc->printf("Timing of kalman gain %d us\n\r", t2.read_us()-timing);
         
     
         // (5) Update the state

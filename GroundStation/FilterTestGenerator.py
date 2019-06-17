@@ -29,46 +29,19 @@ sigma_q = 0.001;
 sigma_eta = 0.01;
 sigma_epsilon = 0.01;
 sigma_omega = 0.1;
-# Satellite inertia matrix
-I_sat = np.diag(np.array([27, 17, 25], dtype="float"));
-
-# # Handshake then send all data to board
-# ser = serial.Serial('COM7', 115200, timeout=5);
-# ready = False;
-# while(not ready):
-# 	if(ser.readline()):
-# 		ready = True;
-# 	else:
-# 		print("waiting for board\n\r");
-#
-# ser.write(('{:f}\n\r'.format(sigma_p)).encode());
-# ser.write(('{:f}\n\r'.format(sigma_q)).encode());
-# ser.write(('{:f}\n\r'.format(sigma_eta)).encode());
-# ser.write(('{:f}\n\r'.format(sigma_epsilon)).encode());
-# ser.write(('{:f}\n\r'.format(sigma_omega)).encode());
-#
-# ser.write('{:f}\n\r'.format(I_sat[0,0]).encode());
-# ser.write('{:f}\n\r'.format(I_sat[0,1]).encode());
-# ser.write('{:f}\n\r'.format(I_sat[0,2]).encode());
-# ser.write('{:f}\n\r'.format(I_sat[1,0]).encode());
-# ser.write('{:f}\n\r'.format(I_sat[1,1]).encode());
-# ser.write('{:f}\n\r'.format(I_sat[1,2]).encode());
-# ser.write('{:f}\n\r'.format(I_sat[2,0]).encode());
-# ser.write('{:f}\n\r'.format(I_sat[2,1]).encode());
-# ser.write('{:f}\n\r'.format(I_sat[2,2]).encode());
 
 # Generate omega_th(k)
 omega_x = 2 * np.pi / 3;
 omega_y = 2 * np.pi / 5;
 omega_z = 2 * np.pi / 8;
 t_end = 8;
-N = 50;
+N = 100;
 t = np.linspace(0,t_end, N);
 delta_t = np.zeros(t.size);
 omega_th = np.zeros((4,t.size));
-omega_th[1,:] = np.pi/4 * np.sin(omega_x * t);
-omega_th[2,:] = np.pi/3 * np.sin(omega_y * t);
-omega_th[3,:] = np.pi/2 * np.sin(omega_z * t);
+omega_th[1,:] = 50 * np.pi/180 * np.sin(omega_x * t);
+omega_th[2,:] = 30 * np.pi/180 * np.sin(omega_y * t);
+omega_th[3,:] = 90 * np.pi/180 * np.sin(omega_z * t);
 
 # Propagate to quat_th(k)
 quat_th = np.zeros((4,t.size));
@@ -92,10 +65,22 @@ omega_noise[1:,:] = omega_th[1:,:] + np.random.normal(0, sigma_omega, (3,t.size)
 quat_pred = np.copy(quat_noise)
 omega_pred = np.copy(omega_noise)
 
+for i in range(1,t.size):
+	quat_noise[:,i] /= np.linalg.norm(quat_noise[:,i])
+
 # Saving for the board
 quat_export = np.copy(quat_noise)
 omega_export = np.copy(omega_noise[1:,:])
-np.savetxt('../ADCS/Tests/quat.data', np.transpose(quat_export), fmt='%+f', delimiter=',', newline=',\n', header='size = {:d};\ndelta = {:f};\nfloat quat[{:d}] = {{'.format(N,t_end/N,4*t.size), footer='};', comments='')
+string = ""
+string += 'sigma_p = {:f};\n'.format(sigma_p)
+string += 'sigma_q = {:f};\n'.format(sigma_q)
+string += 'sigma_eta = {:f};\n'.format(sigma_eta)
+string += 'sigma_epsilon = {:f};\n'.format(sigma_epsilon)
+string += 'sigma_omega = {:f};\n'.format(sigma_omega)
+string += 'size = {:d};\n'.format(N)
+string += 'delta = {:f};\n'.format(t_end/N)
+string += 'float quat[{:d}] = {{'.format(4*t.size)
+np.savetxt('../ADCS/Tests/quat.data', np.transpose(quat_export), fmt='%+f', delimiter=',', newline=',\n', header=string, footer='};', comments='')
 np.savetxt('../ADCS/Tests/omega.data', np.transpose(omega_export), fmt='%+f', delimiter=',', newline=',\n', header='float omega[{:d}] = {{'.format(3*t.size), footer='};', comments='')
 
 # Saving for the plotting
@@ -104,24 +89,3 @@ np.savetxt('quaternion_th.csv', quat_th, delimiter=',')
 np.savetxt('omega_th.csv', omega_th, delimiter=',')
 np.savetxt('quaternion_noise.csv', quat_noise, delimiter=',')
 np.savetxt('omega_noise.csv', omega_noise, delimiter=',')
-
-# Send quat and omega to board
-# data = [0,0,0,0,0,0,0,0]
-# for i in range(t.size):
-# 	ser.write( ('{:f}\n\r'.format(quat_noise[0,i])).encode());
-# 	ser.write( ('{:f}\n\r'.format(quat_noise[1,i])).encode());
-# 	ser.write( ('{:f}\n\r'.format(quat_noise[2,i])).encode());
-# 	ser.write( ('{:f}\n\r'.format(quat_noise[3,i])).encode());
-# 	ser.write(('{:f}\n\r'.format(omega_noise[1,i])).encode());
-# 	ser.write(('{:f}\n\r'.format(omega_noise[2,i])).encode());
-# 	ser.write(('{:f}\n\r'.format(omega_noise[3,i])).encode());
-# 	for i in range(8):
-# 		data[i] = float(ser.readline());
-# 	quat_pred[0,i]  = data[0]
-# 	quat_pred[1,i]  = data[1]
-# 	quat_pred[2,i]  = data[2]
-# 	quat_pred[3,i]  = data[3]
-# 	omega_pred[0,i] = data[4]
-# 	omega_pred[1,i] = data[5]
-# 	omega_pred[2,i] = data[6]
-# 	delta_t[i]      = data[7]
