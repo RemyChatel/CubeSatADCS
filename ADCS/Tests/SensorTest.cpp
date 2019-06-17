@@ -3,10 +3,7 @@
 #include "MPU9150.h"
 
 int SensorTest(Serial *pc, I2C *i2c, Timer *t){
-    AnalogIn faceX(A0);
-    AnalogIn faceY(A1);
-    AnalogIn faceZ(A3);
-    SunSensor sun(&faceX, &faceY, &faceZ);
+    SunSensor sun;
     MPU9150 imu(i2c);
 
     int ellapsed = 0;

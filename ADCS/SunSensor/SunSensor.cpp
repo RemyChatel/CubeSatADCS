@@ -28,34 +28,28 @@
  
 #include "SunSensor.h"
 
-SunSensor::SunSensor(){
-    
-}
+SunSensor::SunSensor():faceX_(AnalogIn(A0)),faceY_(AnalogIn(A1)),faceZ_(AnalogIn(A2)){}
 
-SunSensor::SunSensor(AnalogIn* analogX, AnalogIn* analogY, AnalogIn* analogZ){
-    faceX_ = analogX;
-    faceY_ = analogY;
-    faceZ_ = analogZ;
-}
+SunSensor::SunSensor(PinName pinX, PinName pinY, PinName pinZ): faceX_(AnalogIn(pinX)),
+                                                                faceY_(AnalogIn(pinY)),
+                                                                faceZ_(AnalogIn(pinZ)){}
 
-SunSensor::~SunSensor(void){
-    
-}
+SunSensor::~SunSensor(void){}
 
 void SunSensor::getSunVector(float rsun[3]){
-    rsun[0] = (*faceX_);
-    rsun[1] = (*faceY_);
-    rsun[2] = (*faceZ_);
+    rsun[0] = (faceX_);
+    rsun[1] = (faceY_);
+    rsun[2] = (faceZ_);
 }
 
 float SunSensor::getXface(){
-    return (*faceX_).read();
+    return (faceX_).read();
 }
 
 float SunSensor::getYface(){
-    return (*faceY_).read();
+    return (faceY_).read();
 }
 
 float SunSensor::getZface(){
-    return (*faceZ_).read();
+    return (faceZ_).read();
 }

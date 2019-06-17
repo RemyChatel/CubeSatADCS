@@ -67,7 +67,7 @@ public:
      * @param analogY The pin of the Y face sensor 
      * @param analogZ The pin of the Z face sensor
      */
-    SunSensor(AnalogIn* analogX, AnalogIn* analogY, AnalogIn* analogZ);
+    SunSensor(PinName pinX, PinName pinY, PinName pinZ);
     
     /**
      * SunSensor Destructor
@@ -97,8 +97,8 @@ public:
     
 private:
     /* Private variables */
-    AnalogIn* faceX_;
-    AnalogIn* faceY_;
-    AnalogIn* faceZ_;
+    AnalogIn faceX_;
+    AnalogIn faceY_;
+    AnalogIn faceZ_;
 };
 #endif
