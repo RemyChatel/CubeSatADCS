@@ -37,9 +37,9 @@ SunSensor::SunSensor(PinName pinX, PinName pinY, PinName pinZ): faceX_(AnalogIn(
 SunSensor::~SunSensor(void){}
 
 void SunSensor::getSunVector(float rsun[3]){
-    rsun[0] = (faceX_);
-    rsun[1] = (faceY_);
-    rsun[2] = (faceZ_);
+    rsun[0] = faceX_.read();
+    rsun[1] = faceY_.read();
+    rsun[2] = faceZ_.read();
 }
 
 float SunSensor::getXface(){

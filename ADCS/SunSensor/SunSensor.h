@@ -58,7 +58,11 @@
 class SunSensor{
 public:
     /* Public functions */
-    
+    /**
+     * SunSensor Constructor
+     * 
+     * Default pins are A0, A1 and A2 for X, Y and Z
+     */ 
     SunSensor();
     
     /**

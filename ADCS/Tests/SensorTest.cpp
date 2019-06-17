@@ -3,7 +3,7 @@
 #include "MPU9150.h"
 
 int SensorTest(Serial *pc, I2C *i2c, Timer *t){
-    SunSensor sun;
+    SunSensor sun(A0,A1,A2);
     MPU9150 imu(i2c);
 
     int ellapsed = 0;
@@ -68,13 +68,14 @@ int SensorTest(Serial *pc, I2C *i2c, Timer *t){
             pc->printf("Mag (uT):  ");
             pc->printf("{% 4.2f, % 4.2f, % 4.2f}\n\r", val_mag[0], val_mag[1], val_mag[2]);
             pc->printf("Sun:       ");
-            pc->printf("{% 4.2f, % 4.2f, % 4.2f}\n\r", rsun_b[0], rsun_b[1], rsun_b[2]);
+            pc->printf("{% 4.2f, % 4.2f, % 4.2f}\n\r", sun.getXface(), sun.getYface(), sun.getZface());
         }
 
         if(t->read_ms() > 1<<21) {
             t->start(); // start the timer over again if ~30 minutes has passed
             last_update = t->read_us();
         }
+        wait_ms(20);
     }
 
     return 1;
