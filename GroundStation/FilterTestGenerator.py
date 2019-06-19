@@ -1,26 +1,35 @@
 import numpy as np;
 import matplotlib.pyplot as pl;
+import scipy.integrate as int
 
 def quat_mul(leftQ, rightQ):
-	res = np.zeros(4);
-	a = leftQ[0]
-	b = leftQ[1]
-	c = leftQ[2]
-	d = leftQ[3]
-	e = rightQ[0]
-	f = rightQ[1]
-	g = rightQ[2]
-	h = rightQ[3]
-	res[0] = a*e - b*f - c*g- d*h
-	res[1] = b*e + a*f + c*h - d*g
-	res[2] = a*g - b*h + c*e + d*f
-	res[3] = a*h + b*g - c*f + d*e
+	res = np.zeros((4,1));
+	res[0] = leftQ[0]*rightQ[0] - leftQ[1]*rightQ[1] - leftQ[2]*rightQ[2] - leftQ[3]*rightQ[3]
+	res[1] = leftQ[1]*rightQ[0] + leftQ[0]*rightQ[1] + leftQ[2]*rightQ[3] - leftQ[3]*rightQ[2]
+	res[2] = leftQ[0]*rightQ[2] - leftQ[1]*rightQ[3] + leftQ[2]*rightQ[0] + leftQ[3]*rightQ[1]
+	res[3] = leftQ[0]*rightQ[3] + leftQ[1]*rightQ[2] - leftQ[2]*rightQ[1] + leftQ[3]*rightQ[0]
 	return res
 
-# Init quat_th0
-# ZYX 60->-45->30	   eta     x       y      z
-quat_th0 = np.array([0.0723, 0.392,-0.2010, 0.5320], dtype="float");
-quat_th0 = np.array([0.0000, 1, 0.0000, 0.0000], dtype="float");
+def quat_norm(q):
+	return np.sqrt(q[0]*q[0] + q[1]*q[1] + q[2]*q[2] + q[3]*q[3])
+
+def quat_exp(q):
+	w = q[0]
+	v = q[1:]
+	tmp = np.zeros((4,1))
+	tmp[0] = np.cos(quat_norm(v))
+	tmp[1:] = v / quat_norm(v) * np.sin(quat_norm(v))
+	return tmp * np.exp(w)
+
+
+################################################################################
+# Simulation parameters
+t_end = 8;
+N = 100;
+# Init quat_th0# Generate omega_th(k)
+# ZYX 60->-45->30	    eta     x       y      z
+quat_th0  = np.array([0.0723,0.392,-0.2010, 0.5320], dtype="float");
+omega_th0 = np.array([50 * np.pi/180, 30 * np.pi/180, 90 * np.pi/180], dtype="float");
 # Kalman P initial covaraince matrix setup
 sigma_p = 0.1;
 # Kalman Q process noise matrix setup
@@ -30,43 +39,60 @@ sigma_eta = 0.01;
 sigma_epsilon = 0.01;
 sigma_omega = 0.1;
 
-# Generate omega_th(k)
-omega_x = 2 * np.pi / 3;
-omega_y = 2 * np.pi / 5;
-omega_z = 2 * np.pi / 8;
-t_end = 8;
-N = 100;
+I = np.diag([27,17,25])
+I_inv = np.linalg.inv(I)
+
+
 t = np.linspace(0,t_end, N);
 delta_t = np.zeros(t.size);
 omega_th = np.zeros((4,t.size));
-omega_th[1,:] = 50 * np.pi/180 * np.sin(omega_x * t);
-omega_th[2,:] = 30 * np.pi/180 * np.sin(omega_y * t);
-omega_th[3,:] = 90 * np.pi/180 * np.sin(omega_z * t);
-
-# Propagate to quat_th(k)
 quat_th = np.zeros((4,t.size));
+state = np.zeros((7,t.size));
+state0 = np.zeros(7);
+state0[:4] = quat_th0
+state0[4:] = omega_th0
 
+################################################################################
 # INTEGRATION ROUTINE HERE
-quat_th[:,0] = quat_th0;
-for i in range(1,t.size):
-	dt = t[i]-t[i-1]
-	quat_old  = quat_th[:,i-1]
-	omega_old = omega_th[:,i-1]
-	integrande = quat_mul(quat_old, omega_old)
-	quat_th[:,i] = quat_th[:,i-1] + dt * 0.5 * integrande
+def int_op(x, t):
+	tmp = np.zeros(7)
+	quat = x[:4]
+	omega = x[4:]
+	# A = np.zeros((4,4))
+	# A[0,1] = -omega[0]
+	# A[0,2] = -omega[1]
+	# A[0,3] = -omega[2]
+	# A[1,2] =  omega[2]
+	# A[1,3] = -omega[1]
+	# A[2,3] =  omega[0]
+	# A -= np.transpose(A)
+	# tmp[:4] = np.matmul(A,quat)
+	tmp[0]   = -0.5*np.dot(quat[1:],omega)
+	tmp[1:4] =  0.5*( quat[0]*omega + np.cross(quat[1:], omega) )
+	tmp[4:]  = - np.matmul(I_inv, np.cross(omega, np.matmul(I, omega)))
+	return tmp
+
+state = int.odeint(int_op, state0, t)
+state = np.transpose(state)
+quat_th  = state[:4,:]
+omega_th[1:,:] = state[4:,:]
+
+for i in range(t.size):
 	quat_th[:,i] /= np.linalg.norm(quat_th[:,i])
 
+
+################################################################################
 # Add noise and pack to state vec
+
 quat_noise = np.zeros((4,t.size), dtype="float");
 omega_noise = np.zeros((4,t.size), dtype="float");
+
 quat_noise[0,:] = quat_th[0,:] + np.random.normal(0, sigma_eta, (t.size));
 quat_noise[1:,:] = quat_th[1:,:] + np.random.normal(0, sigma_epsilon, (3,t.size));
 omega_noise[1:,:] = omega_th[1:,:] + np.random.normal(0, sigma_omega, (3,t.size));
 quat_pred = np.copy(quat_noise)
 omega_pred = np.copy(omega_noise)
 
-for i in range(1,t.size):
-	quat_noise[:,i] /= np.linalg.norm(quat_noise[:,i])
 
 # Saving for the board
 quat_export = np.copy(quat_noise)

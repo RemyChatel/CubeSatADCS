@@ -1,6 +1,9 @@
 import numpy as np;
 import matplotlib.pyplot as pl;
 
+def quat_norm(q):
+	return np.sqrt(q[0]*q[0] + q[1]*q[1] + q[2]*q[2] + q[3]*q[3])
+
 t			= np.loadtxt('t.csv', delimiter=',');
 quat_th		= np.loadtxt('quaternion_th.csv', delimiter=',');
 omega_th 	= np.loadtxt('omega_th.csv', delimiter=',');
@@ -79,14 +82,13 @@ pl.ylabel(r"$\omega_z$")
 pl.grid(True)
 pl.legend()
 pl.subplot(2,2,4)
-delta_t /= 1000
-pl.plot(t, delta_t, label='Raw')
-avg = np.average(delta_t)
-pl.plot(t, avg*np.ones(delta_t.size), label='Average = {:7.1f} ms'.format(avg))
+pl.plot(t, quat_norm(quat_th), label='Theoretical')
+pl.plot(t, quat_norm(quat_pred), label='Predicted')
+pl.plot(t, quat_norm(quat_no), label='Sent', linestyle='dashed')
 pl.xlabel("Time (s)")
-pl.ylabel(r"$\Delta_t$ (ms)")
+pl.ylabel("Norm of quat")
+pl.ylim(0,2)
 pl.grid(True)
 pl.legend();
 
 pl.show();
-# print exec_time

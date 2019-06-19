@@ -30,8 +30,8 @@ int FilterTest(Serial *pc, I2C *i2c, Timer *t){
     // Satellite Inertia matrix
     float I_sat_coef[9] = {27, 0, 0, 0, 17, 0, 0, 0, 25};
     
-    #include "omega.data"
     #include "quat.data"
+    #include "omega.data"
 
     // Squaring to obtain variance
     sigma_p*=sigma_p;
@@ -60,6 +60,8 @@ int FilterTest(Serial *pc, I2C *i2c, Timer *t){
     Matrix q_measured(4,1);
     Matrix w_measured(3,1);
 
+    int iter = 0;
+
     /************** END INIT **************/
     lastUpdate = t->read_us();
 
@@ -76,17 +78,17 @@ int FilterTest(Serial *pc, I2C *i2c, Timer *t){
         /**************** LOOP ****************/
 
         q_predicted = kalman.filter(q_measured, w_measured, delta, Matrix::zeros(3,1), Matrix::zeros(3,1), Matrix::zeros(3,1));
-        // q_predicted = q_measured;
-        // w_predicted = w_measured;
+        q_predicted *= 1/q_predicted.norm();
+
         /************** LOOP END **************/
         ellapsed = t->read_us()-lastUpdate;
-
+        iter++;
         /*************** PRINTS ***************/
         w_predicted = kalman.getAngularRate();
 
         pc->printf(" %f %f %f %f ", q_predicted(1), q_predicted(2), q_predicted(3), q_predicted(4));
         pc->printf( "%f %f %f "    , w_predicted(1), w_predicted(2), w_predicted(3));
-        pc->printf( "%f\n\r", (float)ellapsed);
+        pc->printf( "%f %f\n\r", (float)ellapsed, iter/(float)size );
 
         /************* PRINTS END **************/
         wait_ms(9);
