@@ -223,5 +223,18 @@ int MatrixTest(Serial *pc, I2C *i2c, Timer *t){
     pc->printf("Rotation matrix 321\n\r");
     printMat(Matrix::Rot321(eul), pc);
 
+    pc->printf("\n\r\n\rQuaternion\n\r");
+    Matrix q1(4,1);
+    q1 << +0.079324 << +0.560843 << -0.290980 << +0.753516;
+    Matrix q2(4,1);
+    q2 << -0.302377 << -0.460457 << +0.295403 << -0.799420;
+    pc->printf("q1: \n\r");
+    printMat(q1, pc);
+    pc->printf("q2: \n\r");
+    printMat(q2, pc);
+    pc->printf("q1 x q2 (expected {0.92259,-0.19609,0.21281,-0.25957}) \n\r");
+    printMat(Matrix::quatmul(q1, q2), pc);
+    pc->printf("norm of q1 %f\n\r", q1.norm());
+
     return 1;
 }

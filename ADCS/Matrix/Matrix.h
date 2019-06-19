@@ -612,6 +612,15 @@ public:
      */
     static Matrix cross(const Matrix& leftM, const Matrix& rightM);
 
+    /**
+     * @brief
+     * Compute the quaternion multiplication of the two given vectors
+     * @param leftM The left hand side quaternion
+     * @param rightM The right hand side quaternion
+     * @return The quaternion resulting from the multiplication
+     */
+    static Matrix quatmul(const Matrix& leftM, const Matrix& rightM);
+
 // Kinematics Methods
     /**
      * @brief

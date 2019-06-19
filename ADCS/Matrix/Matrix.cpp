@@ -894,6 +894,26 @@
         }
     }
 
+    Matrix Matrix::quatmul(const Matrix& leftM, const Matrix& rightM){
+        Matrix tmp;
+        if(!leftM.isVector() || !rightM.isVector()){
+            return tmp;
+        } else {
+            if(leftM._nCols != 1){
+                leftM.Transpose();
+            }
+            if(rightM._nCols != 1){
+                rightM.Transpose();
+            }
+            tmp = zeros(4,1);
+            tmp(1) = leftM._matrix[0][0]*rightM._matrix[0][0] - leftM._matrix[1][0]*rightM._matrix[1][0] - leftM._matrix[2][0]*rightM._matrix[2][0] - leftM._matrix[3][0]*rightM._matrix[3][0];
+            tmp(2) = leftM._matrix[0][0]*rightM._matrix[1][0] + leftM._matrix[1][0]*rightM._matrix[0][0] + leftM._matrix[2][0]*rightM._matrix[3][0] - leftM._matrix[3][0]*rightM._matrix[2][0];
+            tmp(3) = leftM._matrix[0][0]*rightM._matrix[2][0] - leftM._matrix[1][0]*rightM._matrix[3][0] + leftM._matrix[2][0]*rightM._matrix[0][0] + leftM._matrix[3][0]*rightM._matrix[1][0];
+            tmp(4) = leftM._matrix[0][0]*rightM._matrix[3][0] + leftM._matrix[1][0]*rightM._matrix[2][0] - leftM._matrix[2][0]*rightM._matrix[1][0] + leftM._matrix[3][0]*rightM._matrix[0][0];
+            return tmp;
+        }
+    }
+
 // Kinematics Methods
     Matrix Matrix::quat2rot(Matrix quat){
         Matrix rot;
