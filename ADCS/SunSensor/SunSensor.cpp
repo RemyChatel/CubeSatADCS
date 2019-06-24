@@ -28,15 +28,16 @@
  
 #include "SunSensor.h"
 
-SunSensor::SunSensor():faceX_(AnalogIn(A0)),faceY_(AnalogIn(A1)),faceZ_(AnalogIn(A2)){}
+SunSensor::SunSensor():faceX_(AnalogIn(A0)),faceY_(AnalogIn(A1)),faceZ_(AnalogIn(A2)), dummy_(AnalogIn(A5)){}
 
 SunSensor::SunSensor(PinName pinX, PinName pinY, PinName pinZ): faceX_(AnalogIn(pinX)),
                                                                 faceY_(AnalogIn(pinY)),
-                                                                faceZ_(AnalogIn(pinZ)){}
+                                                                faceZ_(AnalogIn(pinZ)), dummy_(AnalogIn(A5)){}
 
 SunSensor::~SunSensor(void){}
 
 void SunSensor::getSunVector(float rsun[3]){
+    float test = dummy_; // added to properly wake up the adc before using it
     rsun[0] = faceX_.read();
     rsun[1] = faceY_.read();
     rsun[2] = faceZ_.read();

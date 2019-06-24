@@ -104,5 +104,6 @@ private:
     AnalogIn faceX_;
     AnalogIn faceY_;
     AnalogIn faceZ_;
+    AnalogIn dummy_; // added to properly wake up the adc before using it
 };
 #endif
