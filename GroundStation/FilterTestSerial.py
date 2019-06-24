@@ -3,7 +3,7 @@ import sys, serial;
 from time import sleep
 
 try:
-	ser = serial.Serial('COM7', 115200, timeout=10);
+	ser = serial.Serial('COM8', 115200, timeout=10);
 except KeyboardInterrupt:
 	print('exiting')
 

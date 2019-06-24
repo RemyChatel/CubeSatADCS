@@ -29,15 +29,15 @@ N = 100;
 # Init quat_th0# Generate omega_th(k)
 # ZYX 60->-45->30	    eta     x       y      z
 quat_th0  = np.array([0.0723,0.392,-0.2010, 0.5320], dtype="float");
-omega_th0 = np.array([50 * np.pi/180, 30 * np.pi/180, 90 * np.pi/180], dtype="float");
+omega_th0 = np.array([50 * np.pi/180, 0 * np.pi/180, 0 * np.pi/180], dtype="float");
 # Kalman P initial covaraince matrix setup
-sigma_p = 0.1;
+sigma_p = 0.1*0;
 # Kalman Q process noise matrix setup
-sigma_q = 0.001;
+sigma_q = 0.001*0;
 # Kalman R measurement noise matrix setup
-sigma_eta = 0.01;
-sigma_epsilon = 0.01;
-sigma_omega = 0.1;
+sigma_eta = 0.01*0;
+sigma_epsilon = 0.01*0;
+sigma_omega = 0.1*0;
 
 I = np.diag([27,17,25])
 I_inv = np.linalg.inv(I)
@@ -58,15 +58,6 @@ def int_op(x, t):
 	tmp = np.zeros(7)
 	quat = x[:4]
 	omega = x[4:]
-	# A = np.zeros((4,4))
-	# A[0,1] = -omega[0]
-	# A[0,2] = -omega[1]
-	# A[0,3] = -omega[2]
-	# A[1,2] =  omega[2]
-	# A[1,3] = -omega[1]
-	# A[2,3] =  omega[0]
-	# A -= np.transpose(A)
-	# tmp[:4] = np.matmul(A,quat)
 	tmp[0]   = -0.5*np.dot(quat[1:],omega)
 	tmp[1:4] =  0.5*( quat[0]*omega + np.cross(quat[1:], omega) )
 	tmp[4:]  = - np.matmul(I_inv, np.cross(omega, np.matmul(I, omega)))
