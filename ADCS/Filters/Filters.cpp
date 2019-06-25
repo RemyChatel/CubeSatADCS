@@ -87,22 +87,23 @@ using namespace Filters;
         float f67 = (1/I_sat(2,2))*(-I_sat(3,3)*w_predict_prev(1)+I_sat(1,1)*w_predict_prev(1) - h_rw_prev(1));
         float f75 = (1/I_sat(3,3))*(-I_sat(1,1)*w_predict_prev(2)+I_sat(2,2)*w_predict_prev(2) - h_rw_prev(2));
         float f76 = (1/I_sat(3,3))*(-I_sat(1,1)*w_predict_prev(1)+I_sat(2,2)*w_predict_prev(1) + h_rw_prev(1));
-        float f_coef[49] = {0                ,-w_predict_prev(1),-w_predict_prev(2),-w_predict_prev(3),-q_predict_prev(2),-q_predict_prev(3),-q_predict_prev(4),
-                            w_predict_prev(1), 0                , w_predict_prev(3),-w_predict_prev(2), q_predict_prev(1),-q_predict_prev(4), q_predict_prev(3),
-                            w_predict_prev(2),-w_predict_prev(3), 0                , w_predict_prev(1), q_predict_prev(4), q_predict_prev(4),-q_predict_prev(2),
-                            w_predict_prev(2), w_predict_prev(3), w_predict_prev(1), 0                , q_predict_prev(3), q_predict_prev(2), q_predict_prev(1),
-                            0                , 0                , 0                , 0                , 0                , f56              , f57              ,
-                            0                , 0                , 0                , 0                , f65              , 0                , f67              ,
-                            0                , 0                , 0                , 0                , f75              , f76              , 0                };
         
+        float f_coef[49] = {0                   ,-w_predict_prev(1) ,-w_predict_prev(2) ,-w_predict_prev(3) ,-q_predict_prev(2) ,-q_predict_prev(3) ,-q_predict_prev(4) ,
+                            w_predict_prev(1)   ,0                  ,w_predict_prev(3)  ,-w_predict_prev(2) ,q_predict_prev(1)  ,-q_predict_prev(4) ,q_predict_prev(3)  ,
+                            w_predict_prev(2)   ,-w_predict_prev(3) ,0,w_predict_prev(1),q_predict_prev(4)  ,q_predict_prev(4)  ,-q_predict_prev(2) ,
+                            w_predict_prev(2)   ,w_predict_prev(3)  ,w_predict_prev(1)  ,0,q_predict_prev(3),q_predict_prev(2)  ,q_predict_prev(1)  ,
+                            0                   ,0                  ,0                  ,0                  ,0                  ,f56                ,f57                ,
+                            0                   ,0                  ,0                  ,0                  ,f65                ,0                  ,f67                ,
+                            0                   ,0                  ,0                  ,0                  ,f75                ,f76                ,0                  };
         Matrix f(7,7, f_coef);
+        
         f *= dt;
         Matrix p_propagate = (Matrix::eye(7) + f) * p_predict_prev * (Matrix::eye(7) + f).Transpose() + _kalman_q;
         // (2) Predict the state ahead
-        float temp_coef[16] = {0                 ,-w_predict_prev(0) ,-w_predict_prev(1)  ,-w_predict_prev(2),
-                               w_predict_prev(0) , 0                 , w_predict_prev(2)  ,-w_predict_prev(1),
-                               w_predict_prev(1) ,-w_predict_prev(2) , 0                  , w_predict_prev(0),
-                               w_predict_prev(2) , w_predict_prev(1) ,-w_predict_prev(0)  , 0                };
+        float temp_coef[16] = { 0                   ,-w_predict_prev(1) ,-w_predict_prev(2) ,-w_predict_prev(3) ,
+                                w_predict_prev(1)   ,0                  ,w_predict_prev(3)  ,-w_predict_prev(2) ,
+                                w_predict_prev(2)   ,-w_predict_prev(3) ,0                  , w_predict_prev(1) ,
+                                w_predict_prev(3)   ,w_predict_prev(2)  ,-w_predict_prev(1) , 0                 };
                                 
         Matrix tmp(4,4, temp_coef);
 
