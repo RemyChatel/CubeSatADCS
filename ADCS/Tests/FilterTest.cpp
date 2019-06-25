@@ -86,7 +86,7 @@ int FilterTest(Serial *pc, I2C *i2c, Timer *t){
         /*************** PRINTS ***************/
         w_predicted = kalman.getAngularRate();
 
-        pc->printf(" %f %f %f %f ", q_predicted(1), q_predicted(2), q_predicted(3), q_predicted(4));
+        pc->printf(" %f %f %f %f ", -q_predicted(4), q_predicted(2), q_predicted(3), q_predicted(1));
         pc->printf( "%f %f %f "    , w_predicted(1), w_predicted(2), w_predicted(3));
         pc->printf( "%f %f\n\r", (float)ellapsed, iter/(float)size );
 

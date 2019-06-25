@@ -96,7 +96,8 @@ using namespace Filters;
                             0                , 0                , 0                , 0                , f75              , f76              , 0                };
         
         Matrix f(7,7, f_coef);
-        Matrix p_propagate = (Matrix::eye(7) + f * dt) * p_predict_prev * (Matrix::eye(7) + f * dt).Transpose() + _kalman_q;
+        f *= dt;
+        Matrix p_propagate = (Matrix::eye(7) + f) * p_predict_prev * (Matrix::eye(7) + f).Transpose() + _kalman_q;
         // (2) Predict the state ahead
         float temp_coef[16] = {0                 ,-w_predict_prev(0) ,-w_predict_prev(1)  ,-w_predict_prev(2),
                                w_predict_prev(0) , 0                 , w_predict_prev(2)  ,-w_predict_prev(1),

@@ -28,8 +28,9 @@ t_end = 8;
 N = 100;
 # Init quat_th0# Generate omega_th(k)
 # ZYX 60->-45->30	    eta     x       y      z
-quat_th0  = np.array([0.0723,0.392,-0.2010, 0.5320], dtype="float");
-omega_th0 = np.array([50 * np.pi/180, 0 * np.pi/180, 0 * np.pi/180], dtype="float");
+# quat_th0  = np.array([0.0723,0.392,-0.2010, 0.5320], dtype="float");
+quat_th0  = np.array([0,1,0,0], dtype="float");
+omega_th0 = np.array([0 * np.pi/180, 0 * np.pi/180, 50 * np.pi/180], dtype="float");
 # Kalman P initial covaraince matrix setup
 sigma_p = 0.1*0;
 # Kalman Q process noise matrix setup
@@ -96,9 +97,9 @@ string += 'sigma_epsilon = {:f};\n'.format(sigma_epsilon)
 string += 'sigma_omega = {:f};\n'.format(sigma_omega)
 string += 'size = {:d};\n'.format(N)
 string += 'delta = {:f};\n'.format(t_end/N)
-string += 'float quat[{:d}] = {{'.format(4*t.size)
+string += 'float quat[{:d}] = {{\n'.format(4*t.size)
 np.savetxt('../ADCS/Tests/quat.data', np.transpose(quat_export), fmt='%+f', delimiter=',', newline=',\n', header=string, footer='};', comments='')
-np.savetxt('../ADCS/Tests/omega.data', np.transpose(omega_export), fmt='%+f', delimiter=',', newline=',\n', header='float omega[{:d}] = {{'.format(3*t.size), footer='};', comments='')
+np.savetxt('../ADCS/Tests/omega.data', np.transpose(omega_export), fmt='%+f', delimiter=',', newline=',\n', header='float omega[{:d}] = {{\n'.format(3*t.size), footer='};', comments='')
 
 # Saving for the plotting
 np.savetxt('t.csv', t, delimiter=',')
