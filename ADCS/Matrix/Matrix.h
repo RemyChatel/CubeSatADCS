@@ -576,6 +576,20 @@ public:
 
     /**
      * @brief
+     * Calculates an approximation of the inverse by using a Taylor expansion
+     * 
+     * From DOI: 10.1109/LCSYS.2018.2854238
+     * 
+     * If M = A + B
+     * 
+     * M^-1 ~= A^-1 - A^-1*B*A^-1 + A^-1*B*A^-1*B*A^-1 - ...
+     * 
+     * @return The inverse of the matrix
+     */
+    Matrix TaylorInv() const;
+
+    /**
+     * @brief
      * Returns the dot Product of any two same leght vectors.
      * In this case a vector is defined as a [1,n] or [n,1] Matrix.
      * Very Flexible Function.

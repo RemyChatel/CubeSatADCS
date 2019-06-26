@@ -732,6 +732,33 @@
         }
     }
 
+    Matrix Matrix::TaylorInv() const{
+        Matrix tmp;
+        if(this->_nCols != this->_nRows){
+            return tmp;
+        }
+        // extract the diagonal coefficients
+        Matrix diag = zeros(this->getRows(), this->getCols());
+        for(int i = 0; i < this->getCols(); i++){
+            diag._matrix[i][i] = this->_matrix[i][i];
+        }
+        // extract the non diagonal coefficients
+        Matrix notdiag = *this - diag;
+
+        // Invert the diagonal terms
+        for(int i = 0; i < diag._nRows; i++){
+            diag._matrix[i][i] = 1 / diag._matrix[i][i];
+        }
+
+        // Taylor expension of the Inverse
+        tmp  = zeros(this->getRows(), this->getCols());
+        tmp += diag;
+        tmp += - diag * notdiag * diag;
+        tmp +=   diag * notdiag * diag * notdiag * diag;
+        tmp += - diag * notdiag * diag * notdiag * diag * notdiag * diag;
+        return tmp;
+    }
+
     float Matrix::dot(const Matrix& leftM, const Matrix& rightM) {
         if( leftM.isVector() && rightM.isVector() )
         {

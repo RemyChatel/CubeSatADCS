@@ -156,7 +156,7 @@ int MatrixTest(Serial *pc, I2C *i2c, Timer *t){
 
     pc->printf("Inverse of B matrix inv(B) {{-1, 2, -1}, {2, -10.33, 7.33}, {-1, 8, -6}} \n\r");
     printMat(B.Inv(), pc);
-
+    
     pc->printf("Test of vector packing\n\r");
     printMat(Matrix::ToPackedVector(A), pc);
 
@@ -236,5 +236,21 @@ int MatrixTest(Serial *pc, I2C *i2c, Timer *t){
     printMat(Matrix::quatmul(q1, q2), pc);
     pc->printf("norm of q1 %f\n\r", q1.norm());
 
+    float p_coef[49] = { 0.012005,  0.000338,  0.000539,  0.000908,  0.000792, -0.000029, -0.000384,  0.000338,  0.011768,  0.000031, -0.000350,  0.000830, -0.000451, -0.000155,  0.000539,  0.000031,  0.013249,  0.002569, -0.000004, -0.000221,  0.001432,  0.000908, -0.000350,  0.002569,  0.013035, -0.000104, -0.000511,  0.000451,  0.000792,  0.000830, -0.000004, -0.000104,  0.252785, -0.000750,  0.000257, -0.000029, -0.000451, -0.000221, -0.000511, -0.000750,  0.252275, -0.001431, -0.000384, -0.000155,  0.001432,  0.000451,  0.000257, -0.001431,  0.256326};
+    Matrix P(7,7, p_coef);
+    Matrix P2 = P.Inv();
+    pc->printf("Approximate Inverse of B matrix inv(B) \n\r");
+    Timer t2;
+    t2.start();
+    Matrix Pinv = P.TaylorInv();
+    int time = t2.read_us();
+    printMat(Pinv, pc);
+    time = t2.read_us() - time;
+    pc->printf("Expected Inverse of B matrix inv(B) \n\r");
+    printMat(P2, pc);
+    pc->printf("Error matrix \n\r");
+    printMat(Pinv-P2, pc);
+    pc->printf("Execution time: %f ms\n\r", (float)time/1000);
+    
     return 1;
 }
