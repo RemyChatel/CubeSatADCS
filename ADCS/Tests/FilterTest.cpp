@@ -91,7 +91,7 @@ int FilterTest(Serial *pc, I2C *i2c, Timer *t){
         pc->printf( "%f %f\n\r", (float)ellapsed, iter/(float)size );
 
         /************* PRINTS END **************/
-        wait_ms(9);
+        // wait_ms(10);
     }
     return 1;
 }

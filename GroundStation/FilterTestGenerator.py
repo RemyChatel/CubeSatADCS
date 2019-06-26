@@ -37,8 +37,8 @@ sigma_p = 0.1;
 sigma_q = 0.01;
 # Kalman R measurement noise matrix setup
 sigma_eta = 0.1;
-sigma_epsilon = 0.1;
-sigma_omega = 0.5;
+sigma_epsilon = 0.05;
+sigma_omega = 0.1;
 
 I = np.diag([27,17,25])
 I_inv = np.linalg.inv(I)
