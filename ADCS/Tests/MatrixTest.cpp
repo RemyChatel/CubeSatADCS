@@ -242,10 +242,10 @@ int MatrixTest(Serial *pc, I2C *i2c, Timer *t){
     pc->printf("Approximate Inverse of B matrix inv(B) \n\r");
     Timer t2;
     t2.start();
-    Matrix Pinv = P.TaylorInv();
     int time = t2.read_us();
-    printMat(Pinv, pc);
+    Matrix Pinv = P.TaylorInv();
     time = t2.read_us() - time;
+    printMat(Pinv, pc);
     pc->printf("Expected Inverse of B matrix inv(B) \n\r");
     printMat(P2, pc);
     pc->printf("Error matrix \n\r");

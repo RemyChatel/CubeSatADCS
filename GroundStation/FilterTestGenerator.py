@@ -24,19 +24,19 @@ def quat_exp(q):
 
 ################################################################################
 # Simulation parameters
-t_end = 8;
-N = 100;
+t_end = 10;
+N = 1000;
 # Init quat_th0# Generate omega_th(k)
 # ZYX 60->-45->30	    eta     x       y      z
 # quat_th0  = np.array([0.0723,0.392,-0.2010, 0.5320], dtype="float");
 quat_th0  = np.array([0,1,0,0], dtype="float");
-omega_th0 = np.array([180 * np.pi/180, 40 * np.pi/180, 30 * np.pi/180], dtype="float");
+omega_th0 = np.array([90 * np.pi/180, 1 * np.pi/180, 0 * np.pi/180], dtype="float");
 # Kalman P initial covaraince matrix setup
 sigma_p = 0.1;
 # Kalman Q process noise matrix setup
 sigma_q = 0.01;
 # Kalman R measurement noise matrix setup
-sigma_eta = 0.1;
+sigma_eta = 0.05;
 sigma_epsilon = 0.05;
 sigma_omega = 0.1;
 
