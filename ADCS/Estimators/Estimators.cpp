@@ -112,3 +112,84 @@ void Estimators::QUEST(float quat[4], int N, float **s_eci, float **s_body, floa
     quat[2] = x(2);
     quat[3] = x(3);
 }
+
+void Estimators::QUEST(Matrix quat, int N, Matrix *s_eci, Matrix *s_body, float *omega, float tolerance){
+    /* Variable to store the solution */
+    float lambda;       // The estimated eigen value of the problem
+    Matrix x;           // Quaternion's vector (of the eigen vector)
+    float gamma;        // Quaternion's rotation (of the eigen vector)
+    
+    /* Internal computation variables  */
+    float lambda0 = 0;  // A reasonable initial value for lambda is sum of weights
+    // Matrix s_a[N];      // ECI frame vector array
+    // Matrix s_b[N];      // Body frame vector array
+    Matrix k12(3,1);
+    Matrix B(3,3), S(3,3), Id(3,3);
+    float k22;
+    float a, b, c, d;
+    float alpha, beta;
+    float detS;
+    float trAdjS;
+    float normQ;
+
+    /* Preparation of the Newton optimisation problem to find lambda */
+    for(int i = 0; i < N; i++){
+        lambda0 += omega[i];
+    }
+
+    for(int i = 0; i < N; i++){
+        s_eci[i] *= 1/s_eci[i].norm();
+        s_body[i] *= 1/s_body[i].norm();
+    }
+
+    for(int i = 0; i < N; i++){
+        B += omega[i] * ( s_eci[i] * s_body[i].Transpose() );
+    }
+
+    S = B + B.Transpose();
+    B = B.Transpose();
+    detS = S.det();
+
+    k22 = B.trace();
+
+    k12(1) = B(2,3) - B(3,2);
+    k12(2) = B(3,1) - B(1,3);
+    k12(3) = B(1,2) - B(2,1);
+
+    trAdjS  = S(2,2)*S(3,3) - S(3,2)*S(2,3) 
+            + S(1,1)*S(3,3) - S(1,3)*S(3,1) 
+            + S(1,1)*S(2,2) - S(1,2)*S(2,1);
+
+    a = k22 * k22 - trAdjS;
+    b = k22 * k22 + Matrix::dot(k12, k12);
+    c = detS + Matrix::dot(k12, S * k12);
+    d = Matrix::dot(k12, S * S * k12);
+
+    /* Newton's optimization method to find lambda */
+    int iteration = 0;
+    lambda = lambda0;
+    float lambda_prev = 0;
+    while(fabs(lambda-lambda_prev) > tolerance && iteration < 10000){
+        lambda_prev = lambda;
+        lambda -= (lambda*lambda*lambda*lambda - (a + b) * lambda * lambda - c *lambda + (a * b + c * k22 - d)) / (4 * lambda * lambda * lambda - 2 * (a + b) * lambda - c);
+        iteration++;
+    }
+
+    /* Then find the eigen vector associated with the eigen value lambda */
+    Id = Matrix::eye(3);
+
+    alpha = lambda * lambda - a;
+    beta = lambda - k22;
+    gamma = (lambda + k22) * alpha - detS; 
+    x = (alpha * Id + beta * S + S * S) * k12;
+
+    normQ = sqrt(gamma * gamma + Matrix::dot(x,x));
+    x *= -1/normQ;
+    gamma /= normQ;
+
+    /* Returning the quaternion */
+    quat(1) = gamma;
+    quat(2) = x(1);
+    quat(3) = x(2);
+    quat(4) = x(3);
+}

@@ -29,4 +29,7 @@ int main(){
     #ifdef TEST_SENSOR
         return SensorTest(&pc, &i2c, &t);
     #endif
+    #ifdef TEST_ADS
+        return ADSTest(&pc, &i2c, &t);
+    #endif
 }

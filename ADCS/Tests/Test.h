@@ -92,6 +92,16 @@ int FilterTest(Serial *pc, I2C *i2c, Timer *t);
 
 /**
  * @brief
+ * Test of the ADS core program
+ * @param pc A reference to the Serial bus
+ * @param i2c A reference to the I2C bus
+ * @param t A refence to a Timer instance
+ * return 1 if successful, 0 otherwise
+ */
+int ADSTest(Serial *pc, I2C *i2c, Timer *t);
+
+/**
+ * @brief
  * Print a Matrix in a formated way
  * @param a The matrix to print
  * @param pc A reference to the Serial bus
