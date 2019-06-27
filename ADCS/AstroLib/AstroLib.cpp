@@ -84,13 +84,18 @@ using namespace AstroLib;
 
 // ------------------- Orbit -------------------//
 // Constructors
-    Orbit::Orbit(){
-        _date = JulianDate();
-    }
+    Orbit::Orbit():pi(3.1415926535f),
+                   twopi(6.283185307f),
+                   deg2rad(pi/180.0f),
+                   sec2jFrac(1 / (60*60*24)),
+                   mu(398600441800000.0),
+                   omega_earth(0.000072921158f),
+                   r_earth(6378000.0f),
+                   _date(JulianDate())
+    {}
 
-    Orbit::~Orbit(void){
-        
-    }
+    Orbit::~Orbit(void){}
+    
 // Date management
     JulianDate Orbit::getJulianDate(){
         return _date;
@@ -265,7 +270,15 @@ using namespace AstroLib;
 
 // ------------------- Ground -------------------//
 // Constructors
-    Ground::Ground(){}
+    Ground::Ground():pi(3.1415926535f),
+                   twopi(6.283185307f),
+                   deg2rad(pi/180.0f),
+                   sec2jFrac(1 / (60*60*24)),
+                   mu(398600441800000.0),
+                   omega_earth(0.000072921158f),
+                   r_earth(6378000.0f),
+                   _date(JulianDate())
+    {}
 
     Ground::~Ground(void){}
 

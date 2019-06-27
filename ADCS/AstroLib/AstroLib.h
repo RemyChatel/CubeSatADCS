@@ -323,13 +323,13 @@ private:
     float rotECI[9];// Rotation from perifocal to ECI frame
 
     /* Math and orbital mechanics constants */
-    const float pi = 3.1415926535f;
-    const float twopi = 6.283185307f;
-    const float deg2rad = pi/180.0f;
-    const float sec2jFrac = 1 / (60*60*24);
-    const double mu = 398600441800000.0; // Earth gravitational constant (m3/s2)
-    const float omega_earth = 0.000072921158f; // Earth rotation pulsation periode
-    const float r_earth = 6378000.0f;     // Earth radius in m
+    const float pi;
+    const float twopi;
+    const float deg2rad;
+    const float sec2jFrac;
+    const double mu; // Earth gravitational constant (m3/s2)
+    const float omega_earth; // Earth rotation pulsation periode
+    const float r_earth ;     // Earth radius in m
 }; // class Orbit
 
 /**
@@ -439,13 +439,13 @@ private:
     float _rmag[3];
 
     /* Math and orbital mechanics constants */
-    const float pi = 3.1415926535f;
-    const float twopi = 6.283185307f;
-    const float deg2rad = pi/180.0f;
-    const float sec2jFrac = 1 / (60*60*24);
-    const double mu = 398600441800000.0; // Earth gravitational constant (m3/s2)
-    const float omega_earth = 0.000072921158f; // Earth rotation pulsation periode
-    const float r_earth = 6378000.0f;     // Earth radius in m
+    const float pi;
+    const float twopi;
+    const float deg2rad;
+    const float sec2jFrac;
+    const double mu; // Earth gravitational constant (m3/s2)
+    const float omega_earth; // Earth rotation pulsation periode
+    const float r_earth;     // Earth radius in m
 }; // class Ground
 
 } // namespace AstroLib
