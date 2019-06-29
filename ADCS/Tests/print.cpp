@@ -4,23 +4,23 @@ void printMat(Matrix a, Serial *pc){
     int col = a.getCols();
     int row = a.getRows();
 
-    pc->printf("{{");
+    printf("{{");
 
     for(int i = 0; i < row; i++){
         if(i != 0){
-            pc->printf(" {");
+            printf(" {");
         }
         for(int j = 0; j < col; j++){
-            pc->printf("% 7f", a.getNumber(i, j));
+            printf("% 7f", a.getNumber(i, j));
             if(j!=col-1){
-                pc->printf(", ");
+                printf(", ");
             }
         }
         if(i==row-1){
-                pc->printf("}}\n\r");
+                printf("}}\r\n");
             }
         else{
-            pc->printf("},\n\r");
+            printf("},\r\n");
         }
     }
 }

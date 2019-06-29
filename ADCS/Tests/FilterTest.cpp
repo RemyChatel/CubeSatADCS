@@ -53,7 +53,7 @@ int FilterTest(Serial *pc, I2C *i2c, Timer *t){
     Matrix I_wheel = Matrix::zeros(3,3);
     Matrix q_init(4,1, quat);
     Matrix w_init(3,1, omega);
-    KalmanFilter kalman(I_sat, I_wheel, p_init, kalman_q, kalman_r, q_init, w_init, pc);
+    KalmanFilter kalman(I_sat, I_wheel, p_init, kalman_q, kalman_r, q_init, w_init);
 
     Matrix q_predicted(4,1);
     Matrix w_predicted(3,1);

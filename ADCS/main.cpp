@@ -1,6 +1,6 @@
 #include "mbed.h"
 #include "Test.h"
-#define TEST_FILTER
+#define TEST_ADS
 Serial pc(USBTX, USBRX, 115200);
 I2C i2c(I2C_SDA, I2C_SCL);
 Timer t;

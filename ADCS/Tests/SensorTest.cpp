@@ -91,8 +91,8 @@ int SensorTest(Serial *pc, I2C *i2c, Timer *t){
             pc->printf("{% 4.2f, % 4.2f, % 4.2f}\n\r", val_mag[0], val_mag[1], val_mag[2]);
             pc->printf("Sun:       ");
             pc->printf("{% 4.2f, % 4.2f, % 4.2f}\n\r", rsun_b[0], rsun_b[1], rsun_b[2]);
-            pc->printf("Quaternion\n\r");
-            printMat(dq, pc);
+            // pc->printf("Quaternion\n\r");
+            // printMat(dq, pc);
         }
 
         if(t->read_ms() > 1<<21) {

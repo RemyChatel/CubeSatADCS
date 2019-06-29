@@ -8,10 +8,7 @@
  * @brief
  * Source code of Filters.h
  * 
- * @details
- * # Description
- * 
- * @see Filters
+ * @see Filters.h
  * 
  * # License
  * <b>(C) Copyright 2019 Remy CHATEL</b>
@@ -27,6 +24,9 @@
  */
 
 #include "Filters.h"
+#ifdef FILTERS_USE_PRINTF
+#include "mbed.h"
+#endif
 
 using namespace Filters;
 
@@ -42,11 +42,9 @@ using namespace Filters;
 
         _kalman_q = Matrix::zeros(7, 7);
         _kalman_r = Matrix::zeros(7, 7);
-
-        _pc = new Serial(USBTX,USBRX, 115200);
     }
 
-    KalmanFilter::KalmanFilter(Matrix I_sat_init, Matrix I_wheel_init, Matrix p_init, Matrix kalman_q, Matrix kalman_r, Matrix q_init, Matrix w_init, Serial *pc){
+    KalmanFilter::KalmanFilter(Matrix I_sat_init, Matrix I_wheel_init, Matrix p_init, Matrix kalman_q, Matrix kalman_r, Matrix q_init, Matrix w_init){
         I_sat = I_sat_init;
         I_wheel = I_wheel_init;
         I_sat_inv = I_sat.Inv();
@@ -60,9 +58,6 @@ using namespace Filters;
 
         q_predict = q_init;
         w_predict = w_init;
-
-        _pc = pc;
-        t2.start();
     }
 
     KalmanFilter::~KalmanFilter(void){}
@@ -99,6 +94,7 @@ using namespace Filters;
         
         f *= dt;
         Matrix p_propagate = (Matrix::eye(7) + f) * p_predict_prev * (Matrix::eye(7) + f).Transpose() + _kalman_q;
+        
         // (2) Predict the state ahead
         float temp_coef[16] = { 0                   ,-w_predict_prev(1) ,-w_predict_prev(2) ,-w_predict_prev(3) ,
                                 w_predict_prev(1)   ,0                  ,w_predict_prev(3)  ,-w_predict_prev(2) ,
@@ -156,28 +152,3 @@ using namespace Filters;
 
         return q_predict;
     }
-
-void KalmanFilter::printMat(Matrix a, Serial *pc){
-    int col = a.getCols();
-    int row = a.getRows();
-
-    pc->printf("{{");
-
-    for(int i = 0; i < row; i++){
-        if(i != 0){
-            pc->printf(" {");
-        }
-        for(int j = 0; j < col; j++){
-            pc->printf("% 7f", a.getNumber(i, j));
-            if(j!=col-1){
-                pc->printf(", ");
-            }
-        }
-        if(i==row-1){
-                pc->printf("}}\n\r");
-            }
-        else{
-            pc->printf("},\n\r");
-        }
-    }
-}

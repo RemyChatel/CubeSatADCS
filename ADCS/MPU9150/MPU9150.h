@@ -1,23 +1,78 @@
 /**
  * @file   MPU9150.h
+ * @defgroup MPUGr MPU9150 Driver
  * @version 1.0
  * @date 2019
  * @author Remy CHATEL
  * @copyright GNU Public License v3.0
- * @defgroup MPUGr MPU9150 Driver
  * 
  * @brief
- * A drivers for the MPU9150 Inertial Measurement Unit
+ * A drivers for the MPU9150 Inertial Measurement Unit from InvenSense.
  * 
  * @details
  * # Description
- * A driver for the InvenSense MPU9150 Inertial Measurement Unit
+ * A driver for the InvenSense4s MPU9150 Inertial Measurement Unit
  * 
  * Adapted from Kris Winer MPU9150AHRS library, 
  * https://os.mbed.com/users/onehorse/code/MPU9150AHRS/
  * 
  * @see MPU9150
  * @see MPU9150_registers.h
+ *
+ * # Example code
+ * 
+ * @code
+ * #include "MPU9150.h"
+ * 
+ * MPU9150 imu(I2C_SDA, I2C_SCL);
+ * 
+ * int mcount = 0; // Frequency divider for the magnetometer
+ * uint8_t MagRate = 50; // set magnetometer read rate in Hz; 10 to 100 (max) Hz are reasonable values
+ * uint8_t acc_scale = AFS_2G;
+ * uint8_t gyr_scale = GFS_250DPS;
+ * float val_acc[3], val_gyr[3], val_mag[3];
+ *
+ * //--------------------- INIT ---------------------//
+ * pc->printf("\n\r\n\r\n\r\n\r\n\r\n\r--------------------------------------\n\r");
+ * pc->printf("Connection ok\n\r");
+ * uint8_t whoami = imu.readByte(MPU9150_ADDRESS, WHO_AM_I_MPU9150);  // Read WHO_AM_I register for MPU-9150
+ * pc->printf("I AM 0x%x\n\r", whoami); pc->printf("I SHOULD BE 0x68 or 0x73\n\r");
+ * if (!imu.initIMU(acc_scale, gyr_scale)) {   // WHO_AM_I should be 0x68
+ *     pc->printf("Could not connect to MPU9150: \n\r");
+ *     while(1) ; // Loop forever if communication doesn't happen
+ * }
+ * 
+ * imu.recalibrateIMU(1000, 100);
+ * float null_avg[3] = {0,0,0};
+ * imu.setAvgAcc(null_avg);
+ * imu.setAvgMag(null_avg);
+ * pc->printf("IMU ok\n\r");
+ *
+ * while(1){
+ *     last_update = t->read_us();
+ * 
+ *     //--------------------- LOOP ---------------------//
+ *     if(imu.readByte(MPU9150_ADDRESS, INT_STATUS) & 0x01) {  // On interrupt, check if data ready interrupt
+ *         imu.getAccel(val_acc);  // Read the x/y/z adc values
+ *         imu.getGyro(val_gyr);  // Read the x/y/z adc values
+ *         sun.getSunVector(rsun_b);
+ *         
+ *         mcount++;
+ *         if (mcount > 200/MagRate) {  // this is a poor man's way of setting the magnetometer read rate (see below) 
+ *             imu.getMag(val_mag);  // Read the x/y/z adc values
+ *             mcount = 0;
+ *         }
+ * 
+ *         pc->printf("Acc (mg):  ");
+ *         pc->printf("{% 4.2f, % 4.2f, % 4.2f}\n\r", val_acc[0]*1000, val_acc[1]*1000, val_acc[2]*1000);
+ *         pc->printf("Gyr (°/s): ");
+ *         pc->printf("{% 4.2f, % 4.2f, % 4.2f}\n\r", val_gyr[0], val_gyr[1], val_gyr[2]);
+ *         pc->printf("Mag (uT):  ");
+ *         pc->printf("{% 4.2f, % 4.2f, % 4.2f}\n\r", val_mag[0], val_mag[1], val_mag[2]);
+ *     }
+ * }
+ * 
+ * @endcode
  * 
  * # License
  * <b>(C) Copyright 2019 Remy CHATEL</b>
@@ -73,7 +128,6 @@ enum Gscale {
 
 /**
  * @ingroup MPUGr
- * @{
  * @brief
  * A drivers for the MPU9150 Inertial Measurement Unit
  * 
@@ -91,11 +145,10 @@ enum Gscale {
  * This library was built around the "Mbed" framework to access the harware
  * through an common interface regardless of the device as long as the device
  * is supported by Mbed (https://www.mbed.com/en/)
- * @}
  */
 class MPU9150 {
 public:
-// Constructors
+///@name Constructors
     /**
      * @brief
      * Constructor for MPU9150 that creates its own I2C instance
@@ -111,7 +164,7 @@ public:
      */
     MPU9150(I2C *i2c);
 
-// I2C Tools
+///@name I2C Tools
     
     /**
      * @brief
@@ -141,7 +194,7 @@ public:
      */
     void readBytes(uint8_t address, uint8_t subAddress, uint8_t count, uint8_t * dest);
 
-// IMU Set up
+///@name IMU Set up
     /**
      * @brief
      * Get the resolution of the gyroscope and store it
@@ -241,7 +294,7 @@ public:
      */
     void setAvgMag(float new_avg_mag[3]);
 
-// Read functions
+///@name Read functions
     /**
      * @brief
      * Fetches the accelerometer count from the IMU
@@ -298,7 +351,7 @@ public:
      */
     float getTemp();
 
-// Filtering functions
+///@name Filtering functions
     /**
      * @brief
      * An orientation filter to be used in AHRS applications
@@ -330,16 +383,16 @@ public:
     void MahonyQuaternionUpdate(float quat[4],float acc[3], float gyr[3], float mag[3], float dt);
 
 private:
-    I2C *i2c_;
+    I2C *i2c_;                  ///< I2C instance to use
     // Set initial input parameters
-    uint8_t ascale;     // AFS_2G, AFS_4G, AFS_8G, AFS_16G
-    uint8_t gscale; // GFS_250DPS, GFS_500DPS, GFS_1000DPS, GFS_2000DPS
-    float aRes_, gRes_, mRes_;      // scale resolutions per LSB for the sensors
-    float magCalibration[3]; // Factory mag calibration
-    float magBias[3];        // Factory mag bias
-    float gyroBias[3]; // Bias corrections for gyro
-    float accelBias[3]; // Bias corrections for accelerometer
-    float avg_acc[3], avg_gyr[3], avg_mag[3];
+    uint8_t ascale;             ///< Accelerometer scale (AFS_2G, AFS_4G, AFS_8G, AFS_16G)
+    uint8_t gscale;             ///< Gyroscope scale (GFS_250DPS, GFS_500DPS, GFS_1000DPS, GFS_2000DPS)
+    float aRes_, gRes_, mRes_;  ///< Scale resolutions per LSB for the sensors
+    float magCalibration[3];    ///< Factory mag calibration
+    float magBias[3];           ///< Factory mag bias
+    float gyroBias[3];          ///< Bias corrections for gyro
+    float accelBias[3];         ///< Bias corrections for accelerometer
+    float avg_acc[3], avg_gyr[3], avg_mag[3]; ///< DC bias corrections
     float SelfTest_[6];
 }; // class MPU9150
 #endif // MPU9150_H

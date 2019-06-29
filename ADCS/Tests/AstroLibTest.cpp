@@ -13,28 +13,23 @@ int AstroLibTest(Serial *pc, I2C *i2c, Timer *t){
     pc->printf("\n\r\n\r------------------------------\n\r");
     pc->printf("Connection OK\n\r");
 
-    int year        = 2019;//2006;
-    int month       = 06;//04;
-    int day         = 07;//02;
-    int hours       = 17;//00; // /!\ Use GMT+00 !!!!
-    int minutes     = 15;//00;
+    int year        = 2019;
+    int month       = 06;
+    int day         = 07;
+    int hours       = 17;// /!\ Use GMT+00 !!!!
+    int minutes     = 15;
     float seconds   = 00;
 
     JulianDate date;
     Ground orbit;
     orbit.setJulianDate(JulianDate(year,month,day,hours,minutes,seconds));
-    // orbit.setOrbit(6378000  + ( 418000.0f / (1 + 0.0007873f) ) , 0.0007873, 51.6420 * DEG2RAD, 49.6761 * DEG2RAD, 19.9151 * DEG2RAD, 340.2306 * DEG2RAD);
+    // Ground setting[lattitude, longitude, altitude,  mag_N  ,  mag_E ,   mg_D  ] in North East Down frame
     orbit.setOrbit(55.86515, -4.25763, 0.0f, 17.3186f, -.6779f, 46.8663f);
     
     float sun_eci[3];
     float mag_eci[3];
     float sat_eci[3];
     float azel_sun[2];
-
-    // Input here the Earth magnetic field at location  (https://www.ngdc.noaa.gov/geomag/calculators/magcalc.shtml#igrfwmm)
-    // mag_ned = {17.3186f, -.6779f, 46.8663f}; //uT in North-East-Down ref
-    // Input here the sun Azimuth and Elevation (https://www.esrl.noaa.gov/gmd/grad/solcalc/)
-    // Ground::AzEl2NED(117.15f*DEG2RAD, 43.7f*DEG2RAD, sun_ned); // direction in North-East-Down ref
 
     int time;
     t->start();

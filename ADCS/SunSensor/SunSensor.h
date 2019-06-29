@@ -1,10 +1,10 @@
 /**
  * @file   SunSensor.h
+ * @defgroup SunSensorGr Sun Sensor Driver
  * @version 1.0
  * @date 2019
  * @author Remy CHATEL
  * @copyright GNU Public License v3.0
- * @defgroup SunSensorGr Sun Sensor Driver
  * 
  * @brief
  * A class to handle analog Sun sensor (three photodiode)
@@ -15,6 +15,22 @@
  * a set of three photodiodes that make a Sun sensor
  * 
  * @see SunSensor
+ * 
+ * # Example code
+ * 
+ * @code
+ * #include "mbed.h"
+ * #include "SunSensor.h"
+ * 
+ * SunSensor sun();
+ * float r_sun[3] = {0,0,0};
+ * 
+ * while(1){
+ *     sun.getSunVector(r_sun);
+ *     wait_ms(100);
+ * }
+ * 
+ * @endcode
  * 
  * # License
  * <b>(C) Copyright 2019 Remy CHATEL</b>
@@ -35,7 +51,6 @@
 
 /**
  * @ingroup SunSensorGr
- * @{
  * @brief
  * A class to handle analog Sun sensor (three photodiode)
  * 
@@ -52,9 +67,7 @@
  * This library was built around the "Mbed" framework to access the harware
  * through an common interface regardless of the device as long as the device
  * is supported by Mbed (https://www.mbed.com/en/)
- * @}
  */
-
 class SunSensor{
 public:
     /* Public functions */
@@ -67,9 +80,9 @@ public:
     
     /**
      * SunSensor Constructor
-     * @param analogX The pin of the X face sensor
-     * @param analogY The pin of the Y face sensor 
-     * @param analogZ The pin of the Z face sensor
+     * @param pinX The pin of the X face sensor
+     * @param pinY The pin of the Y face sensor 
+     * @param pinZ The pin of the Z face sensor
      */
     SunSensor(PinName pinX, PinName pinY, PinName pinZ);
     

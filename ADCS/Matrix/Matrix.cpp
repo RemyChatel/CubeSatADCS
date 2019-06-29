@@ -27,7 +27,9 @@
  * limitations under the License.
  */
 #include "Matrix.h"
-
+#ifdef MATRIX_USE_PRINTF
+#include "mbed.h"
+#endif
 
 // Constructors
     Matrix::Matrix() {
@@ -37,6 +39,8 @@
         _pRow = 0;
         _pCol = 0;
 
+        _matrix.resize(0);
+        _matrix.shrink_to_fit();
     }
 
     Matrix::Matrix(int Rows, int Cols): _nRows(Rows), _nCols(Cols) {
@@ -128,6 +132,9 @@
 
         if( row >= _nRows || col >= _nCols)
         {
+            #ifdef MATRIX_USE_PRINTF
+            printf("Index out of bounds (/!\\ Indexes start at 1\r\n");
+            #endif
             NullCoef = nanf("");
             return NullCoef;
         }else{
@@ -140,6 +147,9 @@
 
         if( row >= _nRows || col >= _nCols)
         {
+            #ifdef MATRIX_USE_PRINTF
+            printf("Index out of bounds (/!\\ Indexes start at 1\r\n");
+            #endif
             return nanf("");
         }else{
             return _matrix[row][col];
@@ -158,6 +168,9 @@
         } else if( index < _nRows || index < _nCols){
             return _matrix[index][index];
         }
+        #ifdef MATRIX_USE_PRINTF
+        printf("Index out of bounds (/!\\ Indexes start at 1\r\n");
+        #endif
         NullCoef = nanf("");
         return NullCoef;
     }
@@ -174,6 +187,9 @@
         } else if( index < _nRows || index < _nCols){
             return _matrix[index][index];
         }
+        #ifdef MATRIX_USE_PRINTF
+        printf("Index out of bounds (/!\\ Indexes start at 1\r\n");
+        #endif
         return nanf("");
     }
 
@@ -235,7 +251,11 @@
             return leftM;
 
         }else{
-            return NullMatrix;
+            #ifdef MATRIX_USE_PRINTF
+            printf("Dimensions mismatch\r\n");
+            #endif
+            leftM = Matrix();
+            return leftM;
         }
     }
 
@@ -249,7 +269,11 @@
             return leftM;
 
         }else{
-            return NullMatrix;
+            #ifdef MATRIX_USE_PRINTF
+            printf("Dimensions mismatch\r\n");
+            #endif
+            leftM = Matrix();
+            return leftM;
         }
     }
 
@@ -267,7 +291,11 @@
             leftM = resultM;
             return leftM;
         }else{
-            return NullMatrix;
+            #ifdef MATRIX_USE_PRINTF
+            printf("Dimensions mismatch\r\n");
+            #endif
+            leftM = Matrix();
+            return leftM;
         }
     }
 
@@ -305,6 +333,9 @@
             return result;
 
         }else{
+            #ifdef MATRIX_USE_PRINTF
+            printf("Dimensions mismatch\r\n");
+            #endif
             Matrix null;
             return null;
         }
@@ -336,6 +367,9 @@
             return result;
 
         }else{
+            #ifdef MATRIX_USE_PRINTF
+            printf("Dimensions mismatch\r\n");
+            #endif
             Matrix null;
             return null;
         }
@@ -369,6 +403,9 @@
             return resultM;
 
         } else {
+            #ifdef MATRIX_USE_PRINTF
+            printf("Dimensions mismatch\r\n");
+            #endif
             Matrix null;
             return null;
         }
@@ -451,8 +488,10 @@
     void Matrix::AddRow(Matrix& Mat, int index) {
         --index;
 
-        if( index > Mat._nRows + 1)
-        {
+        if( index > Mat._nRows + 1) {
+            #ifdef MATRIX_USE_PRINTF
+            printf("Error in Matrix::AddRow > Index out of bounds /!\\ Indexes start at 1\r\n");
+            #endif
         }else{
 
         Mat._nRows++;
@@ -481,9 +520,10 @@
     void Matrix::AddCol( Matrix& Mat, int index ) {
         --index;
 
-        if( index > Mat._nCols + 1 )
-        {
-
+        if( index > Mat._nCols + 1 ){
+            #ifdef MATRIX_USE_PRINTF
+            printf("Error in Matrix::AddCol > Index out of bounds /!\\ Indexes start at 1\r\n");
+            #endif
         }else{
 
 
@@ -512,9 +552,10 @@
     void Matrix::DeleteCol( Matrix& Mat, int Col) {
         --Col; // Because of Column zero.
 
-        if( Col > Mat._nCols )
-        {
-
+        if( Col > Mat._nCols ){
+            #ifdef MATRIX_USE_PRINTF
+            printf("Error in Matrix::DeleteCol > Index out of bounds /!\\ Indexes start at 1\r\n");
+            #endif
         } else {
 
             for( int i = 0; i < Mat._nRows; i++ )
@@ -538,8 +579,10 @@
     void Matrix::DeleteRow(Matrix& Mat, int Row) {
         --Row;
 
-        if( Row > Mat._nRows )
-        {
+        if( Row > Mat._nRows ){
+            #ifdef MATRIX_USE_PRINTF
+            printf("Error in Matrix::DeleteRow > Index out of bounds /!\\ Indexes start at 1\r\n");
+            #endif
         }else{
 
             for( int i = Row; i < Mat._nRows - 1; i++ )
@@ -553,13 +596,16 @@
 
     const Matrix Matrix::ExportRow( const Matrix& Mat, int row ) {
         --row;
+        Matrix SingleRow;
 
         if( row > Mat._nRows )
         {
-            return NullMatrix;
+            #ifdef MATRIX_USE_PRINTF
+            printf("Error in Matrix::ExportRow > Index out of bounds /!\\ Indexes start at 1\r\n");
+            #endif
+            return SingleRow;
         } else {
-
-            Matrix SingleRow( 1 , Mat._nCols );
+            SingleRow.Resize( 1 , Mat._nCols );
             SingleRow.Clear();
 
             for( int j = 0; j < Mat._nCols; j++ )
@@ -574,13 +620,15 @@
 
     const Matrix Matrix::ExportCol( const Matrix& Mat, int col ) {
         --col;
+        Matrix SingleCol;
 
-        if( col > Mat._nCols )
-        {
-            return NullMatrix;
+        if( col > Mat._nCols ){
+            #ifdef MATRIX_USE_PRINTF
+            printf("Error in Matrix::ExportCol > Index out of bounds /!\\ Indexes start at 1\r\n");
+            #endif
+            return SingleCol;
         }else{
-
-            Matrix SingleCol( Mat._nRows, 1 );
+            SingleCol.Resize( Mat._nRows, 1 );
             for(int i = 0; i < Mat._nRows; i++ )
                 SingleCol._matrix[i][0] = Mat._matrix[i][col];
 
@@ -592,13 +640,16 @@
     }
 
     void Matrix::Resize( int Rows, int Cols ) {
-        _nRows = Rows;  //Decreases one because internally
-        _nCols = Cols; // Index starts at zero.
+        _nRows = Rows;
+        _nCols = Cols;
 
         _matrix.resize( _nRows );
 
-        for( int i = 0; i< _nRows ; i++ )
+        for( int i = 0; i< _nRows ; i++ ){
             _matrix[i].resize(_nCols);
+            _matrix[i].shrink_to_fit();
+        }
+        _matrix.shrink_to_fit();
 
         _pRow = 0; // If matrix is resized the <<
         _pCol = 0; // operator overwrites everything!
@@ -616,9 +667,10 @@
     void Matrix::add(int Row, int Col, float number) {
         --Col; --Row;
 
-        if( Row > _nRows || Col > _nCols )
-        {
-
+        if( Row > _nRows || Col > _nCols ){
+            #ifdef MATRIX_USE_PRINTF
+            printf("Error in Matrix::add > Index out of bounds /!\\ Indexes start at 1\r\n");
+            #endif
         }else{
             _matrix[Row][Col] = number;
         }
@@ -634,8 +686,16 @@
     }
 
 // Getters and Setters
-    float Matrix::getNumber( int Row, int Col ) const
-    { return this->_matrix[Row][Col]; }
+    float Matrix::getNumber( int Row, int Col ) const {
+        if(Row < this->_nRows && Col < this->_nCols){
+            return this->_matrix[Row][Col];
+        } else {
+            #ifdef MATRIX_USE_PRINTF
+            printf("Index out of bounds /!\\ Indexes start at 0 for this method\r\n");
+            #endif
+            return nanf("");
+        }
+    }
 
     void Matrix::getCoef(float *coef) const{
         int count = 0;
@@ -658,6 +718,30 @@
             return 0;
         }
     }
+
+    #ifdef MATRIX_USE_PRINTF
+    void Matrix::print(){
+        printf("{{");
+
+        for(int i = 0; i < this->_nRows; i++){
+            if(i != 0){
+                printf(" {");
+            }
+            for(int j = 0; j < this->_nCols; j++){
+                printf("% 7f", this->_matrix[i][j]);
+                if(j!=this->_nCols-1){
+                    printf(", ");
+                }
+            }
+            if(i==this->_nRows-1){
+                    printf("}}\r\n");
+                }
+            else{
+                printf("},\r\n");
+            }
+        }
+    }
+    #endif
 
 // Linear Algebra Methods
     Matrix Matrix::Transpose() const {
@@ -689,6 +773,9 @@
                     return Inv;
 
                 }else{
+                    #ifdef MATRIX_USE_PRINTF
+                    printf("Error in Matrix::Inv > Matrix is Singular (in Inv)\r\n");
+                    #endif
                     return *this;
                 }
 
@@ -723,18 +810,27 @@
                     return tmp;
 
                 }else{
+                    #ifdef MATRIX_USE_PRINTF
+                    printf("Error in Matrix::Inv > Matrix is Singular\r\n");
+                    #endif
                     return *this;
                 }
             }
 
         }else{
-            return NullMatrix;
+            #ifdef MATRIX_USE_PRINTF
+            printf("Error in Matrix::Inv > Matrix is not square\r\n");
+            #endif
+            return *this;
         }
     }
 
     Matrix Matrix::TaylorInv() const{
         Matrix tmp;
         if(this->_nCols != this->_nRows){
+            #ifdef MATRIX_USE_PRINTF
+            printf("Error in Matrix::TaylorInv > Matrix is not square\r\n");
+            #endif
             return tmp;
         }
         // extract the diagonal coefficients
@@ -823,6 +919,9 @@
             }
 
         }
+        #ifdef MATRIX_USE_PRINTF
+        printf("Error in Matrix::dot > Matrix is not a vector\r\n");
+        #endif
         return nanf("");
     }
 
@@ -877,6 +976,9 @@
             }
 
         }
+        #ifdef MATRIX_USE_PRINTF
+        printf("Error in Matrix::det > Matrix is not square\r\n");
+        #endif
         return nanf("");
     }
 
@@ -888,6 +990,9 @@
             }
             return sum;
         } else {
+            #ifdef MATRIX_USE_PRINTF
+            printf("Error in Matrix::trace > Matrix is not square\r\n");
+            #endif
             return nanf("");
         }
     }
@@ -898,6 +1003,9 @@
             sum = dot(*this, *this);
             return sqrt(sum);
         } else {
+            #ifdef MATRIX_USE_PRINTF
+            printf("Error in Matrix::norm > Matrix is not a vector\r\n");
+            #endif
             return nanf("");
         }
     }
@@ -905,6 +1013,9 @@
     Matrix Matrix::cross(const Matrix& leftM, const Matrix& rightM){
         Matrix tmp;
         if(!leftM.isVector() || !rightM.isVector()){
+            #ifdef MATRIX_USE_PRINTF
+            printf("Error in Matrix::cross > Matrix is not a vector\r\n");
+            #endif
             return tmp;
         } else {
             if(leftM._nCols != 1){
@@ -924,6 +1035,9 @@
     Matrix Matrix::quatmul(const Matrix& leftM, const Matrix& rightM){
         Matrix tmp;
         if(!leftM.isVector() || !rightM.isVector()){
+            #ifdef MATRIX_USE_PRINTF
+            printf("Error in Matrix::TaylorInv > Matrix is not a vector\r\n");
+            #endif
             return tmp;
         } else {
             if(leftM._nCols != 1){

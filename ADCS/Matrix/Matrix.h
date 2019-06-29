@@ -1,22 +1,50 @@
 /**
  * @file   Matrix.h
+ * @defgroup MatrixGr Linear Algebra
  * @version 2.0
  * @date 2019
  * @author Remy CHATEL
  * @copyright GNU Public License v3.0
- * @defgroup MatrixGr Linear Algebra
  * 
  * @brief
  * A library for 2D matrix linear algebra operations
  * 
  * @details
  * # Description
- * A linear algebra library for 2D matrices
+ * This library implement the most of the algebra of the 2D matrices (n x m).
+ * 
+ * The size and shape of the matrix is arbitrary and can be changed
+ * during the execution of the program.
+ * 
+ * This library implements the following operations regarding matrices
+ * - Addition/Substraction between matrices and its neutral (the Zeros matrix)
+ * - Multiplication between matrices and its neutral (the Eye matrix)
+ * - Multiplication between matrices and scalar
+ * - Equality check between two Matrices
+ * - Transpose and Inverse
+ * - Determinant and Trace
+ * - Dot product (or scalar product) and norm for Vectors (1xn or nx1 matrices)
+ * - Cross product for 3x1 vectors
+ * - Shape transform operations
  * 
  * Adapted from Ernesto Palacios Matrix library, 
  * https://os.mbed.com/users/Yo_Robot/code/Matrix/
  * 
  * @see Matrix
+ * 
+ * # Dependencies
+ * This library depends on <std::cmath> and <std::vector> to provide
+ * an matrix of arbitrary size and the required mathematical operations
+ * 
+ * If printing matrices and error message is required, then you can just include
+ * "mbed.h" before including "Matrix.h" and it should activate the printf. 
+ * Otherwise, define MATRIX_USE_PRINTF.
+ * 
+ * @attention This library uses float only (NOT double) and therefore
+ * expect 6 to 7 significant figures
+ * 
+ * @warning When using Mbed studio, the absence of "mbed.h" makes the IDE
+ * issue two errors that do not affect compilation.
  * 
  * # License
  * <b>(C) Copyright 2019 Remy CHATEL</b>
@@ -34,50 +62,31 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 
-#include "mbed.h"
 #include <cmath>
 #include <vector>
 
+#ifdef MBED_H
+#define MATRIX_USE_PRINTF
+#endif
+
+#ifdef MATRIX_USE_PRINTF
+#include "mbed.h"
+#endif
+
 /**
  * @ingroup MatrixGr
- * @{
  * @brief
  * A library for 2D matrix linear algebra operations
  * 
  * @class Matrix
  * 
- * @details
- * # Description
- * This library implement the algebra of the 2D matrices (n x m).
- * 
- * The size and shape of the matrix is arbitrary and can be changed
- * during the execution of the program.
- * 
- * This library implements the following operations regarding matrices
- * - Addition/Substraction between matrices and its neutral (the Zeros matrix)
- * - Multiplication between matrices and its neutral (the Eye matrix)
- * - Multiplication between matrices and scalar
- * - Equality check between two Matrices
- * - Transpose and Inverse
- * - Determinant and Trace
- * - Dot product (or scalar product) and norm for Vectors (1xn or nx1 matrices)
- * - Cross product for 3x1 vectors
- * - Shape transform operations
- * 
  * @see Matrix.h
  * @see Matrix
- * 
- * # Dependencies
- * This library depends on <std::cmath> and <std::vector> to provide
- * an matrix of arbitrary size and the required mathematical operations
- * 
- * @attention This library uses float only (NOT double) and therefore
- * expect 6 to 7 significant figures
- * @}
+ * @nosubgrouping
  */
 class Matrix{
 public:
-// Constructors
+///@name Constructors
     /**
      * @brief Default constructor
      */
@@ -128,7 +137,7 @@ public:
      */
     static Matrix zeros(int rows, int cols);
 
-// Operators
+///@name Operators
     /**
      * @brief
      * Subindex for Matrix elements assignation. (INDEX STARTS AT 1)
@@ -151,8 +160,7 @@ public:
     /**
      * @brief
      * Subindex for Vector elements assignation. (INDEX STARTS AT 1)
-     * @param row
-     * @param col
+     * @param index
      * @return pointer to the element.
      */
     float& operator() ( int index );
@@ -161,8 +169,7 @@ public:
     /**
      * @brief
      * Subindex for Vector elements. (INDEX STARTS AT 1)
-     * @param row
-     * @param col
+     * @param index
      * @return the element.
      */
     float  operator() ( int index ) const;
@@ -373,7 +380,7 @@ public:
      */
     friend Matrix& operator <<( Matrix& leftM, float number );
 
-// Matrix checks
+///@name Matrix checks
     /**
      * @brief
      * Returns TRUE if the matrix is zero, FALSE otherwhise
@@ -393,7 +400,7 @@ public:
      */
     bool isSquare() const;
 
-// Matrix shape Methods
+///@name Matrix shape Methods
     /**
      * @brief
      * Shatters the matrix into a single Row Vector.
@@ -522,7 +529,7 @@ public:
      */
     float sum() const;
 
-// Getters and Setters
+///@name Getters and Setters
     /**
      * @brief
      * Return the number in position [Row],[Col] of the storage vector
@@ -558,7 +565,15 @@ public:
      */
     int size();
 
-// Linear algebra Methods
+    #ifdef MATRIX_USE_PRINTF
+    /**
+     * @brief
+     * Prints the matrix if MATRIX_USE_PRINTF has been defined
+     */
+    void print();
+    #endif
+
+///@name Linear algebra Methods
     /**
      * @brief
      * Transposes Matrix, return new Object.
@@ -635,7 +650,7 @@ public:
      */
     static Matrix quatmul(const Matrix& leftM, const Matrix& rightM);
 
-// Kinematics Methods
+///@name Kinematics Methods
     /**
      * @brief
      * Calculates the Rotation Matrix Transform along 'x' axis in radians.
@@ -762,10 +777,7 @@ private:
 
 }; // Matrix
 
-
-static Matrix NullMatrix;
 static float NullCoef;
-extern Matrix NullMatrix;
 extern float NullCoef;
 
 #endif    // MATRIX_H 
