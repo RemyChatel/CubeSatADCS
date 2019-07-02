@@ -93,8 +93,8 @@
  * - "Kalman Filtering and the Attitude Determination and Control Task",
  * by Hale, Vergez, Meerman and Hashida
  * - "Spacecraft Dynamic and Control: An introduction",
- * by A. de Ruiter, C. Damaren and J Forbes
- * - "Fundamentals of Astrodynamics and Applications", by D. Vallado
+ * by A. de Ruiter, C. Damaren and J Forbes,
+ * - "Fundamentals of Astrodynamics and Applications", by D. Vallado,
  * 
  * # License
  * <b>(C) Copyright 2019 Remy CHATEL</b>
@@ -186,21 +186,21 @@ public:
      * Fetched the predicted quaternion
      * @return The predicted quaternion
      */
-    Matrix getQuaternion();
+    Matrix getQuaternion() const;
 
     /**
      * @brief
      * Fetched the predicted Angular Rate
      * @return The predicted Angular Rate
      */
-    Matrix getAngularRate();
+    Matrix getAngularRate() const;
 
     /**
      * @brief
      * Fetched the predicted Covariance
      * @return The predicted Covariance
      */
-    Matrix getCovariance();
+    Matrix getCovariance() const;
 
 // Filters
     /**

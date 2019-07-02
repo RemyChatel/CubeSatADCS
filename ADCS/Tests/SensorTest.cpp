@@ -57,19 +57,6 @@ int SensorTest(Serial *pc, I2C *i2c, Timer *t){
                 imu.getMag(val_mag);  // Read the x/y/z adc values
                 mcount = 0;
             }
-        
-            gyr = Matrix(3,1, val_gyr);
-            gyr *= 3.1415926535f/180.0f;
-            w_norm = gyr.norm();
-            dt2 = 0.5 * ( t->read_us() - time );
-            time = t->read_us();
-            dq(1) = cos(w_norm*dt2);
-            gyr *= sin(w_norm*dt2) / w_norm;
-            dq(2) = gyr(1);
-            dq(3) = gyr(2);
-            dq(4) = gyr(3);
-            quat = Matrix::quatmul(dq, quat);
-            quat *= 1/quat.norm();
         }
         //------------------- END LOOP -------------------//
 
@@ -77,7 +64,11 @@ int SensorTest(Serial *pc, I2C *i2c, Timer *t){
 
         //-------------------- PRINT ---------------------//
 
-
+        Matrix grav(3,1, val_acc);
+        grav /= grav.norm();
+        Matrix mag(3,1, val_mag);
+        Matrix magNED(3,1);
+        magNED << 17.3186f << -.6779f << 46.8663f;
 
         // pc->printf("Print update: %d\n\r", t->read_ms());
         if(t->read_ms() - print_update > 500){
@@ -91,8 +82,15 @@ int SensorTest(Serial *pc, I2C *i2c, Timer *t){
             pc->printf("{% 4.2f, % 4.2f, % 4.2f}\n\r", val_mag[0], val_mag[1], val_mag[2]);
             pc->printf("Sun:       ");
             pc->printf("{% 4.2f, % 4.2f, % 4.2f}\n\r", rsun_b[0], rsun_b[1], rsun_b[2]);
-            // pc->printf("Quaternion\n\r");
-            // printMat(dq, pc);
+
+
+            mag.Transpose().print();
+            magNED.Transpose().print();
+            
+            mag /= mag.norm();
+            magNED /= magNED.norm();
+            mag.Transpose().print();
+            magNED.Transpose().print();
         }
 
         if(t->read_ms() > 1<<21) {

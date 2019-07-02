@@ -35,7 +35,7 @@ void Estimators::QUEST(float quat[4], int N, float **s_eci, float **s_body, floa
     }
 
     // Running the QUEST algo with matrices as inputs
-    QUEST(q, N, s_a, s_b, omega, tolerance);
+    QUEST(&q, N, s_a, s_b, omega, tolerance);
 
     // Returning the quaternion as an array
     quat[0] = q(1);
@@ -44,7 +44,7 @@ void Estimators::QUEST(float quat[4], int N, float **s_eci, float **s_body, floa
     quat[3] = q(4);
 }
 
-void Estimators::QUEST(Matrix quat, int N, Matrix *s_eci, Matrix *s_body, float *omega, float tolerance){
+void Estimators::QUEST(Matrix *quat, int N, Matrix *s_eci, Matrix *s_body, float *omega, float tolerance){
     // This algorithm is described in "Spacecraft Dynamics and Control An Introduction"
     // by de Ruiter, Damaren and Forbes, chapter 26
 
@@ -71,8 +71,8 @@ void Estimators::QUEST(Matrix quat, int N, Matrix *s_eci, Matrix *s_body, float 
 
     // Normalization of all vectors
     for(int i = 0; i < N; i++){
-        s_eci[i] *= 1/s_eci[i].norm();
-        s_body[i] *= 1/s_body[i].norm();
+        s_eci[i] /= s_eci[i].norm();
+        s_body[i] /= s_body[i].norm();
     }
 
     // Computation of the required factors
@@ -122,8 +122,8 @@ void Estimators::QUEST(Matrix quat, int N, Matrix *s_eci, Matrix *s_body, float 
     gamma /= normQ;
 
     // Returning the quaternion
-    quat(1) = gamma;
-    quat(2) = x(1);
-    quat(3) = x(2);
-    quat(4) = x(3);
+    (*quat)(1) = gamma;
+    (*quat)(2) = x(1);
+    (*quat)(3) = x(2);
+    (*quat)(4) = x(3);
 }

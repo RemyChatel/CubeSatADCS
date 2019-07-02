@@ -126,6 +126,14 @@
         return tmp;
     }
 
+    Matrix Matrix::diag(int size, float *coefs){
+        Matrix tmp(size,size);
+        for(int i = 0; i < size; i++){
+            tmp._matrix[i][i] = coefs[i];
+        }
+        return tmp;
+    }
+
 // Operators
     float& Matrix::operator ()(int row, int col) {
         --row; --col;
@@ -133,7 +141,7 @@
         if( row >= _nRows || col >= _nCols)
         {
             #ifdef MATRIX_USE_PRINTF
-            printf("Index out of bounds (/!\\ Indexes start at 1\r\n");
+            printf("Error in operator(): Index out of bounds (/!\\ Indexes start at 1\r\n");
             #endif
             NullCoef = nanf("");
             return NullCoef;
@@ -148,7 +156,7 @@
         if( row >= _nRows || col >= _nCols)
         {
             #ifdef MATRIX_USE_PRINTF
-            printf("Index out of bounds (/!\\ Indexes start at 1\r\n");
+            printf("Error in operator(): Index out of bounds (/!\\ Indexes start at 1\r\n");
             #endif
             return nanf("");
         }else{
@@ -169,7 +177,7 @@
             return _matrix[index][index];
         }
         #ifdef MATRIX_USE_PRINTF
-        printf("Index out of bounds (/!\\ Indexes start at 1\r\n");
+        printf("Error in operator(): Index out of bounds (/!\\ Indexes start at 1\r\n");
         #endif
         NullCoef = nanf("");
         return NullCoef;
@@ -188,7 +196,7 @@
             return _matrix[index][index];
         }
         #ifdef MATRIX_USE_PRINTF
-        printf("Index out of bounds (/!\\ Indexes start at 1\r\n");
+        printf("Error in operator(): Index out of bounds (/!\\ Indexes start at 1\r\n");
         #endif
         return nanf("");
     }
@@ -252,7 +260,7 @@
 
         }else{
             #ifdef MATRIX_USE_PRINTF
-            printf("Dimensions mismatch\r\n");
+            printf("Error in operator+=: Dimensions mismatch\r\n");
             #endif
             leftM = Matrix();
             return leftM;
@@ -292,7 +300,7 @@
             return leftM;
         }else{
             #ifdef MATRIX_USE_PRINTF
-            printf("Dimensions mismatch\r\n");
+            printf("Error in operator*=: Dimensions mismatch\r\n");
             #endif
             leftM = Matrix();
             return leftM;
@@ -303,6 +311,14 @@
         for( int i = 0; i < leftM._nRows; i++ )
                 for( int j = 0; j < leftM._nCols; j++ )
                     leftM._matrix[i][j] *= number;
+
+        return leftM;
+    }
+
+    Matrix& operator /=( Matrix& leftM, float number ) {
+        for( int i = 0; i < leftM._nRows; i++ )
+                for( int j = 0; j < leftM._nCols; j++ )
+                    leftM._matrix[i][j] /= number;
 
         return leftM;
     }
@@ -334,7 +350,7 @@
 
         }else{
             #ifdef MATRIX_USE_PRINTF
-            printf("Dimensions mismatch\r\n");
+            printf("Error in operator +: Dimensions mismatch\r\n");
             #endif
             Matrix null;
             return null;
@@ -368,7 +384,7 @@
 
         }else{
             #ifdef MATRIX_USE_PRINTF
-            printf("Dimensions mismatch\r\n");
+            printf("Error in operator -: Dimensions mismatch\r\n");
             #endif
             Matrix null;
             return null;
@@ -404,7 +420,7 @@
 
         } else {
             #ifdef MATRIX_USE_PRINTF
-            printf("Dimensions mismatch\r\n");
+            printf("Error in operator *: Dimensions mismatch\r\n");
             #endif
             Matrix null;
             return null;
@@ -417,6 +433,16 @@
         for( int i = 0; i < leftM._nRows; i++ )
         for( int j = 0; j < leftM._nCols; j++ )
             result._matrix[i][j] = leftM._matrix[i][j] * number;
+
+        return result;
+    }
+    
+    const Matrix operator /( const Matrix& leftM, float number ) {
+        Matrix result( leftM._nRows, leftM._nCols );
+
+        for( int i = 0; i < leftM._nRows; i++ )
+        for( int j = 0; j < leftM._nCols; j++ )
+            result._matrix[i][j] = leftM._matrix[i][j] / number;
 
         return result;
     }
@@ -728,7 +754,7 @@
                 printf(" {");
             }
             for(int j = 0; j < this->_nCols; j++){
-                printf("% 7f", this->_matrix[i][j]);
+                printf("% 7g", this->_matrix[i][j]);
                 if(j!=this->_nCols-1){
                     printf(", ");
                 }

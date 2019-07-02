@@ -77,7 +77,7 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
 
     float q[4];
 
-    while(1){
+    // while(1){
     lastUpdate = t->read_us();
 
     /**************** LOOP ****************/
@@ -128,7 +128,7 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
         minutes++;
     }
     wait(LOOP_TIME);
-    }
+    // }
 
     return 1;
 }

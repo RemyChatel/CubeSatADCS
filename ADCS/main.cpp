@@ -8,7 +8,7 @@ Timer t;
 int main(){
     i2c.frequency(400000);
     t.start();
-    #ifdef ADCS_CORES
+    #ifdef ADCS_CORE
         return 1;
     #endif
     #ifdef TEST_MATRIX

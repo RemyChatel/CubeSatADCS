@@ -156,7 +156,7 @@ void QUEST(float quat[4], int N, float **s_eci, float **s_body, float *omega, fl
  * @param omega An N-element array containing the weight of each measurement
  * @param tolerance The tolerance of Newton's optimization problem (default is 1e-5)
  */
-void QUEST(Matrix quat, int N, Matrix *s_eci, Matrix *s_body, float *omega, float tolerance);
+void QUEST(Matrix *quat, int N, Matrix *s_eci, Matrix *s_body, float *omega, float tolerance);
 
 } // namespace Estimators
 #endif // ESTIMATORS_H

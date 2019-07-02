@@ -65,9 +65,7 @@
 #include <cmath>
 #include <vector>
 
-#ifdef MBED_H
 #define MATRIX_USE_PRINTF
-#endif
 
 #ifdef MATRIX_USE_PRINTF
 #include "mbed.h"
@@ -137,6 +135,14 @@ public:
      */
     static Matrix zeros(int rows, int cols);
 
+    /**
+     * @brief
+     * Creates a diagonal (quare) matrix with the given coefficients
+     * @param size The size of the matrix
+     * @param coefs The array containing the coefficients to place on the diagonal
+     */
+    static Matrix diag(int size, float *coefs);
+
 ///@name Operators
     /**
      * @brief
@@ -146,7 +152,6 @@ public:
      * @return pointer to the element.
      */
     float& operator() ( int row, int col );
-
 
     /**
      * @brief
@@ -165,7 +170,6 @@ public:
      */
     float& operator() ( int index );
 
-
     /**
      * @brief
      * Subindex for Vector elements. (INDEX STARTS AT 1)
@@ -182,7 +186,6 @@ public:
      */
     Matrix& operator = ( const Matrix& rightM );
 
-
     /**
      * @brief
      * Overload opeartor for the compare Matrices
@@ -191,7 +194,6 @@ public:
      * @return Boolean 'false' if different.
      */
     friend bool operator == ( const Matrix& leftM, const Matrix& rightM );
-
 
     /**
      * @brief
@@ -202,7 +204,6 @@ public:
      */
     friend bool operator != ( const Matrix& leftM, const Matrix& rightM );
 
-
     /**
      * @brief
      * Overload Compound increase.
@@ -211,7 +212,6 @@ public:
      * @return A new Matrix to be assigned to itself.
      */
     friend Matrix& operator += ( Matrix& leftM, const Matrix& rightM );
-
 
     /**
      * @brief
@@ -222,7 +222,6 @@ public:
      */
     friend Matrix& operator -= ( Matrix& leftM, const Matrix& rightM );
 
-
     /**
      * @brief
      * Overload Compound CrossProduct Matrix operation.
@@ -232,7 +231,6 @@ public:
      */
     friend Matrix& operator *=( Matrix& leftM, const Matrix& rightM );
 
-
     /** @brief
      * Overload Compund Element-by-element scalar multiplication.
      * @param leftM The matrix that receive the multiplication
@@ -241,7 +239,13 @@ public:
      */
     friend Matrix& operator *=( Matrix& leftM, float number );
 
-
+    /** @brief
+     * Overload Compund Element-by-element scalar division.
+     * @param leftM The matrix that receive the multiplication
+     * @param number The dividing scalar
+     * @return A new Matrix to be assigned to itself
+     */
+    friend Matrix& operator /=( Matrix& leftM, float number );
 
     /**
      * @brief
@@ -249,7 +253,6 @@ public:
      * @return A new Matrix object with inverted values.
      */
     const Matrix operator -();
-
 
     /**
      * @brief
@@ -262,7 +265,6 @@ public:
      */
     friend const Matrix operator +=( Matrix& leftM, float number );
 
-
     /**
      * @brief
      * Compound substract with scalar.
@@ -271,7 +273,6 @@ public:
      * @return Same matrix to self Assign.
      */
     friend const Matrix operator -=( Matrix& leftM, float number );
-
 
     /**
      * @brief
@@ -283,7 +284,6 @@ public:
      */
     friend const Matrix operator +( const Matrix& leftM, const Matrix& rightM);
 
-
     /**
      * @brief
      * Adds the given nomber to each element of matrix.
@@ -293,8 +293,6 @@ public:
      * @return A new matrix object with the result.
      */
     friend const Matrix operator +( const Matrix& leftM, float number );
-
-
 
     /**
      * @brief
@@ -356,6 +354,14 @@ public:
      */
     friend const Matrix operator *( const Matrix& leftM, float number );
 
+    /**
+     * @brief
+     * Divide each element on Matrix by a scalar
+     * @param leftM The left hand side matrix of the multiplication
+     * @param number The dividing scalar
+     * @return A new matrix with the resultof the multiplication.
+     */
+    friend const Matrix operator /( const Matrix& leftM, float number );
 
     /**
      * @brief

@@ -546,6 +546,10 @@ using namespace AstroLib;
         _alt = alt;
     }
 
+    void Ground::setOrbit(float parameters[6]){
+        setOrbit(parameters[0], parameters[1], parameters[2], parameters[3], parameters[4], parameters[5]);
+    }
+
     void Ground::getPositionVector(float rsat[3]){
         // From Converting between Earth-Centered, Earth Fixed and Geodetic Coordinates, D. Rose 
         float a = 6378137.0; // WGS-84 semi-major axis

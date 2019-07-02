@@ -63,9 +63,9 @@ using namespace Filters;
     KalmanFilter::~KalmanFilter(void){}
 
 // Getters and Setters
-    Matrix KalmanFilter::getQuaternion(){return q_predict;}
-    Matrix KalmanFilter::getAngularRate(){return w_predict;}
-    Matrix KalmanFilter::getCovariance(){return p_predict;}
+    Matrix KalmanFilter::getQuaternion()  const {return q_predict;}
+    Matrix KalmanFilter::getAngularRate() const {return w_predict;}
+    Matrix KalmanFilter::getCovariance()  const {return p_predict;}
 
 // Filters
     Matrix KalmanFilter::filter(Matrix q_measured, Matrix w_measured, float dt, Matrix w_rw_prev, Matrix T_bf_prev, Matrix T_rw_prev){
@@ -146,6 +146,10 @@ using namespace Filters;
         w_predict(1) = x_predict(5);
         w_predict(2) = x_predict(6);
         w_predict(3) = x_predict(7);
+
+        // Renormalize vectors
+        q_predict /= q_predict.norm();
+        w_predict /= w_predict.norm();
 
         // (6) Precict the next covariance
         p_predict = ( Matrix::eye(7) - kalman ) * p_propagate;

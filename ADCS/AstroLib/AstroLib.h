@@ -745,6 +745,15 @@ public:
      * @param magD The Down component of the Earth magnetic field (in uT)
      */
     void setOrbit(float lat_deg, float lon_deg, float alt, float magN, float magE, float magD);
+    
+    /**
+     * @brief
+     * Set the orbit parameters
+     * @param parameters The array with the orbital parameters (units: m, /!\ deg and uT)
+     * [latitude, longitude, altitude, mag_North, mag_East, mag_Down]
+     */
+    void setOrbit(float parameters[6]);
+
 
     /**
      * @brief

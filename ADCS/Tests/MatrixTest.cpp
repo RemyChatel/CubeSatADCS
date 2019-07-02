@@ -182,6 +182,12 @@ int MatrixTest(Serial *pc, I2C *i2c, Timer *t){
       << 13 << 12 << 11;
     printMat(A, pc);
 
+    pc->printf("<< test on vector\r\n");
+    Matrix vec4 = Matrix::zeros(3,1);
+    vec4.print();
+    vec4 << 12 << 18 << 30;
+    vec4.print();
+
     pc->printf("\n\r\n\rKinematic methods test\n\r");
     float phi = 45*3.1415926535f/180.0f;        // Rotation around the new X axis
     float theta = -30*3.1415926535f/180.0f;     // Rotation around the new Y axis
@@ -223,6 +229,12 @@ int MatrixTest(Serial *pc, I2C *i2c, Timer *t){
     pc->printf("Rotation matrix 321\n\r");
     printMat(Matrix::Rot321(eul), pc);
 
+    pc->printf("Diagonal matrix:\r\n");
+    float d_coef[4] = {5,6,7,8};
+    Matrix diag = Matrix::diag(4, d_coef);
+    diag.print();
+    Matrix test = diag * A;
+    
     pc->printf("\n\r\n\rQuaternion\n\r");
     Matrix q1(4,1);
     q1 << +0.079324 << +0.560843 << -0.290980 << +0.753516;
