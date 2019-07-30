@@ -123,7 +123,7 @@ using namespace Filters;
         x_propagate(7) = w_propagate(3);
 
         // (3) Calculate the Kalman Gain
-        Matrix kalman = p_propagate * ( p_propagate + _kalman_r ).TaylorInv();
+        Matrix kalman = p_propagate * ( p_propagate + _kalman_r ).TaylorInv(3);
     
         // (5) Update the state
         Matrix z(7,1);

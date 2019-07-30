@@ -605,9 +605,10 @@ public:
      * 
      * M^-1 ~= A^-1 - A^-1*B*A^-1 + A^-1*B*A^-1*B*A^-1 - ...
      * 
+     * @param order The order up to which perform the Taylor expansion
      * @return The inverse of the matrix
      */
-    Matrix TaylorInv() const;
+    Matrix TaylorInv(int order) const;
 
     /**
      * @brief

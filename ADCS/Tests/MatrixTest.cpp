@@ -255,7 +255,7 @@ int MatrixTest(Serial *pc, I2C *i2c, Timer *t){
     Timer t2;
     t2.start();
     int time = t2.read_us();
-    Matrix Pinv = P.TaylorInv();
+    Matrix Pinv = P.TaylorInv(3);
     time = t2.read_us() - time;
     printMat(Pinv, pc);
     pc->printf("Expected Inverse of B matrix inv(B) \n\r");

@@ -851,23 +851,24 @@
         }
     }
 
-    Matrix Matrix::TaylorInv() const{
+    Matrix Matrix::TaylorInv(int order) const{
         Matrix tmp;
+        Matrix mul= zeros(this->getRows(), this->getCols());
         if(this->_nCols != this->_nRows){
             #ifdef MATRIX_USE_PRINTF
             printf("Error in Matrix::TaylorInv > Matrix is not square\r\n");
             #endif
             return tmp;
         }
-        // extract the diagonal coefficients
+        // Extract the diagonal coefficients
         Matrix diag = zeros(this->getRows(), this->getCols());
         for(int i = 0; i < this->getCols(); i++){
             diag._matrix[i][i] = this->_matrix[i][i];
         }
-        // extract the non diagonal coefficients
+        // Extract the non diagonal coefficients
         Matrix notdiag = *this - diag;
 
-        // Invert the diagonal terms
+        // Invert the diagonal terms component-wise
         for(int i = 0; i < diag._nRows; i++){
             diag._matrix[i][i] = 1 / diag._matrix[i][i];
         }
@@ -878,6 +879,17 @@
         tmp += - diag * notdiag * diag;
         tmp +=   diag * notdiag * diag * notdiag * diag;
         tmp += - diag * notdiag * diag * notdiag * diag * notdiag * diag;
+
+        tmp  = zeros(this->getRows(), this->getCols());
+        tmp += diag;
+        for(int i = 1; i <= order; i++){
+            mul = diag;
+            for(int j = 1; j <= i; j++){
+                mul *= notdiag * diag;
+            }
+            tmp += mul * ((i%2==0)?1:-1);
+        }
+
         return tmp;
     }
 
