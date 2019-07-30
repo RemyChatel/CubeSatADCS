@@ -1,0 +1,5 @@
+<map id="Matrix::eye" name="Matrix::eye">
+<area shape="rect" id="node1" title="Creates a square identity matrix of a given size." alt="" coords="5,31,92,57"/>
+<area shape="rect" id="node2" href="$class_matrix.html#aa7bf588d788d601548a34030e59152b4" title="Creates a matrix of a given size filled with zeros." alt="" coords="140,5,239,32"/>
+<area shape="rect" id="node3" href="$class_matrix.html#a7e960a1c6e8f5aa90dddb18d9394890c" title="Provide the size of the matrix." alt="" coords="144,56,235,83"/>
+</map>

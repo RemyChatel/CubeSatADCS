@@ -1,0 +1,4 @@
+<map id="Matrix::getNumber" name="Matrix::getNumber">
+<area shape="rect" id="node1" title="Return the number in position [Row],[Col] of the storage vector." alt="" coords="123,5,252,32"/>
+<area shape="rect" id="node2" href="$_test_8h.html#ae55ed44f42c65eeb7ea04ec870d0d4ef" title="Print a Matrix in a formated way." alt="" coords="5,5,75,32"/>
+</map>

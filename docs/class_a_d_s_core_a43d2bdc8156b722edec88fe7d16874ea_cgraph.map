@@ -1,0 +1,7 @@
+<map id="ADSCore::initKalman" name="ADSCore::initKalman">
+<area shape="rect" id="node1" title="Sets the Kalman filters variances, inertia matrices and initial position as well as the proprieties o..." alt="" coords="5,31,151,57"/>
+<area shape="rect" id="node2" href="$class_matrix.html#a89e843f74660aabb9b6403a738b6ee42" title="Creates a square identity matrix of a given size." alt="" coords="201,31,287,57"/>
+<area shape="rect" id="node3" href="$class_matrix.html#aa7bf588d788d601548a34030e59152b4" title="Creates a matrix of a given size filled with zeros." alt="" coords="337,5,436,32"/>
+<area shape="rect" id="node5" href="$class_matrix.html#acec952194fad591dad5f6db0fbc18e61" title="Creates a diagonal (quare) matrix with the given coefficients." alt="" coords="199,81,289,108"/>
+<area shape="rect" id="node4" href="$class_matrix.html#a7e960a1c6e8f5aa90dddb18d9394890c" title="Provide the size of the matrix." alt="" coords="341,68,432,95"/>
+</map>

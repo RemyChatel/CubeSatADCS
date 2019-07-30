@@ -1,0 +1,5 @@
+<map id="MPU9150::getAccel" name="MPU9150::getAccel">
+<area shape="rect" id="node1" title="Calculates the value of the acceleration measured by the accelerometer in g." alt="" coords="5,5,144,32"/>
+<area shape="rect" id="node2" href="$class_m_p_u9150.html#a551f476b566bf771b2fdb0e5a4144600" title="Fetches the accelerometer count from the IMU." alt="" coords="192,5,364,32"/>
+<area shape="rect" id="node3" href="$class_m_p_u9150.html#a1c8b5eb1e99a4b2a0ae93a25ac7fe37b" title="Read multiple bytes from the I2C bus." alt="" coords="412,5,559,32"/>
+</map>

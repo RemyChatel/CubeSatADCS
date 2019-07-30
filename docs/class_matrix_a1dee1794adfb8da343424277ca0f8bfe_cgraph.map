@@ -1,0 +1,11 @@
+<map id="Matrix::euler2rot123" name="Matrix::euler2rot123">
+<area shape="rect" id="node1" title="Converts Euler angles to 1&#45;2&#45;3 rotation matrix (X&#45;&gt;Y&#45;&gt;Z)" alt="" coords="5,132,143,159"/>
+<area shape="rect" id="node2" href="$class_matrix.html#a88e35a3795f98d4cb63f01c647024996" title="Determines weather a Matrix is a Single Column or Row." alt="" coords="197,5,311,32"/>
+<area shape="rect" id="node3" href="$class_matrix.html#ad0c96cdea0d2ae3403653ca90aa70796" title="Transposes Matrix, return new Object." alt="" coords="191,56,317,83"/>
+<area shape="rect" id="node4" href="$class_matrix.html#a89e843f74660aabb9b6403a738b6ee42" title="Creates a square identity matrix of a given size." alt="" coords="365,183,452,209"/>
+<area shape="rect" id="node7" href="$class_matrix.html#a884afad227b3ea1455d12839cb9c4396" title="Calculates the Rotation Matrix Transform along &#39;z&#39; axis in radians." alt="" coords="207,157,301,184"/>
+<area shape="rect" id="node8" href="$class_matrix.html#a72961e369b0fe59d745b8a62dc5710e6" title="Calculates the Rotation Matrix Transform along &#39;y&#39; axis in radians." alt="" coords="207,208,301,235"/>
+<area shape="rect" id="node9" href="$class_matrix.html#a7c31602d52fdedfa741e49e8d2a4ea52" title="Calculates the Rotation Matrix Transform along &#39;x&#39; axis in radians." alt="" coords="207,259,301,285"/>
+<area shape="rect" id="node5" href="$class_matrix.html#aa7bf588d788d601548a34030e59152b4" title="Creates a matrix of a given size filled with zeros." alt="" coords="500,157,599,184"/>
+<area shape="rect" id="node6" href="$class_matrix.html#a7e960a1c6e8f5aa90dddb18d9394890c" title="Provide the size of the matrix." alt="" coords="504,208,595,235"/>
+</map>

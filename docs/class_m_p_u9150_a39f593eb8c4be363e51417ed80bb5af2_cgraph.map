@@ -1,0 +1,4 @@
+<map id="MPU9150::readGyroData" name="MPU9150::readGyroData">
+<area shape="rect" id="node1" title="Fetches the gyroscope count from the IMU." alt="" coords="5,5,172,32"/>
+<area shape="rect" id="node2" href="$class_m_p_u9150.html#a1c8b5eb1e99a4b2a0ae93a25ac7fe37b" title="Read multiple bytes from the I2C bus." alt="" coords="220,5,367,32"/>
+</map>

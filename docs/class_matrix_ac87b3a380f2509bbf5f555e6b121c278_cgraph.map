@@ -1,0 +1,4 @@
+<map id="Matrix::AddRow" name="Matrix::AddRow">
+<area shape="rect" id="node1" title="Adds to Receip a new Row from another Matrix in desired index. Must be same size. The Row matrix must..." alt="" coords="5,5,120,32"/>
+<area shape="rect" id="node2" href="$class_matrix.html#ad874605d0dec3d1422086728d404d454" title="Invoking this static method will increase a Row in Mat in the desired position. The current Row will ..." alt="" coords="168,5,283,32"/>
+</map>

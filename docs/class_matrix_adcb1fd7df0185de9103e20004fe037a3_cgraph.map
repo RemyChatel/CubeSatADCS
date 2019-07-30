@@ -1,0 +1,8 @@
+<map id="Matrix::TaylorInv" name="Matrix::TaylorInv">
+<area shape="rect" id="node1" title="Calculates an approximation of the inverse by using a Taylor expansion." alt="" coords="5,81,121,108"/>
+<area shape="rect" id="node2" href="$class_matrix.html#aa7bf588d788d601548a34030e59152b4" title="Creates a matrix of a given size filled with zeros." alt="" coords="178,5,277,32"/>
+<area shape="rect" id="node3" href="$class_matrix.html#ad1b2433d295efcbf371e6f636db757e9" title="Retruns the number of Rows in Matrix, index starts at 1." alt="" coords="169,56,285,83"/>
+<area shape="rect" id="node4" href="$class_matrix.html#aeaa8f587023f3347eeb2b5d38cfc4665" title="Retuns the number of Columns in Matrix, index starts at 1." alt="" coords="172,107,283,133"/>
+<area shape="rect" id="node5" href="$class_matrix.html#acec952194fad591dad5f6db0fbc18e61" title="Creates a diagonal (quare) matrix with the given coefficients." alt="" coords="182,157,273,184"/>
+<area shape="rect" id="node6" href="$class_matrix.html#a7e960a1c6e8f5aa90dddb18d9394890c" title="Provide the size of the matrix." alt="" coords="333,157,424,184"/>
+</map>

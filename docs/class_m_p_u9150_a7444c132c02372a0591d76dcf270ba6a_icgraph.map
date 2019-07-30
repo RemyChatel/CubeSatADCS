@@ -1,0 +1,13 @@
+<map id="MPU9150::readByte" name="MPU9150::readByte">
+<area shape="rect" id="node1" title="Read a byte from the I2C bus." alt="" coords="992,144,1131,170"/>
+<area shape="rect" id="node2" href="$class_m_p_u9150.html#a02c85a898779b6e333324e51a29827c7" title="Initialize the IMU (acc, gyr and mag)" alt="" coords="347,194,474,221"/>
+<area shape="rect" id="node5" href="$_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="151,49,255,76"/>
+<area shape="rect" id="node6" href="$_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="159,188,247,214"/>
+<area shape="rect" id="node7" href="$class_m_p_u9150.html#a5a3812e17d09e0926eb6959af23349a3" title="Initialize the accelerometer and the gyroscope." alt="" coords="544,220,705,246"/>
+<area shape="rect" id="node8" href="$class_m_p_u9150.html#af5900057aa99c56213e132e7b086666d" title="Accelerometer and gyroscope self test; check calibration wrt factory settings." alt="" coords="753,118,944,145"/>
+<area shape="rect" id="node9" href="$class_m_p_u9150.html#a639f4804bae814c902922ccaf7c6eb9c" title="Fetches the magnetometer count from the IMU." alt="" coords="767,68,931,94"/>
+<area shape="rect" id="node3" href="$class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,125,277,152"/>
+<area shape="rect" id="node4" href="$_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,125,80,152"/>
+<area shape="rect" id="node10" href="$class_m_p_u9150.html#a27005774a5516885611ef542cd57cec0" title="Calculates the value of the magnetic field measured by the magnetometer." alt="" coords="559,68,690,94"/>
+<area shape="rect" id="node11" href="$class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,93,496,120"/>
+</map>

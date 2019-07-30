@@ -1,0 +1,5 @@
+<map id="MPU9150::calibrateMPU9150" name="MPU9150::calibrateMPU9150">
+<area shape="rect" id="node1" title="Function which accumulates gyro and accelerometer data after device initialization...." alt="" coords="5,31,199,57"/>
+<area shape="rect" id="node2" href="$class_m_p_u9150.html#a5d83c3e2a264313aeb7f7d337410855c" title="Write a byte on the I2C bus." alt="" coords="249,5,391,32"/>
+<area shape="rect" id="node3" href="$class_m_p_u9150.html#a1c8b5eb1e99a4b2a0ae93a25ac7fe37b" title="Read multiple bytes from the I2C bus." alt="" coords="247,56,393,83"/>
+</map>

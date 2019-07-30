@@ -1,0 +1,4 @@
+<map id="operator *" name="operator *">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,84,32"/>
+<area shape="rect" id="node2" href="$class_matrix.html#a77024c11b6ff4b02a265bfda0ff7eab1" title="Makes all values on Matrix object zero. Also make posible use the &#39;&lt;&lt;&#39; operator to add elements and k..." alt="" coords="132,5,228,32"/>
+</map>

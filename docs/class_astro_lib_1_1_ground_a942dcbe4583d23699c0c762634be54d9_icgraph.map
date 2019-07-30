@@ -1,0 +1,6 @@
+<map id="AstroLib::Ground::setJulianDate" name="AstroLib::Ground::setJulianDate">
+<area shape="rect" id="node1" title="Sets the Julian Date member of the orbit." alt="" coords="305,31,512,57"/>
+<area shape="rect" id="node2" href="$class_a_d_s_core.html#ae9189aaa3a9238d02716c3857473fbc6" title="Initialize the orbit model with the given date and orbital parameters." alt="" coords="128,5,257,32"/>
+<area shape="rect" id="node4" href="$_test_8h.html#a11c2d45d18d1974d56efdeb072b0c4b1" title="Test of the AstroLib library." alt="" coords="145,56,240,83"/>
+<area shape="rect" id="node3" href="$_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,5,80,32"/>
+</map>

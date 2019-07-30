@@ -1,0 +1,7 @@
+<map id="MPU9150::setAvgAcc" name="MPU9150::setAvgAcc">
+<area shape="rect" id="node1" title="Allow the user to manually set the avg bias for the acceleration." alt="" coords="325,56,475,83"/>
+<area shape="rect" id="node2" href="$class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,5,277,32"/>
+<area shape="rect" id="node4" href="$_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="151,56,255,83"/>
+<area shape="rect" id="node5" href="$_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="159,107,247,133"/>
+<area shape="rect" id="node3" href="$_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,5,80,32"/>
+</map>

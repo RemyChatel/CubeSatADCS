@@ -1,0 +1,5 @@
+<map id="ADSCore::initOrbit" name="ADSCore::initOrbit">
+<area shape="rect" id="node1" title="Initialize the orbit model with the given date and orbital parameters." alt="" coords="5,31,135,57"/>
+<area shape="rect" id="node2" href="$class_astro_lib_1_1_ground.html#a942dcbe4583d23699c0c762634be54d9" title="Sets the Julian Date member of the orbit." alt="" coords="183,5,389,32"/>
+<area shape="rect" id="node3" href="$class_astro_lib_1_1_ground.html#ac5f036f9e505d93425e0ba1b74a3f73e" title="Set the orbit parameters." alt="" coords="199,56,373,83"/>
+</map>

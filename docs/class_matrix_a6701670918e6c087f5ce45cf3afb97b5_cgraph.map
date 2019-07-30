@@ -1,0 +1,6 @@
+<map id="Matrix::euler2quat" name="Matrix::euler2quat">
+<area shape="rect" id="node1" title="Converts Euler angle to rotation quaternion (3&#45;2&#45;1 convention)" alt="" coords="5,56,132,83"/>
+<area shape="rect" id="node2" href="$class_matrix.html#a88e35a3795f98d4cb63f01c647024996" title="Determines weather a Matrix is a Single Column or Row." alt="" coords="186,5,301,32"/>
+<area shape="rect" id="node3" href="$class_matrix.html#ad0c96cdea0d2ae3403653ca90aa70796" title="Transposes Matrix, return new Object." alt="" coords="180,56,307,83"/>
+<area shape="rect" id="node4" href="$class_matrix.html#ad7da400ed11b2e1a2d82bdadcb52c314" title="This function resizes the Matrix to fit new data or cropped it, operator &lt;&lt; can overwrite entire Matr..." alt="" coords="190,107,297,133"/>
+</map>

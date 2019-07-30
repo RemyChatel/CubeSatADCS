@@ -1,0 +1,6 @@
+<map id="Matrix::dot" name="Matrix::dot">
+<area shape="rect" id="node1" title="Returns the dot Product of any two same leght vectors. In this case a vector is defined as a [1,..." alt="" coords="5,56,89,83"/>
+<area shape="rect" id="node2" href="$class_matrix.html#a88e35a3795f98d4cb63f01c647024996" title="Determines weather a Matrix is a Single Column or Row." alt="" coords="143,5,258,32"/>
+<area shape="rect" id="node3" href="$class_matrix.html#ad0c96cdea0d2ae3403653ca90aa70796" title="Transposes Matrix, return new Object." alt="" coords="137,56,264,83"/>
+<area shape="rect" id="node4" href="$class_matrix.html#af698f665522164d4c3961120c94ff080" title="Returns the sum of every cell in the Matrix." alt="" coords="155,107,246,133"/>
+</map>

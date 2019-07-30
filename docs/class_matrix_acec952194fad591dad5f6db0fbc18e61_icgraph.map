@@ -1,0 +1,6 @@
+<map id="Matrix::diag" name="Matrix::diag">
+<area shape="rect" id="node1" title="Creates a diagonal (quare) matrix with the given coefficients." alt="" coords="329,56,420,83"/>
+<area shape="rect" id="node2" href="$class_a_d_s_core.html#a43d2bdc8156b722edec88fe7d16874ea" title="Sets the Kalman filters variances, inertia matrices and initial position as well as the proprieties o..." alt="" coords="136,5,281,32"/>
+<area shape="rect" id="node3" href="$class_matrix.html#adcb1fd7df0185de9103e20004fe037a3" title="Calculates an approximation of the inverse by using a Taylor expansion." alt="" coords="151,56,267,83"/>
+<area shape="rect" id="node4" href="$_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="5,81,88,108"/>
+</map>

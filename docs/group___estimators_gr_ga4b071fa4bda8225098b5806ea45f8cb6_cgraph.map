@@ -1,0 +1,4 @@
+<map id="Estimators::QUEST" name="Estimators::QUEST">
+<area shape="rect" id="node1" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="5,5,143,32"/>
+<area shape="rect" id="node2" href="$class_matrix.html#aa7bf588d788d601548a34030e59152b4" title="Creates a matrix of a given size filled with zeros." alt="" coords="191,5,289,32"/>
+</map>

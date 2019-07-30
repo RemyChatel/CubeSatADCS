@@ -1,0 +1,4 @@
+<map id="ADSCore::ADSCore" name="ADSCore::ADSCore">
+<area shape="rect" id="node1" title="Constructor for the Attitude Determination core with given I2C pins and user&#45;defined Analog pins." alt="" coords="5,5,144,32"/>
+<area shape="rect" id="node2" href="$class_matrix.html#aa7bf588d788d601548a34030e59152b4" title="Creates a matrix of a given size filled with zeros." alt="" coords="192,5,291,32"/>
+</map>

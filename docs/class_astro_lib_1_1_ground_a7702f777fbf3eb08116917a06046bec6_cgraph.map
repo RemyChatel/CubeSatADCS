@@ -1,0 +1,5 @@
+<map id="AstroLib::Ground::getSunAzEl" name="AstroLib::Ground::getSunAzEl">
+<area shape="rect" id="node1" title="Provides the azimuth and elevation of the sun." alt="" coords="5,46,203,73"/>
+<area shape="rect" id="node2" href="$class_astro_lib_1_1_julian_date.html#a945e0c435cd2dad7870c789f84154744" title="Gets the integer part of the julian day." alt="" coords="251,5,389,47"/>
+<area shape="rect" id="node3" href="$class_astro_lib_1_1_julian_date.html#a75a49f52b4d04246c39ec95f64b51898" title="Gets the decimal part of the julian day." alt="" coords="251,71,389,112"/>
+</map>

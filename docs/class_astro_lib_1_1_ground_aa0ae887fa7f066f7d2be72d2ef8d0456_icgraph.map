@@ -1,0 +1,5 @@
+<map id="AstroLib::Ground::AzEl2NED" name="AstroLib::Ground::AzEl2NED">
+<area shape="rect" id="node1" title="Converts the tuple (azimuth, elevation) into a position vector in the North&#45;East&#45;Down (NED) reference..." alt="" coords="365,13,556,39"/>
+<area shape="rect" id="node2" href="$class_astro_lib_1_1_ground.html#a6a753fbddeb056fda0789db017af936f" title="Provides the Sun&#45;vector in the ECI frame for the currently stored Julian date." alt="" coords="148,5,317,47"/>
+<area shape="rect" id="node3" href="$_test_8h.html#a11c2d45d18d1974d56efdeb072b0c4b1" title="Test of the AstroLib library." alt="" coords="5,13,100,39"/>
+</map>

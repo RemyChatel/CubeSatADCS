@@ -1,0 +1,4 @@
+<map id="AstroLib::Ground::update" name="AstroLib::Ground::update">
+<area shape="rect" id="node1" title="Update the orbit to match the number of seconds ellapsed." alt="" coords="5,13,172,39"/>
+<area shape="rect" id="node2" href="$class_astro_lib_1_1_julian_date.html#a4e2702651693e99ddca7007aee899b3b" title="Update the Julian Date by adding the provided seconds." alt="" coords="220,5,359,47"/>
+</map>

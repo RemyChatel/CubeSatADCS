@@ -1,0 +1,4 @@
+<map id="MPU9150::MahonyQuaternionUpdate" name="MPU9150::MahonyQuaternionUpdate">
+<area shape="rect" id="node1" title="Similar to Madgwick scheme but uses proportional and integral filtering on the error between estimate..." alt="" coords="157,5,353,47"/>
+<area shape="rect" id="node2" href="$_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="5,13,109,39"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="Matrix::dot" name="Matrix::dot">
+<area shape="rect" id="node1" title="Returns the dot Product of any two same leght vectors. In this case a vector is defined as a [1,..." alt="" coords="465,199,549,225"/>
+<area shape="rect" id="node2" href="$group___estimators_gr.html#ga5f10766fb1abd03a0d32e21e671f83d7" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="137,5,274,32"/>
+<area shape="rect" id="node3" href="$class_matrix.html#ae480a663270fc0256b5e26b008a987ae" title="Compute the norm of an (n x 1) or (1 x n) vector." alt="" coords="323,199,417,225"/>
+<area shape="rect" id="node7" href="$_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="5,376,88,403"/>
+<area shape="rect" id="node4" href="$class_filters_1_1_kalman_filter.html#a6f49d9fd41f58874cc4e358a4ec7ae0d" title="Filter the measured quaternion using a Kalman filter." alt="" coords="136,107,275,149"/>
+<area shape="rect" id="node5" href="$_test_8h.html#afef033c38d49dd54f43c880c2d30cf24" title="Test of the Filters Library." alt="" coords="9,144,85,171"/>
+<area shape="rect" id="node6" href="$class_matrix.html#a2166cdc8a2cbb3152b5a10ec214bc641" title="Converts a rotation quaternion to a 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="149,275,262,301"/>
+<area shape="rect" id="node8" href="$_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="5,275,88,301"/>
+<area shape="rect" id="node9" href="$class_matrix.html#ad30cb5c3b09e8d54ddc93077db1833e9" title="Converts a rotation quaternion in Euler angles (3&#45;2&#45;1 convention)" alt="" coords="142,325,269,352"/>
+<area shape="rect" id="node11" href="$_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="161,56,249,83"/>
+<area shape="rect" id="node10" href="$_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="9,325,84,352"/>
+</map>

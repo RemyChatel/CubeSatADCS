@@ -1,0 +1,6 @@
+<map id="Matrix::cross" name="Matrix::cross">
+<area shape="rect" id="node1" title="Compute the cross product of two (3x1) vectors." alt="" coords="5,56,104,83"/>
+<area shape="rect" id="node2" href="$class_matrix.html#a88e35a3795f98d4cb63f01c647024996" title="Determines weather a Matrix is a Single Column or Row." alt="" coords="158,5,273,32"/>
+<area shape="rect" id="node3" href="$class_matrix.html#ad0c96cdea0d2ae3403653ca90aa70796" title="Transposes Matrix, return new Object." alt="" coords="152,56,279,83"/>
+<area shape="rect" id="node4" href="$class_matrix.html#a2dba13c45127354c9f75ef576f49269b" title="Default constructor." alt="" coords="164,107,267,133"/>
+</map>

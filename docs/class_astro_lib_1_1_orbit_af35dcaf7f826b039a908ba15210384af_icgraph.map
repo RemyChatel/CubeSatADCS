@@ -1,0 +1,4 @@
+<map id="AstroLib::Orbit::getPositionVector" name="AstroLib::Orbit::getPositionVector">
+<area shape="rect" id="node1" title="Provide the current position vector." alt="" coords="248,5,427,47"/>
+<area shape="rect" id="node2" href="$class_astro_lib_1_1_orbit.html#a3aad5fafa08a13c2d781f10ca78edba4" title="Provides the Earth magnetic field vector according to the model." alt="" coords="5,13,200,39"/>
+</map>

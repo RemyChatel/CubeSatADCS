@@ -1,0 +1,11 @@
+<map id="Estimators::QUEST" name="Estimators::QUEST">
+<area shape="rect" id="node1" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="5,119,143,145"/>
+<area shape="rect" id="node2" href="$class_matrix.html#ae480a663270fc0256b5e26b008a987ae" title="Compute the norm of an (n x 1) or (1 x n) vector." alt="" coords="191,43,285,69"/>
+<area shape="rect" id="node5" href="$class_matrix.html#a8b75c0669091bb9ebc51b727f70f2d5f" title="Returns the dot Product of any two same leght vectors. In this case a vector is defined as a [1,..." alt="" coords="341,93,425,120"/>
+<area shape="rect" id="node6" href="$class_matrix.html#ad0c96cdea0d2ae3403653ca90aa70796" title="Transposes Matrix, return new Object." alt="" coords="480,144,607,171"/>
+<area shape="rect" id="node7" href="$class_matrix.html#a89e843f74660aabb9b6403a738b6ee42" title="Creates a square identity matrix of a given size." alt="" coords="195,195,281,221"/>
+<area shape="rect" id="node3" href="$class_matrix.html#a88e35a3795f98d4cb63f01c647024996" title="Determines weather a Matrix is a Single Column or Row." alt="" coords="486,5,601,32"/>
+<area shape="rect" id="node4" href="$class_matrix.html#af698f665522164d4c3961120c94ff080" title="Returns the sum of every cell in the Matrix." alt="" coords="498,81,589,108"/>
+<area shape="rect" id="node8" href="$class_matrix.html#aa7bf588d788d601548a34030e59152b4" title="Creates a matrix of a given size filled with zeros." alt="" coords="333,195,432,221"/>
+<area shape="rect" id="node9" href="$class_matrix.html#a7e960a1c6e8f5aa90dddb18d9394890c" title="Provide the size of the matrix." alt="" coords="337,245,428,272"/>
+</map>

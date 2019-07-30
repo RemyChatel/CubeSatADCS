@@ -1,0 +1,4 @@
+<map id="AstroLib::Orbit::mag_vector" name="AstroLib::Orbit::mag_vector">
+<area shape="rect" id="node1" title="Update the Earth magnetic field vector for a given orbit position in the ECI frame." alt="" coords="248,5,387,47"/>
+<area shape="rect" id="node2" href="$class_astro_lib_1_1_orbit.html#a3aad5fafa08a13c2d781f10ca78edba4" title="Provides the Earth magnetic field vector according to the model." alt="" coords="5,13,200,39"/>
+</map>

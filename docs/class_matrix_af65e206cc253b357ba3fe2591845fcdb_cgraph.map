@@ -1,0 +1,8 @@
+<map id="Matrix::Transl" name="Matrix::Transl">
+<area shape="rect" id="node1" title="Calculates the Translation Matrix to coordenates (x&#39; y&#39; z&#39;)." alt="" coords="5,81,107,108"/>
+<area shape="rect" id="node2" href="$class_matrix.html#a89e843f74660aabb9b6403a738b6ee42" title="Creates a square identity matrix of a given size." alt="" coords="169,31,255,57"/>
+<area shape="rect" id="node5" href="$class_matrix.html#ad874605d0dec3d1422086728d404d454" title="Invoking this static method will increase a Row in Mat in the desired position. The current Row will ..." alt="" coords="155,81,269,108"/>
+<area shape="rect" id="node6" href="$class_matrix.html#a9c62a5b13b7a690670e472369d2b9918" title="Invoking this static method will increase a Column in Matrix in the desired Position." alt="" coords="158,132,266,159"/>
+<area shape="rect" id="node3" href="$class_matrix.html#aa7bf588d788d601548a34030e59152b4" title="Creates a matrix of a given size filled with zeros." alt="" coords="317,5,416,32"/>
+<area shape="rect" id="node4" href="$class_matrix.html#a7e960a1c6e8f5aa90dddb18d9394890c" title="Provide the size of the matrix." alt="" coords="321,56,412,83"/>
+</map>

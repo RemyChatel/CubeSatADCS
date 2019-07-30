@@ -1,0 +1,6 @@
+<map id="MPU9150::getMag" name="MPU9150::getMag">
+<area shape="rect" id="node1" title="Calculates the value of the magnetic field measured by the magnetometer." alt="" coords="5,31,136,57"/>
+<area shape="rect" id="node2" href="$class_m_p_u9150.html#a639f4804bae814c902922ccaf7c6eb9c" title="Fetches the magnetometer count from the IMU." alt="" coords="184,31,348,57"/>
+<area shape="rect" id="node3" href="$class_m_p_u9150.html#a7444c132c02372a0591d76dcf270ba6a" title="Read a byte from the I2C bus." alt="" coords="400,5,539,32"/>
+<area shape="rect" id="node4" href="$class_m_p_u9150.html#a1c8b5eb1e99a4b2a0ae93a25ac7fe37b" title="Read multiple bytes from the I2C bus." alt="" coords="396,56,543,83"/>
+</map>

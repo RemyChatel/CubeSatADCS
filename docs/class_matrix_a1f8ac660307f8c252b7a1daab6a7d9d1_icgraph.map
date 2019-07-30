@@ -1,0 +1,6 @@
+<map id="Matrix::trace" name="Matrix::trace">
+<area shape="rect" id="node1" title="Returns the trace of the matrix." alt="" coords="297,31,392,57"/>
+<area shape="rect" id="node2" href="$class_matrix.html#a5688ebffd44fc69748aaea7ce386fde9" title="Converts 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X) to rotation quaternion." alt="" coords="136,5,249,32"/>
+<area shape="rect" id="node4" href="$_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="5,56,88,83"/>
+<area shape="rect" id="node3" href="$_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="5,5,88,32"/>
+</map>

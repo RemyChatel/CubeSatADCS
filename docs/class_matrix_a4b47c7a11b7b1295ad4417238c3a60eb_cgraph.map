@@ -1,0 +1,5 @@
+<map id="Matrix::ExportRow" name="Matrix::ExportRow">
+<area shape="rect" id="node1" title="This method extracts a Row from a Matrix and Saves it in Mat. If Row is out of the parameters it does..." alt="" coords="5,31,135,57"/>
+<area shape="rect" id="node2" href="$class_matrix.html#ad7da400ed11b2e1a2d82bdadcb52c314" title="This function resizes the Matrix to fit new data or cropped it, operator &lt;&lt; can overwrite entire Matr..." alt="" coords="183,5,289,32"/>
+<area shape="rect" id="node3" href="$class_matrix.html#a77024c11b6ff4b02a265bfda0ff7eab1" title="Makes all values on Matrix object zero. Also make posible use the &#39;&lt;&lt;&#39; operator to add elements and k..." alt="" coords="188,56,284,83"/>
+</map>

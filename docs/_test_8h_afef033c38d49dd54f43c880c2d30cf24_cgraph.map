@@ -1,0 +1,15 @@
+<map id="FilterTest" name="FilterTest">
+<area shape="rect" id="node1" title="Test of the Filters Library." alt="" coords="5,115,81,141"/>
+<area shape="rect" id="node2" href="$class_matrix.html#a89e843f74660aabb9b6403a738b6ee42" title="Creates a square identity matrix of a given size." alt="" coords="320,56,407,83"/>
+<area shape="rect" id="node3" href="$class_matrix.html#aa7bf588d788d601548a34030e59152b4" title="Creates a matrix of a given size filled with zeros." alt="" coords="459,5,557,32"/>
+<area shape="rect" id="node5" href="$class_filters_1_1_kalman_filter.html#a6f49d9fd41f58874cc4e358a4ec7ae0d" title="Filter the measured quaternion using a Kalman filter." alt="" coords="129,107,268,149"/>
+<area shape="rect" id="node10" href="$class_matrix.html#ae480a663270fc0256b5e26b008a987ae" title="Compute the norm of an (n x 1) or (1 x n) vector." alt="" coords="316,173,411,200"/>
+<area shape="rect" id="node13" href="$class_filters_1_1_kalman_filter.html#afd80905d42e0fa324c531522c5cf7f7d" title="Fetched the predicted Angular Rate." alt="" coords="129,225,268,266"/>
+<area shape="rect" id="node4" href="$class_matrix.html#a7e960a1c6e8f5aa90dddb18d9394890c" title="Provide the size of the matrix." alt="" coords="463,56,553,83"/>
+<area shape="rect" id="node6" href="$class_matrix.html#a2868515839664541f6484132b3e15350" title="Compute the cross product of two (3x1) vectors." alt="" coords="459,108,557,135"/>
+<area shape="rect" id="node7" href="$class_matrix.html#a88e35a3795f98d4cb63f01c647024996" title="Determines weather a Matrix is a Single Column or Row." alt="" coords="611,159,726,185"/>
+<area shape="rect" id="node8" href="$class_matrix.html#ad0c96cdea0d2ae3403653ca90aa70796" title="Transposes Matrix, return new Object." alt="" coords="605,209,732,236"/>
+<area shape="rect" id="node9" href="$class_matrix.html#a2dba13c45127354c9f75ef576f49269b" title="Default constructor." alt="" coords="617,108,720,135"/>
+<area shape="rect" id="node11" href="$class_matrix.html#af698f665522164d4c3961120c94ff080" title="Returns the sum of every cell in the Matrix." alt="" coords="623,260,714,287"/>
+<area shape="rect" id="node12" href="$class_matrix.html#a8b75c0669091bb9ebc51b727f70f2d5f" title="Returns the dot Product of any two same leght vectors. In this case a vector is defined as a [1,..." alt="" coords="466,209,550,236"/>
+</map>

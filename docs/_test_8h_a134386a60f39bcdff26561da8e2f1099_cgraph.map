@@ -1,0 +1,47 @@
+<map id="ADSTest" name="ADSTest">
+<area shape="rect" id="node1" title="Test of the ADS core program." alt="" coords="5,637,80,664"/>
+<area shape="rect" id="node2" href="$class_matrix.html#aa7bf588d788d601548a34030e59152b4" title="Creates a matrix of a given size filled with zeros." alt="" coords="403,536,502,563"/>
+<area shape="rect" id="node3" href="$class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="140,283,289,309"/>
+<area shape="rect" id="node24" href="$class_a_d_s_core.html#ae9189aaa3a9238d02716c3857473fbc6" title="Initialize the orbit model with the given date and orbital parameters." alt="" coords="150,384,279,411"/>
+<area shape="rect" id="node27" href="$class_a_d_s_core.html#a252473cfb3ee303c00a5c82a715fb4f9" title="Sets the variances of the sensors for the Quest algorithm." alt="" coords="147,485,283,512"/>
+<area shape="rect" id="node28" href="$class_a_d_s_core.html#a035baa9fa452899dee976bbcdc4430fd" title="Sets the Kalman filters variances, inertia matrices and initial position when there is no reaction wh..." alt="" coords="142,587,287,613"/>
+<area shape="rect" id="node29" href="$class_a_d_s_core.html#a65be8547feafaddb284e7e1c234606b8" title="Updates the attitude of the spacecraft by combining the output the different sensors and filtering th..." alt="" coords="153,435,276,461"/>
+<area shape="rect" id="node30" href="$class_a_d_s_core.html#a0420da419c3b9b6f9214cea9dc1c2d86" title="Gets the predicted atitude quaternion." alt="" coords="159,637,271,664"/>
+<area shape="rect" id="node31" href="$class_a_d_s_core.html#aad463c8d5859acf365420f70bbc7dd9b" title="Gets the predicted angular rates (rad/s)" alt="" coords="157,688,272,715"/>
+<area shape="rect" id="node32" href="$class_a_d_s_core.html#a3d41ec955dc487ee14e5fc8f7416e9ba" title="Gets the measured angular rates (deg/s)" alt="" coords="149,739,280,765"/>
+<area shape="rect" id="node33" href="$class_a_d_s_core.html#ac6378f263f7afafaf050701789cfd45b" title="Gets the measurements in the body frame of the n&#45;th sensor." alt="" coords="128,789,301,816"/>
+<area shape="rect" id="node34" href="$class_a_d_s_core.html#a303d9bc866c2a00ffc199b06e35027bf" title="Gets the measurements in the ECI frame of the n&#45;th sensor." alt="" coords="133,840,297,867"/>
+<area shape="rect" id="node35" href="$_test_8h.html#ae55ed44f42c65eeb7ea04ec870d0d4ef" title="Print a Matrix in a formated way." alt="" coords="180,891,249,917"/>
+<area shape="rect" id="node39" href="$class_matrix.html#ad30cb5c3b09e8d54ddc93077db1833e9" title="Converts a rotation quaternion in Euler angles (3&#45;2&#45;1 convention)" alt="" coords="151,1017,278,1044"/>
+<area shape="rect" id="node4" href="$class_m_p_u9150.html#a02c85a898779b6e333324e51a29827c7" title="Initialize the IMU (acc, gyr and mag)" alt="" coords="610,195,737,221"/>
+<area shape="rect" id="node15" href="$class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="367,333,538,360"/>
+<area shape="rect" id="node22" href="$class_m_p_u9150.html#a4f77f4c880167a1f05e6dafe3bf078e2" title="Allow the user to manually set the avg bias for the acceleration." alt="" coords="378,181,527,208"/>
+<area shape="rect" id="node23" href="$class_m_p_u9150.html#a19af7b6ee08eb2a00dcc79a6d8f0e149" title="Allow the user to manually set the avg bias for the magnetic field." alt="" coords="377,232,528,259"/>
+<area shape="rect" id="node5" href="$class_m_p_u9150.html#a7444c132c02372a0591d76dcf270ba6a" title="Read a byte from the I2C bus." alt="" coords="1036,132,1175,159"/>
+<area shape="rect" id="node6" href="$class_m_p_u9150.html#af5900057aa99c56213e132e7b086666d" title="Accelerometer and gyroscope self test; check calibration wrt factory settings." alt="" coords="792,144,983,171"/>
+<area shape="rect" id="node8" href="$class_m_p_u9150.html#a097d09c9338400038950dcacc256174e" title="Reset the MPU9150 to factory settings." alt="" coords="801,195,974,221"/>
+<area shape="rect" id="node9" href="$class_m_p_u9150.html#a7f97fe4a642fec56fc4f9c252da99574" title="Function which accumulates gyro and accelerometer data after device initialization...." alt="" coords="791,245,984,272"/>
+<area shape="rect" id="node11" href="$class_m_p_u9150.html#a5a3812e17d09e0926eb6959af23349a3" title="Initialize the accelerometer and the gyroscope." alt="" coords="807,43,968,69"/>
+<area shape="rect" id="node14" href="$class_m_p_u9150.html#ab735c1a815e7dba5fefdae4246022740" title="Initialize the magnetometer." alt="" coords="808,347,967,373"/>
+<area shape="rect" id="node7" href="$class_m_p_u9150.html#a5d83c3e2a264313aeb7f7d337410855c" title="Write a byte on the I2C bus." alt="" coords="1035,195,1176,221"/>
+<area shape="rect" id="node10" href="$class_m_p_u9150.html#a1c8b5eb1e99a4b2a0ae93a25ac7fe37b" title="Read multiple bytes from the I2C bus." alt="" coords="1032,347,1179,373"/>
+<area shape="rect" id="node12" href="$class_m_p_u9150.html#af8c6449ddb604e0cd30b8b466c57c051" title="Set the scaling of the accelerometer." alt="" coords="1039,5,1171,32"/>
+<area shape="rect" id="node13" href="$class_m_p_u9150.html#adcd8653cb5eee6666c34f18071379004" title="Set the scaling of the gyroscope." alt="" coords="1039,56,1172,83"/>
+<area shape="rect" id="node16" href="$class_m_p_u9150.html#a4e41653c04bfeda223746b742999e890" title="Calculates the value of the acceleration measured by the accelerometer in g." alt="" coords="604,441,743,468"/>
+<area shape="rect" id="node18" href="$class_m_p_u9150.html#aa60337a719d5171d35fcc2bfd3b30392" title="Calculates the value of the rate of turn measured by the gyroscope in deg/s." alt="" coords="607,365,740,392"/>
+<area shape="rect" id="node20" href="$class_m_p_u9150.html#a27005774a5516885611ef542cd57cec0" title="Calculates the value of the magnetic field measured by the magnetometer." alt="" coords="608,303,739,329"/>
+<area shape="rect" id="node17" href="$class_m_p_u9150.html#a551f476b566bf771b2fdb0e5a4144600" title="Fetches the accelerometer count from the IMU." alt="" coords="801,448,973,475"/>
+<area shape="rect" id="node19" href="$class_m_p_u9150.html#a39f593eb8c4be363e51417ed80bb5af2" title="Fetches the gyroscope count from the IMU." alt="" coords="804,397,971,424"/>
+<area shape="rect" id="node21" href="$class_m_p_u9150.html#a639f4804bae814c902922ccaf7c6eb9c" title="Fetches the magnetometer count from the IMU." alt="" coords="805,296,969,323"/>
+<area shape="rect" id="node25" href="$class_astro_lib_1_1_ground.html#a942dcbe4583d23699c0c762634be54d9" title="Sets the Julian Date member of the orbit." alt="" coords="349,384,556,411"/>
+<area shape="rect" id="node26" href="$class_astro_lib_1_1_ground.html#ac5f036f9e505d93425e0ba1b74a3f73e" title="Set the orbit parameters." alt="" coords="365,435,540,461"/>
+<area shape="rect" id="node36" href="$class_matrix.html#aeaa8f587023f3347eeb2b5d38cfc4665" title="Retuns the number of Columns in Matrix, index starts at 1." alt="" coords="397,916,508,943"/>
+<area shape="rect" id="node37" href="$class_matrix.html#ad1b2433d295efcbf371e6f636db757e9" title="Retruns the number of Rows in Matrix, index starts at 1." alt="" coords="395,815,511,841"/>
+<area shape="rect" id="node38" href="$class_matrix.html#a53e116bfad8cf837d2676de098ed1e53" title="Return the number in position [Row],[Col] of the storage vector." alt="" coords="388,865,517,892"/>
+<area shape="rect" id="node40" href="$class_matrix.html#a88e35a3795f98d4cb63f01c647024996" title="Determines weather a Matrix is a Single Column or Row." alt="" coords="830,1017,945,1044"/>
+<area shape="rect" id="node41" href="$class_matrix.html#ad0c96cdea0d2ae3403653ca90aa70796" title="Transposes Matrix, return new Object." alt="" coords="824,1169,951,1196"/>
+<area shape="rect" id="node42" href="$class_matrix.html#ae480a663270fc0256b5e26b008a987ae" title="Compute the norm of an (n x 1) or (1 x n) vector." alt="" coords="405,1068,500,1095"/>
+<area shape="rect" id="node45" href="$class_matrix.html#ad7da400ed11b2e1a2d82bdadcb52c314" title="This function resizes the Matrix to fit new data or cropped it, operator &lt;&lt; can overwrite entire Matr..." alt="" coords="399,1017,506,1044"/>
+<area shape="rect" id="node43" href="$class_matrix.html#af698f665522164d4c3961120c94ff080" title="Returns the sum of every cell in the Matrix." alt="" coords="842,1093,933,1120"/>
+<area shape="rect" id="node44" href="$class_matrix.html#a8b75c0669091bb9ebc51b727f70f2d5f" title="Returns the dot Product of any two same leght vectors. In this case a vector is defined as a [1,..." alt="" coords="631,1119,715,1145"/>
+</map>

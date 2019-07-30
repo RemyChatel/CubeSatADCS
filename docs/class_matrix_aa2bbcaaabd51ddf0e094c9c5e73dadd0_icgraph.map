@@ -1,0 +1,6 @@
+<map id="Matrix::Rot321" name="Matrix::Rot321">
+<area shape="rect" id="node1" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) direction cosine Matrix." alt="" coords="160,56,267,83"/>
+<area shape="rect" id="node2" href="$class_matrix.html#a78fdb4b3ad06499e4492c4541316c6d3" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) cosine direction Matrix." alt="" coords="5,5,112,32"/>
+<area shape="rect" id="node3" href="$_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="17,56,100,83"/>
+<area shape="rect" id="node4" href="$_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="17,107,100,133"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="Matrix::cross" name="Matrix::cross">
+<area shape="rect" id="node1" title="Compute the cross product of two (3x1) vectors." alt="" coords="316,42,415,69"/>
+<area shape="rect" id="node2" href="$class_filters_1_1_kalman_filter.html#a6f49d9fd41f58874cc4e358a4ec7ae0d" title="Filter the measured quaternion using a Kalman filter." alt="" coords="129,5,268,47"/>
+<area shape="rect" id="node4" href="$_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="157,71,240,98"/>
+<area shape="rect" id="node3" href="$_test_8h.html#afef033c38d49dd54f43c880c2d30cf24" title="Test of the Filters Library." alt="" coords="5,13,81,39"/>
+</map>

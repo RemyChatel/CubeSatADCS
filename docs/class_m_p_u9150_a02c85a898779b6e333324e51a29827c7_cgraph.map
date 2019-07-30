@@ -1,0 +1,13 @@
+<map id="MPU9150::initIMU" name="MPU9150::initIMU">
+<area shape="rect" id="node1" title="Initialize the IMU (acc, gyr and mag)" alt="" coords="5,183,132,209"/>
+<area shape="rect" id="node2" href="$class_m_p_u9150.html#a7444c132c02372a0591d76dcf270ba6a" title="Read a byte from the I2C bus." alt="" coords="425,107,564,133"/>
+<area shape="rect" id="node3" href="$class_m_p_u9150.html#af5900057aa99c56213e132e7b086666d" title="Accelerometer and gyroscope self test; check calibration wrt factory settings." alt="" coords="181,157,372,184"/>
+<area shape="rect" id="node5" href="$class_m_p_u9150.html#a097d09c9338400038950dcacc256174e" title="Reset the MPU9150 to factory settings." alt="" coords="190,208,363,235"/>
+<area shape="rect" id="node6" href="$class_m_p_u9150.html#a7f97fe4a642fec56fc4f9c252da99574" title="Function which accumulates gyro and accelerometer data after device initialization...." alt="" coords="180,259,373,285"/>
+<area shape="rect" id="node8" href="$class_m_p_u9150.html#a5a3812e17d09e0926eb6959af23349a3" title="Initialize the accelerometer and the gyroscope." alt="" coords="196,56,357,83"/>
+<area shape="rect" id="node11" href="$class_m_p_u9150.html#ab735c1a815e7dba5fefdae4246022740" title="Initialize the magnetometer." alt="" coords="197,309,356,336"/>
+<area shape="rect" id="node4" href="$class_m_p_u9150.html#a5d83c3e2a264313aeb7f7d337410855c" title="Write a byte on the I2C bus." alt="" coords="424,208,565,235"/>
+<area shape="rect" id="node7" href="$class_m_p_u9150.html#a1c8b5eb1e99a4b2a0ae93a25ac7fe37b" title="Read multiple bytes from the I2C bus." alt="" coords="421,284,568,311"/>
+<area shape="rect" id="node9" href="$class_m_p_u9150.html#af8c6449ddb604e0cd30b8b466c57c051" title="Set the scaling of the accelerometer." alt="" coords="429,56,561,83"/>
+<area shape="rect" id="node10" href="$class_m_p_u9150.html#adcd8653cb5eee6666c34f18071379004" title="Set the scaling of the gyroscope." alt="" coords="428,5,561,32"/>
+</map>

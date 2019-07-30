@@ -1,0 +1,4 @@
+<map id="ADSCore::initKalman" name="ADSCore::initKalman">
+<area shape="rect" id="node1" title="Sets the Kalman filters variances, inertia matrices and initial position when there is no reaction wh..." alt="" coords="5,5,151,32"/>
+<area shape="rect" id="node2" href="$class_matrix.html#aa7bf588d788d601548a34030e59152b4" title="Creates a matrix of a given size filled with zeros." alt="" coords="199,5,297,32"/>
+</map>

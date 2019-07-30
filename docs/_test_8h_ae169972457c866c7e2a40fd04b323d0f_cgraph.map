@@ -1,0 +1,42 @@
+<map id="MatrixTest" name="MatrixTest">
+<area shape="rect" id="node1" title="Test of the Matrix library." alt="" coords="5,968,88,995"/>
+<area shape="rect" id="node2" href="$_test_8h.html#ae55ed44f42c65eeb7ea04ec870d0d4ef" title="Print a Matrix in a formated way." alt="" coords="183,284,252,311"/>
+<area shape="rect" id="node6" href="$class_matrix.html#ae480a663270fc0256b5e26b008a987ae" title="Compute the norm of an (n x 1) or (1 x n) vector." alt="" coords="364,411,459,437"/>
+<area shape="rect" id="node9" href="$class_matrix.html#a8b75c0669091bb9ebc51b727f70f2d5f" title="Returns the dot Product of any two same leght vectors. In this case a vector is defined as a [1,..." alt="" coords="546,309,630,336"/>
+<area shape="rect" id="node10" href="$class_matrix.html#ad0c96cdea0d2ae3403653ca90aa70796" title="Transposes Matrix, return new Object." alt="" coords="700,841,827,868"/>
+<area shape="rect" id="node11" href="$class_matrix.html#a2868515839664541f6484132b3e15350" title="Compute the cross product of two (3x1) vectors." alt="" coords="539,715,637,741"/>
+<area shape="rect" id="node13" href="$class_matrix.html#a46a6aff4d27b09ffe6e6edd62d29a151" title="Shatters the matrix into a single Row Vector. Important: Returns NEW matrix, does no modify existing ..." alt="" coords="136,1752,299,1779"/>
+<area shape="rect" id="node14" href="$class_matrix.html#aa7bf588d788d601548a34030e59152b4" title="Creates a matrix of a given size filled with zeros." alt="" coords="714,1081,813,1108"/>
+<area shape="rect" id="node15" href="$class_matrix.html#a99ba97122b8fdd54e95290caf80fc8e2" title="Prints the matrix if MATRIX_USE_PRINTF has been defined." alt="" coords="172,1803,263,1829"/>
+<area shape="rect" id="node16" href="$class_matrix.html#a7c31602d52fdedfa741e49e8d2a4ea52" title="Calculates the Rotation Matrix Transform along &#39;x&#39; axis in radians." alt="" coords="365,1701,458,1728"/>
+<area shape="rect" id="node19" href="$class_matrix.html#a72961e369b0fe59d745b8a62dc5710e6" title="Calculates the Rotation Matrix Transform along &#39;y&#39; axis in radians." alt="" coords="364,1549,459,1576"/>
+<area shape="rect" id="node20" href="$class_matrix.html#a884afad227b3ea1455d12839cb9c4396" title="Calculates the Rotation Matrix Transform along &#39;z&#39; axis in radians." alt="" coords="365,1752,458,1779"/>
+<area shape="rect" id="node21" href="$class_matrix.html#a6701670918e6c087f5ce45cf3afb97b5" title="Converts Euler angle to rotation quaternion (3&#45;2&#45;1 convention)" alt="" coords="525,664,651,691"/>
+<area shape="rect" id="node23" href="$class_matrix.html#a1dee1794adfb8da343424277ca0f8bfe" title="Converts Euler angles to 1&#45;2&#45;3 rotation matrix (X&#45;&gt;Y&#45;&gt;Z)" alt="" coords="149,1448,286,1475"/>
+<area shape="rect" id="node24" href="$class_matrix.html#a9e68c61a21868c0aff4e245679a61e15" title="Converts Euler angles to 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="159,1549,275,1576"/>
+<area shape="rect" id="node25" href="$class_matrix.html#ad30cb5c3b09e8d54ddc93077db1833e9" title="Converts a rotation quaternion in Euler angles (3&#45;2&#45;1 convention)" alt="" coords="154,563,281,589"/>
+<area shape="rect" id="node26" href="$class_matrix.html#a2166cdc8a2cbb3152b5a10ec214bc641" title="Converts a rotation quaternion to a 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="161,613,274,640"/>
+<area shape="rect" id="node27" href="$class_matrix.html#af258b65d8907a7ea75dd658edd7c57ab" title="Converts 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X) to Euler angles (3&#45;2&#45;1 convention)" alt="" coords="159,183,275,209"/>
+<area shape="rect" id="node29" href="$class_matrix.html#a5688ebffd44fc69748aaea7ce386fde9" title="Converts 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X) to rotation quaternion." alt="" coords="161,107,274,133"/>
+<area shape="rect" id="node31" href="$class_matrix.html#aa2bbcaaabd51ddf0e094c9c5e73dadd0" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) direction cosine Matrix." alt="" coords="164,1651,271,1677"/>
+<area shape="rect" id="node32" href="$class_matrix.html#acec952194fad591dad5f6db0fbc18e61" title="Creates a diagonal (quare) matrix with the given coefficients." alt="" coords="366,1296,457,1323"/>
+<area shape="rect" id="node33" href="$class_matrix.html#a520e64ea013c1a47b5adc7f92e56eca1" title="Compute the quaternion multiplication of the two given vectors." alt="" coords="532,867,644,893"/>
+<area shape="rect" id="node34" href="$class_matrix.html#ae5e1753a87a41cd41bde2329275df3fe" title="Calculate the inverse of a [n,n] Matrix BUT you check first if the determinant is !..." alt="" coords="177,1093,258,1120"/>
+<area shape="rect" id="node40" href="$class_matrix.html#adcb1fd7df0185de9103e20004fe037a3" title="Calculates an approximation of the inverse by using a Taylor expansion." alt="" coords="159,461,275,488"/>
+<area shape="rect" id="node3" href="$class_matrix.html#aeaa8f587023f3347eeb2b5d38cfc4665" title="Retuns the number of Columns in Matrix, index starts at 1." alt="" coords="356,309,467,336"/>
+<area shape="rect" id="node4" href="$class_matrix.html#ad1b2433d295efcbf371e6f636db757e9" title="Retruns the number of Rows in Matrix, index starts at 1." alt="" coords="353,208,469,235"/>
+<area shape="rect" id="node5" href="$class_matrix.html#a53e116bfad8cf837d2676de098ed1e53" title="Return the number in position [Row],[Col] of the storage vector." alt="" coords="347,259,476,285"/>
+<area shape="rect" id="node7" href="$class_matrix.html#a88e35a3795f98d4cb63f01c647024996" title="Determines weather a Matrix is a Single Column or Row." alt="" coords="706,664,821,691"/>
+<area shape="rect" id="node8" href="$class_matrix.html#af698f665522164d4c3961120c94ff080" title="Returns the sum of every cell in the Matrix." alt="" coords="718,259,809,285"/>
+<area shape="rect" id="node12" href="$class_matrix.html#a2dba13c45127354c9f75ef576f49269b" title="Default constructor." alt="" coords="712,715,815,741"/>
+<area shape="rect" id="node17" href="$class_matrix.html#a89e843f74660aabb9b6403a738b6ee42" title="Creates a square identity matrix of a given size." alt="" coords="545,1651,631,1677"/>
+<area shape="rect" id="node18" href="$class_matrix.html#a7e960a1c6e8f5aa90dddb18d9394890c" title="Provide the size of the matrix." alt="" coords="718,1499,809,1525"/>
+<area shape="rect" id="node22" href="$class_matrix.html#ad7da400ed11b2e1a2d82bdadcb52c314" title="This function resizes the Matrix to fit new data or cropped it, operator &lt;&lt; can overwrite entire Matr..." alt="" coords="710,385,817,412"/>
+<area shape="rect" id="node28" href="$class_matrix.html#a5420e7df2978c907c10cdbb50aff5b5f" title="Returns true if the matrix is square." alt="" coords="353,107,470,133"/>
+<area shape="rect" id="node30" href="$class_matrix.html#a1f8ac660307f8c252b7a1daab6a7d9d1" title="Returns the trace of the matrix." alt="" coords="541,5,635,32"/>
+<area shape="rect" id="node35" href="$class_matrix.html#ae0f4326de128296cd861947d89d2665d" title="Calculates the determinant of a Matrix." alt="" coords="369,1043,453,1069"/>
+<area shape="rect" id="node38" href="$class_matrix.html#aad560f2875f9ac2000995900268511f8" title="Static Function Deletes Row from Matrix, Static to prevent missuse." alt="" coords="524,1093,652,1120"/>
+<area shape="rect" id="node39" href="$class_matrix.html#a14e17430ac39e24a9cf090d9f3e1242a" title="Static Function Deletes Column from Matrix, it&#39;s Static to prevent missuse. Print error and does noth..." alt="" coords="527,1144,649,1171"/>
+<area shape="rect" id="node36" href="$class_matrix.html#a9c62a5b13b7a690670e472369d2b9918" title="Invoking this static method will increase a Column in Matrix in the desired Position." alt="" coords="534,1043,642,1069"/>
+<area shape="rect" id="node37" href="$class_matrix.html#a7a928006395fe8df35546f5ae6e4fd37" title="This method extracts a Column from a Matrix and returns the Column as a new Matrix...." alt="" coords="527,512,649,539"/>
+</map>

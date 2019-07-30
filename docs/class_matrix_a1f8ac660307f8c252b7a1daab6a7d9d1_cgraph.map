@@ -1,0 +1,4 @@
+<map id="Matrix::trace" name="Matrix::trace">
+<area shape="rect" id="node1" title="Returns the trace of the matrix." alt="" coords="5,5,100,32"/>
+<area shape="rect" id="node2" href="$class_matrix.html#af698f665522164d4c3961120c94ff080" title="Returns the sum of every cell in the Matrix." alt="" coords="148,5,239,32"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="Matrix::Inv" name="Matrix::Inv">
+<area shape="rect" id="node1" title="Calculate the inverse of a [n,n] Matrix BUT you check first if the determinant is !..." alt="" coords="5,132,87,159"/>
+<area shape="rect" id="node2" href="$class_matrix.html#ae0f4326de128296cd861947d89d2665d" title="Calculates the determinant of a Matrix." alt="" coords="156,56,240,83"/>
+<area shape="rect" id="node6" href="$class_matrix.html#aad560f2875f9ac2000995900268511f8" title="Static Function Deletes Row from Matrix, Static to prevent missuse." alt="" coords="309,107,437,133"/>
+<area shape="rect" id="node7" href="$class_matrix.html#a14e17430ac39e24a9cf090d9f3e1242a" title="Static Function Deletes Column from Matrix, it&#39;s Static to prevent missuse. Print error and does noth..." alt="" coords="312,157,435,184"/>
+<area shape="rect" id="node8" href="$class_matrix.html#ad0c96cdea0d2ae3403653ca90aa70796" title="Transposes Matrix, return new Object." alt="" coords="135,208,261,235"/>
+<area shape="rect" id="node3" href="$class_matrix.html#a9c62a5b13b7a690670e472369d2b9918" title="Invoking this static method will increase a Column in Matrix in the desired Position." alt="" coords="319,5,427,32"/>
+<area shape="rect" id="node4" href="$class_matrix.html#a7a928006395fe8df35546f5ae6e4fd37" title="This method extracts a Column from a Matrix and returns the Column as a new Matrix...." alt="" coords="312,56,435,83"/>
+<area shape="rect" id="node5" href="$class_matrix.html#ad7da400ed11b2e1a2d82bdadcb52c314" title="This function resizes the Matrix to fit new data or cropped it, operator &lt;&lt; can overwrite entire Matr..." alt="" coords="485,56,592,83"/>
+</map>

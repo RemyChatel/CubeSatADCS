@@ -1,0 +1,4 @@
+<map id="MPU9150::readTempData" name="MPU9150::readTempData">
+<area shape="rect" id="node1" title="Fetches the temperature count from the IMU." alt="" coords="191,5,361,32"/>
+<area shape="rect" id="node2" href="$class_m_p_u9150.html#a1edbcf599d5457c0508f061100a8e2f7" title="Calculates the temperature from the thermistance in the IMU." alt="" coords="5,5,143,32"/>
+</map>

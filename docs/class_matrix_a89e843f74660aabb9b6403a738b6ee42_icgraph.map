@@ -1,0 +1,17 @@
+<map id="Matrix::eye" name="Matrix::eye">
+<area shape="rect" id="node1" title="Creates a square identity matrix of a given size." alt="" coords="539,249,625,276"/>
+<area shape="rect" id="node2" href="$class_a_d_s_core.html#a43d2bdc8156b722edec88fe7d16874ea" title="Sets the Kalman filters variances, inertia matrices and initial position as well as the proprieties o..." alt="" coords="345,5,491,32"/>
+<area shape="rect" id="node3" href="$group___estimators_gr.html#ga5f10766fb1abd03a0d32e21e671f83d7" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="349,56,487,83"/>
+<area shape="rect" id="node4" href="$class_filters_1_1_kalman_filter.html#a6f49d9fd41f58874cc4e358a4ec7ae0d" title="Filter the measured quaternion using a Kalman filter." alt="" coords="349,158,487,199"/>
+<area shape="rect" id="node5" href="$_test_8h.html#afef033c38d49dd54f43c880c2d30cf24" title="Test of the Filters Library." alt="" coords="191,115,267,141"/>
+<area shape="rect" id="node6" href="$class_matrix.html#a1dee1794adfb8da343424277ca0f8bfe" title="Converts Euler angles to 1&#45;2&#45;3 rotation matrix (X&#45;&gt;Y&#45;&gt;Z)" alt="" coords="160,275,297,301"/>
+<area shape="rect" id="node8" href="$class_matrix.html#a9e68c61a21868c0aff4e245679a61e15" title="Converts Euler angles to 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="171,376,287,403"/>
+<area shape="rect" id="node9" href="$class_matrix.html#a7c31602d52fdedfa741e49e8d2a4ea52" title="Calculates the Rotation Matrix Transform along &#39;x&#39; axis in radians." alt="" coords="371,376,465,403"/>
+<area shape="rect" id="node13" href="$class_matrix.html#a72961e369b0fe59d745b8a62dc5710e6" title="Calculates the Rotation Matrix Transform along &#39;y&#39; axis in radians." alt="" coords="371,224,465,251"/>
+<area shape="rect" id="node14" href="$class_matrix.html#a884afad227b3ea1455d12839cb9c4396" title="Calculates the Rotation Matrix Transform along &#39;z&#39; axis in radians." alt="" coords="371,325,465,352"/>
+<area shape="rect" id="node15" href="$class_matrix.html#af65e206cc253b357ba3fe2591845fcdb" title="Calculates the Translation Matrix to coordenates (x&#39; y&#39; z&#39;)." alt="" coords="367,477,469,504"/>
+<area shape="rect" id="node7" href="$_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="17,300,100,327"/>
+<area shape="rect" id="node10" href="$class_matrix.html#aa2bbcaaabd51ddf0e094c9c5e73dadd0" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) direction cosine Matrix." alt="" coords="175,224,282,251"/>
+<area shape="rect" id="node11" href="$class_matrix.html#a78fdb4b3ad06499e4492c4541316c6d3" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) cosine direction Matrix." alt="" coords="5,249,112,276"/>
+<area shape="rect" id="node12" href="$_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="17,199,100,225"/>
+</map>

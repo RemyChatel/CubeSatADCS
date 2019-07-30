@@ -1,0 +1,5 @@
+<map id="Matrix::Inv" name="Matrix::Inv">
+<area shape="rect" id="node1" title="Calculate the inverse of a [n,n] Matrix BUT you check first if the determinant is !..." alt="" coords="192,42,273,69"/>
+<area shape="rect" id="node2" href="$class_filters_1_1_kalman_filter.html#ac128e270b3c1e9799013d434d00c38a5" title="Initialize the Kalman filter with the spacecraft and filter parameterss." alt="" coords="5,5,144,47"/>
+<area shape="rect" id="node3" href="$_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="33,71,116,98"/>
+</map>

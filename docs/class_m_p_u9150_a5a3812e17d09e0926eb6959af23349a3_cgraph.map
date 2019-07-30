@@ -1,0 +1,7 @@
+<map id="MPU9150::initMPU9150" name="MPU9150::initMPU9150">
+<area shape="rect" id="node1" title="Initialize the accelerometer and the gyroscope." alt="" coords="5,81,167,108"/>
+<area shape="rect" id="node2" href="$class_m_p_u9150.html#a5d83c3e2a264313aeb7f7d337410855c" title="Write a byte on the I2C bus." alt="" coords="215,5,356,32"/>
+<area shape="rect" id="node3" href="$class_m_p_u9150.html#a7444c132c02372a0591d76dcf270ba6a" title="Read a byte from the I2C bus." alt="" coords="216,56,355,83"/>
+<area shape="rect" id="node4" href="$class_m_p_u9150.html#af8c6449ddb604e0cd30b8b466c57c051" title="Set the scaling of the accelerometer." alt="" coords="219,107,351,133"/>
+<area shape="rect" id="node5" href="$class_m_p_u9150.html#adcd8653cb5eee6666c34f18071379004" title="Set the scaling of the gyroscope." alt="" coords="219,157,352,184"/>
+</map>

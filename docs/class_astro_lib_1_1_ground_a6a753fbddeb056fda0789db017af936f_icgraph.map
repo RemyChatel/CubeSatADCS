@@ -1,0 +1,4 @@
+<map id="AstroLib::Ground::getSunVector" name="AstroLib::Ground::getSunVector">
+<area shape="rect" id="node1" title="Provides the Sun&#45;vector in the ECI frame for the currently stored Julian date." alt="" coords="148,5,317,47"/>
+<area shape="rect" id="node2" href="$_test_8h.html#a11c2d45d18d1974d56efdeb072b0c4b1" title="Test of the AstroLib library." alt="" coords="5,13,100,39"/>
+</map>

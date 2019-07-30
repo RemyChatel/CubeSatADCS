@@ -1,0 +1,5 @@
+<map id="AstroLib::Orbit::getSunVector" name="AstroLib::Orbit::getSunVector">
+<area shape="rect" id="node1" title="Provides the Sun&#45;vector in the ECI frame for a given Julian Date (in AU)" alt="" coords="5,46,199,73"/>
+<area shape="rect" id="node2" href="$class_astro_lib_1_1_julian_date.html#a945e0c435cd2dad7870c789f84154744" title="Gets the integer part of the julian day." alt="" coords="247,5,385,47"/>
+<area shape="rect" id="node3" href="$class_astro_lib_1_1_julian_date.html#a75a49f52b4d04246c39ec95f64b51898" title="Gets the decimal part of the julian day." alt="" coords="247,71,385,112"/>
+</map>

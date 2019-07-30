@@ -1,0 +1,5 @@
+<map id="AstroLib::Orbit::update" name="AstroLib::Orbit::update">
+<area shape="rect" id="node1" title="Update the orbit to match the number of seconds ellapsed." alt="" coords="5,46,159,73"/>
+<area shape="rect" id="node2" href="$class_astro_lib_1_1_julian_date.html#a4e2702651693e99ddca7007aee899b3b" title="Update the Julian Date by adding the provided seconds." alt="" coords="227,5,365,47"/>
+<area shape="rect" id="node3" href="$class_astro_lib_1_1_orbit.html#a8c6fdd8bf77198e687419ca3f51898e4" title="Update the mean anomaly at the current Julian date." alt="" coords="207,71,385,112"/>
+</map>

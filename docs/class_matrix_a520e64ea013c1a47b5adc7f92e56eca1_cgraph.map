@@ -1,0 +1,6 @@
+<map id="Matrix::quatmul" name="Matrix::quatmul">
+<area shape="rect" id="node1" title="Compute the quaternion multiplication of the two given vectors." alt="" coords="5,56,117,83"/>
+<area shape="rect" id="node2" href="$class_matrix.html#a88e35a3795f98d4cb63f01c647024996" title="Determines weather a Matrix is a Single Column or Row." alt="" coords="171,5,286,32"/>
+<area shape="rect" id="node3" href="$class_matrix.html#ad0c96cdea0d2ae3403653ca90aa70796" title="Transposes Matrix, return new Object." alt="" coords="165,56,292,83"/>
+<area shape="rect" id="node4" href="$class_matrix.html#aa7bf588d788d601548a34030e59152b4" title="Creates a matrix of a given size filled with zeros." alt="" coords="179,107,278,133"/>
+</map>

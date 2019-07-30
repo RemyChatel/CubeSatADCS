@@ -1,0 +1,9 @@
+<map id="Matrix::RotX" name="Matrix::RotX">
+<area shape="rect" id="node1" title="Calculates the Rotation Matrix Transform along &#39;x&#39; axis in radians." alt="" coords="345,81,439,108"/>
+<area shape="rect" id="node2" href="$class_matrix.html#a1dee1794adfb8da343424277ca0f8bfe" title="Converts Euler angles to 1&#45;2&#45;3 rotation matrix (X&#45;&gt;Y&#45;&gt;Z)" alt="" coords="160,5,297,32"/>
+<area shape="rect" id="node3" href="$_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="17,69,100,96"/>
+<area shape="rect" id="node4" href="$class_matrix.html#a9e68c61a21868c0aff4e245679a61e15" title="Converts Euler angles to 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="171,107,287,133"/>
+<area shape="rect" id="node5" href="$class_matrix.html#aa2bbcaaabd51ddf0e094c9c5e73dadd0" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) direction cosine Matrix." alt="" coords="175,157,282,184"/>
+<area shape="rect" id="node6" href="$class_matrix.html#a78fdb4b3ad06499e4492c4541316c6d3" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) cosine direction Matrix." alt="" coords="5,132,112,159"/>
+<area shape="rect" id="node7" href="$_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="17,183,100,209"/>
+</map>

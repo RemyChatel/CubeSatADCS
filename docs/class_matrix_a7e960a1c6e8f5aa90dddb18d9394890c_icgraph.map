@@ -1,0 +1,20 @@
+<map id="Matrix::size" name="Matrix::size">
+<area shape="rect" id="node1" title="Provide the size of the matrix." alt="" coords="677,170,768,196"/>
+<area shape="rect" id="node2" href="$class_matrix.html#a89e843f74660aabb9b6403a738b6ee42" title="Creates a square identity matrix of a given size." alt="" coords="541,283,627,310"/>
+<area shape="rect" id="node17" href="$class_matrix.html#acec952194fad591dad5f6db0fbc18e61" title="Creates a diagonal (quare) matrix with the given coefficients." alt="" coords="539,55,629,82"/>
+<area shape="rect" id="node3" href="$class_a_d_s_core.html#a43d2bdc8156b722edec88fe7d16874ea" title="Sets the Kalman filters variances, inertia matrices and initial position as well as the proprieties o..." alt="" coords="345,80,491,107"/>
+<area shape="rect" id="node4" href="$group___estimators_gr.html#ga5f10766fb1abd03a0d32e21e671f83d7" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="349,435,487,462"/>
+<area shape="rect" id="node5" href="$class_filters_1_1_kalman_filter.html#a6f49d9fd41f58874cc4e358a4ec7ae0d" title="Filter the measured quaternion using a Kalman filter." alt="" coords="349,537,487,578"/>
+<area shape="rect" id="node6" href="$_test_8h.html#afef033c38d49dd54f43c880c2d30cf24" title="Test of the Filters Library." alt="" coords="191,515,267,542"/>
+<area shape="rect" id="node7" href="$class_matrix.html#a1dee1794adfb8da343424277ca0f8bfe" title="Converts Euler angles to 1&#45;2&#45;3 rotation matrix (X&#45;&gt;Y&#45;&gt;Z)" alt="" coords="160,271,297,298"/>
+<area shape="rect" id="node9" href="$class_matrix.html#a9e68c61a21868c0aff4e245679a61e15" title="Converts Euler angles to 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="171,170,287,196"/>
+<area shape="rect" id="node10" href="$class_matrix.html#a7c31602d52fdedfa741e49e8d2a4ea52" title="Calculates the Rotation Matrix Transform along &#39;x&#39; axis in radians." alt="" coords="371,232,465,259"/>
+<area shape="rect" id="node14" href="$class_matrix.html#a72961e369b0fe59d745b8a62dc5710e6" title="Calculates the Rotation Matrix Transform along &#39;y&#39; axis in radians." alt="" coords="371,334,465,360"/>
+<area shape="rect" id="node15" href="$class_matrix.html#a884afad227b3ea1455d12839cb9c4396" title="Calculates the Rotation Matrix Transform along &#39;z&#39; axis in radians." alt="" coords="371,182,465,208"/>
+<area shape="rect" id="node16" href="$class_matrix.html#af65e206cc253b357ba3fe2591845fcdb" title="Calculates the Translation Matrix to coordenates (x&#39; y&#39; z&#39;)." alt="" coords="367,384,469,411"/>
+<area shape="rect" id="node8" href="$_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="17,220,100,247"/>
+<area shape="rect" id="node11" href="$class_matrix.html#aa2bbcaaabd51ddf0e094c9c5e73dadd0" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) direction cosine Matrix." alt="" coords="175,322,282,348"/>
+<area shape="rect" id="node12" href="$class_matrix.html#a78fdb4b3ad06499e4492c4541316c6d3" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) cosine direction Matrix." alt="" coords="5,347,112,374"/>
+<area shape="rect" id="node13" href="$_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="17,296,100,323"/>
+<area shape="rect" id="node18" href="$class_matrix.html#adcb1fd7df0185de9103e20004fe037a3" title="Calculates an approximation of the inverse by using a Taylor expansion." alt="" coords="171,55,287,82"/>
+</map>

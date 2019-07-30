@@ -1,0 +1,9 @@
+<map id="Matrix::quat2euler" name="Matrix::quat2euler">
+<area shape="rect" id="node1" title="Converts a rotation quaternion in Euler angles (3&#45;2&#45;1 convention)" alt="" coords="5,120,132,147"/>
+<area shape="rect" id="node2" href="$class_matrix.html#a88e35a3795f98d4cb63f01c647024996" title="Determines weather a Matrix is a Single Column or Row." alt="" coords="473,5,587,32"/>
+<area shape="rect" id="node3" href="$class_matrix.html#ad0c96cdea0d2ae3403653ca90aa70796" title="Transposes Matrix, return new Object." alt="" coords="467,157,593,184"/>
+<area shape="rect" id="node4" href="$class_matrix.html#ae480a663270fc0256b5e26b008a987ae" title="Compute the norm of an (n x 1) or (1 x n) vector." alt="" coords="186,81,281,108"/>
+<area shape="rect" id="node7" href="$class_matrix.html#ad7da400ed11b2e1a2d82bdadcb52c314" title="This function resizes the Matrix to fit new data or cropped it, operator &lt;&lt; can overwrite entire Matr..." alt="" coords="180,208,287,235"/>
+<area shape="rect" id="node5" href="$class_matrix.html#af698f665522164d4c3961120c94ff080" title="Returns the sum of every cell in the Matrix." alt="" coords="485,81,575,108"/>
+<area shape="rect" id="node6" href="$class_matrix.html#a8b75c0669091bb9ebc51b727f70f2d5f" title="Returns the dot Product of any two same leght vectors. In this case a vector is defined as a [1,..." alt="" coords="335,56,419,83"/>
+</map>

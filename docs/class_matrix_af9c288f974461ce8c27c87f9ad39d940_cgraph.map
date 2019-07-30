@@ -1,0 +1,4 @@
+<map id="Matrix::AddCol" name="Matrix::AddCol">
+<area shape="rect" id="node1" title="This will copy a Column Matrix into Receip in desired Position, Must be same size...." alt="" coords="5,5,113,32"/>
+<area shape="rect" id="node2" href="$class_matrix.html#a9c62a5b13b7a690670e472369d2b9918" title="Invoking this static method will increase a Column in Matrix in the desired Position." alt="" coords="161,5,269,32"/>
+</map>

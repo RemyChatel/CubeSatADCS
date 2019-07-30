@@ -1,0 +1,15 @@
+<map id="AstroLibTest" name="AstroLibTest">
+<area shape="rect" id="node1" title="Test of the AstroLib library." alt="" coords="5,245,100,272"/>
+<area shape="rect" id="node2" href="$class_astro_lib_1_1_ground.html#a942dcbe4583d23699c0c762634be54d9" title="Sets the Julian Date member of the orbit." alt="" coords="148,5,355,32"/>
+<area shape="rect" id="node3" href="$class_astro_lib_1_1_ground.html#ac5f036f9e505d93425e0ba1b74a3f73e" title="Set the orbit parameters." alt="" coords="164,56,339,83"/>
+<area shape="rect" id="node4" href="$class_astro_lib_1_1_ground.html#afc3caaafebc031e4d98e4eec4f93aeae" title="Update the orbit to match the number of seconds ellapsed." alt="" coords="168,107,335,133"/>
+<area shape="rect" id="node6" href="$class_astro_lib_1_1_ground.html#a6a753fbddeb056fda0789db017af936f" title="Provides the Sun&#45;vector in the ECI frame for the currently stored Julian date." alt="" coords="167,209,336,250"/>
+<area shape="rect" id="node7" href="$class_astro_lib_1_1_ground.html#a7702f777fbf3eb08116917a06046bec6" title="Provides the azimuth and elevation of the sun." alt="" coords="403,271,600,297"/>
+<area shape="rect" id="node8" href="$class_astro_lib_1_1_julian_date.html#a945e0c435cd2dad7870c789f84154744" title="Gets the integer part of the julian day." alt="" coords="648,189,787,230"/>
+<area shape="rect" id="node9" href="$class_astro_lib_1_1_julian_date.html#a75a49f52b4d04246c39ec95f64b51898" title="Gets the decimal part of the julian day." alt="" coords="648,291,787,333"/>
+<area shape="rect" id="node11" href="$class_astro_lib_1_1_ground.html#a9c7d67b98bba2623e8821a9f79991ced" title="Provides the Earth magnetic field vector according to the model." alt="" coords="166,377,337,418"/>
+<area shape="rect" id="node12" href="$class_astro_lib_1_1_ground.html#a84ced673e85750b5e43fc198c56cde55" title="Provide the current position vector." alt="" coords="155,442,348,483"/>
+<area shape="rect" id="node13" href="$class_astro_lib_1_1_ground.html#ae8b4552df16b1abf7830ce36bb410304" title="Gets the Julian Date member of the orbit." alt="" coords="148,508,355,535"/>
+<area shape="rect" id="node5" href="$class_astro_lib_1_1_julian_date.html#a4e2702651693e99ddca7007aee899b3b" title="Update the Julian Date by adding the provided seconds." alt="" coords="432,91,571,133"/>
+<area shape="rect" id="node10" href="$class_astro_lib_1_1_ground.html#aa0ae887fa7f066f7d2be72d2ef8d0456" title="Converts the tuple (azimuth, elevation) into a position vector in the North&#45;East&#45;Down (NED) reference..." alt="" coords="406,216,597,243"/>
+</map>

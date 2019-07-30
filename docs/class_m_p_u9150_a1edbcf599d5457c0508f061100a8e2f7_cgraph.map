@@ -1,0 +1,5 @@
+<map id="MPU9150::getTemp" name="MPU9150::getTemp">
+<area shape="rect" id="node1" title="Calculates the temperature from the thermistance in the IMU." alt="" coords="5,5,143,32"/>
+<area shape="rect" id="node2" href="$class_m_p_u9150.html#ae168f0fd9ae5c60cdbcff38cfa46fbc3" title="Fetches the temperature count from the IMU." alt="" coords="191,5,361,32"/>
+<area shape="rect" id="node3" href="$class_m_p_u9150.html#a1c8b5eb1e99a4b2a0ae93a25ac7fe37b" title="Read multiple bytes from the I2C bus." alt="" coords="409,5,556,32"/>
+</map>

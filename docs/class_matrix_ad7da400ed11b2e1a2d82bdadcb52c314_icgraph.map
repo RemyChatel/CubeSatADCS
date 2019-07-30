@@ -1,0 +1,16 @@
+<map id="Matrix::Resize" name="Matrix::Resize">
+<area shape="rect" id="node1" title="This function resizes the Matrix to fit new data or cropped it, operator &lt;&lt; can overwrite entire Matr..." alt="" coords="676,157,783,184"/>
+<area shape="rect" id="node2" href="$class_matrix.html#a4b47c7a11b7b1295ad4417238c3a60eb" title="This method extracts a Row from a Matrix and Saves it in Mat. If Row is out of the parameters it does..." alt="" coords="499,5,628,32"/>
+<area shape="rect" id="node3" href="$class_matrix.html#a7a928006395fe8df35546f5ae6e4fd37" title="This method extracts a Column from a Matrix and returns the Column as a new Matrix...." alt="" coords="502,56,625,83"/>
+<area shape="rect" id="node8" href="$class_matrix.html#a2166cdc8a2cbb3152b5a10ec214bc641" title="Converts a rotation quaternion to a 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="507,259,620,285"/>
+<area shape="rect" id="node10" href="$class_matrix.html#ad30cb5c3b09e8d54ddc93077db1833e9" title="Converts a rotation quaternion in Euler angles (3&#45;2&#45;1 convention)" alt="" coords="500,335,627,361"/>
+<area shape="rect" id="node12" href="$class_matrix.html#a6701670918e6c087f5ce45cf3afb97b5" title="Converts Euler angle to rotation quaternion (3&#45;2&#45;1 convention)" alt="" coords="192,107,319,133"/>
+<area shape="rect" id="node13" href="$class_matrix.html#af258b65d8907a7ea75dd658edd7c57ab" title="Converts 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X) to Euler angles (3&#45;2&#45;1 convention)" alt="" coords="197,157,313,184"/>
+<area shape="rect" id="node14" href="$class_matrix.html#a5688ebffd44fc69748aaea7ce386fde9" title="Converts 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X) to rotation quaternion." alt="" coords="507,208,620,235"/>
+<area shape="rect" id="node4" href="$class_matrix.html#ae0f4326de128296cd861947d89d2665d" title="Calculates the determinant of a Matrix." alt="" coords="367,56,451,83"/>
+<area shape="rect" id="node5" href="$class_matrix.html#ae5e1753a87a41cd41bde2329275df3fe" title="Calculate the inverse of a [n,n] Matrix BUT you check first if the determinant is !..." alt="" coords="215,56,296,83"/>
+<area shape="rect" id="node6" href="$class_filters_1_1_kalman_filter.html#ac128e270b3c1e9799013d434d00c38a5" title="Initialize the Kalman filter with the spacecraft and filter parameterss." alt="" coords="5,49,144,90"/>
+<area shape="rect" id="node7" href="$_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="33,183,116,209"/>
+<area shape="rect" id="node9" href="$_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="367,259,450,285"/>
+<area shape="rect" id="node11" href="$_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="371,360,446,387"/>
+</map>

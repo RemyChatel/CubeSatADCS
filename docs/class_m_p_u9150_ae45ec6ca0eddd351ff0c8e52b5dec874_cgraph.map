@@ -1,0 +1,11 @@
+<map id="MPU9150::recalibrateIMU" name="MPU9150::recalibrateIMU">
+<area shape="rect" id="node1" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="5,56,176,83"/>
+<area shape="rect" id="node2" href="$class_m_p_u9150.html#a4e41653c04bfeda223746b742999e890" title="Calculates the value of the acceleration measured by the accelerometer in g." alt="" coords="224,5,363,32"/>
+<area shape="rect" id="node5" href="$class_m_p_u9150.html#aa60337a719d5171d35fcc2bfd3b30392" title="Calculates the value of the rate of turn measured by the gyroscope in deg/s." alt="" coords="227,56,360,83"/>
+<area shape="rect" id="node7" href="$class_m_p_u9150.html#a27005774a5516885611ef542cd57cec0" title="Calculates the value of the magnetic field measured by the magnetometer." alt="" coords="228,107,359,133"/>
+<area shape="rect" id="node3" href="$class_m_p_u9150.html#a551f476b566bf771b2fdb0e5a4144600" title="Fetches the accelerometer count from the IMU." alt="" coords="411,5,583,32"/>
+<area shape="rect" id="node4" href="$class_m_p_u9150.html#a1c8b5eb1e99a4b2a0ae93a25ac7fe37b" title="Read multiple bytes from the I2C bus." alt="" coords="631,56,777,83"/>
+<area shape="rect" id="node6" href="$class_m_p_u9150.html#a39f593eb8c4be363e51417ed80bb5af2" title="Fetches the gyroscope count from the IMU." alt="" coords="413,56,580,83"/>
+<area shape="rect" id="node8" href="$class_m_p_u9150.html#a639f4804bae814c902922ccaf7c6eb9c" title="Fetches the magnetometer count from the IMU." alt="" coords="415,107,579,133"/>
+<area shape="rect" id="node9" href="$class_m_p_u9150.html#a7444c132c02372a0591d76dcf270ba6a" title="Read a byte from the I2C bus." alt="" coords="635,107,773,133"/>
+</map>

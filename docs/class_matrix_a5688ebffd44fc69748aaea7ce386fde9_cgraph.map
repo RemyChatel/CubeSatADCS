@@ -1,0 +1,8 @@
+<map id="Matrix::rot2quat" name="Matrix::rot2quat">
+<area shape="rect" id="node1" title="Converts 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X) to rotation quaternion." alt="" coords="5,81,119,108"/>
+<area shape="rect" id="node2" href="$class_matrix.html#a5420e7df2978c907c10cdbb50aff5b5f" title="Returns true if the matrix is square." alt="" coords="167,5,284,32"/>
+<area shape="rect" id="node3" href="$class_matrix.html#ad1b2433d295efcbf371e6f636db757e9" title="Retruns the number of Rows in Matrix, index starts at 1." alt="" coords="167,56,283,83"/>
+<area shape="rect" id="node4" href="$class_matrix.html#ad7da400ed11b2e1a2d82bdadcb52c314" title="This function resizes the Matrix to fit new data or cropped it, operator &lt;&lt; can overwrite entire Matr..." alt="" coords="172,107,279,133"/>
+<area shape="rect" id="node5" href="$class_matrix.html#a1f8ac660307f8c252b7a1daab6a7d9d1" title="Returns the trace of the matrix." alt="" coords="178,157,273,184"/>
+<area shape="rect" id="node6" href="$class_matrix.html#af698f665522164d4c3961120c94ff080" title="Returns the sum of every cell in the Matrix." alt="" coords="332,157,423,184"/>
+</map>

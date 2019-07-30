@@ -1,0 +1,5 @@
+<map id="Matrix::quat2rot" name="Matrix::quat2rot">
+<area shape="rect" id="node1" title="Converts a rotation quaternion to a 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="136,31,249,57"/>
+<area shape="rect" id="node2" href="$_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="5,5,88,32"/>
+<area shape="rect" id="node3" href="$_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="5,56,88,83"/>
+</map>

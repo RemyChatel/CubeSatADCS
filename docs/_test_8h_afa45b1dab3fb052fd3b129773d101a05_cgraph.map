@@ -1,0 +1,31 @@
+<map id="SensorTest" name="SensorTest">
+<area shape="rect" id="node1" title="Test of the Sun Sensor and other sensors." alt="" coords="5,499,93,525"/>
+<area shape="rect" id="node2" href="$class_m_p_u9150.html#a7444c132c02372a0591d76dcf270ba6a" title="Read a byte from the I2C bus." alt="" coords="795,107,933,133"/>
+<area shape="rect" id="node3" href="$class_m_p_u9150.html#a02c85a898779b6e333324e51a29827c7" title="Initialize the IMU (acc, gyr and mag)" alt="" coords="369,208,495,235"/>
+<area shape="rect" id="node13" href="$class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="143,347,313,373"/>
+<area shape="rect" id="node14" href="$class_m_p_u9150.html#a4e41653c04bfeda223746b742999e890" title="Calculates the value of the acceleration measured by the accelerometer in g." alt="" coords="363,397,501,424"/>
+<area shape="rect" id="node16" href="$class_m_p_u9150.html#aa60337a719d5171d35fcc2bfd3b30392" title="Calculates the value of the rate of turn measured by the gyroscope in deg/s." alt="" coords="365,448,499,475"/>
+<area shape="rect" id="node18" href="$class_m_p_u9150.html#a27005774a5516885611ef542cd57cec0" title="Calculates the value of the magnetic field measured by the magnetometer." alt="" coords="367,309,497,336"/>
+<area shape="rect" id="node20" href="$class_m_p_u9150.html#a4f77f4c880167a1f05e6dafe3bf078e2" title="Allow the user to manually set the avg bias for the acceleration." alt="" coords="153,499,303,525"/>
+<area shape="rect" id="node21" href="$class_m_p_u9150.html#a19af7b6ee08eb2a00dcc79a6d8f0e149" title="Allow the user to manually set the avg bias for the magnetic field." alt="" coords="153,549,303,576"/>
+<area shape="rect" id="node22" href="$class_matrix.html#aa7bf588d788d601548a34030e59152b4" title="Creates a matrix of a given size filled with zeros." alt="" coords="179,600,277,627"/>
+<area shape="rect" id="node23" href="$class_sun_sensor.html#a3d3fb7bb51aba1cfcd72668943d9e92f" title=" " alt="" coords="141,651,315,677"/>
+<area shape="rect" id="node24" href="$class_matrix.html#ae480a663270fc0256b5e26b008a987ae" title="Compute the norm of an (n x 1) or (1 x n) vector." alt="" coords="181,701,275,728"/>
+<area shape="rect" id="node28" href="$class_matrix.html#ad0c96cdea0d2ae3403653ca90aa70796" title="Transposes Matrix, return new Object." alt="" coords="583,752,709,779"/>
+<area shape="rect" id="node29" href="$class_matrix.html#a99ba97122b8fdd54e95290caf80fc8e2" title="Prints the matrix if MATRIX_USE_PRINTF has been defined." alt="" coords="183,803,273,829"/>
+<area shape="rect" id="node4" href="$class_m_p_u9150.html#af5900057aa99c56213e132e7b086666d" title="Accelerometer and gyroscope self test; check calibration wrt factory settings." alt="" coords="551,157,741,184"/>
+<area shape="rect" id="node6" href="$class_m_p_u9150.html#a097d09c9338400038950dcacc256174e" title="Reset the MPU9150 to factory settings." alt="" coords="559,208,733,235"/>
+<area shape="rect" id="node7" href="$class_m_p_u9150.html#a7f97fe4a642fec56fc4f9c252da99574" title="Function which accumulates gyro and accelerometer data after device initialization...." alt="" coords="549,259,743,285"/>
+<area shape="rect" id="node9" href="$class_m_p_u9150.html#a5a3812e17d09e0926eb6959af23349a3" title="Initialize the accelerometer and the gyroscope." alt="" coords="565,56,727,83"/>
+<area shape="rect" id="node12" href="$class_m_p_u9150.html#ab735c1a815e7dba5fefdae4246022740" title="Initialize the magnetometer." alt="" coords="567,360,725,387"/>
+<area shape="rect" id="node5" href="$class_m_p_u9150.html#a5d83c3e2a264313aeb7f7d337410855c" title="Write a byte on the I2C bus." alt="" coords="793,208,935,235"/>
+<area shape="rect" id="node8" href="$class_m_p_u9150.html#a1c8b5eb1e99a4b2a0ae93a25ac7fe37b" title="Read multiple bytes from the I2C bus." alt="" coords="791,360,937,387"/>
+<area shape="rect" id="node10" href="$class_m_p_u9150.html#af8c6449ddb604e0cd30b8b466c57c051" title="Set the scaling of the accelerometer." alt="" coords="798,5,930,32"/>
+<area shape="rect" id="node11" href="$class_m_p_u9150.html#adcd8653cb5eee6666c34f18071379004" title="Set the scaling of the gyroscope." alt="" coords="797,56,931,83"/>
+<area shape="rect" id="node15" href="$class_m_p_u9150.html#a551f476b566bf771b2fdb0e5a4144600" title="Fetches the accelerometer count from the IMU." alt="" coords="560,411,732,437"/>
+<area shape="rect" id="node17" href="$class_m_p_u9150.html#a39f593eb8c4be363e51417ed80bb5af2" title="Fetches the gyroscope count from the IMU." alt="" coords="563,461,729,488"/>
+<area shape="rect" id="node19" href="$class_m_p_u9150.html#a639f4804bae814c902922ccaf7c6eb9c" title="Fetches the magnetometer count from the IMU." alt="" coords="564,309,728,336"/>
+<area shape="rect" id="node25" href="$class_matrix.html#a88e35a3795f98d4cb63f01c647024996" title="Determines weather a Matrix is a Single Column or Row." alt="" coords="589,613,703,640"/>
+<area shape="rect" id="node26" href="$class_matrix.html#af698f665522164d4c3961120c94ff080" title="Returns the sum of every cell in the Matrix." alt="" coords="601,689,691,716"/>
+<area shape="rect" id="node27" href="$class_matrix.html#a8b75c0669091bb9ebc51b727f70f2d5f" title="Returns the dot Product of any two same leght vectors. In this case a vector is defined as a [1,..." alt="" coords="390,651,474,677"/>
+</map>

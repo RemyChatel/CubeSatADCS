@@ -1,0 +1,7 @@
+<map id="AstroLib::Orbit::getMagVector" name="AstroLib::Orbit::getMagVector">
+<area shape="rect" id="node1" title="Provides the Earth magnetic field vector according to the model." alt="" coords="5,111,200,138"/>
+<area shape="rect" id="node2" href="$class_astro_lib_1_1_orbit.html#af35dcaf7f826b039a908ba15210384af" title="Provide the current position vector." alt="" coords="248,5,427,47"/>
+<area shape="rect" id="node3" href="$class_astro_lib_1_1_orbit.html#a9c56c09a54002c2ff93f56799574d36d" title="Update the Earth magnetic field vector for a given orbit position in the ECI frame." alt="" coords="268,71,407,112"/>
+<area shape="rect" id="node4" href="$class_astro_lib_1_1_julian_date.html#a945e0c435cd2dad7870c789f84154744" title="Gets the integer part of the julian day." alt="" coords="268,136,407,177"/>
+<area shape="rect" id="node5" href="$class_astro_lib_1_1_julian_date.html#a75a49f52b4d04246c39ec95f64b51898" title="Gets the decimal part of the julian day." alt="" coords="268,201,407,243"/>
+</map>

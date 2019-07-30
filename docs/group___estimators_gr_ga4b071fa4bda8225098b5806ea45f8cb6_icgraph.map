@@ -1,0 +1,5 @@
+<map id="Estimators::QUEST" name="Estimators::QUEST">
+<area shape="rect" id="node1" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="176,31,313,57"/>
+<area shape="rect" id="node2" href="$class_a_d_s_core.html#a8d16f3419b12b7891a00ed824cd2673a" title="Updates the attitude of the spacecraft by combining the output the different sensors and filtering th..." alt="" coords="5,5,128,32"/>
+<area shape="rect" id="node3" href="$_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="25,56,108,83"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="MPU9150::getGyro" name="MPU9150::getGyro">
+<area shape="rect" id="node1" title="Calculates the value of the rate of turn measured by the gyroscope in deg/s." alt="" coords="5,5,139,32"/>
+<area shape="rect" id="node2" href="$class_m_p_u9150.html#a39f593eb8c4be363e51417ed80bb5af2" title="Fetches the gyroscope count from the IMU." alt="" coords="187,5,353,32"/>
+<area shape="rect" id="node3" href="$class_m_p_u9150.html#a1c8b5eb1e99a4b2a0ae93a25ac7fe37b" title="Read multiple bytes from the I2C bus." alt="" coords="401,5,548,32"/>
+</map>

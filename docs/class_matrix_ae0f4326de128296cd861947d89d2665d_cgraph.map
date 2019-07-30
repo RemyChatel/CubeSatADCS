@@ -1,0 +1,8 @@
+<map id="Matrix::det" name="Matrix::det">
+<area shape="rect" id="node1" title="Calculates the determinant of a Matrix." alt="" coords="5,81,89,108"/>
+<area shape="rect" id="node2" href="$class_matrix.html#a9c62a5b13b7a690670e472369d2b9918" title="Invoking this static method will increase a Column in Matrix in the desired Position." alt="" coords="147,5,255,32"/>
+<area shape="rect" id="node3" href="$class_matrix.html#a7a928006395fe8df35546f5ae6e4fd37" title="This method extracts a Column from a Matrix and returns the Column as a new Matrix...." alt="" coords="140,56,263,83"/>
+<area shape="rect" id="node5" href="$class_matrix.html#aad560f2875f9ac2000995900268511f8" title="Static Function Deletes Row from Matrix, Static to prevent missuse." alt="" coords="137,107,265,133"/>
+<area shape="rect" id="node6" href="$class_matrix.html#a14e17430ac39e24a9cf090d9f3e1242a" title="Static Function Deletes Column from Matrix, it&#39;s Static to prevent missuse. Print error and does noth..." alt="" coords="140,157,263,184"/>
+<area shape="rect" id="node4" href="$class_matrix.html#ad7da400ed11b2e1a2d82bdadcb52c314" title="This function resizes the Matrix to fit new data or cropped it, operator &lt;&lt; can overwrite entire Matr..." alt="" coords="313,56,420,83"/>
+</map>

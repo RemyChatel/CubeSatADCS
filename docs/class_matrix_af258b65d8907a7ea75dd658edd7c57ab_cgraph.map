@@ -1,0 +1,6 @@
+<map id="Matrix::rot2euler" name="Matrix::rot2euler">
+<area shape="rect" id="node1" title="Converts 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X) to Euler angles (3&#45;2&#45;1 convention)" alt="" coords="5,56,121,83"/>
+<area shape="rect" id="node2" href="$class_matrix.html#a5420e7df2978c907c10cdbb50aff5b5f" title="Returns true if the matrix is square." alt="" coords="169,5,287,32"/>
+<area shape="rect" id="node3" href="$class_matrix.html#ad1b2433d295efcbf371e6f636db757e9" title="Retruns the number of Rows in Matrix, index starts at 1." alt="" coords="170,56,286,83"/>
+<area shape="rect" id="node4" href="$class_matrix.html#ad7da400ed11b2e1a2d82bdadcb52c314" title="This function resizes the Matrix to fit new data or cropped it, operator &lt;&lt; can overwrite entire Matr..." alt="" coords="175,107,281,133"/>
+</map>
