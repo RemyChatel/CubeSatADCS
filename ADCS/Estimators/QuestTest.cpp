@@ -16,7 +16,7 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     pc->printf("Connection OK\n\r");
 
     Matrix quat(4,1);
-    #define NOISE
+    // #define NOISE
     #ifdef NOISE
     float coef_th[9] = {0.4153, 0.4472, 0.7921, -0.7652, 0.6537, 0.0274, -0.5056, -0.6104, 0.6097};
     Matrix mat_th = Matrix(3,3, coef_th);

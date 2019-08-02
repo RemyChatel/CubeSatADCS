@@ -23,9 +23,6 @@ int main(){
     #ifdef TEST_FILTER
         return FilterTest(&pc, &i2c, &t);
     #endif
-    #ifdef TEST_MPU9250
-        return MPU9250Test(&pc, &i2c, &t);
-    #endif
     #ifdef TEST_SENSOR
         return SensorTest(&pc, &i2c, &t);
     #endif
