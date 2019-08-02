@@ -40,83 +40,7 @@
  * 
  * # Example code
  * 
- * @code
- * #include "mbed.h"
- * #include "AstrooLib.h"
- * 
- * using namespace AstroLib;
- * 
- * Serial pc(USBTX, USBRX, 115200);
- * Timer t;
- * 
- * int year        = 2019;
- * int month       = 06;
- * int day         = 07;
- * int hours       = 17;// /!\ Use GMT+00 !!!!
- * int minutes     = 15;
- * float seconds   = 00;
- * 
- * JulianDate date;
- * Ground orbit;
- * orbit.setJulianDate(JulianDate(year,month,day,hours,minutes,seconds));
- * // Ground setting[lattitude, longitude, altitude,  mag_N  ,  mag_E ,   mg_D  ] in North East Down frame
- * orbit.setOrbit(55.86515, -4.25763, 0.0f, 17.3186f, -.6779f, 46.8663f);
- * 
- * float sun_eci[3];
- * float mag_eci[3];
- * float sat_eci[3];
- * float azel_sun[2];
- * 
- * int time;
- * t.start();
- * 
- * pc.printf("Objects created");
- * 
- * while(1){
- * time = t->read_us();
- * 
- * orbit.update(1.0f);
- * orbit.getSunVector(sun_eci);
- * orbit.getMagVector(mag_eci);
- * 
- * normalize(mag_eci); // Normalize to obtain the direction vector
- * normalize(sun_eci); // Normalize to obtain the direction vector
- * 
- * time = t.read_us()-time;
- * 
- * orbit.getPositionVector(sat_eci);
- * orbit.getSunAzEl(azel_sun);
- * normalize(sat_eci); // Normalize to obtain the direction vector
- * 
- * pc.printf("\n\rExecution time %d us | frequency %ld Hz\n\r", time, (long)(1000000.0f/time));
- * pc.printf("Calendar date %d-%d-%d-%d-%d-%f\n\r", year,month,day,hours,minutes,seconds);
- * pc.printf("Julian Date %ld and %f\n\r", orbit.getJulianDate().getDay(), orbit.getJulianDate().getFrac());
- * pc.printf("Satelite position [% 1.6e, % 1.6e, % 1.6e]\n\r", sat_eci[0], sat_eci[1], sat_eci[2]);
- * pc.printf("Sun vector ephemeride (AU): [% f , % f , % f]\n\r", sun_eci[0], sun_eci[1], sun_eci[2]);
- * pc.printf("Mag vector ephemeride: [% f , % f , % f]\n\r", mag_eci[0], mag_eci[1], mag_eci[2]);
- * pc.printf("AzEl Sun: [% f, % f]\n\r", azel_sun[0]*180/3.1415926535f, azel_sun[1]*180/3.1415926535f);
- * 
- * seconds+=1;
- * if(seconds >= 60){
- *     seconds = 0;
- *     minutes++;
- * }
- * if(minutes >= 60){
- *     minutes = 0;
- *     hours++;
- * }
- * wait(1);
- * }
- * return 1;
- * }
- * 
- * void normalize(float vec[3]){
- * float norm = sqrt(vec[0]*vec[0] + vec[1]*vec[1] + vec[2]*vec[2]);
- * vec[0] /= norm;
- * vec[1] /= norm;
- * vec[2] /= norm;
- * }
- * @endcode
+ * @see AstroLib.test.cpp
  * 
  * # References
  * - "Spacecraft Dynamic and Control: An introduction",
@@ -139,7 +63,7 @@
  
 #ifndef ASTROLIB_H
 #define ASTROLIB_H
-#include <cmath>
+#include <cmath>                     ///< <std::math> for square root and trigonometric functions
 
 #define PI 3.1415926535f             ///< The number PI
 #define TWOPI 6.283185307f           ///< The number 2*PI

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['twopi',['TWOPI',['../_astro_lib_8h.html#a4912c64aec0c943b7985db6cb61ff83a',1,'AstroLib.h']]]
+  ['sec2jfrac',['SEC2JFRAC',['../_astro_lib_8h.html#af7b6e0065772f4e4923d0e0b2aacad73',1,'AstroLib.h']]]
 ];

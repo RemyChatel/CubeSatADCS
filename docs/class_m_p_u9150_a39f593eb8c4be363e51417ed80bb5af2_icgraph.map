@@ -1,9 +1,8 @@
 <map id="MPU9150::readGyroData" name="MPU9150::readGyroData">
-<area shape="rect" id="node1" title="Fetches the gyroscope count from the IMU." alt="" coords="725,56,892,83"/>
-<area shape="rect" id="node2" href="$class_m_p_u9150.html#aa60337a719d5171d35fcc2bfd3b30392" title="Calculates the value of the rate of turn measured by the gyroscope in deg/s." alt="" coords="544,56,677,83"/>
-<area shape="rect" id="node3" href="$class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,56,496,83"/>
-<area shape="rect" id="node6" href="$_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="151,5,255,32"/>
-<area shape="rect" id="node7" href="$_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="159,107,247,133"/>
-<area shape="rect" id="node4" href="$class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,56,277,83"/>
-<area shape="rect" id="node5" href="$_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,56,80,83"/>
+<area shape="rect" id="node1" title="Fetches the gyroscope count from the IMU." alt="" coords="725,31,892,57"/>
+<area shape="rect" id="node2" href="$class_m_p_u9150.html#aa60337a719d5171d35fcc2bfd3b30392" title="Calculates the value of the rate of turn measured by the gyroscope in deg/s." alt="" coords="544,31,677,57"/>
+<area shape="rect" id="node3" href="$class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,5,496,32"/>
+<area shape="rect" id="node6" href="$_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="159,56,247,83"/>
+<area shape="rect" id="node4" href="$class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,5,277,32"/>
+<area shape="rect" id="node5" href="$_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="5,5,80,32"/>
 </map>

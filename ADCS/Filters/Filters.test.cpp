@@ -1,11 +1,34 @@
-#include "Test.h"
-#include "Filters.h"
-#define DEG2RAD 3.1415926535f/180.0f
-#define RAD2DEG 180.0f/3.1415926535f
+/**
+ * @file Filters.test.cpp
+ * @version 1.0
+ * @date 2019
+ * @author Remy CHATEL
+ * @copyright GNU Public License v3.0
+ * 
+ * @brief
+ * Source code for Filters.test.h
+ * 
+ * @see Filters.test.h
+ * 
+ * # License
+ * <b>(C) Copyright 2019 Remy CHATEL</b>
+ * 
+ * Licensed Under  GPL v3.0 License
+ * http://www.gnu.org/licenses/gpl-3.0.html
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+#include "Filters.test.h"
+#define DEG2RAD 3.1415926535f/180.0f    ///< Conversion factor from degrees to radians
+#define RAD2DEG 180.0f/3.1415926535f    ///< Conversion factor from radians to degrees
 
-#define LOOP_TIME 1
+#define LOOP_TIME 1                     ///< Controls the time between loops
 
-int FilterTest(Serial *pc, I2C *i2c, Timer *t){
+int KalmanFilterTest(){
     int size=0;
     float delta = 0;
     int lastUpdate = 0;
@@ -13,9 +36,11 @@ int FilterTest(Serial *pc, I2C *i2c, Timer *t){
     int loop_time = 0;
     float seconds = 0;;
     int minutes = 0;
-    t->start();
-    // pc->printf("\n\r\n\r------------------------------\n\r");
-    // pc->printf("Connection OK\n\r");
+
+    Timer t;
+    t.start();
+    // printf("\n\r\n\r------------------------------\n\r");
+    // printf("Connection OK\n\r");
 
     /**************** INIT ****************/
     using namespace Filters;
@@ -63,7 +88,7 @@ int FilterTest(Serial *pc, I2C *i2c, Timer *t){
     int iter = 0;
 
     /************** END INIT **************/
-    lastUpdate = t->read_us();
+    lastUpdate = t.read_us();
 
     for(int i = 0; i < size; i++){
         for(int j = 0; j < 4; j++){
@@ -73,22 +98,22 @@ int FilterTest(Serial *pc, I2C *i2c, Timer *t){
             w_measured(k+1) = omega[3*i+k];
         }
 
-        loop_time = t->read_us() - lastUpdate;
-        lastUpdate = t->read_us();
+        loop_time = t.read_us() - lastUpdate;
+        lastUpdate = t.read_us();
         /**************** LOOP ****************/
 
         q_predicted = kalman.filter(q_measured, w_measured, delta, Matrix::zeros(3,1), Matrix::zeros(3,1), Matrix::zeros(3,1));
         q_predicted *= 1/q_predicted.norm();
 
         /************** LOOP END **************/
-        ellapsed = t->read_us()-lastUpdate;
+        ellapsed = t.read_us()-lastUpdate;
         iter++;
         /*************** PRINTS ***************/
         w_predicted = kalman.getAngularRate();
 
-        pc->printf(" %f %f %f %f ", q_predicted(1), q_predicted(2), q_predicted(3), q_predicted(4));
-        pc->printf( "%f %f %f "    , w_predicted(1), w_predicted(2), w_predicted(3));
-        pc->printf( "%f %f\n\r", (float)ellapsed, iter/(float)size );
+        printf(" %f %f %f %f ", q_predicted(1), q_predicted(2), q_predicted(3), q_predicted(4));
+        printf( "%f %f %f "    , w_predicted(1), w_predicted(2), w_predicted(3));
+        printf( "%f %f\n\r", (float)ellapsed, iter/(float)size );
 
         /************* PRINTS END **************/
         // wait_ms(10);

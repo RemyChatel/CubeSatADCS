@@ -1,19 +1,44 @@
-#include "Test.h"
-#include "Estimators.h"
-#define DEG2RAD 3.1415926535f/180.0f
-#define RAD2DEG 180.0f/3.1415926535f
+/**
+ * @file Estimators.test.cpp
+ * @version 1.0
+ * @date 2019
+ * @author Remy CHATEL
+ * @copyright GNU Public License v3.0
+ * 
+ * @brief
+ * Source code for Estimators.test.h
+ * 
+ * @see Estimators.test.h
+ * 
+ * # License
+ * <b>(C) Copyright 2019 Remy CHATEL</b>
+ * 
+ * Licensed Under  GPL v3.0 License
+ * http://www.gnu.org/licenses/gpl-3.0.html
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+#include "Estimators.test.h"
+#define DEG2RAD 3.1415926535f/180.0f    ///< Conversion factor from degrees to radians
+#define RAD2DEG 180.0f/3.1415926535f    ///< Conversion factor from radians to degrees
 
-#define LOOP_TIME 5
+#define LOOP_TIME 5                     ///< Time between loops
 
-int QuestTest(Serial *pc, I2C *i2c, Timer *t){
+int QuestTest(){
     
     int lastUpdate = 0;
     int ellapsed = 0;
     int seconds = 0;;
     int minutes = 0;
-    t->start();
-    pc->printf("\n\r\n\r------------------------------\n\r");
-    pc->printf("Connection OK\n\r");
+    
+    Timer t;
+    t.start();
+    printf("\n\r\n\r------------------------------\n\r");
+    printf("Connection OK\n\r");
 
     Matrix quat(4,1);
     // #define NOISE
@@ -78,7 +103,7 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     float q[4];
 
     // while(1){
-    lastUpdate = t->read_us();
+    lastUpdate = t.read_us();
 
     /**************** LOOP ****************/
 
@@ -86,39 +111,39 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
     
     /************** LOOP END **************/
 
-    ellapsed = t->read_us()-lastUpdate;
-    pc->printf("\n\r\n\rLoop time %d us | Frequency %4.0f Hz\n\r", ellapsed, 1000000.0f/ellapsed);
+    ellapsed = t.read_us()-lastUpdate;
+    printf("\n\r\n\rLoop time %d us | Frequency %4.0f Hz\n\r", ellapsed, 1000000.0f/ellapsed);
 
     /*************** PRINTS ***************/
     quat = Matrix(4,1, q);
     Matrix mat_rot(3,3);
     mat_rot = Matrix::quat2rot(quat);
     mat_rot = mat_rot.Transpose(); // Taking into account the 1-2-3 rot matrix
-    pc->printf("Computed Rotation matrix\n\r");
-    printMat(mat_rot, pc);
-    pc->printf("Expected Rotation matrix\n\r");
-    printMat(mat_th, pc);
+    printf("Computed Rotation matrix\n\r");
+    mat_rot.print();
+    printf("Expected Rotation matrix\n\r");
+    mat_th.print();
 
     Matrix mat_error = mat_rot * mat_th.Transpose();
     float cos_error = 0.5 * (mat_error.trace() - 1);
     float error = acos((cos_error>1)?2-cos_error:cos_error);
 
-    pc->printf("Error matrix\n\r");
-    printMat(mat_error, pc);
-    pc->printf("Cos Angular error %f\n\r", cos_error);
-    pc->printf("Angular error %f deg\n\r", error*180.0f/3.141592f);
-    pc->printf("Difference matrix in percents\n\r");
-    printMat((mat_th - mat_rot)*100, pc);
+    printf("Error matrix\n\r");
+    mat_error.print();
+    printf("Cos Angular error %f\n\r", cos_error);
+    printf("Angular error %f deg\n\r", error*180.0f/3.141592f);
+    printf("Difference matrix in percents\n\r");
+    ((mat_th - mat_rot)*100).print();
 
-    pc->printf("Expected quaternion\n\r");
-    printMat(Matrix::rot2quat(mat_th), pc);
-    pc->printf("Computed quaternion\n\r");
-    printMat(quat, pc);
+    printf("Expected quaternion\n\r");
+    Matrix::rot2quat(mat_th).print();
+    printf("Computed quaternion\n\r");
+    quat.print();
 
-    pc->printf("Expected Euler\n\r");
-    printMat(RAD2DEG*Matrix::quat2euler(Matrix::rot2quat(mat_th)), pc);
-    pc->printf("Computed Euler\n\r");
-    printMat(RAD2DEG*Matrix::quat2euler(quat), pc);
+    printf("Expected Euler\n\r");
+    (RAD2DEG*Matrix::quat2euler(Matrix::rot2quat(mat_th))).print();
+    printf("Computed Euler\n\r");
+    (RAD2DEG*Matrix::quat2euler(quat)).print();
 
     /************* PRINTS END **************/
 
@@ -127,7 +152,7 @@ int QuestTest(Serial *pc, I2C *i2c, Timer *t){
         seconds -= 60;
         minutes++;
     }
-    wait(LOOP_TIME);
+    wait_us(LOOP_TIME*1000000);
     // }
 
     return 1;

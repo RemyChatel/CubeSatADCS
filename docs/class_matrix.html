@@ -9,14 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-  $(document).ready(initResizable);
-/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -53,23 +45,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('class_matrix.html','');});
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -84,6 +59,7 @@ $(document).ready(function(){initNavTree('class_matrix.html','');});
 </iframe>
 </div>
 
+</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="class_matrix-members.html">List of all members</a>  </div>
@@ -283,10 +259,10 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 <tr class="memitem:a7e960a1c6e8f5aa90dddb18d9394890c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix.html#a7e960a1c6e8f5aa90dddb18d9394890c">size</a> ()</td></tr>
 <tr class="memdesc:a7e960a1c6e8f5aa90dddb18d9394890c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provide the size of the matrix.  <a href="#a7e960a1c6e8f5aa90dddb18d9394890c">More...</a><br /></td></tr>
 <tr class="separator:a7e960a1c6e8f5aa90dddb18d9394890c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99ba97122b8fdd54e95290caf80fc8e2"><td class="memItemLeft" align="right" valign="top"><a id="a99ba97122b8fdd54e95290caf80fc8e2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix.html#a99ba97122b8fdd54e95290caf80fc8e2">print</a> ()</td></tr>
-<tr class="memdesc:a99ba97122b8fdd54e95290caf80fc8e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the matrix if MATRIX_USE_PRINTF has been defined. <br /></td></tr>
-<tr class="separator:a99ba97122b8fdd54e95290caf80fc8e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abad4f764e17de0076ecdd89ffd1dbf50"><td class="memItemLeft" align="right" valign="top"><a id="abad4f764e17de0076ecdd89ffd1dbf50"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_matrix.html#abad4f764e17de0076ecdd89ffd1dbf50">print</a> () const</td></tr>
+<tr class="memdesc:abad4f764e17de0076ecdd89ffd1dbf50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the matrix if MATRIX_USE_PRINTF has been defined. <br /></td></tr>
+<tr class="separator:abad4f764e17de0076ecdd89ffd1dbf50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Linear algebra Methods</h2></td></tr>
@@ -579,9 +555,9 @@ Here is the caller graph for this function:</div>
 <area shape="rect"  href="class_matrix.html#af9c288f974461ce8c27c87f9ad39d940" title="This will copy a Column Matrix into Receip in desired Position, Must be same size...." alt="" coords="321,5,429,32"/>
 <area shape="rect"  href="class_matrix.html#ae0f4326de128296cd861947d89d2665d" title="Calculates the determinant of a Matrix." alt="" coords="333,80,417,107"/>
 <area shape="rect"  href="class_matrix.html#af65e206cc253b357ba3fe2591845fcdb" title="Calculates the Translation Matrix to coordenates (x&#39; y&#39; z&#39;)." alt="" coords="325,131,426,157"/>
-<area shape="rect"  href="class_matrix.html#ae5e1753a87a41cd41bde2329275df3fe" title="Calculate the inverse of a [n,n] Matrix BUT you check first if the determinant is !..." alt="" coords="192,80,273,107"/>
-<area shape="rect"  href="class_filters_1_1_kalman_filter.html#ac128e270b3c1e9799013d434d00c38a5" title="Initialize the Kalman filter with the spacecraft and filter parameterss." alt="" coords="5,43,144,85"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="33,109,116,136"/>
+<area shape="rect"  href="class_matrix.html#ae5e1753a87a41cd41bde2329275df3fe" title="Calculate the inverse of a [n,n] Matrix BUT you check first if the determinant is !..." alt="" coords="192,55,273,81"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="33,105,116,132"/>
+<area shape="rect"  href="class_filters_1_1_kalman_filter.html#ac128e270b3c1e9799013d434d00c38a5" title="Initialize the Kalman filter with the spacecraft and filter parameterss." alt="" coords="5,39,144,81"/>
 </map>
 </div>
 
@@ -823,10 +799,10 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_matrix_a2868515839664541f6484132b3e15350_icgraph.png" border="0" usemap="#class_matrix_a2868515839664541f6484132b3e15350_icgraph" alt=""/></div>
 <map name="class_matrix_a2868515839664541f6484132b3e15350_icgraph" id="class_matrix_a2868515839664541f6484132b3e15350_icgraph">
-<area shape="rect"  title="Compute the cross product of two (3x1) vectors." alt="" coords="316,42,415,69"/>
-<area shape="rect"  href="class_filters_1_1_kalman_filter.html#a6f49d9fd41f58874cc4e358a4ec7ae0d" title="Filter the measured quaternion using a Kalman filter." alt="" coords="129,5,268,47"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="157,71,240,98"/>
-<area shape="rect"  href="_test_8h.html#afef033c38d49dd54f43c880c2d30cf24" title="Test of the Filters Library." alt="" coords="5,13,81,39"/>
+<area shape="rect"  title="Compute the cross product of two (3x1) vectors." alt="" coords="360,42,459,69"/>
+<area shape="rect"  href="class_filters_1_1_kalman_filter.html#a6f49d9fd41f58874cc4e358a4ec7ae0d" title="Filter the measured quaternion using a Kalman filter." alt="" coords="173,5,312,47"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="201,71,284,98"/>
+<area shape="rect"  href="_filters_8test_8h.html#a83206b65b93e1ff565f97ae1195e5bd1" title="Test of the Filters module." alt="" coords="5,13,125,39"/>
 </map>
 </div>
 
@@ -879,11 +855,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_matrix_a14e17430ac39e24a9cf090d9f3e1242a_icgraph.png" border="0" usemap="#class_matrix_a14e17430ac39e24a9cf090d9f3e1242a_icgraph" alt=""/></div>
 <map name="class_matrix_a14e17430ac39e24a9cf090d9f3e1242a_icgraph" id="class_matrix_a14e17430ac39e24a9cf090d9f3e1242a_icgraph">
-<area shape="rect"  title="Static Function Deletes Column from Matrix, it&#39;s Static to prevent missuse. Print error and does noth..." alt="" coords="453,42,576,69"/>
-<area shape="rect"  href="class_matrix.html#ae5e1753a87a41cd41bde2329275df3fe" title="Calculate the inverse of a [n,n] Matrix BUT you check first if the determinant is !..." alt="" coords="192,42,273,69"/>
-<area shape="rect"  href="class_matrix.html#ae0f4326de128296cd861947d89d2665d" title="Calculates the determinant of a Matrix." alt="" coords="321,79,405,106"/>
+<area shape="rect"  title="Static Function Deletes Column from Matrix, it&#39;s Static to prevent missuse. Print error and does noth..." alt="" coords="453,34,576,61"/>
+<area shape="rect"  href="class_matrix.html#ae5e1753a87a41cd41bde2329275df3fe" title="Calculate the inverse of a [n,n] Matrix BUT you check first if the determinant is !..." alt="" coords="192,17,273,43"/>
+<area shape="rect"  href="class_matrix.html#ae0f4326de128296cd861947d89d2665d" title="Calculates the determinant of a Matrix." alt="" coords="321,71,405,98"/>
 <area shape="rect"  href="class_filters_1_1_kalman_filter.html#ac128e270b3c1e9799013d434d00c38a5" title="Initialize the Kalman filter with the spacecraft and filter parameterss." alt="" coords="5,5,144,47"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="33,71,116,98"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="33,71,116,98"/>
 </map>
 </div>
 
@@ -936,11 +912,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_matrix_aad560f2875f9ac2000995900268511f8_icgraph.png" border="0" usemap="#class_matrix_aad560f2875f9ac2000995900268511f8_icgraph" alt=""/></div>
 <map name="class_matrix_aad560f2875f9ac2000995900268511f8_icgraph" id="class_matrix_aad560f2875f9ac2000995900268511f8_icgraph">
-<area shape="rect"  title="Static Function Deletes Row from Matrix, Static to prevent missuse." alt="" coords="453,42,581,69"/>
-<area shape="rect"  href="class_matrix.html#ae5e1753a87a41cd41bde2329275df3fe" title="Calculate the inverse of a [n,n] Matrix BUT you check first if the determinant is !..." alt="" coords="192,42,273,69"/>
-<area shape="rect"  href="class_matrix.html#ae0f4326de128296cd861947d89d2665d" title="Calculates the determinant of a Matrix." alt="" coords="321,79,405,106"/>
+<area shape="rect"  title="Static Function Deletes Row from Matrix, Static to prevent missuse." alt="" coords="453,34,581,61"/>
+<area shape="rect"  href="class_matrix.html#ae5e1753a87a41cd41bde2329275df3fe" title="Calculate the inverse of a [n,n] Matrix BUT you check first if the determinant is !..." alt="" coords="192,17,273,43"/>
+<area shape="rect"  href="class_matrix.html#ae0f4326de128296cd861947d89d2665d" title="Calculates the determinant of a Matrix." alt="" coords="321,71,405,98"/>
 <area shape="rect"  href="class_filters_1_1_kalman_filter.html#ac128e270b3c1e9799013d434d00c38a5" title="Initialize the Kalman filter with the spacecraft and filter parameterss." alt="" coords="5,5,144,47"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="33,71,116,98"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="33,71,116,98"/>
 </map>
 </div>
 
@@ -981,10 +957,10 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_matrix_ae0f4326de128296cd861947d89d2665d_icgraph.png" border="0" usemap="#class_matrix_ae0f4326de128296cd861947d89d2665d_icgraph" alt=""/></div>
 <map name="class_matrix_ae0f4326de128296cd861947d89d2665d_icgraph" id="class_matrix_ae0f4326de128296cd861947d89d2665d_icgraph">
-<area shape="rect"  title="Calculates the determinant of a Matrix." alt="" coords="321,42,405,69"/>
-<area shape="rect"  href="class_matrix.html#ae5e1753a87a41cd41bde2329275df3fe" title="Calculate the inverse of a [n,n] Matrix BUT you check first if the determinant is !..." alt="" coords="192,42,273,69"/>
+<area shape="rect"  title="Calculates the determinant of a Matrix." alt="" coords="321,46,405,73"/>
+<area shape="rect"  href="class_matrix.html#ae5e1753a87a41cd41bde2329275df3fe" title="Calculate the inverse of a [n,n] Matrix BUT you check first if the determinant is !..." alt="" coords="192,21,273,47"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="33,71,116,98"/>
 <area shape="rect"  href="class_filters_1_1_kalman_filter.html#ac128e270b3c1e9799013d434d00c38a5" title="Initialize the Kalman filter with the spacecraft and filter parameterss." alt="" coords="5,5,144,47"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="33,71,116,98"/>
 </map>
 </div>
 
@@ -1049,7 +1025,7 @@ Here is the caller graph for this function:</div>
 <area shape="rect"  title="Creates a diagonal (quare) matrix with the given coefficients." alt="" coords="329,56,420,83"/>
 <area shape="rect"  href="class_a_d_s_core.html#a43d2bdc8156b722edec88fe7d16874ea" title="Sets the Kalman filters variances, inertia matrices and initial position as well as the proprieties o..." alt="" coords="136,5,281,32"/>
 <area shape="rect"  href="class_matrix.html#adcb1fd7df0185de9103e20004fe037a3" title="Calculates an approximation of the inverse by using a Taylor expansion." alt="" coords="151,56,267,83"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="5,81,88,108"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="5,81,88,108"/>
 </map>
 </div>
 
@@ -1114,17 +1090,17 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_matrix_a8b75c0669091bb9ebc51b727f70f2d5f_icgraph.png" border="0" usemap="#class_matrix_a8b75c0669091bb9ebc51b727f70f2d5f_icgraph" alt=""/></div>
 <map name="class_matrix_a8b75c0669091bb9ebc51b727f70f2d5f_icgraph" id="class_matrix_a8b75c0669091bb9ebc51b727f70f2d5f_icgraph">
-<area shape="rect"  title="Returns the dot Product of any two same leght vectors. In this case a vector is defined as a [1,..." alt="" coords="465,199,549,225"/>
-<area shape="rect"  href="group___estimators_gr.html#ga5f10766fb1abd03a0d32e21e671f83d7" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="137,5,274,32"/>
-<area shape="rect"  href="class_matrix.html#ae480a663270fc0256b5e26b008a987ae" title="Compute the norm of an (n x 1) or (1 x n) vector." alt="" coords="323,199,417,225"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="5,376,88,403"/>
-<area shape="rect"  href="class_filters_1_1_kalman_filter.html#a6f49d9fd41f58874cc4e358a4ec7ae0d" title="Filter the measured quaternion using a Kalman filter." alt="" coords="136,107,275,149"/>
-<area shape="rect"  href="_test_8h.html#afef033c38d49dd54f43c880c2d30cf24" title="Test of the Filters Library." alt="" coords="9,144,85,171"/>
-<area shape="rect"  href="class_matrix.html#a2166cdc8a2cbb3152b5a10ec214bc641" title="Converts a rotation quaternion to a 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="149,275,262,301"/>
-<area shape="rect"  href="_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="5,275,88,301"/>
-<area shape="rect"  href="class_matrix.html#ad30cb5c3b09e8d54ddc93077db1833e9" title="Converts a rotation quaternion in Euler angles (3&#45;2&#45;1 convention)" alt="" coords="142,325,269,352"/>
-<area shape="rect"  href="_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="161,56,249,83"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="9,325,84,352"/>
+<area shape="rect"  title="Returns the dot Product of any two same leght vectors. In this case a vector is defined as a [1,..." alt="" coords="503,199,587,225"/>
+<area shape="rect"  href="group___estimators_gr.html#ga5f10766fb1abd03a0d32e21e671f83d7" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="174,5,311,32"/>
+<area shape="rect"  href="class_matrix.html#ae480a663270fc0256b5e26b008a987ae" title="Compute the norm of an (n x 1) or (1 x n) vector." alt="" coords="360,199,455,225"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="24,376,107,403"/>
+<area shape="rect"  href="_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="24,300,107,327"/>
+<area shape="rect"  href="class_filters_1_1_kalman_filter.html#a6f49d9fd41f58874cc4e358a4ec7ae0d" title="Filter the measured quaternion using a Kalman filter." alt="" coords="173,57,312,98"/>
+<area shape="rect"  href="_filters_8test_8h.html#a83206b65b93e1ff565f97ae1195e5bd1" title="Test of the Filters module." alt="" coords="5,93,125,120"/>
+<area shape="rect"  href="class_matrix.html#a2166cdc8a2cbb3152b5a10ec214bc641" title="Converts a rotation quaternion to a 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="186,325,299,352"/>
+<area shape="rect"  href="class_matrix.html#ad30cb5c3b09e8d54ddc93077db1833e9" title="Converts a rotation quaternion in Euler angles (3&#45;2&#45;1 convention)" alt="" coords="179,275,306,301"/>
+<area shape="rect"  href="_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="199,224,287,251"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="28,249,103,276"/>
 </map>
 </div>
 
@@ -1179,7 +1155,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="class_matrix_a6701670918e6c087f5ce45cf3afb97b5_icgraph.png" border="0" usemap="#class_matrix_a6701670918e6c087f5ce45cf3afb97b5_icgraph" alt=""/></div>
 <map name="class_matrix_a6701670918e6c087f5ce45cf3afb97b5_icgraph" id="class_matrix_a6701670918e6c087f5ce45cf3afb97b5_icgraph">
 <area shape="rect"  title="Converts Euler angle to rotation quaternion (3&#45;2&#45;1 convention)" alt="" coords="136,5,263,32"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="5,5,88,32"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="5,5,88,32"/>
 </map>
 </div>
 
@@ -1239,7 +1215,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="class_matrix_a9e68c61a21868c0aff4e245679a61e15_icgraph.png" border="0" usemap="#class_matrix_a9e68c61a21868c0aff4e245679a61e15_icgraph" alt=""/></div>
 <map name="class_matrix_a9e68c61a21868c0aff4e245679a61e15_icgraph" id="class_matrix_a9e68c61a21868c0aff4e245679a61e15_icgraph">
 <area shape="rect"  title="Converts Euler angles to 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="136,5,252,32"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="5,5,88,32"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="5,5,88,32"/>
 </map>
 </div>
 
@@ -1299,7 +1275,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="class_matrix_a1dee1794adfb8da343424277ca0f8bfe_icgraph.png" border="0" usemap="#class_matrix_a1dee1794adfb8da343424277ca0f8bfe_icgraph" alt=""/></div>
 <map name="class_matrix_a1dee1794adfb8da343424277ca0f8bfe_icgraph" id="class_matrix_a1dee1794adfb8da343424277ca0f8bfe_icgraph">
 <area shape="rect"  title="Converts Euler angles to 1&#45;2&#45;3 rotation matrix (X&#45;&gt;Y&#45;&gt;Z)" alt="" coords="136,5,273,32"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="5,5,88,32"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="5,5,88,32"/>
 </map>
 </div>
 
@@ -1362,11 +1338,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_matrix_a7a928006395fe8df35546f5ae6e4fd37_icgraph.png" border="0" usemap="#class_matrix_a7a928006395fe8df35546f5ae6e4fd37_icgraph" alt=""/></div>
 <map name="class_matrix_a7a928006395fe8df35546f5ae6e4fd37_icgraph" id="class_matrix_a7a928006395fe8df35546f5ae6e4fd37_icgraph">
-<area shape="rect"  title="This method extracts a Column from a Matrix and returns the Column as a new Matrix...." alt="" coords="453,42,576,69"/>
-<area shape="rect"  href="class_matrix.html#ae0f4326de128296cd861947d89d2665d" title="Calculates the determinant of a Matrix." alt="" coords="321,42,405,69"/>
-<area shape="rect"  href="class_matrix.html#ae5e1753a87a41cd41bde2329275df3fe" title="Calculate the inverse of a [n,n] Matrix BUT you check first if the determinant is !..." alt="" coords="192,42,273,69"/>
+<area shape="rect"  title="This method extracts a Column from a Matrix and returns the Column as a new Matrix...." alt="" coords="453,46,576,73"/>
+<area shape="rect"  href="class_matrix.html#ae0f4326de128296cd861947d89d2665d" title="Calculates the determinant of a Matrix." alt="" coords="321,46,405,73"/>
+<area shape="rect"  href="class_matrix.html#ae5e1753a87a41cd41bde2329275df3fe" title="Calculate the inverse of a [n,n] Matrix BUT you check first if the determinant is !..." alt="" coords="192,21,273,47"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="33,71,116,98"/>
 <area shape="rect"  href="class_filters_1_1_kalman_filter.html#ac128e270b3c1e9799013d434d00c38a5" title="Initialize the Kalman filter with the spacecraft and filter parameterss." alt="" coords="5,5,144,47"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="33,71,116,98"/>
 </map>
 </div>
 
@@ -1479,17 +1455,17 @@ Here is the caller graph for this function:</div>
 <area shape="rect"  href="class_a_d_s_core.html#a43d2bdc8156b722edec88fe7d16874ea" title="Sets the Kalman filters variances, inertia matrices and initial position as well as the proprieties o..." alt="" coords="345,5,491,32"/>
 <area shape="rect"  href="group___estimators_gr.html#ga5f10766fb1abd03a0d32e21e671f83d7" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="349,56,487,83"/>
 <area shape="rect"  href="class_filters_1_1_kalman_filter.html#a6f49d9fd41f58874cc4e358a4ec7ae0d" title="Filter the measured quaternion using a Kalman filter." alt="" coords="349,158,487,199"/>
-<area shape="rect"  href="_test_8h.html#afef033c38d49dd54f43c880c2d30cf24" title="Test of the Filters Library." alt="" coords="191,115,267,141"/>
+<area shape="rect"  href="_filters_8test_8h.html#a83206b65b93e1ff565f97ae1195e5bd1" title="Test of the Filters module." alt="" coords="169,115,289,141"/>
 <area shape="rect"  href="class_matrix.html#a1dee1794adfb8da343424277ca0f8bfe" title="Converts Euler angles to 1&#45;2&#45;3 rotation matrix (X&#45;&gt;Y&#45;&gt;Z)" alt="" coords="160,275,297,301"/>
 <area shape="rect"  href="class_matrix.html#a9e68c61a21868c0aff4e245679a61e15" title="Converts Euler angles to 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="171,376,287,403"/>
 <area shape="rect"  href="class_matrix.html#a7c31602d52fdedfa741e49e8d2a4ea52" title="Calculates the Rotation Matrix Transform along &#39;x&#39; axis in radians." alt="" coords="371,376,465,403"/>
 <area shape="rect"  href="class_matrix.html#a72961e369b0fe59d745b8a62dc5710e6" title="Calculates the Rotation Matrix Transform along &#39;y&#39; axis in radians." alt="" coords="371,224,465,251"/>
 <area shape="rect"  href="class_matrix.html#a884afad227b3ea1455d12839cb9c4396" title="Calculates the Rotation Matrix Transform along &#39;z&#39; axis in radians." alt="" coords="371,325,465,352"/>
 <area shape="rect"  href="class_matrix.html#af65e206cc253b357ba3fe2591845fcdb" title="Calculates the Translation Matrix to coordenates (x&#39; y&#39; z&#39;)." alt="" coords="367,477,469,504"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="17,300,100,327"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="17,300,100,327"/>
 <area shape="rect"  href="class_matrix.html#aa2bbcaaabd51ddf0e094c9c5e73dadd0" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) direction cosine Matrix." alt="" coords="175,224,282,251"/>
-<area shape="rect"  href="class_matrix.html#a78fdb4b3ad06499e4492c4541316c6d3" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) cosine direction Matrix." alt="" coords="5,249,112,276"/>
-<area shape="rect"  href="_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="17,199,100,225"/>
+<area shape="rect"  href="_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="17,249,100,276"/>
+<area shape="rect"  href="class_matrix.html#a78fdb4b3ad06499e4492c4541316c6d3" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) cosine direction Matrix." alt="" coords="5,199,112,225"/>
 </map>
 </div>
 
@@ -1524,7 +1500,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="class_matrix_a2f92eba4058c6ea91fc5c02098e60d3a_icgraph.png" border="0" usemap="#class_matrix_a2f92eba4058c6ea91fc5c02098e60d3a_icgraph" alt=""/></div>
 <map name="class_matrix_a2f92eba4058c6ea91fc5c02098e60d3a_icgraph" id="class_matrix_a2f92eba4058c6ea91fc5c02098e60d3a_icgraph">
 <area shape="rect"  title="Return the coefficients of the matrix in a linear array." alt="" coords="136,5,247,32"/>
-<area shape="rect"  href="_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="5,5,88,32"/>
+<area shape="rect"  href="_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="5,5,88,32"/>
 </map>
 </div>
 
@@ -1566,15 +1542,6 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Num = float number in matrix </dd></dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_matrix_a53e116bfad8cf837d2676de098ed1e53_icgraph.png" border="0" usemap="#class_matrix_a53e116bfad8cf837d2676de098ed1e53_icgraph" alt=""/></div>
-<map name="class_matrix_a53e116bfad8cf837d2676de098ed1e53_icgraph" id="class_matrix_a53e116bfad8cf837d2676de098ed1e53_icgraph">
-<area shape="rect"  title="Return the number in position [Row],[Col] of the storage vector." alt="" coords="123,5,252,32"/>
-<area shape="rect"  href="_test_8h.html#ae55ed44f42c65eeb7ea04ec870d0d4ef" title="Print a Matrix in a formated way." alt="" coords="5,5,75,32"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -1617,7 +1584,7 @@ Here is the caller graph for this function:</div>
 <map name="class_matrix_ae5e1753a87a41cd41bde2329275df3fe_icgraph" id="class_matrix_ae5e1753a87a41cd41bde2329275df3fe_icgraph">
 <area shape="rect"  title="Calculate the inverse of a [n,n] Matrix BUT you check first if the determinant is !..." alt="" coords="192,42,273,69"/>
 <area shape="rect"  href="class_filters_1_1_kalman_filter.html#ac128e270b3c1e9799013d434d00c38a5" title="Initialize the Kalman filter with the spacecraft and filter parameterss." alt="" coords="5,5,144,47"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="33,71,116,98"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="33,71,116,98"/>
 </map>
 </div>
 
@@ -1657,16 +1624,16 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_matrix_ae480a663270fc0256b5e26b008a987ae_icgraph.png" border="0" usemap="#class_matrix_ae480a663270fc0256b5e26b008a987ae_icgraph" alt=""/></div>
 <map name="class_matrix_ae480a663270fc0256b5e26b008a987ae_icgraph" id="class_matrix_ae480a663270fc0256b5e26b008a987ae_icgraph">
-<area shape="rect"  title="Compute the norm of an (n x 1) or (1 x n) vector." alt="" coords="323,199,417,225"/>
-<area shape="rect"  href="group___estimators_gr.html#ga5f10766fb1abd03a0d32e21e671f83d7" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="137,5,274,32"/>
-<area shape="rect"  href="class_filters_1_1_kalman_filter.html#a6f49d9fd41f58874cc4e358a4ec7ae0d" title="Filter the measured quaternion using a Kalman filter." alt="" coords="136,107,275,149"/>
-<area shape="rect"  href="_test_8h.html#afef033c38d49dd54f43c880c2d30cf24" title="Test of the Filters Library." alt="" coords="9,85,85,112"/>
-<area shape="rect"  href="class_matrix.html#a2166cdc8a2cbb3152b5a10ec214bc641" title="Converts a rotation quaternion to a 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="149,224,262,251"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="5,224,88,251"/>
-<area shape="rect"  href="_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="5,275,88,301"/>
-<area shape="rect"  href="class_matrix.html#ad30cb5c3b09e8d54ddc93077db1833e9" title="Converts a rotation quaternion in Euler angles (3&#45;2&#45;1 convention)" alt="" coords="142,275,269,301"/>
-<area shape="rect"  href="_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="161,376,249,403"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="9,325,84,352"/>
+<area shape="rect"  title="Compute the norm of an (n x 1) or (1 x n) vector." alt="" coords="360,183,455,209"/>
+<area shape="rect"  href="group___estimators_gr.html#ga5f10766fb1abd03a0d32e21e671f83d7" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="174,5,311,32"/>
+<area shape="rect"  href="_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="24,107,107,133"/>
+<area shape="rect"  href="class_filters_1_1_kalman_filter.html#a6f49d9fd41f58874cc4e358a4ec7ae0d" title="Filter the measured quaternion using a Kalman filter." alt="" coords="173,310,312,351"/>
+<area shape="rect"  href="_filters_8test_8h.html#a83206b65b93e1ff565f97ae1195e5bd1" title="Test of the Filters module." alt="" coords="5,288,125,315"/>
+<area shape="rect"  href="class_matrix.html#a2166cdc8a2cbb3152b5a10ec214bc641" title="Converts a rotation quaternion to a 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="186,107,299,133"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="24,157,107,184"/>
+<area shape="rect"  href="class_matrix.html#ad30cb5c3b09e8d54ddc93077db1833e9" title="Converts a rotation quaternion in Euler angles (3&#45;2&#45;1 convention)" alt="" coords="179,157,306,184"/>
+<area shape="rect"  href="_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="199,376,287,403"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="28,208,103,235"/>
 </map>
 </div>
 
@@ -1965,9 +1932,9 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="class_matrix_ad30cb5c3b09e8d54ddc93077db1833e9_icgraph.png" border="0" usemap="#class_matrix_ad30cb5c3b09e8d54ddc93077db1833e9_icgraph" alt=""/></div>
 <map name="class_matrix_ad30cb5c3b09e8d54ddc93077db1833e9_icgraph" id="class_matrix_ad30cb5c3b09e8d54ddc93077db1833e9_icgraph">
 <area shape="rect"  title="Converts a rotation quaternion in Euler angles (3&#45;2&#45;1 convention)" alt="" coords="136,56,263,83"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="9,5,84,32"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="5,56,88,83"/>
-<area shape="rect"  href="_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="5,107,88,133"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="9,5,84,32"/>
+<area shape="rect"  href="_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="5,56,88,83"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="5,107,88,133"/>
 </map>
 </div>
 
@@ -2025,8 +1992,8 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="class_matrix_a2166cdc8a2cbb3152b5a10ec214bc641_icgraph.png" border="0" usemap="#class_matrix_a2166cdc8a2cbb3152b5a10ec214bc641_icgraph" alt=""/></div>
 <map name="class_matrix_a2166cdc8a2cbb3152b5a10ec214bc641_icgraph" id="class_matrix_a2166cdc8a2cbb3152b5a10ec214bc641_icgraph">
 <area shape="rect"  title="Converts a rotation quaternion to a 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="136,31,249,57"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="5,5,88,32"/>
-<area shape="rect"  href="_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="5,56,88,83"/>
+<area shape="rect"  href="_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="5,5,88,32"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="5,56,88,83"/>
 </map>
 </div>
 
@@ -2092,7 +2059,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="class_matrix_a520e64ea013c1a47b5adc7f92e56eca1_icgraph.png" border="0" usemap="#class_matrix_a520e64ea013c1a47b5adc7f92e56eca1_icgraph" alt=""/></div>
 <map name="class_matrix_a520e64ea013c1a47b5adc7f92e56eca1_icgraph" id="class_matrix_a520e64ea013c1a47b5adc7f92e56eca1_icgraph">
 <area shape="rect"  title="Compute the quaternion multiplication of the two given vectors." alt="" coords="136,5,248,32"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="5,5,88,32"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="5,5,88,32"/>
 </map>
 </div>
 
@@ -2137,20 +2104,20 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_matrix_ad7da400ed11b2e1a2d82bdadcb52c314_icgraph.png" border="0" usemap="#class_matrix_ad7da400ed11b2e1a2d82bdadcb52c314_icgraph" alt=""/></div>
 <map name="class_matrix_ad7da400ed11b2e1a2d82bdadcb52c314_icgraph" id="class_matrix_ad7da400ed11b2e1a2d82bdadcb52c314_icgraph">
-<area shape="rect"  title="This function resizes the Matrix to fit new data or cropped it, operator &lt;&lt; can overwrite entire Matr..." alt="" coords="676,157,783,184"/>
-<area shape="rect"  href="class_matrix.html#a4b47c7a11b7b1295ad4417238c3a60eb" title="This method extracts a Row from a Matrix and Saves it in Mat. If Row is out of the parameters it does..." alt="" coords="499,5,628,32"/>
-<area shape="rect"  href="class_matrix.html#a7a928006395fe8df35546f5ae6e4fd37" title="This method extracts a Column from a Matrix and returns the Column as a new Matrix...." alt="" coords="502,56,625,83"/>
-<area shape="rect"  href="class_matrix.html#a2166cdc8a2cbb3152b5a10ec214bc641" title="Converts a rotation quaternion to a 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="507,259,620,285"/>
-<area shape="rect"  href="class_matrix.html#ad30cb5c3b09e8d54ddc93077db1833e9" title="Converts a rotation quaternion in Euler angles (3&#45;2&#45;1 convention)" alt="" coords="500,335,627,361"/>
-<area shape="rect"  href="class_matrix.html#a6701670918e6c087f5ce45cf3afb97b5" title="Converts Euler angle to rotation quaternion (3&#45;2&#45;1 convention)" alt="" coords="192,107,319,133"/>
-<area shape="rect"  href="class_matrix.html#af258b65d8907a7ea75dd658edd7c57ab" title="Converts 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X) to Euler angles (3&#45;2&#45;1 convention)" alt="" coords="197,157,313,184"/>
-<area shape="rect"  href="class_matrix.html#a5688ebffd44fc69748aaea7ce386fde9" title="Converts 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X) to rotation quaternion." alt="" coords="507,208,620,235"/>
-<area shape="rect"  href="class_matrix.html#ae0f4326de128296cd861947d89d2665d" title="Calculates the determinant of a Matrix." alt="" coords="367,56,451,83"/>
-<area shape="rect"  href="class_matrix.html#ae5e1753a87a41cd41bde2329275df3fe" title="Calculate the inverse of a [n,n] Matrix BUT you check first if the determinant is !..." alt="" coords="215,56,296,83"/>
-<area shape="rect"  href="class_filters_1_1_kalman_filter.html#ac128e270b3c1e9799013d434d00c38a5" title="Initialize the Kalman filter with the spacecraft and filter parameterss." alt="" coords="5,49,144,90"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="33,183,116,209"/>
-<area shape="rect"  href="_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="367,259,450,285"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="371,360,446,387"/>
+<area shape="rect"  title="This function resizes the Matrix to fit new data or cropped it, operator &lt;&lt; can overwrite entire Matr..." alt="" coords="676,165,783,191"/>
+<area shape="rect"  href="class_matrix.html#a4b47c7a11b7b1295ad4417238c3a60eb" title="This method extracts a Row from a Matrix and Saves it in Mat. If Row is out of the parameters it does..." alt="" coords="499,13,628,39"/>
+<area shape="rect"  href="class_matrix.html#a7a928006395fe8df35546f5ae6e4fd37" title="This method extracts a Column from a Matrix and returns the Column as a new Matrix...." alt="" coords="502,63,625,90"/>
+<area shape="rect"  href="class_matrix.html#a2166cdc8a2cbb3152b5a10ec214bc641" title="Converts a rotation quaternion to a 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="507,266,620,293"/>
+<area shape="rect"  href="class_matrix.html#ad30cb5c3b09e8d54ddc93077db1833e9" title="Converts a rotation quaternion in Euler angles (3&#45;2&#45;1 convention)" alt="" coords="500,342,627,369"/>
+<area shape="rect"  href="class_matrix.html#a6701670918e6c087f5ce45cf3afb97b5" title="Converts Euler angle to rotation quaternion (3&#45;2&#45;1 convention)" alt="" coords="192,114,319,141"/>
+<area shape="rect"  href="class_matrix.html#af258b65d8907a7ea75dd658edd7c57ab" title="Converts 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X) to Euler angles (3&#45;2&#45;1 convention)" alt="" coords="197,165,313,191"/>
+<area shape="rect"  href="class_matrix.html#a5688ebffd44fc69748aaea7ce386fde9" title="Converts 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X) to rotation quaternion." alt="" coords="507,215,620,242"/>
+<area shape="rect"  href="class_matrix.html#ae0f4326de128296cd861947d89d2665d" title="Calculates the determinant of a Matrix." alt="" coords="367,63,451,90"/>
+<area shape="rect"  href="class_matrix.html#ae5e1753a87a41cd41bde2329275df3fe" title="Calculate the inverse of a [n,n] Matrix BUT you check first if the determinant is !..." alt="" coords="215,13,296,39"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="33,165,116,191"/>
+<area shape="rect"  href="class_filters_1_1_kalman_filter.html#ac128e270b3c1e9799013d434d00c38a5" title="Initialize the Kalman filter with the spacecraft and filter parameterss." alt="" coords="5,5,144,47"/>
+<area shape="rect"  href="_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="367,266,450,293"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="371,367,446,394"/>
 </map>
 </div>
 
@@ -2205,7 +2172,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="class_matrix_af258b65d8907a7ea75dd658edd7c57ab_icgraph.png" border="0" usemap="#class_matrix_af258b65d8907a7ea75dd658edd7c57ab_icgraph" alt=""/></div>
 <map name="class_matrix_af258b65d8907a7ea75dd658edd7c57ab_icgraph" id="class_matrix_af258b65d8907a7ea75dd658edd7c57ab_icgraph">
 <area shape="rect"  title="Converts 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X) to Euler angles (3&#45;2&#45;1 convention)" alt="" coords="136,5,252,32"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="5,5,88,32"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="5,5,88,32"/>
 </map>
 </div>
 
@@ -2262,8 +2229,8 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="class_matrix_a5688ebffd44fc69748aaea7ce386fde9_icgraph.png" border="0" usemap="#class_matrix_a5688ebffd44fc69748aaea7ce386fde9_icgraph" alt=""/></div>
 <map name="class_matrix_a5688ebffd44fc69748aaea7ce386fde9_icgraph" id="class_matrix_a5688ebffd44fc69748aaea7ce386fde9_icgraph">
 <area shape="rect"  title="Converts 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X) to rotation quaternion." alt="" coords="136,31,249,57"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="5,5,88,32"/>
-<area shape="rect"  href="_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="5,56,88,83"/>
+<area shape="rect"  href="_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="5,5,88,32"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="5,56,88,83"/>
 </map>
 </div>
 
@@ -2339,9 +2306,9 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="class_matrix_aa2bbcaaabd51ddf0e094c9c5e73dadd0_icgraph.png" border="0" usemap="#class_matrix_aa2bbcaaabd51ddf0e094c9c5e73dadd0_icgraph" alt=""/></div>
 <map name="class_matrix_aa2bbcaaabd51ddf0e094c9c5e73dadd0_icgraph" id="class_matrix_aa2bbcaaabd51ddf0e094c9c5e73dadd0_icgraph">
 <area shape="rect"  title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) direction cosine Matrix." alt="" coords="160,56,267,83"/>
-<area shape="rect"  href="class_matrix.html#a78fdb4b3ad06499e4492c4541316c6d3" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) cosine direction Matrix." alt="" coords="5,5,112,32"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="17,56,100,83"/>
-<area shape="rect"  href="_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="17,107,100,133"/>
+<area shape="rect"  href="_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="17,5,100,32"/>
+<area shape="rect"  href="class_matrix.html#a78fdb4b3ad06499e4492c4541316c6d3" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) cosine direction Matrix." alt="" coords="5,56,112,83"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="17,107,100,133"/>
 </map>
 </div>
 
@@ -2449,11 +2416,11 @@ Here is the caller graph for this function:</div>
 <map name="class_matrix_a7c31602d52fdedfa741e49e8d2a4ea52_icgraph" id="class_matrix_a7c31602d52fdedfa741e49e8d2a4ea52_icgraph">
 <area shape="rect"  title="Calculates the Rotation Matrix Transform along &#39;x&#39; axis in radians." alt="" coords="345,81,439,108"/>
 <area shape="rect"  href="class_matrix.html#a1dee1794adfb8da343424277ca0f8bfe" title="Converts Euler angles to 1&#45;2&#45;3 rotation matrix (X&#45;&gt;Y&#45;&gt;Z)" alt="" coords="160,5,297,32"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="17,69,100,96"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="17,69,100,96"/>
 <area shape="rect"  href="class_matrix.html#a9e68c61a21868c0aff4e245679a61e15" title="Converts Euler angles to 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="171,107,287,133"/>
 <area shape="rect"  href="class_matrix.html#aa2bbcaaabd51ddf0e094c9c5e73dadd0" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) direction cosine Matrix." alt="" coords="175,157,282,184"/>
-<area shape="rect"  href="class_matrix.html#a78fdb4b3ad06499e4492c4541316c6d3" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) cosine direction Matrix." alt="" coords="5,132,112,159"/>
-<area shape="rect"  href="_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="17,183,100,209"/>
+<area shape="rect"  href="_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="17,132,100,159"/>
+<area shape="rect"  href="class_matrix.html#a78fdb4b3ad06499e4492c4541316c6d3" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) cosine direction Matrix." alt="" coords="5,183,112,209"/>
 </map>
 </div>
 
@@ -2509,11 +2476,11 @@ Here is the caller graph for this function:</div>
 <map name="class_matrix_a72961e369b0fe59d745b8a62dc5710e6_icgraph" id="class_matrix_a72961e369b0fe59d745b8a62dc5710e6_icgraph">
 <area shape="rect"  title="Calculates the Rotation Matrix Transform along &#39;y&#39; axis in radians." alt="" coords="345,81,440,108"/>
 <area shape="rect"  href="class_matrix.html#a1dee1794adfb8da343424277ca0f8bfe" title="Converts Euler angles to 1&#45;2&#45;3 rotation matrix (X&#45;&gt;Y&#45;&gt;Z)" alt="" coords="160,5,297,32"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="17,69,100,96"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="17,69,100,96"/>
 <area shape="rect"  href="class_matrix.html#a9e68c61a21868c0aff4e245679a61e15" title="Converts Euler angles to 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="171,107,287,133"/>
 <area shape="rect"  href="class_matrix.html#aa2bbcaaabd51ddf0e094c9c5e73dadd0" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) direction cosine Matrix." alt="" coords="175,157,282,184"/>
-<area shape="rect"  href="class_matrix.html#a78fdb4b3ad06499e4492c4541316c6d3" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) cosine direction Matrix." alt="" coords="5,132,112,159"/>
-<area shape="rect"  href="_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="17,183,100,209"/>
+<area shape="rect"  href="_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="17,132,100,159"/>
+<area shape="rect"  href="class_matrix.html#a78fdb4b3ad06499e4492c4541316c6d3" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) cosine direction Matrix." alt="" coords="5,183,112,209"/>
 </map>
 </div>
 
@@ -2569,11 +2536,11 @@ Here is the caller graph for this function:</div>
 <map name="class_matrix_a884afad227b3ea1455d12839cb9c4396_icgraph" id="class_matrix_a884afad227b3ea1455d12839cb9c4396_icgraph">
 <area shape="rect"  title="Calculates the Rotation Matrix Transform along &#39;z&#39; axis in radians." alt="" coords="345,81,439,108"/>
 <area shape="rect"  href="class_matrix.html#a1dee1794adfb8da343424277ca0f8bfe" title="Converts Euler angles to 1&#45;2&#45;3 rotation matrix (X&#45;&gt;Y&#45;&gt;Z)" alt="" coords="160,5,297,32"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="17,69,100,96"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="17,69,100,96"/>
 <area shape="rect"  href="class_matrix.html#a9e68c61a21868c0aff4e245679a61e15" title="Converts Euler angles to 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="171,107,287,133"/>
 <area shape="rect"  href="class_matrix.html#aa2bbcaaabd51ddf0e094c9c5e73dadd0" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) direction cosine Matrix." alt="" coords="175,157,282,184"/>
-<area shape="rect"  href="class_matrix.html#a78fdb4b3ad06499e4492c4541316c6d3" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) cosine direction Matrix." alt="" coords="5,132,112,159"/>
-<area shape="rect"  href="_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="17,183,100,209"/>
+<area shape="rect"  href="_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="17,132,100,159"/>
+<area shape="rect"  href="class_matrix.html#a78fdb4b3ad06499e4492c4541316c6d3" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) cosine direction Matrix." alt="" coords="5,183,112,209"/>
 </map>
 </div>
 
@@ -2607,17 +2574,17 @@ Here is the caller graph for this function:</div>
 <area shape="rect"  href="class_a_d_s_core.html#a43d2bdc8156b722edec88fe7d16874ea" title="Sets the Kalman filters variances, inertia matrices and initial position as well as the proprieties o..." alt="" coords="345,80,491,107"/>
 <area shape="rect"  href="group___estimators_gr.html#ga5f10766fb1abd03a0d32e21e671f83d7" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="349,435,487,462"/>
 <area shape="rect"  href="class_filters_1_1_kalman_filter.html#a6f49d9fd41f58874cc4e358a4ec7ae0d" title="Filter the measured quaternion using a Kalman filter." alt="" coords="349,537,487,578"/>
-<area shape="rect"  href="_test_8h.html#afef033c38d49dd54f43c880c2d30cf24" title="Test of the Filters Library." alt="" coords="191,515,267,542"/>
+<area shape="rect"  href="_filters_8test_8h.html#a83206b65b93e1ff565f97ae1195e5bd1" title="Test of the Filters module." alt="" coords="169,515,289,542"/>
 <area shape="rect"  href="class_matrix.html#a1dee1794adfb8da343424277ca0f8bfe" title="Converts Euler angles to 1&#45;2&#45;3 rotation matrix (X&#45;&gt;Y&#45;&gt;Z)" alt="" coords="160,271,297,298"/>
 <area shape="rect"  href="class_matrix.html#a9e68c61a21868c0aff4e245679a61e15" title="Converts Euler angles to 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="171,170,287,196"/>
 <area shape="rect"  href="class_matrix.html#a7c31602d52fdedfa741e49e8d2a4ea52" title="Calculates the Rotation Matrix Transform along &#39;x&#39; axis in radians." alt="" coords="371,232,465,259"/>
 <area shape="rect"  href="class_matrix.html#a72961e369b0fe59d745b8a62dc5710e6" title="Calculates the Rotation Matrix Transform along &#39;y&#39; axis in radians." alt="" coords="371,334,465,360"/>
 <area shape="rect"  href="class_matrix.html#a884afad227b3ea1455d12839cb9c4396" title="Calculates the Rotation Matrix Transform along &#39;z&#39; axis in radians." alt="" coords="371,182,465,208"/>
 <area shape="rect"  href="class_matrix.html#af65e206cc253b357ba3fe2591845fcdb" title="Calculates the Translation Matrix to coordenates (x&#39; y&#39; z&#39;)." alt="" coords="367,384,469,411"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="17,220,100,247"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="17,220,100,247"/>
 <area shape="rect"  href="class_matrix.html#aa2bbcaaabd51ddf0e094c9c5e73dadd0" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) direction cosine Matrix." alt="" coords="175,322,282,348"/>
-<area shape="rect"  href="class_matrix.html#a78fdb4b3ad06499e4492c4541316c6d3" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) cosine direction Matrix." alt="" coords="5,347,112,374"/>
-<area shape="rect"  href="_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="17,296,100,323"/>
+<area shape="rect"  href="_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="17,347,100,374"/>
+<area shape="rect"  href="class_matrix.html#a78fdb4b3ad06499e4492c4541316c6d3" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) cosine direction Matrix." alt="" coords="5,296,112,323"/>
 <area shape="rect"  href="class_matrix.html#adcb1fd7df0185de9103e20004fe037a3" title="Calculates an approximation of the inverse by using a Taylor expansion." alt="" coords="171,55,287,82"/>
 </map>
 </div>
@@ -2646,20 +2613,20 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_matrix_af698f665522164d4c3961120c94ff080_icgraph.png" border="0" usemap="#class_matrix_af698f665522164d4c3961120c94ff080_icgraph" alt=""/></div>
 <map name="class_matrix_af698f665522164d4c3961120c94ff080_icgraph" id="class_matrix_af698f665522164d4c3961120c94ff080_icgraph">
-<area shape="rect"  title="Returns the sum of every cell in the Matrix." alt="" coords="597,139,688,165"/>
-<area shape="rect"  href="class_matrix.html#a8b75c0669091bb9ebc51b727f70f2d5f" title="Returns the dot Product of any two same leght vectors. In this case a vector is defined as a [1,..." alt="" coords="465,139,549,165"/>
-<area shape="rect"  href="class_matrix.html#ae480a663270fc0256b5e26b008a987ae" title="Compute the norm of an (n x 1) or (1 x n) vector." alt="" coords="323,265,417,292"/>
-<area shape="rect"  href="class_matrix.html#a1f8ac660307f8c252b7a1daab6a7d9d1" title="Returns the trace of the matrix." alt="" coords="323,37,417,64"/>
-<area shape="rect"  href="group___estimators_gr.html#ga5f10766fb1abd03a0d32e21e671f83d7" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="137,139,274,165"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="5,240,88,267"/>
-<area shape="rect"  href="class_filters_1_1_kalman_filter.html#a6f49d9fd41f58874cc4e358a4ec7ae0d" title="Filter the measured quaternion using a Kalman filter." alt="" coords="136,494,275,535"/>
-<area shape="rect"  href="_test_8h.html#afef033c38d49dd54f43c880c2d30cf24" title="Test of the Filters Library." alt="" coords="9,472,85,499"/>
-<area shape="rect"  href="class_matrix.html#a2166cdc8a2cbb3152b5a10ec214bc641" title="Converts a rotation quaternion to a 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="149,240,262,267"/>
-<area shape="rect"  href="_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="5,189,88,216"/>
-<area shape="rect"  href="class_matrix.html#ad30cb5c3b09e8d54ddc93077db1833e9" title="Converts a rotation quaternion in Euler angles (3&#45;2&#45;1 convention)" alt="" coords="142,341,269,368"/>
-<area shape="rect"  href="_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="161,291,249,317"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="9,341,84,368"/>
-<area shape="rect"  href="class_matrix.html#a5688ebffd44fc69748aaea7ce386fde9" title="Converts 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X) to rotation quaternion." alt="" coords="149,37,262,64"/>
+<area shape="rect"  title="Returns the sum of every cell in the Matrix." alt="" coords="635,363,725,390"/>
+<area shape="rect"  href="class_matrix.html#a8b75c0669091bb9ebc51b727f70f2d5f" title="Returns the dot Product of any two same leght vectors. In this case a vector is defined as a [1,..." alt="" coords="503,363,587,390"/>
+<area shape="rect"  href="class_matrix.html#ae480a663270fc0256b5e26b008a987ae" title="Compute the norm of an (n x 1) or (1 x n) vector." alt="" coords="360,237,455,263"/>
+<area shape="rect"  href="class_matrix.html#a1f8ac660307f8c252b7a1daab6a7d9d1" title="Returns the trace of the matrix." alt="" coords="360,453,455,479"/>
+<area shape="rect"  href="group___estimators_gr.html#ga5f10766fb1abd03a0d32e21e671f83d7" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="174,363,311,390"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="24,389,107,415"/>
+<area shape="rect"  href="_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="24,262,107,289"/>
+<area shape="rect"  href="class_filters_1_1_kalman_filter.html#a6f49d9fd41f58874cc4e358a4ec7ae0d" title="Filter the measured quaternion using a Kalman filter." alt="" coords="173,44,312,85"/>
+<area shape="rect"  href="_filters_8test_8h.html#a83206b65b93e1ff565f97ae1195e5bd1" title="Test of the Filters module." alt="" coords="5,22,125,49"/>
+<area shape="rect"  href="class_matrix.html#a2166cdc8a2cbb3152b5a10ec214bc641" title="Converts a rotation quaternion to a 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="186,262,299,289"/>
+<area shape="rect"  href="class_matrix.html#ad30cb5c3b09e8d54ddc93077db1833e9" title="Converts a rotation quaternion in Euler angles (3&#45;2&#45;1 convention)" alt="" coords="179,161,306,187"/>
+<area shape="rect"  href="_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="199,110,287,137"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="28,161,103,187"/>
+<area shape="rect"  href="class_matrix.html#a5688ebffd44fc69748aaea7ce386fde9" title="Converts 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X) to rotation quaternion." alt="" coords="186,465,299,491"/>
 </map>
 </div>
 
@@ -2711,7 +2678,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="class_matrix_adcb1fd7df0185de9103e20004fe037a3_icgraph.png" border="0" usemap="#class_matrix_adcb1fd7df0185de9103e20004fe037a3_icgraph" alt=""/></div>
 <map name="class_matrix_adcb1fd7df0185de9103e20004fe037a3_icgraph" id="class_matrix_adcb1fd7df0185de9103e20004fe037a3_icgraph">
 <area shape="rect"  title="Calculates an approximation of the inverse by using a Taylor expansion." alt="" coords="136,5,252,32"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="5,5,88,32"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="5,5,88,32"/>
 </map>
 </div>
 
@@ -2755,7 +2722,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="class_matrix_a46a6aff4d27b09ffe6e6edd62d29a151_icgraph.png" border="0" usemap="#class_matrix_a46a6aff4d27b09ffe6e6edd62d29a151_icgraph" alt=""/></div>
 <map name="class_matrix_a46a6aff4d27b09ffe6e6edd62d29a151_icgraph" id="class_matrix_a46a6aff4d27b09ffe6e6edd62d29a151_icgraph">
 <area shape="rect"  title="Shatters the matrix into a single Row Vector. Important: Returns NEW matrix, does no modify existing ..." alt="" coords="136,5,299,32"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="5,5,88,32"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="5,5,88,32"/>
 </map>
 </div>
 
@@ -2793,9 +2760,9 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="class_matrix_a1f8ac660307f8c252b7a1daab6a7d9d1_icgraph.png" border="0" usemap="#class_matrix_a1f8ac660307f8c252b7a1daab6a7d9d1_icgraph" alt=""/></div>
 <map name="class_matrix_a1f8ac660307f8c252b7a1daab6a7d9d1_icgraph" id="class_matrix_a1f8ac660307f8c252b7a1daab6a7d9d1_icgraph">
 <area shape="rect"  title="Returns the trace of the matrix." alt="" coords="297,31,392,57"/>
-<area shape="rect"  href="class_matrix.html#a5688ebffd44fc69748aaea7ce386fde9" title="Converts 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X) to rotation quaternion." alt="" coords="136,5,249,32"/>
-<area shape="rect"  href="_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="5,56,88,83"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="5,5,88,32"/>
+<area shape="rect"  href="_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="5,5,88,32"/>
+<area shape="rect"  href="class_matrix.html#a5688ebffd44fc69748aaea7ce386fde9" title="Converts 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X) to rotation quaternion." alt="" coords="136,31,249,57"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="5,68,88,95"/>
 </map>
 </div>
 
@@ -2889,26 +2856,26 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_matrix_ad0c96cdea0d2ae3403653ca90aa70796_icgraph.png" border="0" usemap="#class_matrix_ad0c96cdea0d2ae3403653ca90aa70796_icgraph" alt=""/></div>
 <map name="class_matrix_ad0c96cdea0d2ae3403653ca90aa70796_icgraph" id="class_matrix_ad0c96cdea0d2ae3403653ca90aa70796_icgraph">
-<area shape="rect"  title="Transposes Matrix, return new Object." alt="" coords="695,501,821,528"/>
-<area shape="rect"  href="group___estimators_gr.html#ga5f10766fb1abd03a0d32e21e671f83d7" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="137,55,274,81"/>
-<area shape="rect"  href="class_matrix.html#ae5e1753a87a41cd41bde2329275df3fe" title="Calculate the inverse of a [n,n] Matrix BUT you check first if the determinant is !..." alt="" coords="537,577,619,604"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="5,577,88,604"/>
-<area shape="rect"  href="class_matrix.html#a8b75c0669091bb9ebc51b727f70f2d5f" title="Returns the dot Product of any two same leght vectors. In this case a vector is defined as a [1,..." alt="" coords="536,248,620,275"/>
-<area shape="rect"  href="class_matrix.html#a2166cdc8a2cbb3152b5a10ec214bc641" title="Converts a rotation quaternion to a 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="149,324,262,351"/>
-<area shape="rect"  href="_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="5,223,88,249"/>
-<area shape="rect"  href="class_matrix.html#ad30cb5c3b09e8d54ddc93077db1833e9" title="Converts a rotation quaternion in Euler angles (3&#45;2&#45;1 convention)" alt="" coords="142,273,269,300"/>
-<area shape="rect"  href="_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="161,425,249,452"/>
-<area shape="rect"  href="class_matrix.html#a2868515839664541f6484132b3e15350" title="Compute the cross product of two (3x1) vectors." alt="" coords="343,324,441,351"/>
-<area shape="rect"  href="class_matrix.html#a520e64ea013c1a47b5adc7f92e56eca1" title="Compute the quaternion multiplication of the two given vectors." alt="" coords="336,527,448,553"/>
-<area shape="rect"  href="class_matrix.html#a6701670918e6c087f5ce45cf3afb97b5" title="Converts Euler angle to rotation quaternion (3&#45;2&#45;1 convention)" alt="" coords="329,695,455,721"/>
-<area shape="rect"  href="class_matrix.html#a1dee1794adfb8da343424277ca0f8bfe" title="Converts Euler angles to 1&#45;2&#45;3 rotation matrix (X&#45;&gt;Y&#45;&gt;Z)" alt="" coords="509,721,647,748"/>
-<area shape="rect"  href="class_matrix.html#a9e68c61a21868c0aff4e245679a61e15" title="Converts Euler angles to 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="520,788,636,815"/>
-<area shape="rect"  href="class_matrix.html#a78fdb4b3ad06499e4492c4541316c6d3" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) cosine direction Matrix." alt="" coords="525,897,631,924"/>
-<area shape="rect"  href="class_filters_1_1_kalman_filter.html#ac128e270b3c1e9799013d434d00c38a5" title="Initialize the Kalman filter with the spacecraft and filter parameterss." alt="" coords="323,629,461,670"/>
-<area shape="rect"  href="class_matrix.html#ae480a663270fc0256b5e26b008a987ae" title="Compute the norm of an (n x 1) or (1 x n) vector." alt="" coords="345,223,439,249"/>
-<area shape="rect"  href="class_filters_1_1_kalman_filter.html#a6f49d9fd41f58874cc4e358a4ec7ae0d" title="Filter the measured quaternion using a Kalman filter." alt="" coords="136,157,275,198"/>
-<area shape="rect"  href="_test_8h.html#afef033c38d49dd54f43c880c2d30cf24" title="Test of the Filters Library." alt="" coords="9,135,85,161"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="9,273,84,300"/>
+<area shape="rect"  title="Transposes Matrix, return new Object." alt="" coords="732,512,859,539"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="28,56,103,83"/>
+<area shape="rect"  href="group___estimators_gr.html#ga5f10766fb1abd03a0d32e21e671f83d7" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="174,157,311,184"/>
+<area shape="rect"  href="_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="24,157,107,184"/>
+<area shape="rect"  href="class_matrix.html#ae5e1753a87a41cd41bde2329275df3fe" title="Calculate the inverse of a [n,n] Matrix BUT you check first if the determinant is !..." alt="" coords="575,571,656,597"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="24,629,107,656"/>
+<area shape="rect"  href="class_matrix.html#a8b75c0669091bb9ebc51b727f70f2d5f" title="Returns the dot Product of any two same leght vectors. In this case a vector is defined as a [1,..." alt="" coords="573,309,657,336"/>
+<area shape="rect"  href="class_matrix.html#a2166cdc8a2cbb3152b5a10ec214bc641" title="Converts a rotation quaternion to a 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="186,360,299,387"/>
+<area shape="rect"  href="class_matrix.html#ad30cb5c3b09e8d54ddc93077db1833e9" title="Converts a rotation quaternion in Euler angles (3&#45;2&#45;1 convention)" alt="" coords="179,107,306,133"/>
+<area shape="rect"  href="_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="199,411,287,437"/>
+<area shape="rect"  href="class_matrix.html#a2868515839664541f6484132b3e15350" title="Compute the cross product of two (3x1) vectors." alt="" coords="380,512,479,539"/>
+<area shape="rect"  href="class_matrix.html#a520e64ea013c1a47b5adc7f92e56eca1" title="Compute the quaternion multiplication of the two given vectors." alt="" coords="373,883,485,909"/>
+<area shape="rect"  href="class_matrix.html#a6701670918e6c087f5ce45cf3afb97b5" title="Converts Euler angle to rotation quaternion (3&#45;2&#45;1 convention)" alt="" coords="366,680,493,707"/>
+<area shape="rect"  href="class_matrix.html#a1dee1794adfb8da343424277ca0f8bfe" title="Converts Euler angles to 1&#45;2&#45;3 rotation matrix (X&#45;&gt;Y&#45;&gt;Z)" alt="" coords="547,709,684,736"/>
+<area shape="rect"  href="class_matrix.html#a9e68c61a21868c0aff4e245679a61e15" title="Converts Euler angles to 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="557,775,673,801"/>
+<area shape="rect"  href="class_matrix.html#a78fdb4b3ad06499e4492c4541316c6d3" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) cosine direction Matrix." alt="" coords="562,933,669,960"/>
+<area shape="rect"  href="class_filters_1_1_kalman_filter.html#ac128e270b3c1e9799013d434d00c38a5" title="Initialize the Kalman filter with the spacecraft and filter parameterss." alt="" coords="360,563,499,605"/>
+<area shape="rect"  href="class_matrix.html#ae480a663270fc0256b5e26b008a987ae" title="Compute the norm of an (n x 1) or (1 x n) vector." alt="" coords="382,309,477,336"/>
+<area shape="rect"  href="class_filters_1_1_kalman_filter.html#a6f49d9fd41f58874cc4e358a4ec7ae0d" title="Filter the measured quaternion using a Kalman filter." alt="" coords="173,462,312,503"/>
+<area shape="rect"  href="_filters_8test_8h.html#a83206b65b93e1ff565f97ae1195e5bd1" title="Test of the Filters module." alt="" coords="5,364,125,391"/>
 </map>
 </div>
 
@@ -2962,32 +2929,32 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_matrix_aa7bf588d788d601548a34030e59152b4_icgraph.png" border="0" usemap="#class_matrix_aa7bf588d788d601548a34030e59152b4_icgraph" alt=""/></div>
 <map name="class_matrix_aa7bf588d788d601548a34030e59152b4_icgraph" id="class_matrix_aa7bf588d788d601548a34030e59152b4_icgraph">
-<area shape="rect"  title="Creates a matrix of a given size filled with zeros." alt="" coords="732,364,831,391"/>
+<area shape="rect"  title="Creates a matrix of a given size filled with zeros." alt="" coords="732,296,831,323"/>
 <area shape="rect"  href="class_a_d_s_core.html#ab8873bff74a052260b3e251eac584059" title="Default constructor for the Attitude Determination core." alt="" coords="542,5,681,32"/>
 <area shape="rect"  href="class_a_d_s_core.html#a035baa9fa452899dee976bbcdc4430fd" title="Sets the Kalman filters variances, inertia matrices and initial position when there is no reaction wh..." alt="" coords="539,56,684,83"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="381,13,455,40"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="381,107,455,133"/>
 <area shape="rect"  href="class_a_d_s_core.html#a65be8547feafaddb284e7e1c234606b8" title="Updates the attitude of the spacecraft by combining the output the different sensors and filtering th..." alt="" coords="550,157,673,184"/>
 <area shape="rect"  href="group___estimators_gr.html#ga4b071fa4bda8225098b5806ea45f8cb6" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="543,208,680,235"/>
-<area shape="rect"  href="class_filters_1_1_kalman_filter.html#aab2cc3677e9fcb19fff16b84c997f30a" title="Default constructor for the Kalman filter class." alt="" coords="542,327,681,369"/>
-<area shape="rect"  href="class_matrix.html#a89e843f74660aabb9b6403a738b6ee42" title="Creates a square identity matrix of a given size." alt="" coords="568,393,655,420"/>
-<area shape="rect"  href="_test_8h.html#afef033c38d49dd54f43c880c2d30cf24" title="Test of the Filters Library." alt="" coords="191,629,267,656"/>
-<area shape="rect"  href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="17,368,100,395"/>
-<area shape="rect"  href="class_matrix.html#adcb1fd7df0185de9103e20004fe037a3" title="Calculates an approximation of the inverse by using a Taylor expansion." alt="" coords="171,789,287,816"/>
-<area shape="rect"  href="class_matrix.html#a520e64ea013c1a47b5adc7f92e56eca1" title="Compute the quaternion multiplication of the two given vectors." alt="" coords="173,840,285,867"/>
-<area shape="rect"  href="_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="567,891,655,917"/>
-<area shape="rect"  href="class_a_d_s_core.html#a8d16f3419b12b7891a00ed824cd2673a" title="Updates the attitude of the spacecraft by combining the output the different sensors and filtering th..." alt="" coords="357,115,479,141"/>
-<area shape="rect"  href="_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="17,140,100,167"/>
-<area shape="rect"  href="class_a_d_s_core.html#a43d2bdc8156b722edec88fe7d16874ea" title="Sets the Kalman filters variances, inertia matrices and initial position as well as the proprieties o..." alt="" coords="345,520,491,547"/>
-<area shape="rect"  href="group___estimators_gr.html#ga5f10766fb1abd03a0d32e21e671f83d7" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="349,571,487,597"/>
-<area shape="rect"  href="class_filters_1_1_kalman_filter.html#a6f49d9fd41f58874cc4e358a4ec7ae0d" title="Filter the measured quaternion using a Kalman filter." alt="" coords="349,622,487,663"/>
-<area shape="rect"  href="class_matrix.html#a1dee1794adfb8da343424277ca0f8bfe" title="Converts Euler angles to 1&#45;2&#45;3 rotation matrix (X&#45;&gt;Y&#45;&gt;Z)" alt="" coords="160,216,297,243"/>
-<area shape="rect"  href="class_matrix.html#a9e68c61a21868c0aff4e245679a61e15" title="Converts Euler angles to 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="171,368,287,395"/>
-<area shape="rect"  href="class_matrix.html#a7c31602d52fdedfa741e49e8d2a4ea52" title="Calculates the Rotation Matrix Transform along &#39;x&#39; axis in radians." alt="" coords="371,216,465,243"/>
-<area shape="rect"  href="class_matrix.html#a72961e369b0fe59d745b8a62dc5710e6" title="Calculates the Rotation Matrix Transform along &#39;y&#39; axis in radians." alt="" coords="371,267,465,293"/>
-<area shape="rect"  href="class_matrix.html#a884afad227b3ea1455d12839cb9c4396" title="Calculates the Rotation Matrix Transform along &#39;z&#39; axis in radians." alt="" coords="371,317,465,344"/>
-<area shape="rect"  href="class_matrix.html#af65e206cc253b357ba3fe2591845fcdb" title="Calculates the Translation Matrix to coordenates (x&#39; y&#39; z&#39;)." alt="" coords="367,469,469,496"/>
-<area shape="rect"  href="class_matrix.html#aa2bbcaaabd51ddf0e094c9c5e73dadd0" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) direction cosine Matrix." alt="" coords="175,267,282,293"/>
-<area shape="rect"  href="class_matrix.html#a78fdb4b3ad06499e4492c4541316c6d3" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) cosine direction Matrix." alt="" coords="5,267,112,293"/>
+<area shape="rect"  href="class_filters_1_1_kalman_filter.html#aab2cc3677e9fcb19fff16b84c997f30a" title="Default constructor for the Kalman filter class." alt="" coords="542,259,681,301"/>
+<area shape="rect"  href="_filters_8test_8h.html#a83206b65b93e1ff565f97ae1195e5bd1" title="Test of the Filters module." alt="" coords="169,309,289,336"/>
+<area shape="rect"  href="class_matrix.html#a89e843f74660aabb9b6403a738b6ee42" title="Creates a square identity matrix of a given size." alt="" coords="568,528,655,555"/>
+<area shape="rect"  href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="17,731,100,757"/>
+<area shape="rect"  href="class_matrix.html#adcb1fd7df0185de9103e20004fe037a3" title="Calculates an approximation of the inverse by using a Taylor expansion." alt="" coords="171,883,287,909"/>
+<area shape="rect"  href="class_matrix.html#a520e64ea013c1a47b5adc7f92e56eca1" title="Compute the quaternion multiplication of the two given vectors." alt="" coords="173,933,285,960"/>
+<area shape="rect"  href="_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="567,984,655,1011"/>
+<area shape="rect"  href="class_a_d_s_core.html#a8d16f3419b12b7891a00ed824cd2673a" title="Updates the attitude of the spacecraft by combining the output the different sensors and filtering th..." alt="" coords="357,157,479,184"/>
+<area shape="rect"  href="_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="17,393,100,420"/>
+<area shape="rect"  href="class_a_d_s_core.html#a43d2bdc8156b722edec88fe7d16874ea" title="Sets the Kalman filters variances, inertia matrices and initial position as well as the proprieties o..." alt="" coords="345,360,491,387"/>
+<area shape="rect"  href="group___estimators_gr.html#ga5f10766fb1abd03a0d32e21e671f83d7" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="349,411,487,437"/>
+<area shape="rect"  href="class_filters_1_1_kalman_filter.html#a6f49d9fd41f58874cc4e358a4ec7ae0d" title="Filter the measured quaternion using a Kalman filter." alt="" coords="349,462,487,503"/>
+<area shape="rect"  href="class_matrix.html#a1dee1794adfb8da343424277ca0f8bfe" title="Converts Euler angles to 1&#45;2&#45;3 rotation matrix (X&#45;&gt;Y&#45;&gt;Z)" alt="" coords="160,579,297,605"/>
+<area shape="rect"  href="class_matrix.html#a9e68c61a21868c0aff4e245679a61e15" title="Converts Euler angles to 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="171,731,287,757"/>
+<area shape="rect"  href="class_matrix.html#a7c31602d52fdedfa741e49e8d2a4ea52" title="Calculates the Rotation Matrix Transform along &#39;x&#39; axis in radians." alt="" coords="371,579,465,605"/>
+<area shape="rect"  href="class_matrix.html#a72961e369b0fe59d745b8a62dc5710e6" title="Calculates the Rotation Matrix Transform along &#39;y&#39; axis in radians." alt="" coords="371,629,465,656"/>
+<area shape="rect"  href="class_matrix.html#a884afad227b3ea1455d12839cb9c4396" title="Calculates the Rotation Matrix Transform along &#39;z&#39; axis in radians." alt="" coords="371,680,465,707"/>
+<area shape="rect"  href="class_matrix.html#af65e206cc253b357ba3fe2591845fcdb" title="Calculates the Translation Matrix to coordenates (x&#39; y&#39; z&#39;)." alt="" coords="367,781,469,808"/>
+<area shape="rect"  href="class_matrix.html#aa2bbcaaabd51ddf0e094c9c5e73dadd0" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) direction cosine Matrix." alt="" coords="175,629,282,656"/>
+<area shape="rect"  href="class_matrix.html#a78fdb4b3ad06499e4492c4541316c6d3" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) cosine direction Matrix." alt="" coords="5,629,112,656"/>
 </map>
 </div>
 
@@ -3919,15 +3886,11 @@ Here is the caller graph for this function:</div>
 <li>Matrix/<a class="el" href="_matrix_8cpp.html">Matrix.cpp</a></li>
 </ul>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="navelem"><a class="el" href="class_matrix.html">Matrix</a></li>
-    <li class="footer">Generated by
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.15
+</small></address>
 </body>
 </html>

@@ -1,13 +1,12 @@
 <map id="MPU9150::writeByte" name="MPU9150::writeByte">
 <area shape="rect" id="node1" title="Write a byte on the I2C bus." alt="" coords="741,107,883,133"/>
 <area shape="rect" id="node2" href="$class_m_p_u9150.html#ab735c1a815e7dba5fefdae4246022740" title="Initialize the magnetometer." alt="" coords="517,5,676,32"/>
-<area shape="rect" id="node8" href="$class_m_p_u9150.html#a097d09c9338400038950dcacc256174e" title="Reset the MPU9150 to factory settings." alt="" coords="510,56,683,83"/>
-<area shape="rect" id="node9" href="$class_m_p_u9150.html#a5a3812e17d09e0926eb6959af23349a3" title="Initialize the accelerometer and the gyroscope." alt="" coords="516,107,677,133"/>
-<area shape="rect" id="node10" href="$class_m_p_u9150.html#a7f97fe4a642fec56fc4f9c252da99574" title="Function which accumulates gyro and accelerometer data after device initialization...." alt="" coords="500,157,693,184"/>
-<area shape="rect" id="node11" href="$class_m_p_u9150.html#af5900057aa99c56213e132e7b086666d" title="Accelerometer and gyroscope self test; check calibration wrt factory settings." alt="" coords="501,208,692,235"/>
+<area shape="rect" id="node7" href="$class_m_p_u9150.html#a097d09c9338400038950dcacc256174e" title="Reset the MPU9150 to factory settings." alt="" coords="510,56,683,83"/>
+<area shape="rect" id="node8" href="$class_m_p_u9150.html#a5a3812e17d09e0926eb6959af23349a3" title="Initialize the accelerometer and the gyroscope." alt="" coords="516,107,677,133"/>
+<area shape="rect" id="node9" href="$class_m_p_u9150.html#a7f97fe4a642fec56fc4f9c252da99574" title="Function which accumulates gyro and accelerometer data after device initialization...." alt="" coords="500,157,693,184"/>
+<area shape="rect" id="node10" href="$class_m_p_u9150.html#af5900057aa99c56213e132e7b086666d" title="Accelerometer and gyroscope self test; check calibration wrt factory settings." alt="" coords="501,208,692,235"/>
 <area shape="rect" id="node3" href="$class_m_p_u9150.html#a02c85a898779b6e333324e51a29827c7" title="Initialize the IMU (acc, gyr and mag)" alt="" coords="325,107,452,133"/>
-<area shape="rect" id="node4" href="$class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,56,277,83"/>
-<area shape="rect" id="node6" href="$_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="151,107,255,133"/>
-<area shape="rect" id="node7" href="$_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="159,157,247,184"/>
-<area shape="rect" id="node5" href="$_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,56,80,83"/>
+<area shape="rect" id="node4" href="$class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,81,277,108"/>
+<area shape="rect" id="node6" href="$_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="159,132,247,159"/>
+<area shape="rect" id="node5" href="$_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="5,81,80,108"/>
 </map>

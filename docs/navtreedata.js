@@ -29,7 +29,7 @@ var NAVTREE =
       [ "Dependencies and Compatibility", "index.html#Dep", null ],
       [ "Comments", "index.html#Comments", null ]
     ] ],
-    [ "Bare Metal Blinky", "md__r_e_a_d_m_e.html", null ],
+    [ "Attitude Determination module", "md__r_e_a_d_m_e.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -63,7 +63,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_a_d_s_core_8cpp.html",
-"class_matrix.html#af698f665522164d4c3961120c94ff080"
+"class_sun_sensor.html#a0ce086ecae57e14af977e70341dbe9a9"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

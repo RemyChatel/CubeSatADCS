@@ -3,7 +3,7 @@
 <area shape="rect" id="node2" href="$class_matrix.html#af9c288f974461ce8c27c87f9ad39d940" title="This will copy a Column Matrix into Receip in desired Position, Must be same size...." alt="" coords="321,5,429,32"/>
 <area shape="rect" id="node3" href="$class_matrix.html#ae0f4326de128296cd861947d89d2665d" title="Calculates the determinant of a Matrix." alt="" coords="333,80,417,107"/>
 <area shape="rect" id="node7" href="$class_matrix.html#af65e206cc253b357ba3fe2591845fcdb" title="Calculates the Translation Matrix to coordenates (x&#39; y&#39; z&#39;)." alt="" coords="325,131,426,157"/>
-<area shape="rect" id="node4" href="$class_matrix.html#ae5e1753a87a41cd41bde2329275df3fe" title="Calculate the inverse of a [n,n] Matrix BUT you check first if the determinant is !..." alt="" coords="192,80,273,107"/>
-<area shape="rect" id="node5" href="$class_filters_1_1_kalman_filter.html#ac128e270b3c1e9799013d434d00c38a5" title="Initialize the Kalman filter with the spacecraft and filter parameterss." alt="" coords="5,43,144,85"/>
-<area shape="rect" id="node6" href="$_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="33,109,116,136"/>
+<area shape="rect" id="node4" href="$class_matrix.html#ae5e1753a87a41cd41bde2329275df3fe" title="Calculate the inverse of a [n,n] Matrix BUT you check first if the determinant is !..." alt="" coords="192,55,273,81"/>
+<area shape="rect" id="node6" href="$_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="33,105,116,132"/>
+<area shape="rect" id="node5" href="$class_filters_1_1_kalman_filter.html#ac128e270b3c1e9799013d434d00c38a5" title="Initialize the Kalman filter with the spacecraft and filter parameterss." alt="" coords="5,39,144,81"/>
 </map>

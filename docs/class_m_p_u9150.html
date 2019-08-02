@@ -9,14 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-  $(document).ready(initResizable);
-/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -53,23 +45,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('class_m_p_u9150.html','');});
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -84,6 +59,7 @@ $(document).ready(function(){initNavTree('class_m_p_u9150.html','');});
 </iframe>
 </div>
 
+</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="class_m_p_u9150-members.html">List of all members</a>  </div>
@@ -305,12 +281,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_m_p_u9150_a7f97fe4a642fec56fc4f9c252da99574_icgraph.png" border="0" usemap="#class_m_p_u9150_a7f97fe4a642fec56fc4f9c252da99574_icgraph" alt=""/></div>
 <map name="class_m_p_u9150_a7f97fe4a642fec56fc4f9c252da99574_icgraph" id="class_m_p_u9150_a7f97fe4a642fec56fc4f9c252da99574_icgraph">
-<area shape="rect"  title="Function which accumulates gyro and accelerometer data after device initialization...." alt="" coords="500,56,693,83"/>
-<area shape="rect"  href="class_m_p_u9150.html#a02c85a898779b6e333324e51a29827c7" title="Initialize the IMU (acc, gyr and mag)" alt="" coords="325,56,452,83"/>
+<area shape="rect"  title="Function which accumulates gyro and accelerometer data after device initialization...." alt="" coords="500,31,693,57"/>
+<area shape="rect"  href="class_m_p_u9150.html#a02c85a898779b6e333324e51a29827c7" title="Initialize the IMU (acc, gyr and mag)" alt="" coords="325,31,452,57"/>
 <area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,5,277,32"/>
-<area shape="rect"  href="_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="151,56,255,83"/>
-<area shape="rect"  href="_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="159,107,247,133"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,5,80,32"/>
+<area shape="rect"  href="_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="159,56,247,83"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="5,5,80,32"/>
 </map>
 </div>
 
@@ -354,12 +329,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_m_p_u9150_a4e41653c04bfeda223746b742999e890_icgraph.png" border="0" usemap="#class_m_p_u9150_a4e41653c04bfeda223746b742999e890_icgraph" alt=""/></div>
 <map name="class_m_p_u9150_a4e41653c04bfeda223746b742999e890_icgraph" id="class_m_p_u9150_a4e41653c04bfeda223746b742999e890_icgraph">
-<area shape="rect"  title="Calculates the value of the acceleration measured by the accelerometer in g." alt="" coords="544,56,683,83"/>
-<area shape="rect"  href="class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,56,496,83"/>
-<area shape="rect"  href="_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="151,5,255,32"/>
-<area shape="rect"  href="_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="159,107,247,133"/>
-<area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,56,277,83"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,56,80,83"/>
+<area shape="rect"  title="Calculates the value of the acceleration measured by the accelerometer in g." alt="" coords="544,31,683,57"/>
+<area shape="rect"  href="class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,5,496,32"/>
+<area shape="rect"  href="_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="159,56,247,83"/>
+<area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,5,277,32"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="5,5,80,32"/>
 </map>
 </div>
 
@@ -403,12 +377,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_m_p_u9150_aa60337a719d5171d35fcc2bfd3b30392_icgraph.png" border="0" usemap="#class_m_p_u9150_aa60337a719d5171d35fcc2bfd3b30392_icgraph" alt=""/></div>
 <map name="class_m_p_u9150_aa60337a719d5171d35fcc2bfd3b30392_icgraph" id="class_m_p_u9150_aa60337a719d5171d35fcc2bfd3b30392_icgraph">
-<area shape="rect"  title="Calculates the value of the rate of turn measured by the gyroscope in deg/s." alt="" coords="544,56,677,83"/>
-<area shape="rect"  href="class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,56,496,83"/>
-<area shape="rect"  href="_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="151,5,255,32"/>
-<area shape="rect"  href="_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="159,107,247,133"/>
-<area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,56,277,83"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,56,80,83"/>
+<area shape="rect"  title="Calculates the value of the rate of turn measured by the gyroscope in deg/s." alt="" coords="544,31,677,57"/>
+<area shape="rect"  href="class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,5,496,32"/>
+<area shape="rect"  href="_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="159,56,247,83"/>
+<area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,5,277,32"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="5,5,80,32"/>
 </map>
 </div>
 
@@ -453,12 +426,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_m_p_u9150_a27005774a5516885611ef542cd57cec0_icgraph.png" border="0" usemap="#class_m_p_u9150_a27005774a5516885611ef542cd57cec0_icgraph" alt=""/></div>
 <map name="class_m_p_u9150_a27005774a5516885611ef542cd57cec0_icgraph" id="class_m_p_u9150_a27005774a5516885611ef542cd57cec0_icgraph">
-<area shape="rect"  title="Calculates the value of the magnetic field measured by the magnetometer." alt="" coords="544,56,675,83"/>
-<area shape="rect"  href="class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,56,496,83"/>
-<area shape="rect"  href="_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="151,5,255,32"/>
-<area shape="rect"  href="_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="159,107,247,133"/>
-<area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,56,277,83"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,56,80,83"/>
+<area shape="rect"  title="Calculates the value of the magnetic field measured by the magnetometer." alt="" coords="544,31,675,57"/>
+<area shape="rect"  href="class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,5,496,32"/>
+<area shape="rect"  href="_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="159,56,247,83"/>
+<area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,5,277,32"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="5,5,80,32"/>
 </map>
 </div>
 
@@ -552,11 +524,10 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_m_p_u9150_a02c85a898779b6e333324e51a29827c7_icgraph.png" border="0" usemap="#class_m_p_u9150_a02c85a898779b6e333324e51a29827c7_icgraph" alt=""/></div>
 <map name="class_m_p_u9150_a02c85a898779b6e333324e51a29827c7_icgraph" id="class_m_p_u9150_a02c85a898779b6e333324e51a29827c7_icgraph">
-<area shape="rect"  title="Initialize the IMU (acc, gyr and mag)" alt="" coords="325,56,452,83"/>
+<area shape="rect"  title="Initialize the IMU (acc, gyr and mag)" alt="" coords="325,31,452,57"/>
 <area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,5,277,32"/>
-<area shape="rect"  href="_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="151,56,255,83"/>
-<area shape="rect"  href="_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="159,107,247,133"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,5,80,32"/>
+<area shape="rect"  href="_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="159,56,247,83"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="5,5,80,32"/>
 </map>
 </div>
 
@@ -613,12 +584,11 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_m_p_u9150_a5a3812e17d09e0926eb6959af23349a3_icgraph.png" border="0" usemap="#class_m_p_u9150_a5a3812e17d09e0926eb6959af23349a3_icgraph" alt=""/></div>
 <map name="class_m_p_u9150_a5a3812e17d09e0926eb6959af23349a3_icgraph" id="class_m_p_u9150_a5a3812e17d09e0926eb6959af23349a3_icgraph">
-<area shape="rect"  title="Initialize the accelerometer and the gyroscope." alt="" coords="500,56,661,83"/>
-<area shape="rect"  href="class_m_p_u9150.html#a02c85a898779b6e333324e51a29827c7" title="Initialize the IMU (acc, gyr and mag)" alt="" coords="325,56,452,83"/>
+<area shape="rect"  title="Initialize the accelerometer and the gyroscope." alt="" coords="500,31,661,57"/>
+<area shape="rect"  href="class_m_p_u9150.html#a02c85a898779b6e333324e51a29827c7" title="Initialize the IMU (acc, gyr and mag)" alt="" coords="325,31,452,57"/>
 <area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,5,277,32"/>
-<area shape="rect"  href="_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="151,56,255,83"/>
-<area shape="rect"  href="_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="159,107,247,133"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,5,80,32"/>
+<area shape="rect"  href="_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="159,56,247,83"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="5,5,80,32"/>
 </map>
 </div>
 
@@ -737,15 +707,6 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_m_p_u9150_af594dd433cbdfff2c044d0ea2b1e57e4_icgraph.png" border="0" usemap="#class_m_p_u9150_af594dd433cbdfff2c044d0ea2b1e57e4_icgraph" alt=""/></div>
-<map name="class_m_p_u9150_af594dd433cbdfff2c044d0ea2b1e57e4_icgraph" id="class_m_p_u9150_af594dd433cbdfff2c044d0ea2b1e57e4_icgraph">
-<area shape="rect"  title="Similar to Madgwick scheme but uses proportional and integral filtering on the error between estimate..." alt="" coords="157,5,353,47"/>
-<area shape="rect"  href="_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="5,13,109,39"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -786,13 +747,12 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_m_p_u9150_a551f476b566bf771b2fdb0e5a4144600_icgraph.png" border="0" usemap="#class_m_p_u9150_a551f476b566bf771b2fdb0e5a4144600_icgraph" alt=""/></div>
 <map name="class_m_p_u9150_a551f476b566bf771b2fdb0e5a4144600_icgraph" id="class_m_p_u9150_a551f476b566bf771b2fdb0e5a4144600_icgraph">
-<area shape="rect"  title="Fetches the accelerometer count from the IMU." alt="" coords="731,56,903,83"/>
-<area shape="rect"  href="class_m_p_u9150.html#a4e41653c04bfeda223746b742999e890" title="Calculates the value of the acceleration measured by the accelerometer in g." alt="" coords="544,56,683,83"/>
-<area shape="rect"  href="class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,56,496,83"/>
-<area shape="rect"  href="_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="151,5,255,32"/>
-<area shape="rect"  href="_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="159,107,247,133"/>
-<area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,56,277,83"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,56,80,83"/>
+<area shape="rect"  title="Fetches the accelerometer count from the IMU." alt="" coords="731,31,903,57"/>
+<area shape="rect"  href="class_m_p_u9150.html#a4e41653c04bfeda223746b742999e890" title="Calculates the value of the acceleration measured by the accelerometer in g." alt="" coords="544,31,683,57"/>
+<area shape="rect"  href="class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,5,496,32"/>
+<area shape="rect"  href="_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="159,56,247,83"/>
+<area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,5,277,32"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="5,5,80,32"/>
 </map>
 </div>
 
@@ -838,17 +798,16 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_m_p_u9150_a7444c132c02372a0591d76dcf270ba6a_icgraph.png" border="0" usemap="#class_m_p_u9150_a7444c132c02372a0591d76dcf270ba6a_icgraph" alt=""/></div>
 <map name="class_m_p_u9150_a7444c132c02372a0591d76dcf270ba6a_icgraph" id="class_m_p_u9150_a7444c132c02372a0591d76dcf270ba6a_icgraph">
-<area shape="rect"  title="Read a byte from the I2C bus." alt="" coords="992,144,1131,170"/>
-<area shape="rect"  href="class_m_p_u9150.html#a02c85a898779b6e333324e51a29827c7" title="Initialize the IMU (acc, gyr and mag)" alt="" coords="347,194,474,221"/>
-<area shape="rect"  href="_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="151,49,255,76"/>
-<area shape="rect"  href="_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="159,188,247,214"/>
-<area shape="rect"  href="class_m_p_u9150.html#a5a3812e17d09e0926eb6959af23349a3" title="Initialize the accelerometer and the gyroscope." alt="" coords="544,220,705,246"/>
-<area shape="rect"  href="class_m_p_u9150.html#af5900057aa99c56213e132e7b086666d" title="Accelerometer and gyroscope self test; check calibration wrt factory settings." alt="" coords="753,118,944,145"/>
-<area shape="rect"  href="class_m_p_u9150.html#a639f4804bae814c902922ccaf7c6eb9c" title="Fetches the magnetometer count from the IMU." alt="" coords="767,68,931,94"/>
-<area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,125,277,152"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,125,80,152"/>
-<area shape="rect"  href="class_m_p_u9150.html#a27005774a5516885611ef542cd57cec0" title="Calculates the value of the magnetic field measured by the magnetometer." alt="" coords="559,68,690,94"/>
-<area shape="rect"  href="class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,93,496,120"/>
+<area shape="rect"  title="Read a byte from the I2C bus." alt="" coords="961,81,1100,108"/>
+<area shape="rect"  href="class_m_p_u9150.html#a02c85a898779b6e333324e51a29827c7" title="Initialize the IMU (acc, gyr and mag)" alt="" coords="546,31,673,57"/>
+<area shape="rect"  href="_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="159,107,247,133"/>
+<area shape="rect"  href="class_m_p_u9150.html#a5a3812e17d09e0926eb6959af23349a3" title="Initialize the accelerometer and the gyroscope." alt="" coords="737,31,899,57"/>
+<area shape="rect"  href="class_m_p_u9150.html#af5900057aa99c56213e132e7b086666d" title="Accelerometer and gyroscope self test; check calibration wrt factory settings." alt="" coords="723,81,913,108"/>
+<area shape="rect"  href="class_m_p_u9150.html#a639f4804bae814c902922ccaf7c6eb9c" title="Fetches the magnetometer count from the IMU." alt="" coords="736,132,900,159"/>
+<area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,5,277,32"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="5,5,80,32"/>
+<area shape="rect"  href="class_m_p_u9150.html#a27005774a5516885611ef542cd57cec0" title="Calculates the value of the magnetic field measured by the magnetometer." alt="" coords="544,132,675,159"/>
+<area shape="rect"  href="class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,81,496,108"/>
 </map>
 </div>
 
@@ -907,23 +866,22 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_m_p_u9150_a1c8b5eb1e99a4b2a0ae93a25ac7fe37b_icgraph.png" border="0" usemap="#class_m_p_u9150_a1c8b5eb1e99a4b2a0ae93a25ac7fe37b_icgraph" alt=""/></div>
 <map name="class_m_p_u9150_a1c8b5eb1e99a4b2a0ae93a25ac7fe37b_icgraph" id="class_m_p_u9150_a1c8b5eb1e99a4b2a0ae93a25ac7fe37b_icgraph">
-<area shape="rect"  title="Read multiple bytes from the I2C bus." alt="" coords="972,258,1119,284"/>
-<area shape="rect"  href="class_m_p_u9150.html#ab735c1a815e7dba5fefdae4246022740" title="Initialize the magnetometer." alt="" coords="748,283,907,310"/>
-<area shape="rect"  href="class_m_p_u9150.html#a7f97fe4a642fec56fc4f9c252da99574" title="Function which accumulates gyro and accelerometer data after device initialization...." alt="" coords="731,334,924,360"/>
-<area shape="rect"  href="class_m_p_u9150.html#a551f476b566bf771b2fdb0e5a4144600" title="Fetches the accelerometer count from the IMU." alt="" coords="741,80,913,107"/>
-<area shape="rect"  href="class_m_p_u9150.html#a39f593eb8c4be363e51417ed80bb5af2" title="Fetches the gyroscope count from the IMU." alt="" coords="744,232,911,259"/>
-<area shape="rect"  href="class_m_p_u9150.html#a639f4804bae814c902922ccaf7c6eb9c" title="Fetches the magnetometer count from the IMU." alt="" coords="745,182,909,208"/>
-<area shape="rect"  href="class_m_p_u9150.html#ae168f0fd9ae5c60cdbcff38cfa46fbc3" title="Fetches the temperature count from the IMU." alt="" coords="742,384,913,411"/>
-<area shape="rect"  href="class_m_p_u9150.html#a02c85a898779b6e333324e51a29827c7" title="Initialize the IMU (acc, gyr and mag)" alt="" coords="347,334,474,360"/>
-<area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,308,277,335"/>
-<area shape="rect"  href="_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="151,131,255,158"/>
-<area shape="rect"  href="_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="159,232,247,259"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,308,80,335"/>
-<area shape="rect"  href="class_m_p_u9150.html#a4e41653c04bfeda223746b742999e890" title="Calculates the value of the acceleration measured by the accelerometer in g." alt="" coords="544,80,683,107"/>
-<area shape="rect"  href="class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,232,496,259"/>
-<area shape="rect"  href="class_m_p_u9150.html#aa60337a719d5171d35fcc2bfd3b30392" title="Calculates the value of the rate of turn measured by the gyroscope in deg/s." alt="" coords="547,232,680,259"/>
-<area shape="rect"  href="class_m_p_u9150.html#a27005774a5516885611ef542cd57cec0" title="Calculates the value of the magnetic field measured by the magnetometer." alt="" coords="548,182,679,208"/>
-<area shape="rect"  href="class_m_p_u9150.html#a1edbcf599d5457c0508f061100a8e2f7" title="Calculates the temperature from the thermistance in the IMU." alt="" coords="545,384,682,411"/>
+<area shape="rect"  title="Read multiple bytes from the I2C bus." alt="" coords="1005,132,1152,159"/>
+<area shape="rect"  href="class_m_p_u9150.html#ab735c1a815e7dba5fefdae4246022740" title="Initialize the magnetometer." alt="" coords="792,5,951,32"/>
+<area shape="rect"  href="class_m_p_u9150.html#a7f97fe4a642fec56fc4f9c252da99574" title="Function which accumulates gyro and accelerometer data after device initialization...." alt="" coords="544,56,737,83"/>
+<area shape="rect"  href="class_m_p_u9150.html#a551f476b566bf771b2fdb0e5a4144600" title="Fetches the accelerometer count from the IMU." alt="" coords="785,157,957,184"/>
+<area shape="rect"  href="class_m_p_u9150.html#a39f593eb8c4be363e51417ed80bb5af2" title="Fetches the gyroscope count from the IMU." alt="" coords="788,107,955,133"/>
+<area shape="rect"  href="class_m_p_u9150.html#a639f4804bae814c902922ccaf7c6eb9c" title="Fetches the magnetometer count from the IMU." alt="" coords="789,208,953,235"/>
+<area shape="rect"  href="class_m_p_u9150.html#ae168f0fd9ae5c60cdbcff38cfa46fbc3" title="Fetches the temperature count from the IMU." alt="" coords="786,259,957,285"/>
+<area shape="rect"  href="class_m_p_u9150.html#a02c85a898779b6e333324e51a29827c7" title="Initialize the IMU (acc, gyr and mag)" alt="" coords="347,31,474,57"/>
+<area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,56,277,83"/>
+<area shape="rect"  href="_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="159,132,247,159"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="5,56,80,83"/>
+<area shape="rect"  href="class_m_p_u9150.html#a4e41653c04bfeda223746b742999e890" title="Calculates the value of the acceleration measured by the accelerometer in g." alt="" coords="571,157,710,184"/>
+<area shape="rect"  href="class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,132,496,159"/>
+<area shape="rect"  href="class_m_p_u9150.html#aa60337a719d5171d35fcc2bfd3b30392" title="Calculates the value of the rate of turn measured by the gyroscope in deg/s." alt="" coords="574,107,707,133"/>
+<area shape="rect"  href="class_m_p_u9150.html#a27005774a5516885611ef542cd57cec0" title="Calculates the value of the magnetic field measured by the magnetometer." alt="" coords="575,208,706,235"/>
+<area shape="rect"  href="class_m_p_u9150.html#a1edbcf599d5457c0508f061100a8e2f7" title="Calculates the temperature from the thermistance in the IMU." alt="" coords="572,259,709,285"/>
 </map>
 </div>
 
@@ -966,13 +924,12 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_m_p_u9150_a39f593eb8c4be363e51417ed80bb5af2_icgraph.png" border="0" usemap="#class_m_p_u9150_a39f593eb8c4be363e51417ed80bb5af2_icgraph" alt=""/></div>
 <map name="class_m_p_u9150_a39f593eb8c4be363e51417ed80bb5af2_icgraph" id="class_m_p_u9150_a39f593eb8c4be363e51417ed80bb5af2_icgraph">
-<area shape="rect"  title="Fetches the gyroscope count from the IMU." alt="" coords="725,56,892,83"/>
-<area shape="rect"  href="class_m_p_u9150.html#aa60337a719d5171d35fcc2bfd3b30392" title="Calculates the value of the rate of turn measured by the gyroscope in deg/s." alt="" coords="544,56,677,83"/>
-<area shape="rect"  href="class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,56,496,83"/>
-<area shape="rect"  href="_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="151,5,255,32"/>
-<area shape="rect"  href="_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="159,107,247,133"/>
-<area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,56,277,83"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,56,80,83"/>
+<area shape="rect"  title="Fetches the gyroscope count from the IMU." alt="" coords="725,31,892,57"/>
+<area shape="rect"  href="class_m_p_u9150.html#aa60337a719d5171d35fcc2bfd3b30392" title="Calculates the value of the rate of turn measured by the gyroscope in deg/s." alt="" coords="544,31,677,57"/>
+<area shape="rect"  href="class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,5,496,32"/>
+<area shape="rect"  href="_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="159,56,247,83"/>
+<area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,5,277,32"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="5,5,80,32"/>
 </map>
 </div>
 
@@ -1016,13 +973,12 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_m_p_u9150_a639f4804bae814c902922ccaf7c6eb9c_icgraph.png" border="0" usemap="#class_m_p_u9150_a639f4804bae814c902922ccaf7c6eb9c_icgraph" alt=""/></div>
 <map name="class_m_p_u9150_a639f4804bae814c902922ccaf7c6eb9c_icgraph" id="class_m_p_u9150_a639f4804bae814c902922ccaf7c6eb9c_icgraph">
-<area shape="rect"  title="Fetches the magnetometer count from the IMU." alt="" coords="723,56,887,83"/>
-<area shape="rect"  href="class_m_p_u9150.html#a27005774a5516885611ef542cd57cec0" title="Calculates the value of the magnetic field measured by the magnetometer." alt="" coords="544,56,675,83"/>
-<area shape="rect"  href="class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,56,496,83"/>
-<area shape="rect"  href="_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="151,5,255,32"/>
-<area shape="rect"  href="_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="159,107,247,133"/>
-<area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,56,277,83"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,56,80,83"/>
+<area shape="rect"  title="Fetches the magnetometer count from the IMU." alt="" coords="723,31,887,57"/>
+<area shape="rect"  href="class_m_p_u9150.html#a27005774a5516885611ef542cd57cec0" title="Calculates the value of the magnetic field measured by the magnetometer." alt="" coords="544,31,675,57"/>
+<area shape="rect"  href="class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,5,496,32"/>
+<area shape="rect"  href="_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="159,56,247,83"/>
+<area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,5,277,32"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="5,5,80,32"/>
 </map>
 </div>
 
@@ -1121,11 +1077,10 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_m_p_u9150_ae45ec6ca0eddd351ff0c8e52b5dec874_icgraph.png" border="0" usemap="#class_m_p_u9150_ae45ec6ca0eddd351ff0c8e52b5dec874_icgraph" alt=""/></div>
 <map name="class_m_p_u9150_ae45ec6ca0eddd351ff0c8e52b5dec874_icgraph" id="class_m_p_u9150_ae45ec6ca0eddd351ff0c8e52b5dec874_icgraph">
-<area shape="rect"  title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,56,496,83"/>
+<area shape="rect"  title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,31,496,57"/>
 <area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,5,277,32"/>
-<area shape="rect"  href="_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="151,56,255,83"/>
-<area shape="rect"  href="_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="159,107,247,133"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,5,80,32"/>
+<area shape="rect"  href="_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="159,56,247,83"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="5,5,80,32"/>
 </map>
 </div>
 
@@ -1159,13 +1114,12 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_m_p_u9150_af8c6449ddb604e0cd30b8b466c57c051_icgraph.png" border="0" usemap="#class_m_p_u9150_af8c6449ddb604e0cd30b8b466c57c051_icgraph" alt=""/></div>
 <map name="class_m_p_u9150_af8c6449ddb604e0cd30b8b466c57c051_icgraph" id="class_m_p_u9150_af8c6449ddb604e0cd30b8b466c57c051_icgraph">
-<area shape="rect"  title="Set the scaling of the accelerometer." alt="" coords="709,56,841,83"/>
-<area shape="rect"  href="class_m_p_u9150.html#a5a3812e17d09e0926eb6959af23349a3" title="Initialize the accelerometer and the gyroscope." alt="" coords="500,56,661,83"/>
-<area shape="rect"  href="class_m_p_u9150.html#a02c85a898779b6e333324e51a29827c7" title="Initialize the IMU (acc, gyr and mag)" alt="" coords="325,56,452,83"/>
+<area shape="rect"  title="Set the scaling of the accelerometer." alt="" coords="709,31,841,57"/>
+<area shape="rect"  href="class_m_p_u9150.html#a5a3812e17d09e0926eb6959af23349a3" title="Initialize the accelerometer and the gyroscope." alt="" coords="500,31,661,57"/>
+<area shape="rect"  href="class_m_p_u9150.html#a02c85a898779b6e333324e51a29827c7" title="Initialize the IMU (acc, gyr and mag)" alt="" coords="325,31,452,57"/>
 <area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,5,277,32"/>
-<area shape="rect"  href="_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="151,56,255,83"/>
-<area shape="rect"  href="_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="159,107,247,133"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,5,80,32"/>
+<area shape="rect"  href="_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="159,56,247,83"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="5,5,80,32"/>
 </map>
 </div>
 
@@ -1199,11 +1153,10 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_m_p_u9150_a4f77f4c880167a1f05e6dafe3bf078e2_icgraph.png" border="0" usemap="#class_m_p_u9150_a4f77f4c880167a1f05e6dafe3bf078e2_icgraph" alt=""/></div>
 <map name="class_m_p_u9150_a4f77f4c880167a1f05e6dafe3bf078e2_icgraph" id="class_m_p_u9150_a4f77f4c880167a1f05e6dafe3bf078e2_icgraph">
-<area shape="rect"  title="Allow the user to manually set the avg bias for the acceleration." alt="" coords="325,56,475,83"/>
+<area shape="rect"  title="Allow the user to manually set the avg bias for the acceleration." alt="" coords="325,31,475,57"/>
 <area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,5,277,32"/>
-<area shape="rect"  href="_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="151,56,255,83"/>
-<area shape="rect"  href="_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="159,107,247,133"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,5,80,32"/>
+<area shape="rect"  href="_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="159,56,247,83"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="5,5,80,32"/>
 </map>
 </div>
 
@@ -1263,11 +1216,10 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_m_p_u9150_a19af7b6ee08eb2a00dcc79a6d8f0e149_icgraph.png" border="0" usemap="#class_m_p_u9150_a19af7b6ee08eb2a00dcc79a6d8f0e149_icgraph" alt=""/></div>
 <map name="class_m_p_u9150_a19af7b6ee08eb2a00dcc79a6d8f0e149_icgraph" id="class_m_p_u9150_a19af7b6ee08eb2a00dcc79a6d8f0e149_icgraph">
-<area shape="rect"  title="Allow the user to manually set the avg bias for the magnetic field." alt="" coords="325,56,476,83"/>
+<area shape="rect"  title="Allow the user to manually set the avg bias for the magnetic field." alt="" coords="325,31,476,57"/>
 <area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,5,277,32"/>
-<area shape="rect"  href="_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="151,56,255,83"/>
-<area shape="rect"  href="_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="159,107,247,133"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,5,80,32"/>
+<area shape="rect"  href="_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="159,56,247,83"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="5,5,80,32"/>
 </map>
 </div>
 
@@ -1301,13 +1253,12 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_m_p_u9150_adcd8653cb5eee6666c34f18071379004_icgraph.png" border="0" usemap="#class_m_p_u9150_adcd8653cb5eee6666c34f18071379004_icgraph" alt=""/></div>
 <map name="class_m_p_u9150_adcd8653cb5eee6666c34f18071379004_icgraph" id="class_m_p_u9150_adcd8653cb5eee6666c34f18071379004_icgraph">
-<area shape="rect"  title="Set the scaling of the gyroscope." alt="" coords="709,56,843,83"/>
-<area shape="rect"  href="class_m_p_u9150.html#a5a3812e17d09e0926eb6959af23349a3" title="Initialize the accelerometer and the gyroscope." alt="" coords="500,56,661,83"/>
-<area shape="rect"  href="class_m_p_u9150.html#a02c85a898779b6e333324e51a29827c7" title="Initialize the IMU (acc, gyr and mag)" alt="" coords="325,56,452,83"/>
+<area shape="rect"  title="Set the scaling of the gyroscope." alt="" coords="709,31,843,57"/>
+<area shape="rect"  href="class_m_p_u9150.html#a5a3812e17d09e0926eb6959af23349a3" title="Initialize the accelerometer and the gyroscope." alt="" coords="500,31,661,57"/>
+<area shape="rect"  href="class_m_p_u9150.html#a02c85a898779b6e333324e51a29827c7" title="Initialize the IMU (acc, gyr and mag)" alt="" coords="325,31,452,57"/>
 <area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,5,277,32"/>
-<area shape="rect"  href="_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="151,56,255,83"/>
-<area shape="rect"  href="_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="159,107,247,133"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,5,80,32"/>
+<area shape="rect"  href="_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="159,56,247,83"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="5,5,80,32"/>
 </map>
 </div>
 
@@ -1366,10 +1317,9 @@ Here is the caller graph for this function:</div>
 <area shape="rect"  href="class_m_p_u9150.html#a7f97fe4a642fec56fc4f9c252da99574" title="Function which accumulates gyro and accelerometer data after device initialization...." alt="" coords="500,157,693,184"/>
 <area shape="rect"  href="class_m_p_u9150.html#af5900057aa99c56213e132e7b086666d" title="Accelerometer and gyroscope self test; check calibration wrt factory settings." alt="" coords="501,208,692,235"/>
 <area shape="rect"  href="class_m_p_u9150.html#a02c85a898779b6e333324e51a29827c7" title="Initialize the IMU (acc, gyr and mag)" alt="" coords="325,107,452,133"/>
-<area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,56,277,83"/>
-<area shape="rect"  href="_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="151,107,255,133"/>
-<area shape="rect"  href="_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="159,157,247,184"/>
-<area shape="rect"  href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,56,80,83"/>
+<area shape="rect"  href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,81,277,108"/>
+<area shape="rect"  href="_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="159,132,247,159"/>
+<area shape="rect"  href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="5,81,80,108"/>
 </map>
 </div>
 
@@ -1380,15 +1330,11 @@ Here is the caller graph for this function:</div>
 <li>MPU9150/<a class="el" href="_m_p_u9150_8cpp.html">MPU9150.cpp</a></li>
 </ul>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="navelem"><a class="el" href="class_m_p_u9150.html">MPU9150</a></li>
-    <li class="footer">Generated by
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.15
+</small></address>
 </body>
 </html>

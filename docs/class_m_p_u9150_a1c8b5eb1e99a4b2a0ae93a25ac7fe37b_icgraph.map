@@ -1,19 +1,18 @@
 <map id="MPU9150::readBytes" name="MPU9150::readBytes">
-<area shape="rect" id="node1" title="Read multiple bytes from the I2C bus." alt="" coords="972,258,1119,284"/>
-<area shape="rect" id="node2" href="$class_m_p_u9150.html#ab735c1a815e7dba5fefdae4246022740" title="Initialize the magnetometer." alt="" coords="748,283,907,310"/>
-<area shape="rect" id="node8" href="$class_m_p_u9150.html#a7f97fe4a642fec56fc4f9c252da99574" title="Function which accumulates gyro and accelerometer data after device initialization...." alt="" coords="731,334,924,360"/>
-<area shape="rect" id="node9" href="$class_m_p_u9150.html#a551f476b566bf771b2fdb0e5a4144600" title="Fetches the accelerometer count from the IMU." alt="" coords="741,80,913,107"/>
-<area shape="rect" id="node12" href="$class_m_p_u9150.html#a39f593eb8c4be363e51417ed80bb5af2" title="Fetches the gyroscope count from the IMU." alt="" coords="744,232,911,259"/>
-<area shape="rect" id="node14" href="$class_m_p_u9150.html#a639f4804bae814c902922ccaf7c6eb9c" title="Fetches the magnetometer count from the IMU." alt="" coords="745,182,909,208"/>
-<area shape="rect" id="node16" href="$class_m_p_u9150.html#ae168f0fd9ae5c60cdbcff38cfa46fbc3" title="Fetches the temperature count from the IMU." alt="" coords="742,384,913,411"/>
-<area shape="rect" id="node3" href="$class_m_p_u9150.html#a02c85a898779b6e333324e51a29827c7" title="Initialize the IMU (acc, gyr and mag)" alt="" coords="347,334,474,360"/>
-<area shape="rect" id="node4" href="$class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,308,277,335"/>
-<area shape="rect" id="node6" href="$_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e" title="Test of the MPU9150 driver library." alt="" coords="151,131,255,158"/>
-<area shape="rect" id="node7" href="$_test_8h.html#afa45b1dab3fb052fd3b129773d101a05" title="Test of the Sun Sensor and other sensors." alt="" coords="159,232,247,259"/>
-<area shape="rect" id="node5" href="$_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,308,80,335"/>
-<area shape="rect" id="node10" href="$class_m_p_u9150.html#a4e41653c04bfeda223746b742999e890" title="Calculates the value of the acceleration measured by the accelerometer in g." alt="" coords="544,80,683,107"/>
-<area shape="rect" id="node11" href="$class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,232,496,259"/>
-<area shape="rect" id="node13" href="$class_m_p_u9150.html#aa60337a719d5171d35fcc2bfd3b30392" title="Calculates the value of the rate of turn measured by the gyroscope in deg/s." alt="" coords="547,232,680,259"/>
-<area shape="rect" id="node15" href="$class_m_p_u9150.html#a27005774a5516885611ef542cd57cec0" title="Calculates the value of the magnetic field measured by the magnetometer." alt="" coords="548,182,679,208"/>
-<area shape="rect" id="node17" href="$class_m_p_u9150.html#a1edbcf599d5457c0508f061100a8e2f7" title="Calculates the temperature from the thermistance in the IMU." alt="" coords="545,384,682,411"/>
+<area shape="rect" id="node1" title="Read multiple bytes from the I2C bus." alt="" coords="1005,132,1152,159"/>
+<area shape="rect" id="node2" href="$class_m_p_u9150.html#ab735c1a815e7dba5fefdae4246022740" title="Initialize the magnetometer." alt="" coords="792,5,951,32"/>
+<area shape="rect" id="node7" href="$class_m_p_u9150.html#a7f97fe4a642fec56fc4f9c252da99574" title="Function which accumulates gyro and accelerometer data after device initialization...." alt="" coords="544,56,737,83"/>
+<area shape="rect" id="node8" href="$class_m_p_u9150.html#a551f476b566bf771b2fdb0e5a4144600" title="Fetches the accelerometer count from the IMU." alt="" coords="785,157,957,184"/>
+<area shape="rect" id="node11" href="$class_m_p_u9150.html#a39f593eb8c4be363e51417ed80bb5af2" title="Fetches the gyroscope count from the IMU." alt="" coords="788,107,955,133"/>
+<area shape="rect" id="node13" href="$class_m_p_u9150.html#a639f4804bae814c902922ccaf7c6eb9c" title="Fetches the magnetometer count from the IMU." alt="" coords="789,208,953,235"/>
+<area shape="rect" id="node15" href="$class_m_p_u9150.html#ae168f0fd9ae5c60cdbcff38cfa46fbc3" title="Fetches the temperature count from the IMU." alt="" coords="786,259,957,285"/>
+<area shape="rect" id="node3" href="$class_m_p_u9150.html#a02c85a898779b6e333324e51a29827c7" title="Initialize the IMU (acc, gyr and mag)" alt="" coords="347,31,474,57"/>
+<area shape="rect" id="node4" href="$class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,56,277,83"/>
+<area shape="rect" id="node6" href="$_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="159,132,247,159"/>
+<area shape="rect" id="node5" href="$_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="5,56,80,83"/>
+<area shape="rect" id="node9" href="$class_m_p_u9150.html#a4e41653c04bfeda223746b742999e890" title="Calculates the value of the acceleration measured by the accelerometer in g." alt="" coords="571,157,710,184"/>
+<area shape="rect" id="node10" href="$class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,132,496,159"/>
+<area shape="rect" id="node12" href="$class_m_p_u9150.html#aa60337a719d5171d35fcc2bfd3b30392" title="Calculates the value of the rate of turn measured by the gyroscope in deg/s." alt="" coords="574,107,707,133"/>
+<area shape="rect" id="node14" href="$class_m_p_u9150.html#a27005774a5516885611ef542cd57cec0" title="Calculates the value of the magnetic field measured by the magnetometer." alt="" coords="575,208,706,235"/>
+<area shape="rect" id="node16" href="$class_m_p_u9150.html#a1edbcf599d5457c0508f061100a8e2f7" title="Calculates the temperature from the thermistance in the IMU." alt="" coords="572,259,709,285"/>
 </map>

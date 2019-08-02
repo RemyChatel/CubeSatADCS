@@ -9,14 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-  $(document).ready(initResizable);
-/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -54,22 +46,6 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('group___astro_lib_gr.html','');});
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -133,7 +109,8 @@ Classes</h2></td></tr>
 <p>This library depends on &lt;std::cmath&gt; in order to perform cos, sin and sqrt operations.</p>
 <dl class="section attention"><dt>Attention</dt><dd>This library uses float (32-bits) and not double (64-bits) to make best use of the Floating Point Unit of 32-bits microcontrollers.</dd></dl>
 <h1>Example code</h1>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;mbed.h&quot;</span></div><div class="line"><span class="preprocessor">#include &quot;AstrooLib.h&quot;</span></div><div class="line"></div><div class="line"><span class="keyword">using namespace </span><a class="code" href="namespace_astro_lib.html">AstroLib</a>;</div><div class="line"></div><div class="line">Serial pc(USBTX, USBRX, 115200);</div><div class="line">Timer t;</div><div class="line"></div><div class="line"><span class="keywordtype">int</span> year        = 2019;</div><div class="line"><span class="keywordtype">int</span> month       = 06;</div><div class="line"><span class="keywordtype">int</span> day         = 07;</div><div class="line"><span class="keywordtype">int</span> hours       = 17;<span class="comment">// /!\ Use GMT+00 !!!!</span></div><div class="line"><span class="keywordtype">int</span> minutes     = 15;</div><div class="line"><span class="keywordtype">float</span> seconds   = 00;</div><div class="line"></div><div class="line"><a class="code" href="class_astro_lib_1_1_julian_date.html">JulianDate</a> date;</div><div class="line"><a class="code" href="class_astro_lib_1_1_ground.html">Ground</a> orbit;</div><div class="line">orbit.<a class="code" href="class_astro_lib_1_1_ground.html#a942dcbe4583d23699c0c762634be54d9">setJulianDate</a>(<a class="code" href="class_astro_lib_1_1_julian_date.html">JulianDate</a>(year,month,day,hours,minutes,seconds));</div><div class="line"><span class="comment">// Ground setting[lattitude, longitude, altitude,  mag_N  ,  mag_E ,   mg_D  ] in North East Down frame</span></div><div class="line">orbit.<a class="code" href="class_astro_lib_1_1_ground.html#ac5f036f9e505d93425e0ba1b74a3f73e">setOrbit</a>(55.86515, -4.25763, 0.0f, 17.3186f, -.6779f, 46.8663f);</div><div class="line"></div><div class="line"><span class="keywordtype">float</span> sun_eci[3];</div><div class="line"><span class="keywordtype">float</span> mag_eci[3];</div><div class="line"><span class="keywordtype">float</span> sat_eci[3];</div><div class="line"><span class="keywordtype">float</span> azel_sun[2];</div><div class="line"></div><div class="line"><span class="keywordtype">int</span> time;</div><div class="line">t.start();</div><div class="line"></div><div class="line">pc.printf(<span class="stringliteral">&quot;Objects created&quot;</span>);</div><div class="line"></div><div class="line"><span class="keywordflow">while</span>(1){</div><div class="line">time = t-&gt;read_us();</div><div class="line"></div><div class="line">orbit.<a class="code" href="class_astro_lib_1_1_ground.html#afc3caaafebc031e4d98e4eec4f93aeae">update</a>(1.0f);</div><div class="line">orbit.<a class="code" href="class_astro_lib_1_1_ground.html#a6a753fbddeb056fda0789db017af936f">getSunVector</a>(sun_eci);</div><div class="line">orbit.<a class="code" href="class_astro_lib_1_1_ground.html#a9c7d67b98bba2623e8821a9f79991ced">getMagVector</a>(mag_eci);</div><div class="line"></div><div class="line">normalize(mag_eci); <span class="comment">// Normalize to obtain the direction vector</span></div><div class="line">normalize(sun_eci); <span class="comment">// Normalize to obtain the direction vector</span></div><div class="line"></div><div class="line">time = t.read_us()-time;</div><div class="line"></div><div class="line">orbit.<a class="code" href="class_astro_lib_1_1_ground.html#a84ced673e85750b5e43fc198c56cde55">getPositionVector</a>(sat_eci);</div><div class="line">orbit.<a class="code" href="class_astro_lib_1_1_ground.html#a7702f777fbf3eb08116917a06046bec6">getSunAzEl</a>(azel_sun);</div><div class="line">normalize(sat_eci); <span class="comment">// Normalize to obtain the direction vector</span></div><div class="line"></div><div class="line">pc.printf(<span class="stringliteral">&quot;\n\rExecution time %d us | frequency %ld Hz\n\r&quot;</span>, time, (<span class="keywordtype">long</span>)(1000000.0f/time));</div><div class="line">pc.printf(<span class="stringliteral">&quot;Calendar date %d-%d-%d-%d-%d-%f\n\r&quot;</span>, year,month,day,hours,minutes,seconds);</div><div class="line">pc.printf(<span class="stringliteral">&quot;Julian Date %ld and %f\n\r&quot;</span>, orbit.<a class="code" href="class_astro_lib_1_1_ground.html#ae8b4552df16b1abf7830ce36bb410304">getJulianDate</a>().<a class="code" href="class_astro_lib_1_1_julian_date.html#a945e0c435cd2dad7870c789f84154744">getDay</a>(), orbit.<a class="code" href="class_astro_lib_1_1_ground.html#ae8b4552df16b1abf7830ce36bb410304">getJulianDate</a>().<a class="code" href="class_astro_lib_1_1_julian_date.html#a75a49f52b4d04246c39ec95f64b51898">getFrac</a>());</div><div class="line">pc.printf(<span class="stringliteral">&quot;Satelite position [% 1.6e, % 1.6e, % 1.6e]\n\r&quot;</span>, sat_eci[0], sat_eci[1], sat_eci[2]);</div><div class="line">pc.printf(<span class="stringliteral">&quot;Sun vector ephemeride (AU): [% f , % f , % f]\n\r&quot;</span>, sun_eci[0], sun_eci[1], sun_eci[2]);</div><div class="line">pc.printf(<span class="stringliteral">&quot;Mag vector ephemeride: [% f , % f , % f]\n\r&quot;</span>, mag_eci[0], mag_eci[1], mag_eci[2]);</div><div class="line">pc.printf(<span class="stringliteral">&quot;AzEl Sun: [% f, % f]\n\r&quot;</span>, azel_sun[0]*180/3.1415926535f, azel_sun[1]*180/3.1415926535f);</div><div class="line"></div><div class="line">seconds+=1;</div><div class="line"><span class="keywordflow">if</span>(seconds &gt;= 60){</div><div class="line">    seconds = 0;</div><div class="line">    minutes++;</div><div class="line">}</div><div class="line"><span class="keywordflow">if</span>(minutes &gt;= 60){</div><div class="line">    minutes = 0;</div><div class="line">    hours++;</div><div class="line">}</div><div class="line">wait(1);</div><div class="line">}</div><div class="line"><span class="keywordflow">return</span> 1;</div><div class="line">}</div><div class="line"></div><div class="line"><span class="keywordtype">void</span> normalize(<span class="keywordtype">float</span> vec[3]){</div><div class="line"><span class="keywordtype">float</span> norm = sqrt(vec[0]*vec[0] + vec[1]*vec[1] + vec[2]*vec[2]);</div><div class="line">vec[0] /= norm;</div><div class="line">vec[1] /= norm;</div><div class="line">vec[2] /= norm;</div><div class="line">}</div></div><!-- fragment --><h1>References</h1>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_astro_lib_8test_8cpp.html" title="Source code for AstroLib.test.h.">AstroLib.test.cpp</a></dd></dl>
+<h1>References</h1>
 <ul>
 <li>"Spacecraft Dynamic and Control: An introduction", by A. de Ruiter, C. Damaren and J Forbes</li>
 <li>"Fundamentals of Astrodynamics and Applications", by D. Vallado</li>
@@ -144,14 +121,11 @@ Classes</h2></td></tr>
 <p>Licensed Under GPL v3.0 License <a href="http://www.gnu.org/licenses/gpl-3.0.html">http://www.gnu.org/licenses/gpl-3.0.html</a></p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </p>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="footer">Generated by
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.15
+</small></address>
 </body>
 </html>

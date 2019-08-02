@@ -1,6 +1,10 @@
 <map id="MPU9150/MPU9150.h" name="MPU9150/MPU9150.h">
-<area shape="rect" id="node1" title=" " alt="" coords="99,5,249,32"/>
-<area shape="rect" id="node2" href="$_a_d_s_core_8h.html" title=" " alt="" coords="12,80,157,107"/>
-<area shape="rect" id="node4" href="$_m_p_u9150_8cpp.html" title="Source code for the MPU9150 Class." alt="" coords="182,80,347,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="381,5,532,32"/>
+<area shape="rect" id="node2" href="$_a_d_s_core_8h.html" title=" " alt="" coords="201,80,347,107"/>
+<area shape="rect" id="node5" href="$_a_d_s_core_8test_8cpp.html" title="Implements ADSCore.test.h." alt="" coords="243,229,428,256"/>
+<area shape="rect" id="node6" href="$_m_p_u9150_8cpp.html" title="Source code for the MPU9150 Class." alt="" coords="434,80,599,107"/>
+<area shape="rect" id="node7" href="$_m_p_u9150_8test_8h.html" title="Test framework library for the MPU9150 module." alt="" coords="624,80,801,107"/>
 <area shape="rect" id="node3" href="$_a_d_s_core_8cpp.html" title="Source code for the ADSCore library." alt="" coords="5,155,164,181"/>
+<area shape="rect" id="node4" href="$_a_d_s_core_8test_8h.html" title="Test framework library for the ADScore module." alt="" coords="189,155,359,181"/>
+<area shape="rect" id="node8" href="$_m_p_u9150_8test_8cpp.html" title="Source code for MPU9150.test.h." alt="" coords="617,155,808,181"/>
 </map>

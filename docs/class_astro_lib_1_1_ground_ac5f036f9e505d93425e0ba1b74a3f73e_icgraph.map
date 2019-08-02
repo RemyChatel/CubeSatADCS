@@ -2,6 +2,6 @@
 <area shape="rect" id="node1" title="Set the orbit parameters." alt="" coords="351,56,525,83"/>
 <area shape="rect" id="node2" href="$class_a_d_s_core.html#ae9189aaa3a9238d02716c3857473fbc6" title="Initialize the orbit model with the given date and orbital parameters." alt="" coords="151,5,280,32"/>
 <area shape="rect" id="node4" href="$class_astro_lib_1_1_ground.html#ab080618cb54cf1970a3a4f0c40e6dc96" title="Set the orbit parameters." alt="" coords="128,56,303,83"/>
-<area shape="rect" id="node5" href="$_test_8h.html#a11c2d45d18d1974d56efdeb072b0c4b1" title="Test of the AstroLib library." alt="" coords="168,107,263,133"/>
-<area shape="rect" id="node3" href="$_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,5,80,32"/>
+<area shape="rect" id="node5" href="$_astro_lib_8test_8h.html#a05ab160fa7f6dd1f076c49174507ad70" title="Test of the AstroLib module." alt="" coords="168,107,263,133"/>
+<area shape="rect" id="node3" href="$_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="5,5,80,32"/>
 </map>

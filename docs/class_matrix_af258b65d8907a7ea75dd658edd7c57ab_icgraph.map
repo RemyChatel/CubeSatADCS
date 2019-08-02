@@ -1,4 +1,4 @@
 <map id="Matrix::rot2euler" name="Matrix::rot2euler">
 <area shape="rect" id="node1" title="Converts 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X) to Euler angles (3&#45;2&#45;1 convention)" alt="" coords="136,5,252,32"/>
-<area shape="rect" id="node2" href="$_test_8h.html#ae169972457c866c7e2a40fd04b323d0f" title="Test of the Matrix library." alt="" coords="5,5,88,32"/>
+<area shape="rect" id="node2" href="$_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="5,5,88,32"/>
 </map>

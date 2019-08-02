@@ -1,4 +1,4 @@
 <map id="ADSCore::update" name="ADSCore::update">
 <area shape="rect" id="node1" title="Updates the attitude of the spacecraft by combining the output the different sensors and filtering th..." alt="" coords="128,5,251,32"/>
-<area shape="rect" id="node2" href="$_test_8h.html#a134386a60f39bcdff26561da8e2f1099" title="Test of the ADS core program." alt="" coords="5,5,80,32"/>
+<area shape="rect" id="node2" href="$_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="5,5,80,32"/>
 </map>

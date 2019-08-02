@@ -19,66 +19,9 @@
  * 
  * @see Filters::KalmanFilter
  * 
- * # Example code without atitude control
+ * # Example code
  * 
- * @code
- * #include "Filters.h"
- * // Set ups where taken from
- * // "Kalman Filtering and the Attitude Determination and Control Task"
- * // by Hale, Vergez, Meerman and Hashida
- * 
- * // Inputs
- * Matrix q = Matrix::zeros(4,1);       // The output quaternion
- * Matrix gyr_b = Matrix::zeros(3,1);   // The measured angular rates (in rad/s)
- * float dt = 0.010;                    // The integration step
- * float sigma_gyr = 0.5;               // The gyroscope variance
- * float sigma_eta = 0.1;               // The quaternion scalar part variance
- * float sigma_epsilon = 0.1;           // The quaternion vector part variance
- * Matrix q_init = Matrix::zeros(4,1)   // The initial quaterion
- * Matrix I_sat(3,3);                   // Satellite inertia matrix
- * I_sat << 27 <<  0 <<  0
- *       <<  0 << 17 <<  0
- *       <<  0 <<  0 << 25;
- * 
- * // Set up
- * Matrix P_init   = Matrix::eye(7);
- * Matrix Kalman_Q = Matrix::eye(7);
- * Matrix Kalman_R = Matrix::eye(7);
- * Matrix q_init   = Matrix::zeros(4,1);
- * 
- * // Initial Covariance matrix set up
- * P_init *= 0.01;
- * P_init(5,5) = (sigma_gyr*DEG2RAD) * (sigma_gyr*DEG2RAD);
- * P_init(6,6) = (sigma_gyr*DEG2RAD) * (sigma_gyr*DEG2RAD);
- * P_init(7,7) = (sigma_gyr*DEG2RAD) * (sigma_gyr*DEG2RAD);
- * 
- * // Kalman process noice matrix set up
- * Kalman_Q(1,1) *= 1e-4 * dt * dt * dt / (12 * I_sat(1,1) * I_sat(1,1));
- * Kalman_Q(2,2) *= 1e-4 * dt * dt * dt / (12 * I_sat(2,2) * I_sat(2,2));
- * Kalman_Q(3,3) *= 1e-4 * dt * dt * dt / (12 * I_sat(3,3) * I_sat(3,3));
- * Kalman_Q(4,4) *= 1e-4 * dt * dt * dt / 12;
- * Kalman_Q(4,4) *=  (q_init(1)*I_sat(1,1))*(q_init(1)*I_sat(1,1))
- *                 + (q_init(2)*I_sat(2,2))*(q_init(2)*I_sat(2,2))
- *                 + (q_init(3)*I_sat(3,3))*(q_init(3)*I_sat(3,3));
- * Kalman_Q(5,5) *= 1e-4 * dt * dt * dt / (     I_sat(1,1) * I_sat(1,1));
- * Kalman_Q(6,6) *= 1e-4 * dt * dt * dt / (     I_sat(2,2) * I_sat(2,2));    
- * Kalman_Q(7,7) *= 1e-4 * dt * dt * dt / (     I_sat(3,3) * I_sat(3,3));
- *
- * // Kalman measurement noise matrix set up
- * float sigma_r[7] = {sigma_eta, sigma_epsilon, sigma_epsilon, sigma_epsilon, sigma_gyr, sigma_gyr, sigma_gyr};
- * for(int i = 0; i < 7; i++){ Kalman_R(i+1,i+1) *= sigma_r[i]*sigma_r[i];}
- * 
- * // Initial quaternion set up
- * q_init(2) = 1;
- * 
- * Filters::KalmanFilter kalman(I_sat, Matrix::zeros(3,3), P_init, Kalman_Q, Kalman_R, q_init, Matrix::zeros(3,1));
- * 
- * while(1){
- *      q = kalman.filter(q, gyr_b, dt, Matrix::zeros(3,1), Matrix::zeros(3,1), Matrix::zeros(3,1));
- *      wait_ms(dt);
- * }
- * 
- * @endcode
+ * @see Filters.test.cpp
  *
  * # Dependencies
  * This library depends on the "Matrix" library that can be found

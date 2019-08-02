@@ -1,32 +1,47 @@
 #include "mbed.h"
-#include "Test.h"
-#define TEST_SENSOR
+
+// Change here the test you want to run
+#define TEST_ADS
+
+// Remove the ".test" part of the include if the test functions are not required
+#ifdef TEST_MATRIX
+    #include "Matrix.test.h"
+#endif
+#ifdef TEST_ASTROLIB
+    #include "AstroLib.test.h"
+#endif
+#ifdef TEST_QUEST
+    #include "Estimators.test.h"
+#endif
+#ifdef TEST_FILTER
+    #include "Filters.test.h"
+#endif
+#ifdef TEST_SENSOR
+    #include "MPU9150.test.h"
+#endif
+#ifdef TEST_ADS
+    #include "ADSCore.test.h"
+#endif
+
 Serial pc(USBTX, USBRX, 115200);
-I2C i2c(I2C_SDA, I2C_SCL);
-Timer t;
 
 int main(){
-    i2c.frequency(400000);
-    t.start();
-    #ifdef ADCS_CORE
-        return 1;
-    #endif
     #ifdef TEST_MATRIX
-        return MatrixTest(&pc, &i2c, &t);
+        return MatrixTest();
     #endif
     #ifdef TEST_ASTROLIB
-        return AstroLibTest(&pc, &i2c, &t);
+        return AstroLibTest();
     #endif
     #ifdef TEST_QUEST
-        return QuestTest(&pc, &i2c, &t);
+        return QuestTest();
     #endif
     #ifdef TEST_FILTER
-        return FilterTest(&pc, &i2c, &t);
+        return KalmanFilterTest();
     #endif
     #ifdef TEST_SENSOR
-        return SensorTest(&pc, &i2c, &t);
+        return SensorTest();
     #endif
     #ifdef TEST_ADS
-        return ADSTest(&pc, &i2c, &t);
+        return ADSTest();
     #endif
 }

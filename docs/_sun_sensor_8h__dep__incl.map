@@ -1,6 +1,10 @@
 <map id="SunSensor/SunSensor.h" name="SunSensor/SunSensor.h">
-<area shape="rect" id="node1" title=" " alt="" coords="95,5,261,32"/>
-<area shape="rect" id="node2" href="$_a_d_s_core_8h.html" title=" " alt="" coords="12,80,157,107"/>
-<area shape="rect" id="node4" href="$_sun_sensor_8cpp.html" title="Source code for the SunSensor Library." alt="" coords="182,80,361,107"/>
+<area shape="rect" id="node1" title=" " alt="" coords="377,5,542,32"/>
+<area shape="rect" id="node2" href="$_a_d_s_core_8h.html" title=" " alt="" coords="201,80,347,107"/>
+<area shape="rect" id="node5" href="$_a_d_s_core_8test_8cpp.html" title="Implements ADSCore.test.h." alt="" coords="243,229,428,256"/>
+<area shape="rect" id="node6" href="$_m_p_u9150_8test_8h.html" title="Test framework library for the MPU9150 module." alt="" coords="435,80,612,107"/>
+<area shape="rect" id="node8" href="$_sun_sensor_8cpp.html" title="Source code for the SunSensor Library." alt="" coords="637,80,815,107"/>
 <area shape="rect" id="node3" href="$_a_d_s_core_8cpp.html" title="Source code for the ADSCore library." alt="" coords="5,155,164,181"/>
+<area shape="rect" id="node4" href="$_a_d_s_core_8test_8h.html" title="Test framework library for the ADScore module." alt="" coords="189,155,359,181"/>
+<area shape="rect" id="node7" href="$_m_p_u9150_8test_8cpp.html" title="Source code for MPU9150.test.h." alt="" coords="435,155,625,181"/>
 </map>

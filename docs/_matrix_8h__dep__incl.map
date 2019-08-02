@@ -1,11 +1,20 @@
 <map id="Matrix/Matrix.h" name="Matrix/Matrix.h">
-<area shape="rect" id="node1" title=" " alt="" coords="317,5,426,32"/>
-<area shape="rect" id="node2" href="$_a_d_s_core_8h.html" title=" " alt="" coords="207,155,352,181"/>
-<area shape="rect" id="node4" href="$_estimators_8h.html" title=" " alt="" coords="79,80,242,107"/>
-<area shape="rect" id="node6" href="$_filters_8h.html" title=" " alt="" coords="317,80,426,107"/>
-<area shape="rect" id="node8" href="$_matrix_8cpp.html" title="Source Code for the Matrix Class." alt="" coords="450,80,573,107"/>
-<area shape="rect" id="node9" href="$_test_8h.html" title="Provides a test framework for the ADCS project." alt="" coords="597,80,692,107"/>
-<area shape="rect" id="node3" href="$_a_d_s_core_8cpp.html" title="Source code for the ADSCore library." alt="" coords="200,229,359,256"/>
-<area shape="rect" id="node5" href="$_estimators_8cpp.html" title="Source code for the Estimator Library." alt="" coords="5,155,183,181"/>
-<area shape="rect" id="node7" href="$_filters_8cpp.html" title="Source code of Filters.h." alt="" coords="377,155,499,181"/>
+<area shape="rect" id="node1" title=" " alt="" coords="541,5,650,32"/>
+<area shape="rect" id="node2" href="$_a_d_s_core_8h.html" title=" " alt="" coords="337,155,483,181"/>
+<area shape="rect" id="node5" href="$_a_d_s_core_8test_8cpp.html" title="Implements ADSCore.test.h." alt="" coords="169,304,355,331"/>
+<area shape="rect" id="node6" href="$_estimators_8h.html" title=" " alt="" coords="514,80,677,107"/>
+<area shape="rect" id="node10" href="$_filters_8h.html" title=" " alt="" coords="191,80,301,107"/>
+<area shape="rect" id="node14" href="$_matrix_8cpp.html" title="Source Code for the Matrix Class." alt="" coords="701,80,823,107"/>
+<area shape="rect" id="node15" href="$_matrix_8test_8h.html" title="Test framework library for the Matrix module." alt="" coords="884,80,1019,107"/>
+<area shape="rect" id="node17" href="$_m_p_u9150_8test_8h.html" title="Test framework library for the MPU9150 module." alt="" coords="1116,80,1293,107"/>
+<area shape="rect" id="node3" href="$_a_d_s_core_8cpp.html" title="Source code for the ADSCore library." alt="" coords="261,229,420,256"/>
+<area shape="rect" id="node4" href="$_a_d_s_core_8test_8h.html" title="Test framework library for the ADScore module." alt="" coords="445,229,615,256"/>
+<area shape="rect" id="node7" href="$_estimators_8cpp.html" title="Source code for the Estimator Library." alt="" coords="507,155,684,181"/>
+<area shape="rect" id="node8" href="$_estimators_8test_8h.html" title="Test framework library for the Estimators module." alt="" coords="709,155,898,181"/>
+<area shape="rect" id="node9" href="$_estimators_8test_8cpp.html" title="Source code for Estimators.test.h." alt="" coords="695,229,898,256"/>
+<area shape="rect" id="node11" href="$_filters_8cpp.html" title="Source code of Filters.h." alt="" coords="31,155,154,181"/>
+<area shape="rect" id="node12" href="$_filters_8test_8h.html" title="Test framework library for the Filters module." alt="" coords="179,155,313,181"/>
+<area shape="rect" id="node13" href="$_filters_8test_8cpp.html" title="Source code for Filters.test.h." alt="" coords="87,229,237,256"/>
+<area shape="rect" id="node16" href="$_matrix_8test_8cpp.html" title="Source code for Matrix.test.h." alt="" coords="973,155,1122,181"/>
+<area shape="rect" id="node18" href="$_m_p_u9150_8test_8cpp.html" title="Source code for MPU9150.test.h." alt="" coords="1147,155,1337,181"/>
 </map>

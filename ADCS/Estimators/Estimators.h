@@ -30,37 +30,7 @@
  * 
  * # Example code
  * 
- * @code
- * #include "Estimators.h"
- * 
- * #define ADS_TOLERANCE 1e-5                  // Tolerance for the Newton solver
- * float coef_th[9] = {0.4153, 0.4472, 0.7921, -0.7652, 0.6537, 0.0274, -0.5056, -0.6104, 0.6097};
- * Matrix mat_th = Matrix(3,3, coef_th);
- * 
- * // measurements in the inertial frame
- * float sa1n[3] = {0.0f, 0.447214f, 0.894427f};
- * float sa2n[3] = {0.316228f, 0.948683f, 0.0f};
- * float sa3n[3] = {-0.980581f, 0.0f, 0.196116f};
- * float sa4n[3] = {0.235702f, -0.235702f, 0.942809f};
- * float sa5n[3] = {0.57735f, 0.57735f, 0.57735f};
- * 
- * // noisy measurements in the body frame
- * float sb1n[3] = { 0.9082f, 0.3185f, 0.2715f };
- * float sb2n[3] = { 0.5670f, 0.3732f, -0.7343f };
- * float sb3n[3] = { -0.2821f, 0.7163f, 0.6382 };
- * float sb4n[3] = { 0.7510f, -0.3303f, 0.5718};
- * float sb5n[3] = { 0.9261f, -0.2053, -0.3166};
- * 
- * float *san[5] = {sa1n, sa2n, sa3n, sa4n, sa5n};
- * float *sbn[5] = {sb1n, sb2n, sb3n, sb4n, sb5n};
- * 
- * // Weight of the sensors
- * float om[5] = {0.0100f, 0.0325f, 0.0550f, 0.0775, 0.1000};
- * 
- * float q[4]; // Output quaternion
- * 
- * Estimators::QUEST(q, 5, sbn, san, om, TOLERANCE);
- * @endcode
+ * @see Estimators.test.cpp
  * 
  * # References
  * [1] "Spacecraft Dynamics and Control An Introduction" by

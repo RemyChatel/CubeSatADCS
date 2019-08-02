@@ -18,7 +18,7 @@
  * @see ADSCore.h
  * 
  * # Dependencies and data type
- * This library depends on 
+ * This library depends on:
  * - the Mbed framework (https://www.mbed.com/en/)
  * - <std::cmath> in order to perform cos, sin and sqrt operations.
  * - <std::vector> for the matrix algebra
@@ -27,10 +27,7 @@
  * to make best use of the Floating Point Unit of 32-bits microcontrollers.
  * 
  * # Example code
- * 
- * @code
- * 
- * @endcode
+ * @see ADSCore.test.cpp
  * 
  * # References
  * - "Kalman Filtering and the Attitude Determination and Control Task",

@@ -746,7 +746,7 @@
     }
 
     #ifdef MATRIX_USE_PRINTF
-    void Matrix::print(){
+    void Matrix::print() const{
         printf("{{");
 
         for(int i = 0; i < this->_nRows; i++){

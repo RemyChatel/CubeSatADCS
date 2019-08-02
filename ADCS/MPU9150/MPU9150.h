@@ -21,58 +21,7 @@
  *
  * # Example code
  * 
- * @code
- * #include "MPU9150.h"
- * 
- * MPU9150 imu(I2C_SDA, I2C_SCL);
- * 
- * int mcount = 0; // Frequency divider for the magnetometer
- * uint8_t MagRate = 50; // set magnetometer read rate in Hz; 10 to 100 (max) Hz are reasonable values
- * uint8_t acc_scale = AFS_2G;
- * uint8_t gyr_scale = GFS_250DPS;
- * float val_acc[3], val_gyr[3], val_mag[3];
- *
- * //--------------------- INIT ---------------------//
- * pc->printf("\n\r\n\r\n\r\n\r\n\r\n\r--------------------------------------\n\r");
- * pc->printf("Connection ok\n\r");
- * uint8_t whoami = imu.readByte(MPU9150_ADDRESS, WHO_AM_I_MPU9150);  // Read WHO_AM_I register for MPU-9150
- * pc->printf("I AM 0x%x\n\r", whoami); pc->printf("I SHOULD BE 0x68 or 0x73\n\r");
- * if (!imu.initIMU(acc_scale, gyr_scale)) {   // WHO_AM_I should be 0x68
- *     pc->printf("Could not connect to MPU9150: \n\r");
- *     while(1) ; // Loop forever if communication doesn't happen
- * }
- * 
- * imu.recalibrateIMU(1000, 100);
- * float null_avg[3] = {0,0,0};
- * imu.setAvgAcc(null_avg);
- * imu.setAvgMag(null_avg);
- * pc->printf("IMU ok\n\r");
- *
- * while(1){
- *     last_update = t->read_us();
- * 
- *     //--------------------- LOOP ---------------------//
- *     if(imu.readByte(MPU9150_ADDRESS, INT_STATUS) & 0x01) {  // On interrupt, check if data ready interrupt
- *         imu.getAccel(val_acc);  // Read the x/y/z adc values
- *         imu.getGyro(val_gyr);  // Read the x/y/z adc values
- *         sun.getSunVector(rsun_b);
- *         
- *         mcount++;
- *         if (mcount > 200/MagRate) {  // this is a poor man's way of setting the magnetometer read rate (see below) 
- *             imu.getMag(val_mag);  // Read the x/y/z adc values
- *             mcount = 0;
- *         }
- * 
- *         pc->printf("Acc (mg):  ");
- *         pc->printf("{% 4.2f, % 4.2f, % 4.2f}\n\r", val_acc[0]*1000, val_acc[1]*1000, val_acc[2]*1000);
- *         pc->printf("Gyr (°/s): ");
- *         pc->printf("{% 4.2f, % 4.2f, % 4.2f}\n\r", val_gyr[0], val_gyr[1], val_gyr[2]);
- *         pc->printf("Mag (uT):  ");
- *         pc->printf("{% 4.2f, % 4.2f, % 4.2f}\n\r", val_mag[0], val_mag[1], val_mag[2]);
- *     }
- * }
- * 
- * @endcode
+ * @see MPU9150.test.cpp
  * 
  * # License
  * <b>(C) Copyright 2019 Remy CHATEL</b>

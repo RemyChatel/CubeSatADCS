@@ -9,14 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-  $(document).ready(initResizable);
-/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -54,22 +46,6 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('globals.html','');});
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -91,6 +67,12 @@ $(document).ready(function(){initNavTree('globals.html','');});
 <li>ADO
 : <a class="el" href="_m_p_u9150_8h.html#abe717edc8354f136def5fbbc67f90709">MPU9150.h</a>
 </li>
+<li>ADS_NSENSOR
+: <a class="el" href="_a_d_s_core_8test_8cpp.html#acbd01bfe38e222899e649b0d17d0096d">ADSCore.test.cpp</a>
+</li>
+<li>ADS_PRINTS
+: <a class="el" href="_a_d_s_core_8test_8cpp.html#a40afc11725751f3c73ebb994b3590f04">ADSCore.test.cpp</a>
+</li>
 <li>ADSCore_NSENSOR
 : <a class="el" href="_a_d_s_core_8h.html#a37216c00e473a13212e152ab8a504ab4">ADSCore.h</a>
 </li>
@@ -104,7 +86,8 @@ $(document).ready(function(){initNavTree('globals.html','');});
 : <a class="el" href="_a_d_s_core_8h.html#a4dbb733ea4d9bf4f660a2a355ad5c6df">ADSCore.h</a>
 </li>
 <li>ADSTest()
-: <a class="el" href="_test_8h.html#a134386a60f39bcdff26561da8e2f1099">Test.h</a>
+: <a class="el" href="_a_d_s_core_8test_8cpp.html#acd5744dbed62b27bfe383f160c4cbdd7">ADSCore.test.cpp</a>
+, <a class="el" href="_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7">ADSCore.test.h</a>
 </li>
 <li>AFS_16G
 : <a class="el" href="_m_p_u9150_8h.html#a809d38a83bb0293b913cb890cafd82a8ac69ba62b40838fa92ea9a1853210dc26">MPU9150.h</a>
@@ -122,7 +105,8 @@ $(document).ready(function(){initNavTree('globals.html','');});
 : <a class="el" href="_m_p_u9150_8h.html#a809d38a83bb0293b913cb890cafd82a8">MPU9150.h</a>
 </li>
 <li>AstroLibTest()
-: <a class="el" href="_test_8h.html#a11c2d45d18d1974d56efdeb072b0c4b1">Test.h</a>
+: <a class="el" href="_astro_lib_8test_8cpp.html#a05ab160fa7f6dd1f076c49174507ad70">AstroLib.test.cpp</a>
+, <a class="el" href="_astro_lib_8test_8h.html#a05ab160fa7f6dd1f076c49174507ad70">AstroLib.test.h</a>
 </li>
 </ul>
 
@@ -130,14 +114,11 @@ $(document).ready(function(){initNavTree('globals.html','');});
 <h3><a id="index_d"></a>- d -</h3><ul>
 <li>DEG2RAD
 : <a class="el" href="_a_d_s_core_8h.html#af7e8592d0a634bd3642e9fd508ea8022">ADSCore.h</a>
+, <a class="el" href="_a_d_s_core_8test_8cpp.html#af7e8592d0a634bd3642e9fd508ea8022">ADSCore.test.cpp</a>
 , <a class="el" href="_astro_lib_8h.html#af7e8592d0a634bd3642e9fd508ea8022">AstroLib.h</a>
-</li>
-</ul>
-
-
-<h3><a id="index_f"></a>- f -</h3><ul>
-<li>FilterTest()
-: <a class="el" href="_test_8h.html#afef033c38d49dd54f43c880c2d30cf24">Test.h</a>
+, <a class="el" href="_astro_lib_8test_8cpp.html#af7e8592d0a634bd3642e9fd508ea8022">AstroLib.test.cpp</a>
+, <a class="el" href="_estimators_8test_8cpp.html#af7e8592d0a634bd3642e9fd508ea8022">Estimators.test.cpp</a>
+, <a class="el" href="_filters_8test_8cpp.html#af7e8592d0a634bd3642e9fd508ea8022">Filters.test.cpp</a>
 </li>
 </ul>
 
@@ -162,6 +143,10 @@ $(document).ready(function(){initNavTree('globals.html','');});
 
 
 <h3><a id="index_k"></a>- k -</h3><ul>
+<li>KalmanFilterTest()
+: <a class="el" href="_filters_8test_8cpp.html#a83206b65b93e1ff565f97ae1195e5bd1">Filters.test.cpp</a>
+, <a class="el" href="_filters_8test_8h.html#a83206b65b93e1ff565f97ae1195e5bd1">Filters.test.h</a>
+</li>
 <li>Ki
 : <a class="el" href="_m_p_u9150_8h.html#a6ccd383fe0d82309eac500d9bd3b825b">MPU9150.h</a>
 </li>
@@ -171,15 +156,21 @@ $(document).ready(function(){initNavTree('globals.html','');});
 </ul>
 
 
+<h3><a id="index_l"></a>- l -</h3><ul>
+<li>LOOP_TIME
+: <a class="el" href="_estimators_8test_8cpp.html#a519e5306fcaada42c552000ea4658dbe">Estimators.test.cpp</a>
+, <a class="el" href="_filters_8test_8cpp.html#a519e5306fcaada42c552000ea4658dbe">Filters.test.cpp</a>
+</li>
+</ul>
+
+
 <h3><a id="index_m"></a>- m -</h3><ul>
 <li>MatrixTest()
-: <a class="el" href="_test_8h.html#ae169972457c866c7e2a40fd04b323d0f">Test.h</a>
+: <a class="el" href="_matrix_8test_8cpp.html#a9774c4876dea878dce03b248a259eaa1">Matrix.test.cpp</a>
+, <a class="el" href="_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1">Matrix.test.h</a>
 </li>
 <li>MPU9150_ADDRESS
 : <a class="el" href="_m_p_u9150_8h.html#a918c48fc034885089b181da782294c63">MPU9150.h</a>
-</li>
-<li>MPU9250Test()
-: <a class="el" href="_test_8h.html#a8d0e50d728d5fafa2fcb3562288ff26e">Test.h</a>
 </li>
 <li>MU
 : <a class="el" href="_astro_lib_8h.html#a09bc9e6a44f0291cfcf578f2efcddfab">AstroLib.h</a>
@@ -231,15 +222,13 @@ $(document).ready(function(){initNavTree('globals.html','');});
 <li>PI
 : <a class="el" href="_astro_lib_8h.html#a598a3330b3c21701223ee0ca14316eca">AstroLib.h</a>
 </li>
-<li>printMat()
-: <a class="el" href="_test_8h.html#ae55ed44f42c65eeb7ea04ec870d0d4ef">Test.h</a>
-</li>
 </ul>
 
 
 <h3><a id="index_q"></a>- q -</h3><ul>
 <li>QuestTest()
-: <a class="el" href="_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8">Test.h</a>
+: <a class="el" href="_estimators_8test_8cpp.html#ae5db03befd0604bd8758a8c0b429d9fe">Estimators.test.cpp</a>
+, <a class="el" href="_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe">Estimators.test.h</a>
 </li>
 </ul>
 
@@ -250,7 +239,10 @@ $(document).ready(function(){initNavTree('globals.html','');});
 </li>
 <li>RAD2DEG
 : <a class="el" href="_a_d_s_core_8h.html#ac5a945020d3528355cda82d383676736">ADSCore.h</a>
+, <a class="el" href="_a_d_s_core_8test_8cpp.html#ac5a945020d3528355cda82d383676736">ADSCore.test.cpp</a>
 , <a class="el" href="_astro_lib_8h.html#ac5a945020d3528355cda82d383676736">AstroLib.h</a>
+, <a class="el" href="_estimators_8test_8cpp.html#ac5a945020d3528355cda82d383676736">Estimators.test.cpp</a>
+, <a class="el" href="_filters_8test_8cpp.html#ac5a945020d3528355cda82d383676736">Filters.test.cpp</a>
 </li>
 </ul>
 
@@ -260,7 +252,8 @@ $(document).ready(function(){initNavTree('globals.html','');});
 : <a class="el" href="_astro_lib_8h.html#af7b6e0065772f4e4923d0e0b2aacad73">AstroLib.h</a>
 </li>
 <li>SensorTest()
-: <a class="el" href="_test_8h.html#afa45b1dab3fb052fd3b129773d101a05">Test.h</a>
+: <a class="el" href="_m_p_u9150_8test_8cpp.html#ac288740d048f2fb1b0494f58ba5206d6">MPU9150.test.cpp</a>
+, <a class="el" href="_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6">MPU9150.test.h</a>
 </li>
 </ul>
 
@@ -271,14 +264,11 @@ $(document).ready(function(){initNavTree('globals.html','');});
 </li>
 </ul>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="footer">Generated by
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.15
+</small></address>
 </body>
 </html>

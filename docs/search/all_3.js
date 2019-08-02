@@ -1,9 +1,15 @@
 var searchData=
 [
-  ['deg2rad',['DEG2RAD',['../_a_d_s_core_8h.html#af7e8592d0a634bd3642e9fd508ea8022',1,'DEG2RAD():&#160;ADSCore.h'],['../_astro_lib_8h.html#af7e8592d0a634bd3642e9fd508ea8022',1,'DEG2RAD():&#160;AstroLib.h']]],
-  ['deletecol',['DeleteCol',['../class_matrix.html#a14e17430ac39e24a9cf090d9f3e1242a',1,'Matrix']]],
-  ['deleterow',['DeleteRow',['../class_matrix.html#aad560f2875f9ac2000995900268511f8',1,'Matrix']]],
-  ['det',['det',['../class_matrix.html#ae0f4326de128296cd861947d89d2665d',1,'Matrix']]],
-  ['diag',['diag',['../class_matrix.html#acec952194fad591dad5f6db0fbc18e61',1,'Matrix']]],
-  ['dot',['dot',['../class_matrix.html#a8b75c0669091bb9ebc51b727f70f2d5f',1,'Matrix']]]
+  ['estimators',['Estimators',['../namespace_estimators.html',1,'']]],
+  ['estimators_2ecpp',['Estimators.cpp',['../_estimators_8cpp.html',1,'']]],
+  ['estimators_2eh',['Estimators.h',['../_estimators_8h.html',1,'']]],
+  ['estimators_2etest_2ecpp',['Estimators.test.cpp',['../_estimators_8test_8cpp.html',1,'']]],
+  ['estimators_2etest_2eh',['Estimators.test.h',['../_estimators_8test_8h.html',1,'']]],
+  ['estimators',['Estimators',['../group___estimators_gr.html',1,'']]],
+  ['euler2quat',['euler2quat',['../class_matrix.html#a6701670918e6c087f5ce45cf3afb97b5',1,'Matrix']]],
+  ['euler2rot',['euler2rot',['../class_matrix.html#a9e68c61a21868c0aff4e245679a61e15',1,'Matrix']]],
+  ['euler2rot123',['euler2rot123',['../class_matrix.html#a1dee1794adfb8da343424277ca0f8bfe',1,'Matrix']]],
+  ['exportcol',['ExportCol',['../class_matrix.html#a7a928006395fe8df35546f5ae6e4fd37',1,'Matrix']]],
+  ['exportrow',['ExportRow',['../class_matrix.html#a4b47c7a11b7b1295ad4417238c3a60eb',1,'Matrix']]],
+  ['eye',['eye',['../class_matrix.html#a89e843f74660aabb9b6403a738b6ee42',1,'Matrix']]]
 ];

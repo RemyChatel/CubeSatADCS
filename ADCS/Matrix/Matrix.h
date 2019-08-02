@@ -32,6 +32,10 @@
  * 
  * @see Matrix
  * 
+ * # Example code
+ * 
+ * @see Matrix.test.cpp
+ * 
  * # Dependencies
  * This library depends on <std::cmath> and <std::vector> to provide
  * an matrix of arbitrary size and the required mathematical operations
@@ -65,7 +69,7 @@
 #include <cmath>
 #include <vector>
 
-#define MATRIX_USE_PRINTF
+#define MATRIX_USE_PRINTF // Comment this line to remove Mbed dependency
 
 #ifdef MATRIX_USE_PRINTF
 #include "mbed.h"
@@ -576,7 +580,7 @@ public:
      * @brief
      * Prints the matrix if MATRIX_USE_PRINTF has been defined
      */
-    void print();
+    void print() const;
     #endif
 
 ///@name Linear algebra Methods

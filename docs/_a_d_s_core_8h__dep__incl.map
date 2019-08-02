@@ -1,4 +1,6 @@
 <map id="ADSCore/ADSCore.h" name="ADSCore/ADSCore.h">
-<area shape="rect" id="node1" title=" " alt="" coords="12,5,157,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="107,5,252,32"/>
 <area shape="rect" id="node2" href="$_a_d_s_core_8cpp.html" title="Source code for the ADSCore library." alt="" coords="5,80,164,107"/>
+<area shape="rect" id="node3" href="$_a_d_s_core_8test_8h.html" title="Test framework library for the ADScore module." alt="" coords="189,80,359,107"/>
+<area shape="rect" id="node4" href="$_a_d_s_core_8test_8cpp.html" title="Implements ADSCore.test.h." alt="" coords="181,155,367,181"/>
 </map>

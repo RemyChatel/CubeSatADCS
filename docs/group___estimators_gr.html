@@ -9,14 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-  $(document).ready(initResizable);
-/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -54,22 +46,6 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('group___estimators_gr.html','');});
-/* @license-end */
-</script>
-<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -118,7 +94,8 @@ Functions</h2></td></tr>
 <p>The QuEst algorithm works by finding an optimal eigen value for the combined measurement matrix, using a Newton solver.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group___estimators_gr.html#ga4b071fa4bda8225098b5806ea45f8cb6" title="Return the quaternion estimate from the QuEst Algorithm.">Estimators::QUEST</a></dd></dl>
 <h1>Example code</h1>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_estimators_8h.html">Estimators.h</a>&quot;</span></div><div class="line"></div><div class="line"><span class="preprocessor">#define ADS_TOLERANCE 1e-5                  // Tolerance for the Newton solver</span></div><div class="line"><span class="keywordtype">float</span> coef_th[9] = {0.4153, 0.4472, 0.7921, -0.7652, 0.6537, 0.0274, -0.5056, -0.6104, 0.6097};</div><div class="line"><a class="code" href="class_matrix.html">Matrix</a> mat_th = <a class="code" href="class_matrix.html">Matrix</a>(3,3, coef_th);</div><div class="line"></div><div class="line"><span class="comment">// measurements in the inertial frame</span></div><div class="line"><span class="keywordtype">float</span> sa1n[3] = {0.0f, 0.447214f, 0.894427f};</div><div class="line"><span class="keywordtype">float</span> sa2n[3] = {0.316228f, 0.948683f, 0.0f};</div><div class="line"><span class="keywordtype">float</span> sa3n[3] = {-0.980581f, 0.0f, 0.196116f};</div><div class="line"><span class="keywordtype">float</span> sa4n[3] = {0.235702f, -0.235702f, 0.942809f};</div><div class="line"><span class="keywordtype">float</span> sa5n[3] = {0.57735f, 0.57735f, 0.57735f};</div><div class="line"></div><div class="line"><span class="comment">// noisy measurements in the body frame</span></div><div class="line"><span class="keywordtype">float</span> sb1n[3] = { 0.9082f, 0.3185f, 0.2715f };</div><div class="line"><span class="keywordtype">float</span> sb2n[3] = { 0.5670f, 0.3732f, -0.7343f };</div><div class="line"><span class="keywordtype">float</span> sb3n[3] = { -0.2821f, 0.7163f, 0.6382 };</div><div class="line"><span class="keywordtype">float</span> sb4n[3] = { 0.7510f, -0.3303f, 0.5718};</div><div class="line"><span class="keywordtype">float</span> sb5n[3] = { 0.9261f, -0.2053, -0.3166};</div><div class="line"></div><div class="line"><span class="keywordtype">float</span> *san[5] = {sa1n, sa2n, sa3n, sa4n, sa5n};</div><div class="line"><span class="keywordtype">float</span> *sbn[5] = {sb1n, sb2n, sb3n, sb4n, sb5n};</div><div class="line"></div><div class="line"><span class="comment">// Weight of the sensors</span></div><div class="line"><span class="keywordtype">float</span> om[5] = {0.0100f, 0.0325f, 0.0550f, 0.0775, 0.1000};</div><div class="line"></div><div class="line"><span class="keywordtype">float</span> q[4]; <span class="comment">// Output quaternion</span></div><div class="line"></div><div class="line"><a class="code" href="group___estimators_gr.html#ga4b071fa4bda8225098b5806ea45f8cb6">Estimators::QUEST</a>(q, 5, sbn, san, om, TOLERANCE);</div></div><!-- fragment --><h1>References</h1>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_estimators_8test_8cpp.html" title="Source code for Estimators.test.h.">Estimators.test.cpp</a></dd></dl>
+<h1>References</h1>
 <p>[1] "Spacecraft Dynamics and Control An Introduction" by de Ruiter, Damaren and Forbes</p>
 <h1>Dependencies</h1>
 <p>This library depends on the "Matrix" library that can be found here: <a href="https://github.com/RemyChatel/">https://github.com/RemyChatel/</a> In turn this library relies on &lt;std::cmath&gt; and &lt;std::vector&gt;</p>
@@ -210,7 +187,7 @@ Here is the caller graph for this function:</div>
 <map name="group___estimators_gr_ga4b071fa4bda8225098b5806ea45f8cb6_icgraph" id="group___estimators_gr_ga4b071fa4bda8225098b5806ea45f8cb6_icgraph">
 <area shape="rect"  title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="176,31,313,57"/>
 <area shape="rect"  href="class_a_d_s_core.html#a8d16f3419b12b7891a00ed824cd2673a" title="Updates the attitude of the spacecraft by combining the output the different sensors and filtering th..." alt="" coords="5,5,128,32"/>
-<area shape="rect"  href="_test_8h.html#a7ad6b1baef1d172b6e39e8d5a2d52be8" title="Test of the Estimator Library." alt="" coords="25,56,108,83"/>
+<area shape="rect"  href="_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="25,56,108,83"/>
 </map>
 </div>
 
@@ -302,14 +279,11 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="footer">Generated by
-    <a href="http://www.doxygen.org/index.html">
-    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+Generated by &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.15
+</small></address>
 </body>
 </html>

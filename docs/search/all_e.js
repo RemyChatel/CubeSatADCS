@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['pi',['PI',['../_astro_lib_8h.html#a598a3330b3c21701223ee0ca14316eca',1,'AstroLib.h']]],
-  ['print',['print',['../class_matrix.html#a99ba97122b8fdd54e95290caf80fc8e2',1,'Matrix']]],
-  ['printmat',['printMat',['../_test_8h.html#ae55ed44f42c65eeb7ea04ec870d0d4ef',1,'print.cpp']]]
+  ['quat2euler',['quat2euler',['../class_matrix.html#ad30cb5c3b09e8d54ddc93077db1833e9',1,'Matrix']]],
+  ['quat2rot',['quat2rot',['../class_matrix.html#a2166cdc8a2cbb3152b5a10ec214bc641',1,'Matrix']]],
+  ['quatmul',['quatmul',['../class_matrix.html#a520e64ea013c1a47b5adc7f92e56eca1',1,'Matrix']]],
+  ['quest',['QUEST',['../group___estimators_gr.html#ga4b071fa4bda8225098b5806ea45f8cb6',1,'Estimators::QUEST(float quat[4], int N, float **s_eci, float **s_body, float *omega, float tolerance)'],['../group___estimators_gr.html#ga5f10766fb1abd03a0d32e21e671f83d7',1,'Estimators::QUEST(Matrix *quat, int N, Matrix *s_eci, Matrix *s_body, float *omega, float tolerance)']]],
+  ['questtest',['QuestTest',['../_estimators_8test_8cpp.html#ae5db03befd0604bd8758a8c0b429d9fe',1,'QuestTest():&#160;Estimators.test.cpp'],['../_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe',1,'QuestTest():&#160;Estimators.test.cpp']]]
 ];

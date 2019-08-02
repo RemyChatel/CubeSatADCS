@@ -1,9 +1,5 @@
 var NAVTREEINDEX1 =
 {
-"class_matrix.html#af698f665522164d4c3961120c94ff080":[2,4,0,25],
-"class_matrix.html#afd1b5a554acd146e48ab41b3e15516cf":[2,4,0,44],
-"class_matrix.html#afd24669f907b2a04373c1d3e7df427aa":[2,4,0,16],
-"class_sun_sensor.html":[2,6,0],
 "class_sun_sensor.html#a0ce086ecae57e14af977e70341dbe9a9":[2,6,0,6],
 "class_sun_sensor.html#a0fdb0e483a74d7f2064a586de60715e0":[2,6,0,5],
 "class_sun_sensor.html#a3d3fb7bb51aba1cfcd72668943d9e92f":[2,6,0,3],
@@ -14,7 +10,6 @@ var NAVTREEINDEX1 =
 "classes.html":[4,1],
 "dir_02b4395933e108b230227129f8f76897.html":[5,0,6],
 "dir_31b712e81a7a4d82f694ec97901be5ec.html":[5,0,3],
-"dir_33c78a012c8d08979f57a54a07694c46.html":[5,0,7],
 "dir_5cc06f621ec62b3fa43ef9d834e00fad.html":[5,0,0],
 "dir_661f620829610c142f6bb7d072035a76.html":[5,0,5],
 "dir_ae4a3f8b4a2d2aa3ce9e6a5e3b746904.html":[5,0,1],
@@ -66,8 +61,8 @@ var NAVTREEINDEX1 =
 "index.html#Description":[0,0],
 "md__r_e_a_d_m_e.html":[1],
 "modules.html":[2],
-"namespace_astro_lib.html":[4,0,0],
 "namespace_astro_lib.html":[3,0,0],
+"namespace_astro_lib.html":[4,0,0],
 "namespace_estimators.html":[3,0,1],
 "namespace_filters.html":[3,0,2],
 "namespace_filters.html":[4,0,1],
