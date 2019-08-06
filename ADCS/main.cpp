@@ -1,7 +1,7 @@
 #include "mbed.h"
 
 // Change here the test you want to run
-#define TEST_ADS
+#define TEST_MATRIX
 
 // Remove the ".test" part of the include if the test functions are not required
 #ifdef TEST_MATRIX

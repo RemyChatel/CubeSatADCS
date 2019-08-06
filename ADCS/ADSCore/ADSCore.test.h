@@ -42,6 +42,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#ifndef ADSCORE_TEST_H
+#define ADSCORE_TEST_H
 #include "mbed.h"
 #include "ADSCore.h"
 
@@ -60,3 +62,4 @@
  * @return 1 if successful, 0 otherwise
  */
 int ADSTest();
+#endif

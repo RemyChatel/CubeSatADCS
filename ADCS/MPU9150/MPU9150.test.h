@@ -35,6 +35,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#ifndef MPU9150_TEST_H
+#define MPU9150_TEST_H
 #include "mbed.h"
 #include "MPU9150.h"
 #include "Matrix.h"
@@ -45,3 +47,4 @@
  * return 1 if successful, 0 otherwise
  */
 int MPU9150Test();
+#endif

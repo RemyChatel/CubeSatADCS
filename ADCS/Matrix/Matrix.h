@@ -71,10 +71,6 @@
 
 #define MATRIX_USE_PRINTF // Comment this line to remove Mbed dependency
 
-#ifdef MATRIX_USE_PRINTF
-#include "mbed.h"
-#endif
-
 /**
  * @ingroup MatrixGr
  * @brief
@@ -575,13 +571,11 @@ public:
      */
     int size();
 
-    #ifdef MATRIX_USE_PRINTF
     /**
      * @brief
      * Prints the matrix if MATRIX_USE_PRINTF has been defined
      */
     void print() const;
-    #endif
 
 ///@name Linear algebra Methods
     /**

@@ -37,6 +37,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#ifndef MATRIX_TEST_H
+#define MATRIX_TEST_H
 #include "mbed.h"
 #include "Matrix.h"
 
@@ -46,3 +48,4 @@
  * return 1 if successful, 0 otherwise
  */
 int MatrixTest();
+#endif

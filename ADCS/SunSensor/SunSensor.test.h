@@ -35,6 +35,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#ifndef SUNSENSOR_TEST_H
+#define SUNSENSOR_TEST_H
 #include "mbed.h"
 #include "SunSensor.h"
 #include "Matrix.h"
@@ -45,3 +47,4 @@
  * return 1 if successful, 0 otherwise
  */
 int SunSensorTest();
+#endif

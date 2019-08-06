@@ -28,7 +28,7 @@
  */
 #include "Matrix.h"
 #ifdef MATRIX_USE_PRINTF
-#include "mbed.h"
+    #include "mbed.h"
 #endif
 
 // Constructors
@@ -745,8 +745,8 @@
         }
     }
 
-    #ifdef MATRIX_USE_PRINTF
     void Matrix::print() const{
+        #ifdef MATRIX_USE_PRINTF
         printf("{{");
 
         for(int i = 0; i < this->_nRows; i++){
@@ -766,8 +766,8 @@
                 printf("},\r\n");
             }
         }
+        #endif
     }
-    #endif
 
 // Linear Algebra Methods
     Matrix Matrix::Transpose() const {
