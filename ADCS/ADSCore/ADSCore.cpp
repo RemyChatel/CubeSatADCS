@@ -187,7 +187,8 @@
     Matrix ADSCore::update(Matrix w_rw_prev, Matrix T_bf_prev, Matrix T_rw_prev){
         fetchSensors();
         Estimators::QUEST(&q, ADSCore_NSENSOR, seci, sbod, omega, ADSCore_TOLERANCE);
-        // q = kalman.filter(q, gyrb, time.read_us() - last_update, w_rw_prev, T_bf_prev, T_rw_prev);
+        // kalman.filter(q, gyrb, time.read_us() - last_update, w_rw_prev, T_bf_prev, T_rw_prev);
+        // q = kalman.getQuaternion();
         // w = kalman.getAngularRate();
         last_update = time.read_us();
         return q;

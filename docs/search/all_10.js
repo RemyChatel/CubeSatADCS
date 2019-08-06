@@ -1,7 +1,6 @@
 var searchData=
 [
   ['sec2jfrac',['SEC2JFRAC',['../_astro_lib_8h.html#af7b6e0065772f4e4923d0e0b2aacad73',1,'AstroLib.h']]],
-  ['sensortest',['SensorTest',['../_m_p_u9150_8test_8cpp.html#ac288740d048f2fb1b0494f58ba5206d6',1,'SensorTest():&#160;MPU9150.test.cpp'],['../_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6',1,'SensorTest():&#160;MPU9150.test.cpp']]],
   ['setares',['setAres',['../class_m_p_u9150.html#af8c6449ddb604e0cd30b8b466c57c051',1,'MPU9150']]],
   ['setavgacc',['setAvgAcc',['../class_m_p_u9150.html#a4f77f4c880167a1f05e6dafe3bf078e2',1,'MPU9150']]],
   ['setavggyr',['setAvgGyr',['../class_m_p_u9150.html#a434aa9686c4599dcb7ad447409e9ff61',1,'MPU9150']]],
@@ -16,5 +15,7 @@ var searchData=
   ['sunsensor',['SunSensor',['../class_sun_sensor.html',1,'SunSensor'],['../class_sun_sensor.html#ac4bed2586b8c3973a4c64d3d6fa29868',1,'SunSensor::SunSensor()'],['../class_sun_sensor.html#a43e4b92aac923ac56ca11a643a1fc91d',1,'SunSensor::SunSensor(PinName pinX, PinName pinY, PinName pinZ)']]],
   ['sunsensor_2ecpp',['SunSensor.cpp',['../_sun_sensor_8cpp.html',1,'']]],
   ['sunsensor_2eh',['SunSensor.h',['../_sun_sensor_8h.html',1,'']]],
-  ['sun_20sensor_20driver',['Sun Sensor Driver',['../group___sun_sensor_gr.html',1,'']]]
+  ['sunsensor_2etest_2eh',['SunSensor.test.h',['../_sun_sensor_8test_8h.html',1,'']]],
+  ['sun_20sensor_20driver',['Sun Sensor Driver',['../group___sun_sensor_gr.html',1,'']]],
+  ['sunsensortest',['SunSensorTest',['../_sun_sensor_8test_8h.html#a38af540ede788df2617cff690d2432cf',1,'SunSensor.test.cpp']]]
 ];

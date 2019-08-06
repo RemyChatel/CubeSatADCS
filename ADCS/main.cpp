@@ -16,8 +16,11 @@
 #ifdef TEST_FILTER
     #include "Filters.test.h"
 #endif
-#ifdef TEST_SENSOR
+#ifdef TEST_IMU
     #include "MPU9150.test.h"
+#endif
+#ifdef TEST_SUNSENSOR
+    #include "SunSensor.test.h"
 #endif
 #ifdef TEST_ADS
     #include "ADSCore.test.h"
@@ -38,8 +41,11 @@ int main(){
     #ifdef TEST_FILTER
         return KalmanFilterTest();
     #endif
-    #ifdef TEST_SENSOR
-        return SensorTest();
+    #ifdef TEST_SUNSENSOR
+        return SunSensorTest();
+    #endif
+    #ifdef TEST_IMU
+        return MPU9150Test();
     #endif
     #ifdef TEST_ADS
         return ADSTest();

@@ -29,6 +29,5 @@ var searchData=
   ['astrolib',['AstroLib',['../group___astro_lib_gr.html',1,'']]],
   ['astrolibtest',['AstroLibTest',['../_astro_lib_8test_8cpp.html#a05ab160fa7f6dd1f076c49174507ad70',1,'AstroLibTest():&#160;AstroLib.test.cpp'],['../_astro_lib_8test_8h.html#a05ab160fa7f6dd1f076c49174507ad70',1,'AstroLibTest():&#160;AstroLib.test.cpp']]],
   ['azel2ned',['AzEl2NED',['../class_astro_lib_1_1_orbit.html#a1b382b53c4f21c6f2ece32330ee7cde5',1,'AstroLib::Orbit::AzEl2NED()'],['../class_astro_lib_1_1_ground.html#aa0ae887fa7f066f7d2be72d2ef8d0456',1,'AstroLib::Ground::AzEl2NED()']]],
-  ['attitude_20determination_20and_20control_20system',['Attitude Determination and Control System',['../index.html',1,'']]],
-  ['attitude_20determination_20module',['Attitude Determination module',['../md__r_e_a_d_m_e.html',1,'']]]
+  ['attitude_20determination_20and_20control_20system_20main_20page',['Attitude Determination and Control System main page',['../index.html',1,'']]]
 ];

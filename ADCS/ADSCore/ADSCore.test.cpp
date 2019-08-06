@@ -118,22 +118,22 @@ int ADSTest(){
             bluetooth.printf(" %f %f %f %f %f %f %f %f \r\n", q(1), q(2), q(3), q(4), w(1), w(2), w(3), (float)loop_time);
 
             // To debug serial output
-            printf("Date: %4d-%02d-%02d-%02d:%02d:%02.2f\r\n", year, month, day, hours, minutes, seconds);
-            printf("Execution time (ms): %f\r\n", (float)loop_time/1000.0f);
-            printf("\r\n");
-            printf("Quaternion:\r\n");
-            q.Transpose().print();
+            // printf("Date: %4d-%02d-%02d-%02d:%02d:%02.2f\r\n", year, month, day, hours, minutes, seconds);
+            // printf("Execution time (ms): %f\r\n", (float)loop_time/1000.0f);
+            // printf("\r\n");
+            // printf("Quaternion:\r\n");
+            // q.Transpose().print();
             printf("Euler angles ZYX:\r\n");
             (Matrix::quat2euler(q).Transpose()*RAD2DEG).print();
-            printf("Angular rates measured then predicted\r\n");
-            gyrb.Transpose().print();
-            w.Transpose().print();
-            printf("Mag in body then ECI\r\n");
-            vbod[0].Transpose().print();
-            veci[0].Transpose().print();
-            printf("Sun in body then ECI\r\n");
-            vbod[1].Transpose().print();
-            veci[1].Transpose().print();
+            // printf("Angular rates measured then predicted\r\n");
+            // gyrb.Transpose().print();
+            // w.Transpose().print();
+            // printf("Mag in body then ECI\r\n");
+            // vbod[0].Transpose().print();
+            // veci[0].Transpose().print();
+            // printf("Sun in body then ECI\r\n");
+            // vbod[1].Transpose().print();
+            // veci[1].Transpose().print();
 
             printf("\r\n");
         }

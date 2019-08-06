@@ -2,7 +2,7 @@
 <area shape="rect" id="node1" title="Fetches the accelerometer count from the IMU." alt="" coords="731,31,903,57"/>
 <area shape="rect" id="node2" href="$class_m_p_u9150.html#a4e41653c04bfeda223746b742999e890" title="Calculates the value of the acceleration measured by the accelerometer in g." alt="" coords="544,31,683,57"/>
 <area shape="rect" id="node3" href="$class_m_p_u9150.html#ae45ec6ca0eddd351ff0c8e52b5dec874" title="Method to recalibrate the IMU by removing the DC part." alt="" coords="325,5,496,32"/>
-<area shape="rect" id="node6" href="$_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="159,56,247,83"/>
+<area shape="rect" id="node6" href="$_m_p_u9150_8test_8h.html#a8ccd2f76fdc4d994f730522503705b22" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="151,56,255,83"/>
 <area shape="rect" id="node4" href="$class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5" title="Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases." alt="" coords="128,5,277,32"/>
 <area shape="rect" id="node5" href="$_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="5,5,80,32"/>
 </map>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>CubeSat Atitude Determination: Attitude Determination and Control System</title>
+<title>CubeSat Atitude Determination: Attitude Determination and Control System main page</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,17 +62,15 @@ $(function() {
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Attitude Determination and Control System </div>  </div>
+<div class="title">Attitude Determination and Control System main page </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="Description"></a>
-Description</h1>
-<h1><a class="anchor" id="Dep"></a>
-Dependencies and Compatibility</h1>
+<div class="textblock"><h1>CubeSat Attitude Determination and Control System</h1>
+<h2>Description</h2>
+<h2>Dep Dependencies and Compatibility</h2>
 <p>This project needs &lt;std::cmath&gt;, &lt;std::vector&gt; and the ARM Mbed (<a href="https://www.mbed.com/en/">https://www.mbed.com/en/</a>) framework to work properly. However, changing away from Mbed to make it work on other platforms should not be too difficult as only the IMU and <a class="el" href="class_sun_sensor.html" title="A class to handle analog Sun sensor (three photodiode)">SunSensor</a> have to be changed to interface with the hardware (I2C and analog inputs).</p>
 <p>Porting the code to Arduino should not be too much of an issue. However, the absence of Floating Point Unit and the fact that most Arduinos are based on 8-bit processors mean that the code may run very slowly.</p>
-<h1><a class="anchor" id="Comments"></a>
-Comments</h1>
+<h2>Comments</h2>
 <dl class="section attention"><dt>Attention</dt><dd>This library uses float only (NOT double) and therefore expect 6 to 7 significant figures </dd></dl>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->

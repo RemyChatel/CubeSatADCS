@@ -36,7 +36,6 @@
  * limitations under the License.
  */
 #include "mbed.h"
-#include "SunSensor.h"
 #include "MPU9150.h"
 #include "Matrix.h"
 
@@ -45,4 +44,4 @@
  * Test of the Sun Sensor and other sensors
  * return 1 if successful, 0 otherwise
  */
-int SensorTest();
+int MPU9150Test();

@@ -11,7 +11,7 @@
 <area shape="rect" id="node16" href="$_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="17,731,100,757"/>
 <area shape="rect" id="node24" href="$class_matrix.html#adcb1fd7df0185de9103e20004fe037a3" title="Calculates an approximation of the inverse by using a Taylor expansion." alt="" coords="171,883,287,909"/>
 <area shape="rect" id="node25" href="$class_matrix.html#a520e64ea013c1a47b5adc7f92e56eca1" title="Compute the quaternion multiplication of the two given vectors." alt="" coords="173,933,285,960"/>
-<area shape="rect" id="node26" href="$_m_p_u9150_8test_8h.html#ac288740d048f2fb1b0494f58ba5206d6" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="567,984,655,1011"/>
+<area shape="rect" id="node26" href="$_m_p_u9150_8test_8h.html#a8ccd2f76fdc4d994f730522503705b22" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="559,984,663,1011"/>
 <area shape="rect" id="node7" href="$class_a_d_s_core.html#a8d16f3419b12b7891a00ed824cd2673a" title="Updates the attitude of the spacecraft by combining the output the different sensors and filtering th..." alt="" coords="357,157,479,184"/>
 <area shape="rect" id="node8" href="$_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="17,393,100,420"/>
 <area shape="rect" id="node12" href="$class_a_d_s_core.html#a43d2bdc8156b722edec88fe7d16874ea" title="Sets the Kalman filters variances, inertia matrices and initial position as well as the proprieties o..." alt="" coords="345,360,491,387"/>

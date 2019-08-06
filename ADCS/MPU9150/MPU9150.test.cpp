@@ -24,10 +24,9 @@
  */
 #include "MPU9150.test.h"
 
-int SensorTest(){
+int MPU9150Test(){
     I2C i2c(I2C_SDA, I2C_SCL);
     i2c.frequency(400000);
-    SunSensor sun(A0,A1,A2);
     MPU9150 imu(&i2c);
     Timer t;
     t.start();
@@ -36,8 +35,6 @@ int SensorTest(){
     int last_update = 0;
     int print_update = t.read_ms();
 
-    float rsun_b[3];
-    float rsun_e[3];
     float rmag_b[3];
     float rmag_e[3] = {17.5, 0.5, 47};
 
@@ -76,7 +73,6 @@ int SensorTest(){
         if(imu.readByte(MPU9150_ADDRESS, INT_STATUS) & 0x01) {  // On interrupt, check if data ready interrupt
             imu.getAccel(val_acc);  // Read the x/y/z adc values
             imu.getGyro(val_gyr);  // Read the x/y/z adc values
-            sun.getSunVector(rsun_b);
 
             mcount++;
             if (mcount > 200/MagRate) {  // this is a poor man's way of setting the magnetometer read rate (see below) 
@@ -105,9 +101,6 @@ int SensorTest(){
             printf("{% 4.2f, % 4.2f, % 4.2f}\n\r", val_gyr[0], val_gyr[1], val_gyr[2]);
             printf("Mag (uT):  ");
             printf("{% 4.2f, % 4.2f, % 4.2f}\n\r", val_mag[0], val_mag[1], val_mag[2]);
-            printf("Sun:       ");
-            printf("{% 4.2f, % 4.2f, % 4.2f}\n\r", rsun_b[0], rsun_b[1], rsun_b[2]);
-
 
             mag.Transpose().print();
             magNED.Transpose().print();
@@ -122,7 +115,7 @@ int SensorTest(){
             t.start(); // start the timer over again if ~30 minutes has passed
             last_update = t.read_us();
         }
-        wait_ms(20);
+        wait_us(20000);
     }
 
     return 1;
