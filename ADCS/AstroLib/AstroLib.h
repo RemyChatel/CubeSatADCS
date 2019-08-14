@@ -11,6 +11,7 @@
  * 
  * @details
  * # Description
+ * ## Overview
  * This library provides tools for orbital mechanics for embeded C++ aiming
  * at spacecraft orbiting Earth.
  * 
@@ -31,6 +32,71 @@
  * @see AstroLib::Orbit
  * @see AstroLib::Ground
  * 
+ * ## Detailed description
+ * The AstroLib module provides tools for orbital mechanics. It implements
+ * an orbit model, a representation of Julian date, a Sun position model
+ * and an Earth magnetic field model.
+ * This library also provides a _ground_ version of the orbital model
+ * to allow ground testing with the same front end.
+ * 
+ * It features a Julian date class that allows date manipulation, addition
+ * and subtraction as well as conversion from the common calendar date. The
+ * conversion is established by the formula given by:
+ * 
+ * @f{align}{
+ *   JD & = 367(y r)-\operatorname{INT}\left\{\frac{7\left(y r+\operatorname{INT}\left(\frac{m o+9}{12}\right)\right\}}{4}\right\}+\operatorname{INT}\left(\frac{275 mo}{9}\right)+d \nonumber \\
+ *        & + 1,721,013.5+\frac{1}{24}\left(\frac{s}{3600} + \frac{min}{60} + h \right)
+ *   \label{equ:julian}
+ * @f}
+ * 
+ * The Orbit class provide a model of an orbit that can return the spacecraft
+ * position, the sun direction vector and the Earth magnetic field vector, for
+ * a given orbit set by its perifocal parameters.
+ * The formula to compute the Sun vector is given by Vallado's book:
+ * 
+ * @f{align}{
+ *   T_{U T 1} & = \frac{J D_{U T 1}-2,451,545.0}{36,525} \nonumber \\
+ *   \lambda_{M_{\odot}} & = 280.460^{\circ}+36,000.771 T_{U T 1} \nonumber \\
+ *   M_{\odot} & = 357.5291092^{\circ}+35,999.05034 T_{U T 1} \nonumber \\ \quad \nonumber \\
+ *   \lambda_{\text{ecliptic}} & = \lambda_{M_{\odot}}+1.914666471^{\circ} \sin\left( M_{\odot} \right) +0.019994643 \sin \left( 2 M_{\odot} \right) \nonumber \\
+ *   r_{\odot} & = 1.000140612-0.016708617 \cos \left(M_{\odot}\right)-0.000139589 \cos \left( 2 M_{\odot} \right) \nonumber \\
+ *   \epsilon & = 23.439291^{\circ}-0.0130042 T_{U T 1} \nonumber \\ \quad \nonumber\\
+ *   \mathbf{r}_{\odot} & = \left[\begin{array}{c}{r_{\odot} \cos \left(\lambda_{\text {ecliptic}}\right)} \\ {r_{\odot} \cos (\epsilon) \sin\left(\lambda_{\text {ecliptic}}\right)} \\ {r_{\odot} \sin(\epsilon) \sin\left(\lambda_{\text {ecliptic}}\right)}\end{array}\right] \mathrm{AU}
+ *   \label{equ:sunvec}
+ * @f}
+ * 
+ * To calculate the position of the satellite, the perifocal parameters are used to
+ * determine the Cartesian vector of the spacecraft position in the ECI frame.
+ * 
+ * To compute the theoretical Earth magnetic field, the following formula
+ * can be used:
+ * 
+ * @f{align}{
+ * \alpha_{m} & = \theta_{g 0}+\omega_{\oplus} t+\phi_{m}^{\prime} \nonumber\\
+ * \mathbf{d}_{ECI} & =
+ * \left[\begin{array}{c}{
+ *   \sin \theta_{m}^{\prime} \cos \alpha_{m}} \\
+ *   {\sin \theta_{m}^{\prime} \sin \alpha_{m}} \\
+ *  {\cos \theta_{m}^{\prime}}
+ * \end{array}\right] \nonumber\\
+ * \mathbf{m}_{ECI} & =\frac{R_{\oplus}^{3} H_{0}}{r^{3}}\left[3 \mathbf{d}_{i}^{\top} \hat{\mathbf{r}}_{i} \hat{\mathbf{r}}_{i}-\mathbf{d}_{i}\right]
+ * \label{equ:magvec}
+ * @f}
+ * 
+ * Where @f$\hat{\mathbf{r}_i}@f$ is the unit vector of the spacecraft position,
+ *       @f$\mathbf{d}_i@f$ is the dipole unit direction vector,
+ *       @f$ R_{\oplus} = 6378 km @f$,
+ *       @f$ H_0 = 30.115 \mu T @f$
+ * 
+ * The ground version is a drop-in replacement for the Orbit class that facilitates
+ * ground testing in a lab.
+ * 
+ * It can be initialized with the local value of the Earth magnetic field and the
+ * site location to provide the sun vector.
+ * 
+ * All model are clearly indicated in the code in a separate function, and therefore
+ * they can be easily changed to accommodate other requirements and be improved.
+ * 
  * # Dependencies and data type
  * This library depends on <std::cmath> in order to perform 
  * cos, sin and sqrt operations.
@@ -47,6 +113,8 @@
  * by A. de Ruiter, C. Damaren and J Forbes
  * - "Fundamentals of Astrodynamics and Applications", by D. Vallado
  * - http://www.instesre.org/ArduinoUnoSolarCalculations.pdf by David Brooks
+ * - https://www.ngdc.noaa.gov/geomag/WMM/image.shtml
+ * - https://www.esrl.noaa.gov/gmd/grad/solcalc/
  * 
  * # License
  * <b>(C) Copyright 2019 Remy CHATEL</b>

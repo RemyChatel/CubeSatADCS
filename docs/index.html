@@ -9,9 +9,23 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +60,22 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('index.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -66,19 +96,45 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><h1>CubeSat Attitude Determination and Control System</h1>
+<p>Developped by Remy Chatel for the University of Glasgow in the context of a MSc in Electrical and Electronical Engineering.</p>
 <h2>Description</h2>
-<h2>Dep Dependencies and Compatibility</h2>
+<h3>Overview of the project</h3>
+<h4>The attitude determination task</h4>
+<p>The attitude of a rigid body regarding a reference describes the rotation required to rotate the body from pointing at the reference to its current position. It is its orientation in space relative to a reference coordinate system.</p>
+<p>The knowledge of the attitude is important for a spacecraft as it indicates where the spacecraft is looking at (on Earth for instance), and allow the precise pointing of instruments and antennas.</p>
+<p>The attitude determination process is the following: measurement, estimation and filtering. It takes as input inertial data (such as angular rates from gyroscope) and external reference objects data (such as Sun or stars position, or magnetic field).</p>
+<p>The output is the rotation required to go from a reference frame to the body frame of the spacecraft. There are different possible ways to represent rotation, but usually, the output is a 7-elements state vector containing the rotation quaternion and the angular rates.</p>
+<h4>ADS Core</h4>
+<p>This project developped an inexpensive Attitude Determination System for CubeSat using a Sun sensor (made of three photodiodes) and an IMU as sensors. The data is then processed by a QuEst algorithm and filtered using a quaternion-based 7-state Kalman filter.</p>
+<h3>How to use it</h3>
+<p>This project was done on the Nucleo32-L432KC board, but can work just as well on most other Nucleo board provided they have enough memroy space (6kB of RAM and 68kB of Flash).</p>
+<p>Once all the components are sourced and connected, the inertia model of the system (CubeSat) must be known for the Kalman Filter. Also, some knowledge of the variance of the sensor can help start the filter.</p>
+<p>Then, all information can be writen in the <a class="el" href="_a_d_s_core_8test_8cpp.html" title="Implements ADSCore.test.h.">ADSCore.test.cpp</a> file and compiled. The output is read in the USB Serial console.</p>
+<p>If changes are required to the models or to the sensors, see documentation to find out where the changes have to take place. The system was thought to be as modular as possible.</p>
+<p>This project uses several modules to breakdown the task, the list of those modules and their documentation can be found in the Modules section</p>
+<p> <a href="modules.html">List of modules</a></p>
+<h3>Bill of material</h3>
+<ul>
+<li>Nucleo32L432KC board</li>
+<li><a class="el" href="class_m_p_u9150.html" title="A drivers for the MPU9150 Inertial Measurement Unit.">MPU9150</a> or MPU9250 IMU</li>
+<li>Three anaolg photodiodes (OPT101 for instance)</li>
+<li>eventually Solar eclipse glasses to pry out the filters</li>
+</ul>
+<h2>Dependencies and Compatibility</h2>
 <p>This project needs &lt;std::cmath&gt;, &lt;std::vector&gt; and the ARM Mbed (<a href="https://www.mbed.com/en/">https://www.mbed.com/en/</a>) framework to work properly. However, changing away from Mbed to make it work on other platforms should not be too difficult as only the IMU and <a class="el" href="class_sun_sensor.html" title="A class to handle analog Sun sensor (three photodiode)">SunSensor</a> have to be changed to interface with the hardware (I2C and analog inputs).</p>
 <p>Porting the code to Arduino should not be too much of an issue. However, the absence of Floating Point Unit and the fact that most Arduinos are based on 8-bit processors mean that the code may run very slowly.</p>
 <h2>Comments</h2>
 <dl class="section attention"><dt>Attention</dt><dd>This library uses float only (NOT double) and therefore expect 6 to 7 significant figures </dd></dl>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.15
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
 </body>
 </html>

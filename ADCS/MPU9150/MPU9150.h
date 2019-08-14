@@ -15,6 +15,21 @@
  * 
  * Adapted from Kris Winer MPU9150AHRS library, 
  * https://os.mbed.com/users/onehorse/code/MPU9150AHRS/
+ *
+ * This module establishes the I2C communication with the MPU9150 IMU
+ * in order to fetch the acceleration, the angular rates and the
+ * measured Earth magnetic field in the body frame.
+ * 
+ * It first allows the initialization of the peripheral and performs
+ * some calibration to limit the biases on the sensors. This calibration
+ * step performs one-second sampling of all the sensors. Then the average
+ * of those measurements is calculated and subtracted to the chosen sensors.
+ * The chosen measurements will have their DC bias removed by this method.
+ * 
+ * Then, the measurements can be fetched using simple functions. The
+ * module also features originally two attitude filters, however, they
+ * are only suitable for UAV and not for space applications as they
+ * rely on the gravity vector.
  * 
  * @see MPU9150
  * @see MPU9150_registers.h

@@ -9,9 +9,23 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -45,6 +59,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_a_d_s_core_8h_source.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,11 +90,6 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_5cc06f621ec62b3fa43ef9d834e00fad.html">ADSCore</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">ADSCore.h</div>  </div>
@@ -74,34 +100,38 @@ $(function() {
 <div class="ttc" id="_filters_8h_html"><div class="ttname"><a href="_filters_8h.html">Filters.h</a></div></div>
 <div class="ttc" id="_a_d_s_core_8h_html_a37216c00e473a13212e152ab8a504ab4"><div class="ttname"><a href="_a_d_s_core_8h.html#a37216c00e473a13212e152ab8a504ab4">ADSCore_NSENSOR</a></div><div class="ttdeci">#define ADSCore_NSENSOR</div><div class="ttdoc">The number of sensor used for Quest algorithm.</div><div class="ttdef"><b>Definition:</b> ADSCore.h:58</div></div>
 <div class="ttc" id="_matrix_8h_html"><div class="ttname"><a href="_matrix_8h.html">Matrix.h</a></div></div>
-<div class="ttc" id="class_sun_sensor_html"><div class="ttname"><a href="class_sun_sensor.html">SunSensor</a></div><div class="ttdoc">A class to handle analog Sun sensor (three photodiode)</div><div class="ttdef"><b>Definition:</b> SunSensor.h:71</div></div>
+<div class="ttc" id="class_sun_sensor_html"><div class="ttname"><a href="class_sun_sensor.html">SunSensor</a></div><div class="ttdoc">A class to handle analog Sun sensor (three photodiode)</div><div class="ttdef"><b>Definition:</b> SunSensor.h:131</div></div>
 <div class="ttc" id="class_a_d_s_core_html_a0420da419c3b9b6f9214cea9dc1c2d86"><div class="ttname"><a href="class_a_d_s_core.html#a0420da419c3b9b6f9214cea9dc1c2d86">ADSCore::getQ</a></div><div class="ttdeci">Matrix getQ() const</div><div class="ttdoc">Gets the predicted atitude quaternion.</div><div class="ttdef"><b>Definition:</b> ADSCore.cpp:164</div></div>
 <div class="ttc" id="class_a_d_s_core_html_a595ce818c38e5c569297719b40eb9b80"><div class="ttname"><a href="class_a_d_s_core.html#a595ce818c38e5c569297719b40eb9b80">ADSCore::getOrbit</a></div><div class="ttdeci">const AstroLib::Ground &amp; getOrbit() const</div><div class="ttdoc">Gets the Ground object reference for external access.</div><div class="ttdef"><b>Definition:</b> ADSCore.cpp:177</div></div>
 <div class="ttc" id="class_a_d_s_core_html_a31fedf8f1ab60276f7d2255e9997a6e5"><div class="ttname"><a href="class_a_d_s_core.html#a31fedf8f1ab60276f7d2255e9997a6e5">ADSCore::initSensors</a></div><div class="ttdeci">void initSensors()</div><div class="ttdoc">Initialize the sensor (IMU and Sun sensors) by calibrating the sensors and removing DC biases.</div><div class="ttdef"><b>Definition:</b> ADSCore.cpp:82</div></div>
 <div class="ttc" id="class_a_d_s_core_html_a3d41ec955dc487ee14e5fc8f7416e9ba"><div class="ttname"><a href="class_a_d_s_core.html#a3d41ec955dc487ee14e5fc8f7416e9ba">ADSCore::getGyrb</a></div><div class="ttdeci">Matrix getGyrb() const</div><div class="ttdoc">Gets the measured angular rates (deg/s)</div><div class="ttdef"><b>Definition:</b> ADSCore.cpp:168</div></div>
 <div class="ttc" id="class_a_d_s_core_html_a035baa9fa452899dee976bbcdc4430fd"><div class="ttname"><a href="class_a_d_s_core.html#a035baa9fa452899dee976bbcdc4430fd">ADSCore::initKalman</a></div><div class="ttdeci">void initKalman(float sigma_q_eta, float sigma_q_espilon, float sigma_gyr, float dt, Matrix I_sat, Matrix q_init, Matrix w_init)</div><div class="ttdoc">Sets the Kalman filters variances, inertia matrices and initial position when there is no reaction wh...</div><div class="ttdef"><b>Definition:</b> ADSCore.cpp:112</div></div>
-<div class="ttc" id="class_filters_1_1_kalman_filter_html"><div class="ttname"><a href="class_filters_1_1_kalman_filter.html">Filters::KalmanFilter</a></div><div class="ttdoc">This class implements a 7-state (quaternion and angular rates) Extended Kalman Filter for spacecraft ...</div><div class="ttdef"><b>Definition:</b> Filters.h:98</div></div>
+<div class="ttc" id="class_filters_1_1_kalman_filter_html"><div class="ttname"><a href="class_filters_1_1_kalman_filter.html">Filters::KalmanFilter</a></div><div class="ttdoc">This class implements a 7-state (quaternion and angular rates) Extended Kalman Filter for spacecraft ...</div><div class="ttdef"><b>Definition:</b> Filters.h:134</div></div>
 <div class="ttc" id="_sun_sensor_8h_html"><div class="ttname"><a href="_sun_sensor_8h.html">SunSensor.h</a></div></div>
 <div class="ttc" id="_estimators_8h_html"><div class="ttname"><a href="_estimators_8h.html">Estimators.h</a></div></div>
-<div class="ttc" id="class_matrix_html"><div class="ttname"><a href="class_matrix.html">Matrix</a></div><div class="ttdoc">A library for 2D matrix linear algebra operations.</div><div class="ttdef"><b>Definition:</b> Matrix.h:89</div></div>
+<div class="ttc" id="class_matrix_html"><div class="ttname"><a href="class_matrix.html">Matrix</a></div><div class="ttdoc">A library for 2D matrix linear algebra operations.</div><div class="ttdef"><b>Definition:</b> Matrix.h:85</div></div>
 <div class="ttc" id="class_a_d_s_core_html_ae9189aaa3a9238d02716c3857473fbc6"><div class="ttname"><a href="class_a_d_s_core.html#ae9189aaa3a9238d02716c3857473fbc6">ADSCore::initOrbit</a></div><div class="ttdeci">void initOrbit(float parameters[6], int date[6])</div><div class="ttdoc">Initialize the orbit model with the given date and orbital parameters.</div><div class="ttdef"><b>Definition:</b> ADSCore.cpp:100</div></div>
 <div class="ttc" id="class_a_d_s_core_html_ac6378f263f7afafaf050701789cfd45b"><div class="ttname"><a href="class_a_d_s_core.html#ac6378f263f7afafaf050701789cfd45b">ADSCore::getSensorBody</a></div><div class="ttdeci">Matrix getSensorBody(int n)</div><div class="ttdoc">Gets the measurements in the body frame of the n-th sensor.</div><div class="ttdef"><b>Definition:</b> ADSCore.cpp:170</div></div>
-<div class="ttc" id="class_m_p_u9150_html"><div class="ttname"><a href="class_m_p_u9150.html">MPU9150</a></div><div class="ttdoc">A drivers for the MPU9150 Inertial Measurement Unit.</div><div class="ttdef"><b>Definition:</b> MPU9150.h:98</div></div>
+<div class="ttc" id="class_m_p_u9150_html"><div class="ttname"><a href="class_m_p_u9150.html">MPU9150</a></div><div class="ttdoc">A drivers for the MPU9150 Inertial Measurement Unit.</div><div class="ttdef"><b>Definition:</b> MPU9150.h:113</div></div>
 <div class="ttc" id="class_a_d_s_core_html_a303d9bc866c2a00ffc199b06e35027bf"><div class="ttname"><a href="class_a_d_s_core.html#a303d9bc866c2a00ffc199b06e35027bf">ADSCore::getSensorECI</a></div><div class="ttdeci">Matrix getSensorECI(int n)</div><div class="ttdoc">Gets the measurements in the ECI frame of the n-th sensor.</div><div class="ttdef"><b>Definition:</b> ADSCore.cpp:172</div></div>
 <div class="ttc" id="class_a_d_s_core_html_aad463c8d5859acf365420f70bbc7dd9b"><div class="ttname"><a href="class_a_d_s_core.html#aad463c8d5859acf365420f70bbc7dd9b">ADSCore::getW</a></div><div class="ttdeci">Matrix getW() const</div><div class="ttdoc">Gets the predicted angular rates (rad/s)</div><div class="ttdef"><b>Definition:</b> ADSCore.cpp:166</div></div>
-<div class="ttc" id="class_astro_lib_1_1_orbit_html"><div class="ttname"><a href="class_astro_lib_1_1_orbit.html">AstroLib::Orbit</a></div><div class="ttdoc">Provide an orbit model that can return essential parameters about the spacecraft position,...</div><div class="ttdef"><b>Definition:</b> AstroLib.h:454</div></div>
+<div class="ttc" id="class_astro_lib_1_1_orbit_html"><div class="ttname"><a href="class_astro_lib_1_1_orbit.html">AstroLib::Orbit</a></div><div class="ttdoc">Provide an orbit model that can return essential parameters about the spacecraft position,...</div><div class="ttdef"><b>Definition:</b> AstroLib.h:522</div></div>
 <div class="ttc" id="class_a_d_s_core_html_ae3925fb5a08a785ec088c58b6509cf2a"><div class="ttname"><a href="class_a_d_s_core.html#ae3925fb5a08a785ec088c58b6509cf2a">ADSCore::getKalman</a></div><div class="ttdeci">const Filters::KalmanFilter &amp; getKalman() const</div><div class="ttdoc">Gets the Kalman filter object reference for external access.</div><div class="ttdef"><b>Definition:</b> ADSCore.cpp:174</div></div>
 <div class="ttc" id="_astro_lib_8h_html"><div class="ttname"><a href="_astro_lib_8h.html">AstroLib.h</a></div></div>
 <div class="ttc" id="class_a_d_s_core_html"><div class="ttname"><a href="class_a_d_s_core.html">ADSCore</a></div><div class="ttdoc">Accesses, processes and filters the data from sensors to output an attitude quaternion of the Spacecr...</div><div class="ttdef"><b>Definition:</b> ADSCore.h:95</div></div>
 <div class="ttc" id="class_a_d_s_core_html_ab8873bff74a052260b3e251eac584059"><div class="ttname"><a href="class_a_d_s_core.html#ab8873bff74a052260b3e251eac584059">ADSCore::ADSCore</a></div><div class="ttdeci">ADSCore()</div><div class="ttdoc">Default constructor for the Attitude Determination core.</div><div class="ttdef"><b>Definition:</b> ADSCore.cpp:28</div></div>
 <div class="ttc" id="class_a_d_s_core_html_a65be8547feafaddb284e7e1c234606b8"><div class="ttname"><a href="class_a_d_s_core.html#a65be8547feafaddb284e7e1c234606b8">ADSCore::update</a></div><div class="ttdeci">Matrix update()</div><div class="ttdoc">Updates the attitude of the spacecraft by combining the output the different sensors and filtering th...</div><div class="ttdef"><b>Definition:</b> ADSCore.cpp:183</div></div>
-<div class="ttc" id="class_astro_lib_1_1_ground_html"><div class="ttname"><a href="class_astro_lib_1_1_ground.html">AstroLib::Ground</a></div><div class="ttdoc">Provide a ground version of the Orbit class.</div><div class="ttdef"><b>Definition:</b> AstroLib.h:615</div></div>
+<div class="ttc" id="class_astro_lib_1_1_ground_html"><div class="ttname"><a href="class_astro_lib_1_1_ground.html">AstroLib::Ground</a></div><div class="ttdoc">Provide a ground version of the Orbit class.</div><div class="ttdef"><b>Definition:</b> AstroLib.h:683</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.15
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_5cc06f621ec62b3fa43ef9d834e00fad.html">ADSCore</a></li><li class="navelem"><a class="el" href="_a_d_s_core_8h.html">ADSCore.h</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
 </body>
 </html>

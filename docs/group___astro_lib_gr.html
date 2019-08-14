@@ -9,9 +9,23 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +60,22 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('group___astro_lib_gr.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -90,6 +120,7 @@ Classes</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Remy CHATEL </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>GNU Public License v3.0</dd></dl>
 <h1>Description</h1>
+<h2>Overview</h2>
 <p>This library provides tools for orbital mechanics for embeded C++ aiming at spacecraft orbiting Earth.</p>
 <p>Provides an orbit model, handling of Julian date, Sun position and Earth magnetic field model</p>
 <p>This library also provides a "ground" version of the orbital model to allow ground testing with the same front end</p>
@@ -105,6 +136,25 @@ Classes</h2></td></tr>
 <a class="el" href="class_astro_lib_1_1_orbit.html" title="Provide an orbit model that can return essential parameters about the spacecraft position,...">AstroLib::Orbit</a> </dd>
 <dd>
 <a class="el" href="class_astro_lib_1_1_ground.html" title="Provide a ground version of the Orbit class.">AstroLib::Ground</a></dd></dl>
+<h2>Detailed description</h2>
+<p>The <a class="el" href="namespace_astro_lib.html" title="Provides orbital mechanics tools for spacecrafts.">AstroLib</a> module provides tools for orbital mechanics. It implements an orbit model, a representation of Julian date, a Sun position model and an Earth magnetic field model. This library also provides a <em>ground</em> version of the orbital model to allow ground testing with the same front end.</p>
+<p>It features a Julian date class that allows date manipulation, addition and subtraction as well as conversion from the common calendar date. The conversion is established by the formula given by:</p>
+<p class="formulaDsp">
+\begin{align} JD &amp; = 367(y r)-\operatorname{INT}\left\{\frac{7\left(y r+\operatorname{INT}\left(\frac{m o+9}{12}\right)\right\}}{4}\right\}+\operatorname{INT}\left(\frac{275 mo}{9}\right)+d \nonumber \\ &amp; + 1,721,013.5+\frac{1}{24}\left(\frac{s}{3600} + \frac{min}{60} + h \right) \label{equ:julian} \end{align}
+</p>
+<p>The Orbit class provide a model of an orbit that can return the spacecraft position, the sun direction vector and the Earth magnetic field vector, for a given orbit set by its perifocal parameters. The formula to compute the Sun vector is given by Vallado's book:</p>
+<p class="formulaDsp">
+\begin{align} T_{U T 1} &amp; = \frac{J D_{U T 1}-2,451,545.0}{36,525} \nonumber \\ \lambda_{M_{\odot}} &amp; = 280.460^{\circ}+36,000.771 T_{U T 1} \nonumber \\ M_{\odot} &amp; = 357.5291092^{\circ}+35,999.05034 T_{U T 1} \nonumber \\ \quad \nonumber \\ \lambda_{\text{ecliptic}} &amp; = \lambda_{M_{\odot}}+1.914666471^{\circ} \sin\left( M_{\odot} \right) +0.019994643 \sin \left( 2 M_{\odot} \right) \nonumber \\ r_{\odot} &amp; = 1.000140612-0.016708617 \cos \left(M_{\odot}\right)-0.000139589 \cos \left( 2 M_{\odot} \right) \nonumber \\ \epsilon &amp; = 23.439291^{\circ}-0.0130042 T_{U T 1} \nonumber \\ \quad \nonumber\\ \mathbf{r}_{\odot} &amp; = \left[\begin{array}{c}{r_{\odot} \cos \left(\lambda_{\text {ecliptic}}\right)} \\ {r_{\odot} \cos (\epsilon) \sin\left(\lambda_{\text {ecliptic}}\right)} \\ {r_{\odot} \sin(\epsilon) \sin\left(\lambda_{\text {ecliptic}}\right)}\end{array}\right] \mathrm{AU} \label{equ:sunvec} \end{align}
+</p>
+<p>To calculate the position of the satellite, the perifocal parameters are used to determine the Cartesian vector of the spacecraft position in the ECI frame.</p>
+<p>To compute the theoretical Earth magnetic field, the following formula can be used:</p>
+<p class="formulaDsp">
+\begin{align} \alpha_{m} &amp; = \theta_{g 0}+\omega_{\oplus} t+\phi_{m}^{\prime} \nonumber\\ \mathbf{d}_{ECI} &amp; = \left[\begin{array}{c}{ \sin \theta_{m}^{\prime} \cos \alpha_{m}} \\ {\sin \theta_{m}^{\prime} \sin \alpha_{m}} \\ {\cos \theta_{m}^{\prime}} \end{array}\right] \nonumber\\ \mathbf{m}_{ECI} &amp; =\frac{R_{\oplus}^{3} H_{0}}{r^{3}}\left[3 \mathbf{d}_{i}^{\top} \hat{\mathbf{r}}_{i} \hat{\mathbf{r}}_{i}-\mathbf{d}_{i}\right] \label{equ:magvec} \end{align}
+</p>
+<p>Where \(\hat{\mathbf{r}_i}\) is the unit vector of the spacecraft position, \(\mathbf{d}_i\) is the dipole unit direction vector, \( R_{\oplus} = 6378 km \), \( H_0 = 30.115 \mu T \)</p>
+<p>The ground version is a drop-in replacement for the Orbit class that facilitates ground testing in a lab.</p>
+<p>It can be initialized with the local value of the Earth magnetic field and the site location to provide the sun vector.</p>
+<p>All model are clearly indicated in the code in a separate function, and therefore they can be easily changed to accommodate other requirements and be improved.</p>
 <h1>Dependencies and data type</h1>
 <p>This library depends on &lt;std::cmath&gt; in order to perform cos, sin and sqrt operations.</p>
 <dl class="section attention"><dt>Attention</dt><dd>This library uses float (32-bits) and not double (64-bits) to make best use of the Floating Point Unit of 32-bits microcontrollers.</dd></dl>
@@ -115,17 +165,22 @@ Classes</h2></td></tr>
 <li>"Spacecraft Dynamic and Control: An introduction", by A. de Ruiter, C. Damaren and J Forbes</li>
 <li>"Fundamentals of Astrodynamics and Applications", by D. Vallado</li>
 <li><a href="http://www.instesre.org/ArduinoUnoSolarCalculations.pdf">http://www.instesre.org/ArduinoUnoSolarCalculations.pdf</a> by David Brooks</li>
+<li><a href="https://www.ngdc.noaa.gov/geomag/WMM/image.shtml">https://www.ngdc.noaa.gov/geomag/WMM/image.shtml</a></li>
+<li><a href="https://www.esrl.noaa.gov/gmd/grad/solcalc/">https://www.esrl.noaa.gov/gmd/grad/solcalc/</a></li>
 </ul>
 <h1>License</h1>
 <p><b>(C) Copyright 2019 Remy CHATEL</b></p>
 <p>Licensed Under GPL v3.0 License <a href="http://www.gnu.org/licenses/gpl-3.0.html">http://www.gnu.org/licenses/gpl-3.0.html</a></p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </p>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.15
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
 </body>
 </html>

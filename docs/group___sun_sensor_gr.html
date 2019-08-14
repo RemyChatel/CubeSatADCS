@@ -9,9 +9,23 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +60,22 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('group___sun_sensor_gr.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -84,19 +114,53 @@ Classes</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Remy CHATEL </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>GNU Public License v3.0</dd></dl>
 <h1>Description</h1>
+<h2>Overview</h2>
 <p>This library provide an interface to read the analog output of a set of three photodiodes that make a Sun sensor</p>
+<p>Sun Sensors are a very common sensor technology for spacecraft. The Sun being several orders of magnitude brighter than any other celestial object, and its radius being small when looked at from Earth orbit, it is a very useful sensor.</p>
+<p>Using ephemerides, the position of the Sun relative to the spacecraft can be translated into an absolute orientation in the ECI, for instance.</p>
+<p>However, it does not work during eclipse periods when the spacecraft passes during its orbit behind the Earth.</p>
+<p>Different technologies exist that provide a wide range of accuracy: from the simple photodiodes and linear arrays to CCD array sensors.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="class_sun_sensor.html" title="A class to handle analog Sun sensor (three photodiode)">SunSensor</a></dd></dl>
-<h1>Example code</h1>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;mbed.h&quot;</span></div><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="_sun_sensor_8h.html">SunSensor.h</a>&quot;</span></div><div class="line"></div><div class="line"><a class="code" href="class_sun_sensor.html">SunSensor</a> sun();</div><div class="line"><span class="keywordtype">float</span> r_sun[3] = {0,0,0};</div><div class="line"></div><div class="line"><span class="keywordflow">while</span>(1){</div><div class="line">    sun.getSunVector(r_sun);</div><div class="line">    wait_ms(100);</div><div class="line">}</div></div><!-- fragment --><h1>License</h1>
+<h2>Detailed description</h2>
+<p>The Sun sensor module simply reads the analogue value from the three photodiodes that make the sensor and then combine them in a Sun vector (measured in the body frame of the spacecraft). It relies on Mbed to access the analogue pins.</p>
+<p>The current Sun Sensor model is simple: the three photodiodes are placed perpendicularly to each other.</p>
+<p>Each photodiode senses the light from the Sun with an amplitude related to the angle of the Sun following the relation:</p>
+<p class="formulaDsp">
+\[ V_i = V_0 \cos \alpha \]
+</p>
+<p>If we reduce the number of photodiodes to two, the direction of the Sun is given by:</p>
+<p class="formulaDsp">
+\[ \mathbf{s}_{s}^{*}= \left[\begin{array}{lll} 1 &amp; \tan \alpha_{1} / \tan \alpha_{2} &amp; \tan \alpha_{1} \end{array}\right]^{\top} \]
+</p>
+<p>Then the vector is normalized:</p>
+<p class="formulaDsp">
+\[ \mathbf{\hat{s}} = \frac{\mathbf{s}_{s}^{*}}{\mathbf{s}_{s}^{*\top}\mathbf{s}_{s}^{*}} \]
+</p>
+<p>Now, two elements of the Sun direction are measured and the third element can be found using a third photodiode, then it is possible to fully determine the direction of the Sun.</p>
+<p>In this project's configuration, the three photocells are placed orthogonally and output a voltage, so the Sun direction vector can be expressed in the following way:</p>
+<p class="formulaDsp">
+\[ \mathbf{\hat{s}}= \left[\begin{array}{ccc} \frac{V_i}{V_{max,i}} &amp; \frac{V_j}{V_{max,j}} &amp; \frac{V_k}{V_{max,k}} \end{array}\right]^\top \]
+</p>
+<p>This system is the most simple configuration of Sun sensor, and the more sophisticated system can be made, notably using a linear array of photodiode under a slit. It was not done as the main focus of the project was the algorithms. </p><h1>Example code</h1>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_sun_sensor_8test_8h.html" title="Test framework library for the SunSensor module.">SunSensor.test.h</a></dd></dl>
+<h1>References</h1>
+<ul>
+<li>Spacecraft Dynamics and Control, by Chris Hall</li>
+<li>Photodiode Placement &amp; Algorithms for CubeSat Attitude Determination, by Springmann, John C and Cutler, James W</li>
+</ul>
+<h1>License</h1>
 <p><b>(C) Copyright 2019 Remy CHATEL</b></p>
 <p>Licensed Under GPL v3.0 License <a href="http://www.gnu.org/licenses/gpl-3.0.html">http://www.gnu.org/licenses/gpl-3.0.html</a></p>
 <p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </p>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.15
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
 </body>
 </html>

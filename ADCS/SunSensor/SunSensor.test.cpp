@@ -8,8 +8,8 @@ int SunSensorTest(){
     float rsun_b[3];
     float rsun_e[3];
 
-    int last_update;
-    int print_update;
+    int last_update  = t.read_us();
+    int print_update = t.read_ms();
     int ellapsed;
 
     printf("\n\r\n\r\n\r\n\r\n\r\n\r--------------------------------------\n\r");

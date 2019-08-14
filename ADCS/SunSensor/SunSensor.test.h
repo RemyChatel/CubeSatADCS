@@ -13,6 +13,8 @@
  * This library provides a test function for the SunSensor module and also
  * serves as an example program for the module.
  * 
+ * To use it, simply connect three photodiodes to the Analog pins of the 
+ * board.
  * 
  * @see SunSensor.h
  * 

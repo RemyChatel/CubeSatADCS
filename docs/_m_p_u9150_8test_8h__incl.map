@@ -1,9 +1,9 @@
 <map id="MPU9150/MPU9150.test.h" name="MPU9150/MPU9150.test.h">
-<area shape="rect" id="node1" title="Test framework library for the MPU9150 module." alt="" coords="125,5,302,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="177,155,242,181"/>
-<area shape="rect" id="node3" href="$_m_p_u9150_8h.html" title=" " alt="" coords="85,80,176,107"/>
-<area shape="rect" id="node5" href="$_matrix_8h.html" title=" " alt="" coords="257,80,327,107"/>
-<area shape="rect" id="node4" href="$_m_p_u9150__registers_8h_source.html" title=" " alt="" coords="5,155,152,181"/>
-<area shape="rect" id="node6" title=" " alt="" coords="267,155,325,181"/>
+<area shape="rect" id="node1" title="Test framework library for the MPU9150 module." alt="" coords="68,5,245,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,155,71,181"/>
+<area shape="rect" id="node3" href="$_m_p_u9150_8h.html" title=" " alt="" coords="111,80,202,107"/>
+<area shape="rect" id="node5" href="$_matrix_8h.html" title=" " alt="" coords="261,80,330,107"/>
+<area shape="rect" id="node4" href="$_m_p_u9150__registers_8h_source.html" title=" " alt="" coords="95,155,242,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="266,155,325,181"/>
 <area shape="rect" id="node7" title=" " alt="" coords="349,155,405,181"/>
 </map>

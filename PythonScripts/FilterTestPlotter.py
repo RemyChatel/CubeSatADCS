@@ -172,5 +172,22 @@ pl.xlabel("Time (s)")
 pl.ylabel("Timing (ms)")
 pl.grid(True)
 pl.legend()
+for i in range(len(initial_error[0])):
+	initial_error[0,i] = np.abs(np.max([initial_error[0,i],initial_error[1,i],initial_error[2,i]]))
+	filtered_error[0,i] = np.abs(np.max([filtered_error[0,i],filtered_error[1,i],filtered_error[2,i]]))
+
+print(np.max(filtered_error[0,20:])*180/np.pi)
+print(np.min(filtered_error[0,20:])*180/np.pi)
+print(np.average(filtered_error[0,20:])*180/np.pi)
+
+pl.figure(figsize=(10,7))
+pl.title('Angular error between theoretical input and actual output')
+# pl.plot(t, initial_error[0]*180/np.pi, label="Input error", linestyle='dashed')
+pl.plot(t, filtered_error[0]*180/np.pi, label="Output error")
+pl.xlabel("Time (s)")
+pl.ylabel("Maximum anglular error (deg)")
+pl.ylim(0,10)
+pl.grid(True)
+pl.legend()
 
 pl.show()

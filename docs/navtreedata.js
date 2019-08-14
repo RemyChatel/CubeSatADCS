@@ -24,12 +24,8 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "CubeSat Atitude Determination", "index.html", [
-    [ "Attitude Determination and Control System", "index.html", [
-      [ "Description", "index.html#Description", null ],
-      [ "Dependencies and Compatibility", "index.html#Dep", null ],
-      [ "Comments", "index.html#Comments", null ]
-    ] ],
-    [ "Attitude Determination module", "md__r_e_a_d_m_e.html", null ],
+    [ "Attitude Determination and Control System main page", "index.html", null ],
+    [ "README", "md__r_e_a_d_m_e.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -63,7 +59,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_a_d_s_core_8cpp.html",
-"class_sun_sensor.html#a0ce086ecae57e14af977e70341dbe9a9"
+"class_matrix.html#a53e116bfad8cf837d2676de098ed1e53"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

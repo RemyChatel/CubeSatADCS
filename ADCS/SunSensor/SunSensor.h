@@ -11,26 +11,86 @@
  * 
  * @details
  * # Description
+ * ## Overview
  * This library provide an interface to read the analog output of
  * a set of three photodiodes that make a Sun sensor
  * 
+ * Sun Sensors are a very common sensor technology for spacecraft. 
+ * The Sun being several orders of magnitude brighter than any other
+ * celestial object, and its radius being small when looked at from
+ * Earth orbit, it is a very useful sensor.
+ * 
+ * Using ephemerides, the position of the Sun relative to the
+ * spacecraft can be translated into an absolute orientation in the
+ * ECI, for instance.
+ * 
+ * However, it does not work during eclipse periods when the
+ * spacecraft passes during its orbit behind the Earth.
+ * 
+ * Different technologies exist that provide a wide range of accuracy:
+ * from the simple photodiodes and linear arrays to CCD array sensors.
+ * 
  * @see SunSensor
  * 
+ * ## Detailed description
+ * The Sun sensor module simply reads the analogue value from the three
+ * photodiodes that make the sensor and then combine them in a Sun vector
+ * (measured in the body frame of the spacecraft). It relies on Mbed to
+ * access the analogue pins.
+ * 
+ * The current Sun Sensor model is simple: the three photodiodes are placed
+ * perpendicularly to each other. 
+ * 
+ * Each photodiode senses the light from the Sun with an amplitude related
+ * to the angle of the Sun following the relation:
+ * 
+ * @f[
+ *     V_i = V_0 \cos \alpha
+ * @f]
+ * 
+ * If we reduce the number of photodiodes to two, the direction of the Sun is given by:
+ * 
+ * @f[
+ * \mathbf{s}_{s}^{*}=
+ * \left[\begin{array}{lll}
+ *     1 & \tan \alpha_{1} / \tan \alpha_{2} & \tan \alpha_{1}
+ * \end{array}\right]^{\top}
+ * @f]
+ * 
+ * Then the vector is normalized:
+ * 
+ * @f[
+ *     \mathbf{\hat{s}} = \frac{\mathbf{s}_{s}^{*}}{\mathbf{s}_{s}^{*\top}\mathbf{s}_{s}^{*}}
+ * @f]
+ * 
+ * Now, two elements of the Sun direction are measured and the third element
+ * can be found using a third photodiode, then it is possible to fully determine
+ * the direction of the Sun.
+ * 
+ * In this project's configuration, the three photocells are placed orthogonally
+ * and output a voltage, so the Sun direction vector can be expressed in the
+ * following way:
+ * 
+ * @f[
+ * \mathbf{\hat{s}}=
+ *     \left[\begin{array}{ccc}
+ *         \frac{V_i}{V_{max,i}} & \frac{V_j}{V_{max,j}} & \frac{V_k}{V_{max,k}}
+ *     \end{array}\right]^\top
+ * @f]
+ * 
+ * This system is the most simple configuration of Sun sensor, and the more
+ * sophisticated system can be made, notably using a linear array of photodiode
+ * under a slit. It was not done as the main focus of the project was the algorithms. 
  * # Example code
  * 
- * @code
- * #include "mbed.h"
- * #include "SunSensor.h"
+ * @see SunSensor.test.h
  * 
- * SunSensor sun();
- * float r_sun[3] = {0,0,0};
  * 
- * while(1){
- *     sun.getSunVector(r_sun);
- *     wait_ms(100);
- * }
+ * # References
+ * - Spacecraft Dynamics and Control, by Chris Hall
+ * - Photodiode Placement & Algorithms for CubeSat Attitude Determination, by
+ * Springmann, John C and Cutler, James W
  * 
- * @endcode
  * 
  * # License
  * <b>(C) Copyright 2019 Remy CHATEL</b>

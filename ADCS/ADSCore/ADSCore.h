@@ -12,8 +12,8 @@
  * @details
  * # Description
  * This library provide tools to perform the attitude determination of a spacecraft
- * based on the fusion of multiple sensors (IMU and Sun sensor) and then filtering
- * of the computed attitude.
+ * based on the fusion of multiple sensors (IMU and Sun sensor) using the QuEst
+ * algorithm and then filtering of the computed attitude using a Kalman Filter.
  * 
  * @see ADSCore.h
  * 

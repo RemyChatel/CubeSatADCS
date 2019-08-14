@@ -19,6 +19,41 @@
  * 
  * @see Filters::KalmanFilter
  * 
+ * ## Working principle of the filter
+ * Now that the attitude quaternion has been estimated with QuEst, it is very likely
+ * that the result will have some noise and further filtering is required.
+ * 
+ * The Kalman filter is an algorithm that computes the best estimate of the state for
+ * a time-varying process. Its predictor-corrector structure computes what the new state
+ * should be according to the model and the elapsed time since the last update (prediction).
+ * Then, it compares the prediction to the measured state in order to update the prediction
+ * (correction) as shown in the figure below. The strength of the correction is
+ * determined by the Kalman gain, which is computed using the different noise's covariances
+ * 
+ * This method avoids integrating since the fixed epoch, as the integration is done only
+ * between two iterations of the filter while carrying the information of past measurements
+ * to the next step to provide a better prediction.
+ * 
+ * ![Kalman Filter flowchart](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Basic_concept_of_Kalman_filtering.svg/640px-Basic_concept_of_Kalman_filtering.svg.png "Kalman Filter flowchart from Wikipedia")
+ * 
+ * ## Initialisation
+ * The Kalman filter is initialized with knowledge of the spacecraft dynamic model and
+ * statistical information about the process and the sensors (the covariance).
+ * 
+ * In the context of this project, the system state will be the combination of the
+ * attitude quaternion and the angular rates. The resulting 7-state allows to propagate
+ * the rotation of the spacecraft according to its dynamic model:
+ * 
+ * @f{align}{ 
+ *     \dot{\mathbf{\omega}}   & = I^{-1} \left( -\mathbf{\omega}^\times I \mathbf{\omega} + \mathbf{u} + \mathbf{v} \right)\\
+ *     \dot{\mathbf{\epsilon}} & = \frac{1}{2} \left( \eta \mathbf{1} + \mathbf{\epsilon}^\times \right) \mathbf{\omega}\\
+ *     \dot{\eta}     & = \frac{1}{2} \mathbf{\epsilon}^T \mathbf{\omega}
+ * @f}
+ * 
+ * Where @f$I@f$ is the inertia matrix of the satellite, @f$\eta@f$ the scalar part of
+ * the attitude quaternion, @f$\epsilon@f$ the vector part of the quaternion, @f$\omega@f$
+ * the angular rates, @f$u@f$ the control torque and @f$w@f$ the disturbance torque.
+ * 
  * # Example code
  * 
  * @see Filters.test.cpp
@@ -38,6 +73,7 @@
  * - "Spacecraft Dynamic and Control: An introduction",
  * by A. de Ruiter, C. Damaren and J Forbes,
  * - "Fundamentals of Astrodynamics and Applications", by D. Vallado,
+ * - Kalman Filter flowchart from Wikimedia, https://en.wikipedia.org/wiki/File:Basic_concept_of_Kalman_filtering.svg
  * 
  * # License
  * <b>(C) Copyright 2019 Remy CHATEL</b>

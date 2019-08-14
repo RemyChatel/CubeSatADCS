@@ -13,6 +13,11 @@
  * This library provides a test function for the MPU9150 module and also
  * serves as an example program for the module.
  * 
+ * To use it, connect the the IMU SDA to the board's SDA1 and the SCL to
+ * the board's SCL1. Then connect power and ground. 
+ *
+ * No pull-ups are required for the Nucleo32 (and probably same with Nucleo64)
+ * as the board have built-in pull-ups.
  * 
  * @see MPU9150.h
  * 

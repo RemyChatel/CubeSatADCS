@@ -9,9 +9,23 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script><script type="text/javascript" async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -46,6 +60,22 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('group___estimators_gr.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -87,11 +117,31 @@ Functions</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Remy CHATEL </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>GNU Public License v3.0</dd></dl>
 <h1>Description</h1>
+<h2>Quick overview</h2>
 <p>In order to determine the attitude of a satellite, it is useful to fuse the output of multiple sensors to increase accuracy.</p>
 <p>This library provides estimators algorithm that returns the rotation quaternion using multiple sensors.</p>
 <p>The QuEst (Quaternion Estimator) algorithm is a way of solving Wahba's problem:</p>
 <p>If we have a set of measurements in the body frame and a set of the same measurememts in an inertial frame, then we can try to find the optimal rotation that links best each pair of body-inertial measurements.</p>
 <p>The QuEst algorithm works by finding an optimal eigen value for the combined measurement matrix, using a Newton solver.</p>
+<h2>Detailed description</h2>
+<p>Now that both body frame measurements and ECI frame theoretical vectors are available, the rotation that links each pair can be estimated:</p>
+<p class="formulaDsp">
+\begin{equation} \hat{\mathbf{s}}_{b k}=\mathbf{C}_{b a} \hat{\mathbf{s}}_{a k} \end{equation}
+</p>
+<p>where \(\hat{\mathbf{s}}_{b k}\) is the measurement in the body frame, \(\hat{\mathbf{s}}_{a k}\) is the model in the ECI frame and \(\mathbf{C}_{b a}\) is the rotation matrix between the two.</p>
+<p>The \(\mathbf{C}_{b a}\) would supposedly unique if the measurement were noiseless and accurate as well as if the model is perfect. The goal is therefore to find the rotation that would fit best all the vector pairs.</p>
+<p>This problem can be looked at as the following optimization problem, called <em>Whaba's problem</em></p>
+<p class="formulaDsp">
+\begin{equation} J\left(\mathbf{C}_{b a}\right) = \frac{1}{2} \sum_{k=1}^{N} w_{k}\left(\hat{\mathbf{s}}_{b k}-\mathbf{C}_{b a} \hat{\mathbf{s}}_{a k}\right)^{T}\left(\hat{\mathbf{s}}_{b k}-\mathbf{C}_{b a} \hat{\mathbf{s}}_{a k}\right) \end{equation}
+</p>
+<p>and in term of quaternion, with \( B = \left(\sum_{k=1}^{N} w_{k} \hat{\mathbf{s}}_{a k} \hat{\mathbf{s}}_{b k}^{T}\right)^T \):</p>
+<p class="formulaDsp">
+\begin{equation} \hat{J}(\mathbf{q})=\left[\begin{array}{cc}{\eta} &amp; {\epsilon^{T}}\end{array}\right] \underbrace{\left[\begin{array}{cc}{\mathbf{K}_{11}} &amp; {\mathbf{k}_{12}} \\ {\mathbf{k}_{12}^{T}} &amp; {k_{22}}\end{array}\right]}_{\mathbf{K}} \underbrace{\left[\begin{array}{l} {\eta} \\ {\epsilon} \end{array}\right]}_{\mathbf{q}} \end{equation}
+</p>
+<p>where \( k_{22} = tr( \mathbf{B} ) \) , \( \mathbf{K}_{11} = \mathbf{B} + \mathbf{B}^T - k_{22}\mathbf{1} \) and \( \mathbf{k}_{12}=\left[\left(B_{23}-B_{32}\right)\left(B_{31}-B_{13}\right)\left(B_{12}-B_{21}\right)\right]^{T} \) .</p>
+<p>After some derivation, the QuEst (Quaternion Estimator) algorithm can be found. This algorithm solves the optimization function by finding the maximum eigenvalue of \( \mathbf{K}\) . The resulting eigenvector will be the best quaternion of the optimization problem.</p>
+<p>In order to avoid solving explicitly for the eigenvalue, which is a computationally-intensive process, the QuEst algorithm uses Newton's method to compute a reasonable approximation of the eigenvalue, then calculate the eigenvector. For that, it needs an initial value to converge in the right direction.</p>
+<p>See <em>Spacecraft dynamics and control: An introduction</em> for the full derivation of the implemented algorithm.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="group___estimators_gr.html#ga4b071fa4bda8225098b5806ea45f8cb6" title="Return the quaternion estimate from the QuEst Algorithm.">Estimators::QUEST</a></dd></dl>
 <h1>Example code</h1>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="_estimators_8test_8cpp.html" title="Source code for Estimators.test.h.">Estimators.test.cpp</a></dd></dl>
@@ -279,11 +329,14 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.15
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
 </body>
 </html>
