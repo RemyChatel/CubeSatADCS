@@ -13,6 +13,13 @@
  * This library provides a test function for the Filters module and also
  * serves as an example program for the module.
  * 
+ * To generate the test vectors, use the Python script provided:
+ * - Execute the FilterTestGenerator.py to create the vectors
+ * - Remove the unwanted commas at the begining and end of the generated files
+ * - Compile and upload the program in the board
+ * - Set the correct COM port in FilterTestSerial.py
+ * - Hold the reset button on the board
+ * - Execute FilterTestSerial.py then release the reset button
  * 
  * @see Filters.h
  * 
