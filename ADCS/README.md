@@ -2,7 +2,7 @@
 
 # CubeSat Attitude Determination and Control System
 
-Developped by Remy Chatel for the University of Glasgow in the context of
+Developed by Remy Chatel for the University of Glasgow in the context of
 a MSc in Electrical and Electronical Engineering.
 
 ## Description
@@ -27,7 +27,7 @@ usually, the output is a 7-elements state vector containing the rotation quatern
 and the angular rates.
 
 #### ADS Core
-This project developped an inexpensive Attitude Determination System for CubeSat
+This project developed an inexpensive Attitude Determination System for CubeSat
 using a Sun sensor (made of three photodiodes) and an IMU as sensors. The data
 is then processed by a QuEst algorithm and filtered using a quaternion-based 7-state
 Kalman filter. 
@@ -36,14 +36,14 @@ Kalman filter.
 
 ### How to use it
 This project was done on the Nucleo32-L432KC board, but can work just as well
-on most other Nucleo board provided they have enough memroy space (6kB of RAM
+on most other Nucleo board provided they have enough memory space (6kB of RAM
 and 68kB of Flash).
 
 Once all the components are sourced and connected, the inertia model of the system
 (CubeSat) must be known for the Kalman Filter. Also, some knowledge of the variance
 of the sensor can help start the filter.
 
-Then, all information can be writen in the ADSCore.test.cpp file and compiled. The
+Then, all information can be written in the ADSCore.test.cpp file and compiled. The
 output is read in the USB Serial console.
 
 If changes are required to the models or to the sensors, see documentation to find
@@ -58,7 +58,7 @@ and their documentation can be found in the Modules section
 ### Bill of material
 - Nucleo32L432KC board
 - MPU9150 or MPU9250 IMU
-- Three anaolg photodiodes (OPT101 for instance)
+- Three analogue photodiodes (OPT101 for instance)
 - eventually Solar eclipse glasses to pry out the filters
 
 ## Dependencies and Compatibility
@@ -66,7 +66,7 @@ This project needs <std::cmath>, <std::vector> and the ARM Mbed
 (https://www.mbed.com/en/) framework to work properly. However, changing away
 from Mbed to make it work on other platforms should not be too difficult as only
 the IMU and SunSensor have to be changed to interface with the hardware
-(I2C and analog inputs).
+(I2C and analogue inputs).
 
 Porting the code to Arduino should not be too much of an issue.
 However, the absence of Floating Point Unit and the fact that most Arduinos are
