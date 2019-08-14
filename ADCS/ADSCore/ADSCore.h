@@ -18,6 +18,7 @@
  * @see ADSCore.h
  * 
  * # Dependencies and data type
+ * ![Dependency graph](_a_d_s_core_8h__incl.png)
  * This library depends on:
  * - the Mbed framework (https://www.mbed.com/en/)
  * - <std::cmath> in order to perform cos, sin and sqrt operations.

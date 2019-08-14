@@ -1,28 +1,28 @@
 <map id="Matrix::zeros" name="Matrix::zeros">
-<area shape="rect" id="node1" title="Creates a matrix of a given size filled with zeros." alt="" coords="732,296,831,323"/>
+<area shape="rect" id="node1" title="Creates a matrix of a given size filled with zeros." alt="" coords="732,385,831,412"/>
 <area shape="rect" id="node2" href="$class_a_d_s_core.html#ab8873bff74a052260b3e251eac584059" title="Default constructor for the Attitude Determination core." alt="" coords="542,5,681,32"/>
-<area shape="rect" id="node3" href="$class_a_d_s_core.html#a035baa9fa452899dee976bbcdc4430fd" title="Sets the Kalman filters variances, inertia matrices and initial position when there is no reaction wh..." alt="" coords="539,56,684,83"/>
+<area shape="rect" id="node3" href="$class_a_d_s_core.html#a035baa9fa452899dee976bbcdc4430fd" title="Sets the Kalman filters variances, inertia matrices and initial position when there is no reaction wh..." alt="" coords="539,107,684,133"/>
 <area shape="rect" id="node4" href="$_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="381,107,455,133"/>
 <area shape="rect" id="node5" href="$class_a_d_s_core.html#a65be8547feafaddb284e7e1c234606b8" title="Updates the attitude of the spacecraft by combining the output the different sensors and filtering th..." alt="" coords="550,157,673,184"/>
 <area shape="rect" id="node6" href="$group___estimators_gr.html#ga4b071fa4bda8225098b5806ea45f8cb6" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="543,208,680,235"/>
-<area shape="rect" id="node9" href="$class_filters_1_1_kalman_filter.html#aab2cc3677e9fcb19fff16b84c997f30a" title="Default constructor for the Kalman filter class." alt="" coords="542,259,681,301"/>
-<area shape="rect" id="node10" href="$_filters_8test_8h.html#a83206b65b93e1ff565f97ae1195e5bd1" title="Test of the Filters module." alt="" coords="169,309,289,336"/>
-<area shape="rect" id="node11" href="$class_matrix.html#a89e843f74660aabb9b6403a738b6ee42" title="Creates a square identity matrix of a given size." alt="" coords="568,528,655,555"/>
-<area shape="rect" id="node16" href="$_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="17,731,100,757"/>
-<area shape="rect" id="node24" href="$class_matrix.html#adcb1fd7df0185de9103e20004fe037a3" title="Calculates an approximation of the inverse by using a Taylor expansion." alt="" coords="171,883,287,909"/>
-<area shape="rect" id="node25" href="$class_matrix.html#a520e64ea013c1a47b5adc7f92e56eca1" title="Compute the quaternion multiplication of the two given vectors." alt="" coords="173,933,285,960"/>
-<area shape="rect" id="node26" href="$_m_p_u9150_8test_8h.html#a8ccd2f76fdc4d994f730522503705b22" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="559,984,663,1011"/>
-<area shape="rect" id="node7" href="$class_a_d_s_core.html#a8d16f3419b12b7891a00ed824cd2673a" title="Updates the attitude of the spacecraft by combining the output the different sensors and filtering th..." alt="" coords="357,157,479,184"/>
-<area shape="rect" id="node8" href="$_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="17,393,100,420"/>
-<area shape="rect" id="node12" href="$class_a_d_s_core.html#a43d2bdc8156b722edec88fe7d16874ea" title="Sets the Kalman filters variances, inertia matrices and initial position as well as the proprieties o..." alt="" coords="345,360,491,387"/>
-<area shape="rect" id="node13" href="$group___estimators_gr.html#ga5f10766fb1abd03a0d32e21e671f83d7" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="349,411,487,437"/>
-<area shape="rect" id="node14" href="$class_filters_1_1_kalman_filter.html#a6f49d9fd41f58874cc4e358a4ec7ae0d" title="Filter the measured quaternion using a Kalman filter." alt="" coords="349,462,487,503"/>
-<area shape="rect" id="node15" href="$class_matrix.html#a1dee1794adfb8da343424277ca0f8bfe" title="Converts Euler angles to 1&#45;2&#45;3 rotation matrix (X&#45;&gt;Y&#45;&gt;Z)" alt="" coords="160,579,297,605"/>
-<area shape="rect" id="node17" href="$class_matrix.html#a9e68c61a21868c0aff4e245679a61e15" title="Converts Euler angles to 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="171,731,287,757"/>
-<area shape="rect" id="node18" href="$class_matrix.html#a7c31602d52fdedfa741e49e8d2a4ea52" title="Calculates the Rotation Matrix Transform along &#39;x&#39; axis in radians." alt="" coords="371,579,465,605"/>
-<area shape="rect" id="node21" href="$class_matrix.html#a72961e369b0fe59d745b8a62dc5710e6" title="Calculates the Rotation Matrix Transform along &#39;y&#39; axis in radians." alt="" coords="371,629,465,656"/>
-<area shape="rect" id="node22" href="$class_matrix.html#a884afad227b3ea1455d12839cb9c4396" title="Calculates the Rotation Matrix Transform along &#39;z&#39; axis in radians." alt="" coords="371,680,465,707"/>
-<area shape="rect" id="node23" href="$class_matrix.html#af65e206cc253b357ba3fe2591845fcdb" title="Calculates the Translation Matrix to coordenates (x&#39; y&#39; z&#39;)." alt="" coords="367,781,469,808"/>
-<area shape="rect" id="node19" href="$class_matrix.html#aa2bbcaaabd51ddf0e094c9c5e73dadd0" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) direction cosine Matrix." alt="" coords="175,629,282,656"/>
-<area shape="rect" id="node20" href="$class_matrix.html#a78fdb4b3ad06499e4492c4541316c6d3" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) cosine direction Matrix." alt="" coords="5,629,112,656"/>
+<area shape="rect" id="node9" href="$class_filters_1_1_kalman_filter.html#aab2cc3677e9fcb19fff16b84c997f30a" title="Default constructor for the Kalman filter class." alt="" coords="542,985,681,1026"/>
+<area shape="rect" id="node10" href="$_filters_8test_8h.html#a83206b65b93e1ff565f97ae1195e5bd1" title="Test of the Filters module." alt="" coords="169,723,289,749"/>
+<area shape="rect" id="node11" href="$class_matrix.html#a89e843f74660aabb9b6403a738b6ee42" title="Creates a square identity matrix of a given size." alt="" coords="568,512,655,539"/>
+<area shape="rect" id="node16" href="$_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="17,436,100,463"/>
+<area shape="rect" id="node24" href="$class_matrix.html#adcb1fd7df0185de9103e20004fe037a3" title="Calculates an approximation of the inverse by using a Taylor expansion." alt="" coords="171,933,287,960"/>
+<area shape="rect" id="node25" href="$class_matrix.html#a520e64ea013c1a47b5adc7f92e56eca1" title="Compute the quaternion multiplication of the two given vectors." alt="" coords="173,233,285,260"/>
+<area shape="rect" id="node26" href="$_m_p_u9150_8test_8h.html#a8ccd2f76fdc4d994f730522503705b22" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="559,1051,663,1077"/>
+<area shape="rect" id="node7" href="$class_a_d_s_core.html#a8d16f3419b12b7891a00ed824cd2673a" title="Updates the attitude of the spacecraft by combining the output the different sensors and filtering th..." alt="" coords="357,208,479,235"/>
+<area shape="rect" id="node8" href="$_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="17,233,100,260"/>
+<area shape="rect" id="node12" href="$class_a_d_s_core.html#a43d2bdc8156b722edec88fe7d16874ea" title="Sets the Kalman filters variances, inertia matrices and initial position as well as the proprieties o..." alt="" coords="345,781,491,808"/>
+<area shape="rect" id="node13" href="$group___estimators_gr.html#ga5f10766fb1abd03a0d32e21e671f83d7" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="349,512,487,539"/>
+<area shape="rect" id="node14" href="$class_filters_1_1_kalman_filter.html#a6f49d9fd41f58874cc4e358a4ec7ae0d" title="Filter the measured quaternion using a Kalman filter." alt="" coords="349,715,487,757"/>
+<area shape="rect" id="node15" href="$class_matrix.html#a1dee1794adfb8da343424277ca0f8bfe" title="Converts Euler angles to 1&#45;2&#45;3 rotation matrix (X&#45;&gt;Y&#45;&gt;Z)" alt="" coords="160,487,297,513"/>
+<area shape="rect" id="node17" href="$class_matrix.html#a9e68c61a21868c0aff4e245679a61e15" title="Converts Euler angles to 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="171,385,287,412"/>
+<area shape="rect" id="node18" href="$class_matrix.html#a7c31602d52fdedfa741e49e8d2a4ea52" title="Calculates the Rotation Matrix Transform along &#39;x&#39; axis in radians." alt="" coords="371,411,465,437"/>
+<area shape="rect" id="node21" href="$class_matrix.html#a72961e369b0fe59d745b8a62dc5710e6" title="Calculates the Rotation Matrix Transform along &#39;y&#39; axis in radians." alt="" coords="371,461,465,488"/>
+<area shape="rect" id="node22" href="$class_matrix.html#a884afad227b3ea1455d12839cb9c4396" title="Calculates the Rotation Matrix Transform along &#39;z&#39; axis in radians." alt="" coords="371,309,465,336"/>
+<area shape="rect" id="node23" href="$class_matrix.html#af65e206cc253b357ba3fe2591845fcdb" title="Calculates the Translation Matrix to coordenates (x&#39; y&#39; z&#39;)." alt="" coords="367,563,469,589"/>
+<area shape="rect" id="node19" href="$class_matrix.html#aa2bbcaaabd51ddf0e094c9c5e73dadd0" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) direction cosine Matrix." alt="" coords="175,284,282,311"/>
+<area shape="rect" id="node20" href="$class_matrix.html#a78fdb4b3ad06499e4492c4541316c6d3" title="Create the 3&#45;2&#45;1 (or Z&#45;Y&#45;X) cosine direction Matrix." alt="" coords="5,284,112,311"/>
 </map>

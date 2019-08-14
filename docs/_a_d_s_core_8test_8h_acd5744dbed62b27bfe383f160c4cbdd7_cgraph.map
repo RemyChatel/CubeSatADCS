@@ -36,7 +36,7 @@
 <area shape="rect" id="node25" href="$class_astro_lib_1_1_ground.html#a942dcbe4583d23699c0c762634be54d9" title="Sets the Julian Date member of the orbit." alt="" coords="349,485,556,512"/>
 <area shape="rect" id="node26" href="$class_astro_lib_1_1_ground.html#ac5f036f9e505d93425e0ba1b74a3f73e" title="Set the orbit parameters." alt="" coords="365,536,540,563"/>
 <area shape="rect" id="node36" href="$class_matrix.html#a88e35a3795f98d4cb63f01c647024996" title="Determines weather a Matrix is a Single Column or Row." alt="" coords="830,637,945,664"/>
-<area shape="rect" id="node38" href="$class_matrix.html#ae480a663270fc0256b5e26b008a987ae" title="Compute the norm of an (n x 1) or (1 x n) vector." alt="" coords="405,713,500,740"/>
+<area shape="rect" id="node38" href="$class_matrix.html#a12d963dd26d135bdd197cac54ae6bdaf" title="Compute the norm of an (n x 1) or (1 x n) vector." alt="" coords="405,713,500,740"/>
 <area shape="rect" id="node41" href="$class_matrix.html#ad7da400ed11b2e1a2d82bdadcb52c314" title="This function resizes the Matrix to fit new data or cropped it, operator &lt;&lt; can overwrite entire Matr..." alt="" coords="399,840,506,867"/>
 <area shape="rect" id="node39" href="$class_matrix.html#af698f665522164d4c3961120c94ff080" title="Returns the sum of every cell in the Matrix." alt="" coords="842,713,933,740"/>
 <area shape="rect" id="node40" href="$class_matrix.html#a8b75c0669091bb9ebc51b727f70f2d5f" title="Returns the dot Product of any two same leght vectors. In this case a vector is defined as a [1,..." alt="" coords="631,688,715,715"/>

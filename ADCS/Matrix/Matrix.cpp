@@ -1035,7 +1035,7 @@
         }
     }
 
-    float Matrix::norm(){
+    float Matrix::norm() const{
         if(this->isVector()){
             float sum = 0;
             sum = dot(*this, *this);
@@ -1091,6 +1091,18 @@
             tmp(4) = leftM._matrix[0][0]*rightM._matrix[3][0] + leftM._matrix[1][0]*rightM._matrix[2][0] - leftM._matrix[2][0]*rightM._matrix[1][0] + leftM._matrix[3][0]*rightM._matrix[0][0];
             return tmp;
         }
+    }
+
+    Matrix Matrix::quatConj(const Matrix& leftM){
+        Matrix out = Matrix(leftM);
+        out(2) *= -1;
+        out(3) *= -1;
+        out(4) *= -1;
+        return out;
+    }
+
+    Matrix Matrix::quatInv(const Matrix& leftM){
+        return quatConj(leftM)/leftM.norm();
     }
 
 // Kinematics Methods

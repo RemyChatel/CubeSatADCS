@@ -32,6 +32,8 @@ using a Sun sensor (made of three photodiodes) and an IMU as sensors. The data
 is then processed by a QuEst algorithm and filtered using a quaternion-based 7-state
 Kalman filter. 
 
+![Dependency graph](_a_d_s_core_8h__incl.png)
+
 ### How to use it
 This project was done on the Nucleo32-L432KC board, but can work just as well
 on most other Nucleo board provided they have enough memroy space (6kB of RAM

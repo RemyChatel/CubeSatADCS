@@ -636,7 +636,7 @@ public:
      * @brief Compute the norm of an (n x 1) or (1 x n) vector
      * @return The norm of the vector
      */
-    float norm();
+    float norm() const;
 
     /**
      * @brief Compute the cross product of two (3x1) vectors
@@ -654,6 +654,22 @@ public:
      * @return The quaternion resulting from the multiplication
      */
     static Matrix quatmul(const Matrix& leftM, const Matrix& rightM);
+
+    /**
+     * @brief
+     * Compute the quaternion inverse
+     * @param leftM The quaternion to invert
+     * @return The inverted quaternion
+     */
+    static Matrix quatInv(const Matrix& leftM);
+
+    /**
+     * @brief
+     * Compute the quaternion conjugate
+     * @param leftM The quaternion to conjugate
+     * @return The conjugate quaternion
+     */
+    static Matrix quatConj(const Matrix& leftM);
 
 ///@name Kinematics Methods
     /**

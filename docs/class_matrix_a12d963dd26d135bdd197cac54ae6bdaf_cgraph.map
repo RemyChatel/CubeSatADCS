@@ -1,0 +1,7 @@
+<map id="Matrix::norm" name="Matrix::norm">
+<area shape="rect" id="node1" title="Compute the norm of an (n x 1) or (1 x n) vector." alt="" coords="5,56,100,83"/>
+<area shape="rect" id="node2" href="$class_matrix.html#a88e35a3795f98d4cb63f01c647024996" title="Determines weather a Matrix is a Single Column or Row." alt="" coords="286,5,401,32"/>
+<area shape="rect" id="node3" href="$class_matrix.html#af698f665522164d4c3961120c94ff080" title="Returns the sum of every cell in the Matrix." alt="" coords="298,107,389,133"/>
+<area shape="rect" id="node4" href="$class_matrix.html#a8b75c0669091bb9ebc51b727f70f2d5f" title="Returns the dot Product of any two same leght vectors. In this case a vector is defined as a [1,..." alt="" coords="148,56,232,83"/>
+<area shape="rect" id="node5" href="$class_matrix.html#ad0c96cdea0d2ae3403653ca90aa70796" title="Transposes Matrix, return new Object." alt="" coords="280,56,407,83"/>
+</map>

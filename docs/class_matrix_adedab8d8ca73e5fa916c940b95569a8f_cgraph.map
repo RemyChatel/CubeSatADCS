@@ -1,0 +1,10 @@
+<map id="Matrix::quatInv" name="Matrix::quatInv">
+<area shape="rect" id="node1" title="Compute the quaternion inverse." alt="" coords="5,57,112,84"/>
+<area shape="rect" id="node2" href="$class_matrix.html#a15fcf84ccbcfe2d7d16574fb79838b84" title="Compute the quaternion conjugate." alt="" coords="160,19,277,45"/>
+<area shape="rect" id="node4" href="$class_matrix.html#a12d963dd26d135bdd197cac54ae6bdaf" title="Compute the norm of an (n x 1) or (1 x n) vector." alt="" coords="171,95,266,121"/>
+<area shape="rect" id="node3" href="$class_matrix.html#a2dba13c45127354c9f75ef576f49269b" title="Default constructor." alt="" coords="325,5,428,32"/>
+<area shape="rect" id="node5" href="$class_matrix.html#a88e35a3795f98d4cb63f01c647024996" title="Determines weather a Matrix is a Single Column or Row." alt="" coords="482,56,597,83"/>
+<area shape="rect" id="node6" href="$class_matrix.html#af698f665522164d4c3961120c94ff080" title="Returns the sum of every cell in the Matrix." alt="" coords="494,157,585,184"/>
+<area shape="rect" id="node7" href="$class_matrix.html#a8b75c0669091bb9ebc51b727f70f2d5f" title="Returns the dot Product of any two same leght vectors. In this case a vector is defined as a [1,..." alt="" coords="335,107,419,133"/>
+<area shape="rect" id="node8" href="$class_matrix.html#ad0c96cdea0d2ae3403653ca90aa70796" title="Transposes Matrix, return new Object." alt="" coords="476,107,603,133"/>
+</map>

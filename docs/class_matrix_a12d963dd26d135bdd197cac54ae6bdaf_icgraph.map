@@ -1,0 +1,13 @@
+<map id="Matrix::norm" name="Matrix::norm">
+<area shape="rect" id="node1" title="Compute the norm of an (n x 1) or (1 x n) vector." alt="" coords="360,208,455,235"/>
+<area shape="rect" id="node2" href="$group___estimators_gr.html#ga5f10766fb1abd03a0d32e21e671f83d7" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="174,5,311,32"/>
+<area shape="rect" id="node3" href="$_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="24,107,107,133"/>
+<area shape="rect" id="node4" href="$class_filters_1_1_kalman_filter.html#a6f49d9fd41f58874cc4e358a4ec7ae0d" title="Filter the measured quaternion using a Kalman filter." alt="" coords="173,310,312,351"/>
+<area shape="rect" id="node5" href="$_filters_8test_8h.html#a83206b65b93e1ff565f97ae1195e5bd1" title="Test of the Filters module." alt="" coords="5,347,125,373"/>
+<area shape="rect" id="node6" href="$class_matrix.html#adedab8d8ca73e5fa916c940b95569a8f" title="Compute the quaternion inverse." alt="" coords="189,56,296,83"/>
+<area shape="rect" id="node7" href="$class_matrix.html#a2166cdc8a2cbb3152b5a10ec214bc641" title="Converts a rotation quaternion to a 3&#45;2&#45;1 rotation matrix (Z&#45;&gt;Y&#45;&gt;X)" alt="" coords="186,208,299,235"/>
+<area shape="rect" id="node8" href="$_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="24,208,107,235"/>
+<area shape="rect" id="node9" href="$class_matrix.html#ad30cb5c3b09e8d54ddc93077db1833e9" title="Converts a rotation quaternion in Euler angles (3&#45;2&#45;1 convention)" alt="" coords="179,157,306,184"/>
+<area shape="rect" id="node11" href="$_m_p_u9150_8test_8h.html#a8ccd2f76fdc4d994f730522503705b22" title="Test of the Sun Sensor and other sensors return 1 if successful, 0 otherwise." alt="" coords="191,427,295,453"/>
+<area shape="rect" id="node10" href="$_a_d_s_core_8test_8h.html#acd5744dbed62b27bfe383f160c4cbdd7" title="Testing function for the ADSCore module." alt="" coords="28,157,103,184"/>
+</map>

@@ -1,4 +1,5 @@
 <map id="Matrix::quatmul" name="Matrix::quatmul">
-<area shape="rect" id="node1" title="Compute the quaternion multiplication of the two given vectors." alt="" coords="136,5,248,32"/>
-<area shape="rect" id="node2" href="$_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="5,5,88,32"/>
+<area shape="rect" id="node1" title="Compute the quaternion multiplication of the two given vectors." alt="" coords="136,31,248,57"/>
+<area shape="rect" id="node2" href="$_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="5,5,88,32"/>
+<area shape="rect" id="node3" href="$_matrix_8test_8h.html#a9774c4876dea878dce03b248a259eaa1" title="Test of the Matrix library return 1 if successful, 0 otherwise." alt="" coords="5,56,88,83"/>
 </map>

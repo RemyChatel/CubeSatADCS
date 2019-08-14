@@ -15,7 +15,7 @@ var class_matrix =
     [ "isSquare", "class_matrix.html#a5420e7df2978c907c10cdbb50aff5b5f", null ],
     [ "isVector", "class_matrix.html#a88e35a3795f98d4cb63f01c647024996", null ],
     [ "isZero", "class_matrix.html#a5d75aad25d2977f05a5bf1281029f657", null ],
-    [ "norm", "class_matrix.html#ae480a663270fc0256b5e26b008a987ae", null ],
+    [ "norm", "class_matrix.html#a12d963dd26d135bdd197cac54ae6bdaf", null ],
     [ "operator -", "class_matrix.html#afd24669f907b2a04373c1d3e7df427aa", null ],
     [ "operator()", "class_matrix.html#a2c6cb03f8e53c78ba16c5b56fa8c9531", null ],
     [ "operator()", "class_matrix.html#a0ab0c2fa09390c02e473894d821ad165", null ],

@@ -41,7 +41,7 @@ int QuestTest(){
     printf("Connection OK\n\r");
 
     Matrix quat(4,1);
-    // #define NOISE
+    #define NOISE       ///< Comment this to remove the noise from the data
     #ifdef NOISE
     float coef_th[9] = {0.4153, 0.4472, 0.7921, -0.7652, 0.6537, 0.0274, -0.5056, -0.6104, 0.6097};
     Matrix mat_th = Matrix(3,3, coef_th);
@@ -144,6 +144,12 @@ int QuestTest(){
     (RAD2DEG*Matrix::quat2euler(Matrix::rot2quat(mat_th))).print();
     printf("Computed Euler\n\r");
     (RAD2DEG*Matrix::quat2euler(quat)).print();
+
+    printf("Error quaternion\n\r");
+    Matrix q_error = Matrix::quatmul(Matrix::rot2quat(mat_th), Matrix::quatInv(quat));
+    q_error.print();
+    printf("Angular error Euler\n\r");
+    (RAD2DEG*Matrix::quat2euler(q_error)).print();
 
     /************* PRINTS END **************/
 

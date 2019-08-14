@@ -106,6 +106,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <p>The output is the rotation required to go from a reference frame to the body frame of the spacecraft. There are different possible ways to represent rotation, but usually, the output is a 7-elements state vector containing the rotation quaternion and the angular rates.</p>
 <h4>ADS Core</h4>
 <p>This project developped an inexpensive Attitude Determination System for CubeSat using a Sun sensor (made of three photodiodes) and an IMU as sensors. The data is then processed by a QuEst algorithm and filtered using a quaternion-based 7-state Kalman filter.</p>
+<img src="_a_d_s_core_8h__incl.png" alt="Dependency graph" class="inline"/>
 <h3>How to use it</h3>
 <p>This project was done on the Nucleo32-L432KC board, but can work just as well on most other Nucleo board provided they have enough memroy space (6kB of RAM and 68kB of Flash).</p>
 <p>Once all the components are sourced and connected, the inertia model of the system (CubeSat) must be known for the Kalman Filter. Also, some knowledge of the variance of the sensor can help start the filter.</p>

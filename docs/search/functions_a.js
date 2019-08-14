@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['norm',['norm',['../class_matrix.html#ae480a663270fc0256b5e26b008a987ae',1,'Matrix']]]
+  ['norm',['norm',['../class_matrix.html#a12d963dd26d135bdd197cac54ae6bdaf',1,'Matrix']]]
 ];

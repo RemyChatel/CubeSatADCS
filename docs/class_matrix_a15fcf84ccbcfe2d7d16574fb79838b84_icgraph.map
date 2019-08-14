@@ -1,0 +1,5 @@
+<map id="Matrix::quatConj" name="Matrix::quatConj">
+<area shape="rect" id="node1" title="Compute the quaternion conjugate." alt="" coords="291,5,408,32"/>
+<area shape="rect" id="node2" href="$class_matrix.html#adedab8d8ca73e5fa916c940b95569a8f" title="Compute the quaternion inverse." alt="" coords="136,5,243,32"/>
+<area shape="rect" id="node3" href="$_estimators_8test_8h.html#ae5db03befd0604bd8758a8c0b429d9fe" title="Test of the Estimators module." alt="" coords="5,5,88,32"/>
+</map>

@@ -1,6 +1,6 @@
 <map id="Estimators::QUEST" name="Estimators::QUEST">
 <area shape="rect" id="node1" title="Return the quaternion estimate from the QuEst Algorithm." alt="" coords="5,119,143,145"/>
-<area shape="rect" id="node2" href="$class_matrix.html#ae480a663270fc0256b5e26b008a987ae" title="Compute the norm of an (n x 1) or (1 x n) vector." alt="" coords="191,43,285,69"/>
+<area shape="rect" id="node2" href="$class_matrix.html#a12d963dd26d135bdd197cac54ae6bdaf" title="Compute the norm of an (n x 1) or (1 x n) vector." alt="" coords="191,43,285,69"/>
 <area shape="rect" id="node5" href="$class_matrix.html#a8b75c0669091bb9ebc51b727f70f2d5f" title="Returns the dot Product of any two same leght vectors. In this case a vector is defined as a [1,..." alt="" coords="341,93,425,120"/>
 <area shape="rect" id="node6" href="$class_matrix.html#ad0c96cdea0d2ae3403653ca90aa70796" title="Transposes Matrix, return new Object." alt="" coords="480,144,607,171"/>
 <area shape="rect" id="node7" href="$class_matrix.html#a89e843f74660aabb9b6403a738b6ee42" title="Creates a square identity matrix of a given size." alt="" coords="195,195,281,221"/>

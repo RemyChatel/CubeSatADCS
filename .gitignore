@@ -63,3 +63,5 @@ ADCS\Tests\omega.data
 ADCS\Tests\quat.data
 
 \.vscode/
+
+*.csv
