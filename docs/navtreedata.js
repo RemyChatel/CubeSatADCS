@@ -25,7 +25,6 @@ var NAVTREE =
 [
   [ "CubeSat Atitude Determination", "index.html", [
     [ "Attitude Determination and Control System main page", "index.html", null ],
-    [ "README", "md__r_e_a_d_m_e.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],

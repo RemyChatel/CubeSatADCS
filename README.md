@@ -1,2 +1,2 @@
 # CubeSatADCS
-A CubeSat Atitude Determination System
+A CubeSat Attitude Determination System

@@ -1,4 +1,4 @@
-/** @mainpage Attitude Determination and Control System main page
+@mainpage Attitude Determination and Control System main page
 
 # CubeSat Attitude Determination and Control System
 
