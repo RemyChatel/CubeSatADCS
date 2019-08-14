@@ -1,3 +1,5 @@
+@mainpage Attitude Determination and Control System main page
+
 # CubeSat Attitude Determination and Control System
 
 Developed by Remy Chatel for the University of Glasgow in the context of
